@@ -36,10 +36,7 @@ def video_preview(request):
 @authentication_classes([])
 @permission_classes([])
 def test_rest(request):
-	if request.method == 'GET':
-		question = QuestionSerializer(Question.objects.get(pk=1))
-		return Response(question.data)
-	elif request.method == 'POST':
+	if request.method == 'POST':
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
 			if not request.session.get('is_reg', False):
