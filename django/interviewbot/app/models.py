@@ -5,6 +5,7 @@ import datetime
 # Create your models here.
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Question(models.Model):
 	type = models.CharField(max_length=15, default="", null=True, blank=True)

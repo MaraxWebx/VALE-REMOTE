@@ -24,9 +24,6 @@ def index(request):
 		request.session.flush()
 		request.session.set_expiry(0)
 		request.session['is_reg'] = False
-		interview = Interview.objects.create()
-		interview.save()
-		request.session['interview_id'] = interview.id
 		return render(request, 'credentials.html')
 
 def video_preview(request):
@@ -41,8 +38,12 @@ def test_rest(request):
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
 			print('New user')
-			serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
+			new_user = serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
 			request.session['is_reg'] = True
+			request.session['user_id'] = new_user.id
+			interview = Interview.objects.create(user=new_user)
+			interview.save()
+			request.session['interview_id'] = interview.id
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 	elif request.method == 'OPTIONS':
@@ -57,11 +58,11 @@ class NextQuestionView(APIView):
 		dict = request.data
 
 		# check se sono presenti tutte le informazioni nella richiesta
-		if not ('id' in dict and 'question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
+		if not ('question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		
 		# estrazione dei dati dalla richiesta
-		user_id 		= dict['id']
+		user_id 		= request.session['user_id']
 		question_id 	= dict['question']
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['choice_text']
