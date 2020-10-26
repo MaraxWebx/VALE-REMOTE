@@ -9,7 +9,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from app.serializers import *
-import next_question 
+from app.next_question import * 
 
 # Create your views here.
 def upload_view(request):
