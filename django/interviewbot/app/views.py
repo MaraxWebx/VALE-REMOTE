@@ -88,10 +88,10 @@ class NextQuestionView(APIView):
 		# con un certo criterio ed inviate al frontend. Qui invece viene sempre generata la stessa.
 		
 		next_question = Question.objects.create(
-			type = "video"
-			action = "Questa è la prossima domanda."
-			length = 0
-			choices = ""
+			type = "video",
+			action = "Questa è la prossima domanda.",
+			length = 0,
+			choices = "",
 		)
 
 		# Serializzazione della domanda per inviarla tramite REST
