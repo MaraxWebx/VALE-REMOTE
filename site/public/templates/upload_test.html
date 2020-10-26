@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+<head>
+</head>
+<body>
+
+   <div id="app">
+        <label>File
+            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
+        </label>
+        <button v-on:click="submitFile()">Submit</button>
+</div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="{% static 'codice.js' %}"></script>
+
+<!--
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form }}
+		<button type="submit">Invia</button>
+	</form>
+-->
+</body>
+</html>

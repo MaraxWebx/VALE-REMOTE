@@ -1,0 +1,329 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/*FORMATTAZIONE FONT E DOCUMENTO  */
+
+body {
+	line-height: 1.5;
+	font-family: sans-serif;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color:black;
+  background-color: #476692;
+  height:100%;
+}
+html{
+  height:100%;
+} 
+p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin:0;
+}
+
+h1{
+  
+  color: #476692 ;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin:0;
+}
+h3 {
+ 
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+ 
+  
+}
+h5 {
+  color: #476692;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin:0;
+  
+}
+
+hr{
+  color: #476692;
+  border-top: 2px solid #476692;
+}
+/*HEADE */
+
+
+
+.topBar{
+  height: 100px;
+  background-color: #476692;
+  border-bottom: #222;
+  margin: 0;
+}
+#logo img{
+  width:140px;
+  height: auto;
+	position:fixed;
+	z-index: 19;
+	left:30px;
+	top:20px;
+
+}
+/******************************BOX GENERALE***************/
+.fullBox
+{
+  margin-top: 50px;
+}
+/*********************************COLONNA  DESTRA-VIDEO-RISPOSTE***************************************************/
+
+.videoSection{
+  align-items: center;
+}
+
+
+/*TIMER*/
+.time{
+  color:#ffffff;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+}
+.timeBox{
+  
+  border-radius: 20px;
+  margin: 0  0 20px 0;
+  box-shadow: 2px 2px 3px #222222;
+  background-color: #ffffff;
+    padding:10px;
+    display: flex;
+    color:#476692;
+    align-items: center;
+    width: 400px;
+    height: 60px;
+  
+}
+
+
+/*BOX VIDEO*/
+
+.boxVideo{
+  margin-left: 23%;
+}
+
+video {
+ 
+  background:#476692;
+  box-shadow: 2px 3px 3px #222222;
+  border-radius: 40px;
+}
+
+/*BOTTONI*/
+
+#controls {
+  display: flex;
+  margin-top: 20px;
+  width: 400px;
+}
+
+
+.bRec {
+  flex-grow: 1;
+  height: 30px;
+  min-width: 30px;
+  border: none;
+  border-radius: 0.15rem;
+  background:#ffffff;
+  margin-left: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#476692;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;
+}
+
+.bRec:hover, .bRec:focus {
+  outline: none;
+  background: #c72d1c;
+ color: #ffffff;
+}
+
+.bStop{
+  flex-grow: 1;
+  height: 30px;
+  border: none;
+  background:red;
+  margin-left: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#ffffff;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;
+}
+.okButton{
+  flex-grow: 1;
+  height: 30px;
+  width: 400px;
+  border: none;
+  background:#ffffff;
+  margin-left: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#476692;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;
+  text-decoration: none;
+ 
+}
+
+
+
+
+
+
+
+
+
+/****************************************************************************COLONNA SINISTRA-DOMANDE****************************************************************************/
+.boxQ
+{
+  background-color: #ffffff;
+  border-radius: 20px;
+  color:#476692 ;
+  margin-left:-70px;
+  height: 650px;
+  width: 500px;
+  box-shadow: 2px 3px 3px #222222;
+  padding: 20px;
+}
+
+
+
+@media (min-width:760px) and (max-width:1000px){
+
+  .boxQ {
+     margin-left: 0; 
+    width: auto;
+}
+
+.boxVideo {
+  margin-left: 0;
+
+}
+video {
+
+  width: 100%;
+}
+.timeBox {
+  
+  width: auto;
+  
+}
+#controls {
+  
+  width: auto;
+}
+
+}
+/******************************RESPONISVEEEEEE******************************/
+
+
+
+
+/******************************IPAD******************************/
+@media (min-width:760px) and (max-width:1000px){
+
+  .boxQ {
+     margin-left: 0; 
+    width: auto;
+}
+
+.boxVideo {
+  margin-left: 0;
+
+}
+video {
+
+  width: 100%;
+}
+.timeBox {
+  
+  width: auto;
+  
+}
+#controls {
+  
+  width: auto;
+}
+
+}
+
+/******************************IPHONE6/7/8 plus******************************/
+@media (min-width:400px) and (max-width:598px){
+  .boxQ {
+    margin-left: 0; 
+   width: auto;
+   height: 150px;
+   margin-bottom: 20PX;
+}
+
+.boxVideo {
+ margin-left: 0;
+
+}
+video {
+ height: 280px;
+ width: 100%;
+}
+.timeBox {
+ 
+ width: auto;
+ 
+}
+#controls {
+ 
+ width: auto;
+}
+}
+
+/******************************IPHONE6/7/8******************************/
+@media (min-width:300px) and (max-width:375px){
+
+  .boxQ {
+    margin-left: 0; 
+   width: auto;
+   height: 130px;
+   margin-bottom: 20PX;
+}
+
+.boxVideo {
+ margin-left: 0;
+
+}
+video {
+ height: 250px;
+ width: 100%;
+}
+.timeBox {
+ 
+ width: auto;
+ 
+}
+#controls {
+ 
+ width: auto;
+}
+}

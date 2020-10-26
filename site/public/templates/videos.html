@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for vid in query %}
+	<br/> {{ vid.video }}
+	<br/>
+{% endfor %}
+
+{% endblock %}

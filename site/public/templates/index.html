@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base target="_blank">
+	<title>Video Interview | Itconsulting.it</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+	<!-- Progressive bar CSS / Main.css -->
+	<link rel="stylesheet" href="{% static 'css/progressive-bar.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+</head>
+
+<body>
+
+	<header class="topBar">
+		<div id="logo">
+			<a href="#">
+				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+			</a>
+
+		</div>
+
+	</header>
+	<main>
+
+
+
+		<!--INSZIO RIGA!-->
+		<div class="container Fullbox">
+
+
+			
+			<div class="row">
+
+				<!--COLONNA DESTRA-->
+				<section class="col-md-6  col-sm questionSection">
+					<div class="boxQ">
+						<h1>Domanda 1 di 10</h1>
+						<hr>
+						<div id="id01"></div>
+					</div>
+				</section>
+
+
+
+
+
+				<!--COLONNA SINISTRA-->
+				<section class="col-md-6 col-sm ">
+                    <div class="videoSection">
+									<h3>VIDEO RISPOSTA</h3>
+									
+
+									<div class="boxVideo">
+										<div id="timeBox" class="timeBox">
+											<!--<div id="answerTime" hidden class="container time"> 
+												Registration closes in <span id="time">01:00</span> minutes!</div>-->
+											<h5>Tempo di risposta</h5>
+													<div id="progressBar">
+														<div class="bar"></div>
+													</div>
+										</div>
+									<video  controls autoplay muted="true"> 
+									</video>
+											<div id="controls">
+
+												<button class="bRec" id="rec" onclick="onBtnRecordClicked(); runSpeechRecognition()">
+													<p>Record</p>
+												</button>
+
+												<button  class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop()" hidden>
+													<p>Stop</p>
+												</button>
+												<!--<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>Pause</button>-->
+
+												<!--<button id="stateButton" onclick="onStateClicked()">trace state</button>-->
+											</div>
+											<div id="output" ></div>
+											<!-- <div>
+												<button v-on:click="submitFile()">Submit</button>
+											</div> -->
+									<a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+									<p id="data"></p>
+
+									</div>
+						</div>
+				</section>
+		</div>
+	</main>
+</body>
+
+<!--  SCRIPT JS  -->
+<script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static '/js/send-video.js' %}"></script>
+<script src="{% static './node_modules/axios/dist/axios.min.js' %}"></script>
+<script src="{% static 'js/speechRecognition.js' %}"></script>
+<!-- <script src="js/question.js"></script>
+ --><script src="{% static 'js/progressive-bar.js' %}"></script>
+<script src="{% static 'js/adapter-latest.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</html>
