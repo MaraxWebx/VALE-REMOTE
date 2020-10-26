@@ -59,7 +59,7 @@ class NextQuestionView(APIView):
 	authentication_classes = ([])
 
 	def get(self, request, *arg, **kwargs):
-		dict = request.data.dict()
+		dict = request.data
 
 		# check se sono presenti tutte le informazioni nella richiesta
 		if not ('id' in dict and 'question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
