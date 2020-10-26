@@ -51,7 +51,7 @@ def test_rest(request):
 				serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
 				request.session['is_reg'] = True
 				return Response(serializer.data, status=status.HTTP_201_CREATED)
-				print('Already registered')
+			print('Already registered')
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 	elif request.method == 'OPTIONS':
