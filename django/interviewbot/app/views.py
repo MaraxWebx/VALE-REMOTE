@@ -18,10 +18,11 @@ def upload_view(request):
 
 
 def index(request):
-	if request.session.get('is_reg', False) and request.session.get_session_cookie_age() < 3600:
+	if request.session.get('is_reg', False):
 		return render(request, 'index.html')
 	else:
 		request.session.flush()
+		request.sessio.set_expiry(0)
 		request.session['is_reg'] = False
 		interview = Interview.objects.create()
 		interview.save()
@@ -39,12 +40,9 @@ def test_rest(request):
 	if request.method == 'POST':
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
-			if not request.session.get('is_reg', False):
-				print('New user')
-				serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
-				request.session['is_reg'] = True
-				return Response(serializer.data, status=status.HTTP_201_CREATED)
-			print('Already registered')
+			print('New user')
+			serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
+			request.session['is_reg'] = True
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 	elif request.method == 'OPTIONS':
