@@ -22,7 +22,7 @@ def index(request):
 		return render(request, 'index.html')
 	else:
 		request.session.flush()
-		request.sessio.set_expiry(0)
+		request.session.set_expiry(0)
 		request.session['is_reg'] = False
 		interview = Interview.objects.create()
 		interview.save()
