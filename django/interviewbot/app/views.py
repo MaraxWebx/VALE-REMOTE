@@ -4,11 +4,12 @@ from django.conf import settings
 from app.models import *
 from app.form import *
 from rest_framework.views import APIView
-from rest_framework.parsers import FileUploadParser, MultiPartParser
+from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from app.serializers import *
+import next_question 
 
 # Create your views here.
 def upload_view(request):
@@ -17,24 +18,19 @@ def upload_view(request):
 
 
 def index(request):
-	if request.session.get('is_reg', False):
-		return render(request, 'index.html')
-	return render(request, 'credentials.html')
-
-def interview(request):
-	if request.session.get('is_reg', False):
+	if request.session.get('is_reg', False) and request.session.get_session_cookie_age() > 3600:
 		return render(request, 'index.html')
 	else:
-		return redirect('/')
+		request.session.flush()
+		request.session['is_reg'] = False
+		interview = Interview.objects.create()
+		interview.save()
+		request.session['interview_id'] = interview.id
+		return render(request, 'credentials.html')
 
 def video_preview(request):
 	model = VideoModel.objects.all()
 	return render(request, 'videos.html', {'query':model})
-
-class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
 
 @api_view(['GET', 'POST'])
 @authentication_classes([])
@@ -57,17 +53,59 @@ def test_rest(request):
 	elif request.method == 'OPTIONS':
 		return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['POST'])
-@authentication_classes([])
-@permission_classes([])
-def upload_requests(request):
-	if request.method == 'POST':
-		# Add code here
-		return Response(request.data, status=status.HTTP_201_CREATED)
+class NextQuestionView(APIView):
+	parser_classes = [MultiPartParser, FormParser]
+	permission_classes = ([])
+	authentication_classes = ([])
+
+	def get(self, request, *arg, **kwargs):
+		dict = request.data.dict()
+
+		# check se sono presenti tutte le informazioni nella richiesta
+		if not ('id' in dict and 'question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
+			return Response(status=status.HTTP_400_BAD_REQUEST)
+		
+		# estrazione dei dati dalla richiesta
+		user_id 		= dict['id']
+		question_id 	= dict['question']
+		interview_id 	= request.session['interview_id']
+		answer_text 	= dict['choice_text']
+		answer_vid 		= dict['choice_vid']
+
+		# Salvataggio della risposta nel database
+		answer = Answer.objects.create(
+			interview = interview_id,
+			user = user_id,
+			question = question_id,
+			choice_text = answer_text,
+			choice_vid = answer_vid
+		)
+		answer.save()
+
+		# Di seguito è generata una domanda seguendo il modello presente in models.py
+		# Non viene salvata nel database dato che è di prova.
+		# Una futura implementazione implica che queste domande debbano essere prese dal database
+		# con un certo criterio ed inviate al frontend. Qui invece viene sempre generata la stessa.
+		
+		next_question = Question.objects.create(
+			type = "video"
+			action = "Questa è la prossima domanda."
+			length = 0
+			choices = ""
+		)
+
+		# Serializzazione della domanda per inviarla tramite REST
+
+		nq_serialized = QuestionSerializer(next_question)
+		if nq_serialized.is_valid():
+			return Response(nq_serialized.data, status=status.HTTP_200_OK)
+		else:
+			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class VideoUploadView(APIView):
 	parser_classes = [MultiPartParser]
-	permission_classess = ([])
+	permission_classes = ([])
 	authentication_classes = ([])
 
 	def post(self, request, *args, **kwargs):

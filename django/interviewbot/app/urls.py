@@ -14,7 +14,7 @@ urlpatterns = [
     path('upload/', upload_view, name='upload'),
     path('videos/', video_preview, name='preview'),
     path('upload_video/', VideoUploadView.as_view()),
-    path('interview/', interview, name='interview'),
+    path('next/', NextQuestionView.as_view()),
 ]
 
 if settings.DEBUG:

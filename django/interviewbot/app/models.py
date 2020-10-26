@@ -1,9 +1,10 @@
 from django.db import models
 from django import forms
+import datetime
 
 # Create your models here.
 class Interview(models.Model):
-	date = models.DateTimeField('date published')
+	date = models.DateTimeField('date published', auto_now_add=True)
 
 class Question(models.Model):
 	type = models.CharField(max_length=15, default="", null=True, blank=True)
