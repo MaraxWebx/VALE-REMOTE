@@ -54,7 +54,7 @@ def test_rest(request):
 		return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class NextQuestionView(APIView):
-	parser_classes = [MultiPartParser, FormParser]
+	parser_classes = [MultiPartParser]
 	permission_classes = ([])
 	authentication_classes = ([])
 
