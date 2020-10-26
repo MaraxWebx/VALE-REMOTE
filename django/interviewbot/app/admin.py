@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Question)
 admin.site.register(User)
 admin.site.register(VideoModel)
+admin.site.register(Interview)
