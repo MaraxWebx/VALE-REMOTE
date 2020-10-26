@@ -47,6 +47,7 @@ def test_rest(request):
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
 			if not request.session.get('is_reg', False):
+				print('New user')
 				serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
 				request.session['is_reg'] = True
 				return Response(serializer.data, status=status.HTTP_201_CREATED)
