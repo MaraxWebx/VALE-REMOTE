@@ -18,7 +18,7 @@ def upload_view(request):
 
 
 def index(request):
-	if request.session.get('is_reg', False) and request.session.get_session_cookie_age() > 3600:
+	if request.session.get('is_reg', False) and request.session.get_session_cookie_age() < 3600:
 		return render(request, 'index.html')
 	else:
 		request.session.flush()
