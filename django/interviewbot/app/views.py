@@ -38,7 +38,7 @@ def test_rest(request):
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
 			print('New user')
-			new_user = serializer.save() # <-- Da cambiare. Queste informazioni dovranno essere salvate più avanti.
+			new_user = serializer.save() 
 			request.session['is_reg'] = True
 			request.session['user_id'] = new_user.id
 			interview = Interview.objects.create(user=new_user)
@@ -78,11 +78,25 @@ class NextQuestionView(APIView):
 		)
 		answer.save()
 
-		# Di seguito è generata una domanda seguendo il modello presente in models.py
-		# Non viene salvata nel database dato che è di prova.
-		# Una futura implementazione implica che queste domande debbano essere prese dal database
-		# con un certo criterio ed inviate al frontend. Qui invece viene sempre generata la stessa.
+		# Generazione prossima domanda
 		
+		next_question = self.get_next_question(id=question_id, answer=answer_text)
+
+		if next_question is not None:
+			if type(next_question) is int and next_question == 0:
+				# Terminato, ritorna un messaggio adeguato e settare che il colloqui 
+				# per quell'user è terminato e può essere analizzato dalle recruiter
+				return Response(status=status.HTTP_202_ACCEPTED)
+			else:
+				nq_serialized = QuestionSerializer(next_question)
+				if nq_serialized.is_valid():
+					return Response(nq_serialized.data, status=status.HTTP_200_OK)
+				else:
+					return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		else:
+			return Response(status=status.HTTP_400_BAD_REQUEST)
+		"""
+		### Testing code ###
 		next_question = Question.objects.create(
 			type = "video",
 			action = "Questa è la prossima domanda.",
@@ -97,6 +111,33 @@ class NextQuestionView(APIView):
 			return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
 			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		"""
+
+	def get_next_question(self, id, answer):
+
+		# In questo metodo si deve far riferimento alla classe per l'elaborazione del
+		# linguaggio naturale. Per ora le biforcazioni ci sono solamente per le domande
+		# che presentano choices quindi non c'è una reale elaborazione del testo.
+
+		question = Question.objects.get(id=id)
+		if question is not None:
+			flows = QuestionFlow.objects.all().filter(parent=question)
+			if flows.exists() and flows.count() > 0:
+				if flows.count() == 1:
+					return flows.get(parent=question)
+				elif not question.is_fork:
+					return None
+				else:
+					if answer == "" or answer is None:
+						return None
+					for flow in flows:
+						if flow.choice == answer:
+							return flow
+			else:
+				return 0
+		else:
+			return None
+
 
 def add_question(request):
 	### POST REQUEST ###
