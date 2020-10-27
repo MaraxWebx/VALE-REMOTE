@@ -112,7 +112,7 @@ def add_question(request):
 
 		if 'choice_fork' in request.POST:
 			choice_fork = request.POST['choice_fork']
-		else 
+		else:
 			choice_fork = None
 		
 		parent_obj=Question.objects.get(pk=int(parent))
