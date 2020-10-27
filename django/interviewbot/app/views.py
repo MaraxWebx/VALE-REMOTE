@@ -118,7 +118,7 @@ def add_question(request):
 			choices = ""
 
 		if 'is_fork' in request.POST:
-			is_fork = request.POST['is_fork']
+			is_fork = True
 		else:
 			is_fork = False
 
