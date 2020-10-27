@@ -122,7 +122,7 @@ def add_question(request):
 		flow.save()
 		return Response(status=status.HTTP_201_CREATED)
 	elif request.method =='GET':
-		questions = Question.objects.all()
+		questions = Question.objects.all().order_by('-date_published')
 		return render(request, 'newquestion.html', {
 			'questions': questions
 		})

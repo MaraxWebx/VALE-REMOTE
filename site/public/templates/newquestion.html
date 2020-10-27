@@ -3,6 +3,7 @@
 {% block content %}
 
 <form action="/add_question/" method="POST">
+    {% csrf_token %}
     <fieldset>
         <legend>Insert new question:</legend>
         <br/><label for="type">Insert question type:</label>
