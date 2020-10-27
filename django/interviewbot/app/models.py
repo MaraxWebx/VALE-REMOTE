@@ -14,8 +14,8 @@ class Question(models.Model):
 	addedby = models.CharField(max_length=100, default="Anymous")
 
 class QuestionFlow(models.Model):
-	parent = models.ForeignKey(Question, on_delete=models.CASCADE)
-	son = models.ForeignKey(Question, on_delete=models.CASCADE)
+	parent = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='parent')
+	son = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question')
 	choice = models.CharField(max_length=100, default="", null=True, blank=True)
 
 class User(models.Model):
