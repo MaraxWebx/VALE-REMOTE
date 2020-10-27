@@ -143,7 +143,7 @@ def add_question(request):
 		questions = Question.objects.all().order_by('-date_published')
 		for question in questions:
 			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
-			if have_flow or question.is_fork:
+			if (not have_flow) or question.is_fork:
 				question_list.append(question)
 
 		return render(request, 'newquestion.html', {
