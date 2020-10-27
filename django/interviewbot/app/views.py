@@ -134,7 +134,7 @@ def add_question(request):
 			parent_obj=Question.objects.get(pk=int(parent))
 			flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
 			flow.save()
-		return HttpResponse('New question added with id: ' + question.id)
+		return HttpResponse('New question added with id: ' + str(question.id))
 	elif request.method =='GET':
 		questions = Question.objects.all().order_by('-date_published')
 		return render(request, 'newquestion.html', {
