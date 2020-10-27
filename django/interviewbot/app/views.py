@@ -110,7 +110,7 @@ def add_question(request):
 		is_fork 	= request.POST['is_fork']
 		parent 		= request.POST['parent']
 
-		if 'choice_fork' in request.POST
+		if 'choice_fork' in request.POST:
 			choice_fork = request.POST['choice_fork']
 		else 
 			choice_fork = None
@@ -120,7 +120,7 @@ def add_question(request):
 		question.save()
 		flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
 		flow.save()
-		return return Response(status=status.HTTP_201_CREATED)
+		return Response(status=status.HTTP_201_CREATED)
 	elif request.method =='GET':
 		questions = Question.objects.all()
 		return render(request, 'newquestion.html', {
