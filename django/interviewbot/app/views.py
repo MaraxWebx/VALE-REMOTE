@@ -100,26 +100,40 @@ class NextQuestionView(APIView):
 
 def add_question(request):
 	if request.method == 'POST':
-		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST and 'choices' in request.POST and 'is_fork' in request.POST and 'parent' in request.POST):
-			return HttpResponse('Missing parameters')
+		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
+			return HttpResponse('Missing essentials parameters')
 		
 		type 		= request.POST['type']
 		action 		= request.POST['action']
 		length		= request.POST['length']
-		choices 	= request.POST['choices']
-		is_fork 	= request.POST['is_fork']
-		parent 		= request.POST['parent']
+
+		if 'parent' in request.POST:
+			parent 	= request.POST['parent']
+		else:
+			parent = None
+		
+		if 'choices' in request.POST:
+			choices = request.POST['choices']
+		else:
+			choices = ""
+
+		if 'is_fork' in request.POST:
+			is_fork = request.POST['is_fork']
+		else:
+			is_fork = False
 
 		if 'choice_fork' in request.POST:
 			choice_fork = request.POST['choice_fork']
 		else:
 			choice_fork = None
 		
-		parent_obj=Question.objects.get(pk=int(parent))
 		question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
 		question.save()
-		flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
-		flow.save()
+
+		if not (parent is None):
+			parent_obj=Question.objects.get(pk=int(parent))
+			flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
+			flow.save()
 		return HttpResponse('New question added with id: ' + question.id)
 	elif request.method =='GET':
 		questions = Question.objects.all().order_by('-date_published')
