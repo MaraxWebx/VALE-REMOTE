@@ -101,7 +101,7 @@ class NextQuestionView(APIView):
 def add_question(request):
 	if request.method == 'POST':
 		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST and 'choices' in request.POST and 'is_fork' in request.POST and 'parent' in request.POST):
-			return return Response(status=status.HTTP_400_BAD_REQUEST)
+			return Response(status=status.HTTP_400_BAD_REQUEST)
 		
 		type 		= request.POST['type']
 		action 		= request.POST['action']
