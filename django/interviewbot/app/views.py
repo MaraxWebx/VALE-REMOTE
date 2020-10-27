@@ -99,6 +99,7 @@ class NextQuestionView(APIView):
 			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def add_question(request):
+	### POST REQUEST ###
 	if request.method == 'POST':
 		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
 			return HttpResponse('Missing essentials parameters')
@@ -135,8 +136,16 @@ def add_question(request):
 			flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
 			flow.save()
 		return HttpResponse('New question added with id: ' + str(question.id))
+	
+	### GET REQUEST ###
 	elif request.method =='GET':
+		question_list = []
 		questions = Question.objects.all().order_by('-date_published')
+		for question in questions:
+			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
+			if have_flow or question.is_fork:
+				question_list.append(question)
+
 		return render(request, 'newquestion.html', {
 			'questions': questions
 		})
