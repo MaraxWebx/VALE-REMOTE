@@ -27,6 +27,7 @@
 
         <br/><label for="parent_list">Question parent:</label>
         <select id="parent_list" name="parent">
+            <option value="" selected disabled hidden>Choose the parent here</option>
             {% for parent in questions %}
                 <option value="{{parent.id}}">{{parent.action}}</option>
             {% endfor %}
