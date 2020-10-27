@@ -116,7 +116,7 @@ def add_question(request):
 			choice_fork = None
 		
 		parent_obj=Question.objects.get(pk=int(parent))
-		question = Quesiton.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
+		question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
 		question.save()
 		flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
 		flow.save()

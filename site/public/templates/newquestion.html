@@ -25,13 +25,12 @@
         <br/><label for="is_fork">Is this question a fork? (Multiple child)</label>
         <input type="checkbox" name="is_fork" id="is_fork">
 
-        <br/><label for="parent">Question parent:</label>
-        <input id="parent" name="parent" list="parent_list">
-        <datalist id="parent_list">
+        <br/><label for="parent_list">Question parent:</label>
+        <select id="parent_list" name="parent">
             {% for parent in questions %}
                 <option value="{{parent.id}}">{{parent.action}}</option>
             {% endfor %}
-        </datalist>
+        </select>
 
         <br/><label for="choice_fork">If the parent is a fork, which choice trigger this question?</label>
         <input id="choice_fork" name="choice_fork" type="text">
