@@ -9,6 +9,14 @@ class Question(models.Model):
 	action = models.CharField(max_length=300)
 	length = models.IntegerField(default=0)
 	choices = models.CharField(max_length=500, default="", null=True, blank=True)
+	is_fork = models.BooleanField(default=False)
+	date_published = models.DateTimeField('date published', auto_now_add=True)
+	addedby = models.CharField(max_length=100, default="Anymous")
+
+class QuestionFlow(models.Model):
+	parent = models.ForeignKey(Question, on_delete=models.CASCADE)
+	son = models.ForeignKey(Question, on_delete=models.CASCADE)
+	choice = models.CharField(max_length=100, default="", null=True, blank=True)
 
 class User(models.Model):
 	firstname = models.CharField(max_length=50)

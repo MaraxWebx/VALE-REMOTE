@@ -98,6 +98,35 @@ class NextQuestionView(APIView):
 		else:
 			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+def add_question(request):
+	if request.method == 'POST':
+		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST and 'choices' in request.POST and 'is_fork' in request.POST and 'parent' in request.POST):
+			return return Response(status=status.HTTP_400_BAD_REQUEST)
+		
+		type 		= request.POST['type']
+		action 		= request.POST['action']
+		length		= request.POST['length']
+		choices 	= request.POST['choices']
+		is_fork 	= request.POST['is_fork']
+		parent 		= request.POST['parent']
+
+		if 'choice_fork' in request.POST
+			choice_fork = request.POST['choice_fork']
+		else 
+			choice_fork = None
+		
+		parent_obj=Question.objects.get(pk=int(parent))
+		question = Quesiton.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
+		question.save()
+		flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
+		flow.save()
+		return return Response(status=status.HTTP_201_CREATED)
+	elif request.method =='GET':
+		questions = Question.objects.all()
+		return render(request, 'newquestion.html', {
+			'questions': questions
+		})
+
 
 class VideoUploadView(APIView):
 	parser_classes = [MultiPartParser]

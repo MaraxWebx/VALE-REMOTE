@@ -4,7 +4,7 @@ from rest_framework import serializers
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = '__all__'
+        fields = ['type','action','length','choices']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

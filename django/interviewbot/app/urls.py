@@ -12,6 +12,7 @@ urlpatterns = [
     path('videos/', video_preview, name='preview'),
     path('upload_video/', VideoUploadView.as_view()),
     path('next/', NextQuestionView.as_view()),
+    path('add_question/', add_question, name='add_question')
 ]
 
 if settings.DEBUG:

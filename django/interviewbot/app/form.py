@@ -5,4 +5,3 @@ class VideoModelForm(forms.ModelForm):
 	class Meta:
 		model = VideoModel
 		fields = ('video',)
-

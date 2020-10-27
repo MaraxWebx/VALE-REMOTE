@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/add_question/" method="POST">
+    <label for="type">Insert question type:</label>
+    <input id="type" name="type" list="questions_type">
+    <datalist id="questions_type">
+        <option value="video">Request a video</option>
+        <option value="check">Show multiple choises</option>
+        <option value="code">Let user insert text</option>
+    </datalist>
+
+    <label for="action">Insert the question text:</label>
+    <input id="action" type="text" name="action">
+
+    <label for="length">Insert the number of choices if the type is "check":</label>
+    <input type="number" name="length" id="length" min="2"> 
+
+    <label for="choices">Insert the choices separated by a "<b>;</b>":</label>
+    <input type="text" name="choices" id="choices">
+
+    <label for="is_fork">Is this question a fork? (Multiple child)</label>
+    <input type="checkbox" name="is_fork" id="is_fork">
+
+    <label for="parent">Question parent:</label>
+    <input id="parent" name="parent" list="parent_list">
+    <datalist id="parent_list">
+        {% for parent in questions %}
+            <option value="{{parent.id}}">{{parent.action}}</option>
+        {% endfor %}
+    </datalist>
+
+    <label for="choice_fork">If the parent is a fork, which choice trigger this question?</label>
+    <input id="choice_fork" name="choice_fork" type="text">
+
+    <input type="submit">
+</form>
+
+{% endblock %}
