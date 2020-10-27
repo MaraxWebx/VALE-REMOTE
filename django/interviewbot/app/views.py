@@ -147,7 +147,7 @@ def add_question(request):
 				question_list.append(question)
 
 		return render(request, 'newquestion.html', {
-			'questions': questions
+			'questions': question_list
 		})
 
 
