@@ -113,10 +113,7 @@ class NextQuestionView(APIView):
 				return Response(status=status.HTTP_202_ACCEPTED)
 			else:
 				nq_serialized = QuestionSerializer(next_question)
-				if nq_serialized.is_valid():
-					return Response(nq_serialized.data, status=status.HTTP_200_OK)
-				else:
-					return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		"""
