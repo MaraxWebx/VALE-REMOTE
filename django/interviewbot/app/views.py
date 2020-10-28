@@ -81,7 +81,7 @@ class NextQuestionView(APIView):
 		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['answer_text']
-		answer_vid 		= request.data.dict()['file'] # dict['answer_vid']
+		answer_vid 		= dict['answer_vid']
 
 		user_obj = User.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
