@@ -61,7 +61,7 @@ class NextQuestionView(APIView):
 		dict = request.data
 
 		first_question = Question.objects.get(pk=12)
-		nq_serialized = QuestionSerializer(first_question)
+		nq_serialized = QuestionSerializer(data=first_question)
 		if nq_serialized.is_valid():
 			return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
