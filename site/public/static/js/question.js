@@ -1,20 +1,100 @@
-var xmlhttp = new XMLHttpRequest();
-var url = "http://80.211.116.141/restex/";
+var id = 0;
 
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var quest = JSON.parse(this.responseText);
-    getQuestion(quest);
-  }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+function question() {
+  document.getElementById("boxRis").hidden = false;
+  document.getElementById("start").hidden = true;
+
+
+  id = id + 1;
+  axios.get('/next/', {
+    params: {
+      id: id
+    }
+  })
+    .then(function (response) {
+      getQuestion(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 function getQuestion(quest) {
   var out = ''
-  var i;
-  for(i = 0; i < quest.length; i++) {
-    out += '<a>' + quest[i].question_text + '</a><br>';
+  var i = 0;
+  var titleOut;
+
+  if (quest[i] !== undefined) {
+
+    if (quest[i].type === 'video') {
+      document.querySelector('button#rec').hidden = false;
+      document.getElementById("video").hidden = false;
+      document.getElementById("code").hidden = true;
+      document.getElementById("check").hidden = true;
+      document.getElementById("StartTextBtn").hidden = true;
+      document.getElementById("ConfirmTextBtn").hidden = true;
+
+      printRis();
+    }
+
+    if (quest[i].type === 'code') {
+      document.getElementById("video").hidden = true;
+      document.getElementById("code").hidden = false;
+      document.getElementById("check").hidden = true;
+      document.querySelector('button#rec').hidden = true;
+      document.getElementById("StartTextBtn").hidden = false;
+      document.getElementById("ConfirmTextBtn").hidden = true;
+      printRis();
+    }
+
+    if (quest[i].type === 'check') {
+      document.getElementById("ConfirmTextBtn").hidden = false;
+      document.getElementById("video").hidden = true;
+      document.getElementById("code").hidden = true;
+      document.getElementById("check").hidden = false;
+      document.querySelector('button#rec').hidden = true;
+      document.getElementById("StartTextBtn").hidden = true;
+
+      document.getElementById("check").innerHTML = `<input type="radio" id="male" name="gender" value="male">
+      <label for="male">M</label><br>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">F</label><br>`
+      printRis();
+    }
+    else {
+      document.getElementById("boxRis").hidden = true;
+      console.error("Errore caricamento input risposta");
+
+    }
   }
-  document.getElementById("id01").innerHTML = out;
+  else {
+    console.warn("errore caricamento domanda/Domanda terminata");
+    //document.getElementById("boxRis").hidden = true;
+    document.getElementById("boxRis").innerHTML = '<h3 style= "color: red; background-color: white">' + 'Domande terminate' + '</h3>';
+    document.getElementById("title").innerHTML = '<h1 style="text-align: center">' + 'Fine del questionario' + '</h1>';
+    document.getElementById("question").innerHTML = "";
+
+  }
+  function printRis() {
+    out = '<a>' + quest[i].text + '</a><br>';
+    titleOut = '<h1>' + 'Domanda ' + this.id + '</h1>';
+    console.log(quest[i]);
+    i++;
+
+    document.getElementById("question").innerHTML = out;
+    document.getElementById("title").innerHTML = titleOut;
+  }
+
 }
+/* function postText() {
+  var textArea = document.getElementById("textArea");
+  axios.post('http://localhost:3000/textArea', {
+    //rejectUnauthorized: false,
+    text: textArea.value
+  })
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+} */
