@@ -60,6 +60,24 @@ class NextQuestionView(APIView):
 	def get(self, request, *arg, **kwargs):
 		dict = request.data
 
+		first_question = Question.objects.get(pk=12)
+		nq_serialized = QuestionSerializer(first_question)
+		if nq_serialized.is_valid():
+			return Response(nq_serialized.data, status=status.HTTP_200_OK)
+		else:
+			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+		"""
+		# Check se è la prima domanda del colloquio
+		if 'first_question' in dict and request.session['first_question'] == 'yes':
+			frist_question = Question.objects.get(pk=12)
+			nq_serialized = QuestionSerializer(first_question)
+			if nq_serialized.is_valid():
+				return Response(nq_serialized.data, status=status.HTTP_200_OK)
+			else:
+				return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 		# check se sono presenti tutte le informazioni nella richiesta
 		if not ('question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -98,7 +116,7 @@ class NextQuestionView(APIView):
 					return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		else:
 			return Response(status=status.HTTP_400_BAD_REQUEST)
-		"""
+		
 		### Testing code ###
 		next_question = Question.objects.create(
 			type = "video",
@@ -114,6 +132,7 @@ class NextQuestionView(APIView):
 			return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
 			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		
 		"""
 
 	def get_next_question(self, id, answer):
