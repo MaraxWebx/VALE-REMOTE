@@ -43,9 +43,9 @@ function question() {
     axios.get('/next/', {
       params: {
          
-         question_id = prev_question_id,
-         answer_text = window.text,
-         answer_vid = window.formData
+         question_id : prev_question_id,
+         answer_text : window.text,
+         answer_vid : window.formData
         
       }
     })
