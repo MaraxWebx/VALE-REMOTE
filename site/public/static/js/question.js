@@ -27,6 +27,8 @@ function question() {
       });
   }else{
     if(question_type === 'video'){ 
+      console.log('Window.text: ' + window.text)
+      console.log('Window.formData' + window.formData)
       textTmp = window.text; 
       vidTmp = window.formData;  
     }
