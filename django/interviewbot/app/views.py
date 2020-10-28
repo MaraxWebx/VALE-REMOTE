@@ -187,7 +187,7 @@ def add_question(request):
 			if (not have_flow) or question.is_fork:
 				question_list.append(question)
 		
-		choice_arr = []
+		choices_arr = []
 		for question in question_list:
 			if question.is_fork:
 				choices = question.choices
@@ -195,7 +195,7 @@ def add_question(request):
 
 		return render(request, 'newquestion.html', {
 			'questions': question_list,
-			'choices': choice_arr,
+			'choices': choices_arr,
 		})
 
 
