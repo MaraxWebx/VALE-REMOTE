@@ -227,6 +227,8 @@ function onBtnStopClicked() {
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	videoElement.controls = true;
+
+	window.question();
 	//recBtn.disabled = false;
 	//progressBar.hidden = false;
 	//pauseResBtn.disabled = true;

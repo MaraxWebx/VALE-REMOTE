@@ -3,6 +3,7 @@ var prev_question_id = "";
 var textArea = document.getElementById("textArea");
 var textTmp;
 var vidTmp;
+var acc = 0;
 
 function question() {
   document.getElementById("boxRis").hidden = false;
@@ -26,7 +27,11 @@ function question() {
         console.log(error);
       });
   }else{
+
     if(question_type === 'video'){ 
+      acc++;
+      if(acc < 2) return;
+      else acc = 0;
       console.log('Window.text: ' + window.text)
       console.log('Window.formData' + window.formData)
       textTmp = window.text; 

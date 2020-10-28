@@ -38,7 +38,7 @@ function runSpeechRecognition() {
 
   recognition.onend = function () {
     text = this.transcript;
-
+    window.question();
    /*  //SEND TO SERVER THE TRANSCRIPT
     axios.post('http://localhost:3000/speech', {
       //rejectUnauthorized: false,
