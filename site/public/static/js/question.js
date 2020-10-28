@@ -1,5 +1,5 @@
 var id = 0;
-var prev_question_id;
+var prev_question_id = "";
 var textArea = document.getElementById("textArea");
 var textTmp;
 var vidTmp;
