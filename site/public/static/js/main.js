@@ -16,7 +16,7 @@ var stopBtn = document.querySelector('button#stop');
 
 var videoElement = document.querySelector('video');
 var dataElement = document.querySelector('#data');
-var downloadLink = document.querySelector('a#downloadLink');
+//var downloadLink = document.querySelector('a#downloadLink');
 var flagStopBtn = false
 
 videoElement.controls = false;
@@ -26,6 +26,9 @@ var chunks = [];
 var count = 0;
 var localStream = null;
 var soundMeter = null;
+
+
+document.getElementById("boxRis").hidden = true;
 
 if (!navigator.mediaDevices.getUserMedia) {
 	alert('navigator.mediaDevices.getUserMedia not supported on your browser, use the latest version of Firefox or Chrome');
@@ -84,18 +87,17 @@ function onBtnRecordClicked() {
 	if (localStream == null) {
 		alert('Could not get local stream from mic/camera');
 	} else {
+		//progressBar.hidden = false;
+
 		//answerTime.hidden = false;
 		recBtn.hidden = true;
 		//pauseResBtn.disabled = false;
 		stopBtn.hidden = false;
-		progress(10, 10, $('#progressBar'));		//set time to progress bar
+		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
 		if (stopBtn.hidden === false) {
-			window.setTimeout(" onBtnStopClicked(); window.btnStop(); ", 10000);  //auto stop record afther xx minutes
+			//window.setTimeout(" onBtnStopClicked(); window.btnStop(); ", 10000);  //auto stop record afther xx minutes
 		}
-
-
-
 
 
 		/* use the stream */
@@ -146,26 +148,24 @@ function onBtnRecordClicked() {
 			log('mediaRecorder.onstop, mediaRecorder.state = ' + mediaRecorder.state);
 
 			var blob = new Blob(chunks, { type: "video/webm" });
-
-
 			chunks = [];
 
 			stopBtn.hidden = true;
-			downloadLink.innerHTML = '<button class="okButton" id="controls"><p>Invia</p></button>';
+			//downloadLink.innerHTML = '<button class="okButton" id="controls"><p>Scarica</p></button>';
 
 			var rand = Math.floor((Math.random() * 10000000));
 			var name = "video_" + rand + ".webm";
 			let file = new File([blob], name, { type: "video/webm" });
 
-			downloadLink.setAttribute("download", name);
-			downloadLink.setAttribute("name", name);
+			//downloadLink.setAttribute("download", file.name);
+			//downloadLink.setAttribute("name", file.name);
 
 			var videoURL = window.URL.createObjectURL(file);
-			downloadLink.href = videoURL;
+			//downloadLink.href = videoURL;
 			videoElement.src = videoURL;
 
 			console.log(file);
-			window.submitFile(file);
+			//window.submitFile(file);		
 		};
 
 		mediaRecorder.onpause = function () {
@@ -191,6 +191,23 @@ function onBtnRecordClicked() {
 	}
 }
 
+function onBtnStartClicked() {
+
+	//progress(10, 10, $('#progressBar'));		//set time to progress bar
+
+	document.getElementById("textArea").disabled = false;
+	document.getElementById("StartTextBtn").hidden = true;
+	document.getElementById("ConfirmTextBtn").hidden = false;
+}
+
+function onBtnConfirmClicked() {
+
+	document.getElementById("ConfirmTextBtn").hidden = true;
+	document.getElementById("textArea").disabled = true;
+
+
+}
+
 navigator.mediaDevices.ondevicechange = function (event) {
 	log("mediaDevices.ondevicechange");
 	/*
@@ -210,11 +227,11 @@ function onBtnStopClicked() {
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	videoElement.controls = true;
-	recBtn.disabled = false;
-	progressBar.hidden = true;
+	//recBtn.disabled = false;
+	//progressBar.hidden = false;
 	//pauseResBtn.disabled = true;
-	stopBtn.disabled = true;
-	timeBox.hidden = true;
+	//stopBtn.disabled = true;
+	//timeBox.hidden = true;
 	//timeView.hidden = true;
 
 }
