@@ -33,7 +33,7 @@ function question() {
       if(acc < 2) return;
       else acc = 0;
       console.log('Window.text: ' + window.text)
-      console.log('Window.formData' + window.formData)
+      console.log('Window.formData' + window.formData.get('file'))
       textTmp = window.text; 
       vidTmp = window.formData;  
     }
