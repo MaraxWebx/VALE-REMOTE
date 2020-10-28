@@ -54,11 +54,12 @@ function getQuestion(quest) {
       document.getElementById("check").hidden = false;
       document.querySelector('button#rec').hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
-
-      document.getElementById("check").innerHTML = `<input type="radio" id="male" name="gender" value="male">
-      <label for="male">M</label><br>
-      <input type="radio" id="female" name="gender" value="female">
-      <label for="female">F</label><br>`
+      choices_splitted = quest.choises.split(";")
+      choices_list_html =""
+      for(var j = 0; j < choices_splitte.length; j++ ){
+        choices_list_html += '<input type="radio" id="'+ choices_splitted[j] + '" name="gender" value="'+ choices_splitted[j] + '"> <label for="'+ choices_splitted[j] + '">'+ choices_splitted[j] + '</label><br>';
+      }
+      document.getElementById("check").innerHTML = choices_list_html;
       printRis();
     }
     else {
@@ -76,9 +77,9 @@ function getQuestion(quest) {
 
   }
   function printRis() {
-    out = '<a>' + quest[i].text + '</a><br>';
+    out = '<a>' + quest.action + '</a><br>';
     titleOut = '<h1>' + 'Domanda ' + this.id + '</h1>';
-    console.log(quest[i]);
+    console.log(quest);
     i++;
 
     document.getElementById("question").innerHTML = out;
