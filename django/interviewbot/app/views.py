@@ -67,11 +67,13 @@ class NextQuestionView(APIView):
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 			else:
+				print(dict, '##### PRIMO###############')
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		
 		# check se sono presenti tutte le informazioni nella richiesta
 		if not ('question_id' in dict and 'answer_text' in dict and 'answer_vid' in dict):
+			print(dict, '##### SECONDO #############')
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		
 		# estrazione dei dati dalla richiesta
