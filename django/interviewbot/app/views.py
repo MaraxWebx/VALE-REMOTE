@@ -90,7 +90,7 @@ class NextQuestionView(APIView):
 		if type(answer_vid) is str and ans_question.type != 'video':
 			answer_vid = None
 		elif type(answer_vid) is str or ans_question.type != 'video':
-			print('#########TERZOOO#######', ans_question.type, ans_question.id, type(answer_vid), (type(answer_vid) is str), (ans_question.type != 'video'))
+			print('#########TERZOOO#######', answer_vid, ans_question.type, ans_question.id, type(answer_vid), (type(answer_vid) is str), (ans_question.type != 'video'))
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		# Salvataggio della risposta nel database
