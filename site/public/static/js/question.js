@@ -56,7 +56,7 @@ function getQuestion(quest) {
       document.getElementById("StartTextBtn").hidden = true;
       choices_splitted = quest.choices.split(";")
       choices_list_html =""
-      for(var j = 0; j < choices_splitte.length; j++ ){
+      for(var j = 0; j < choices_splitted.length; j++ ){
         choices_list_html += '<input type="radio" id="'+ choices_splitted[j] + '" name="gender" value="'+ choices_splitted[j] + '"> <label for="'+ choices_splitted[j] + '">'+ choices_splitted[j] + '</label><br>';
       }
       document.getElementById("check").innerHTML = choices_list_html;
