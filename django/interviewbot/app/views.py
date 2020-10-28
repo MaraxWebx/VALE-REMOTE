@@ -81,7 +81,7 @@ class NextQuestionView(APIView):
 		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['answer_text']
-		answer_vid 		= dict['answer_vid']
+		answer_vid 		= request.data.dict()['file'] # dict['answer_vid']
 
 		user_obj = User.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
@@ -90,6 +90,7 @@ class NextQuestionView(APIView):
 		if type(answer_vid) is str and ans_question.type != 'video':
 			answer_vid = None
 		elif type(answer_vid) is str or ans_question.type != 'video':
+			print('#########TERZOOO#######')
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		# Salvataggio della risposta nel database
@@ -115,6 +116,7 @@ class NextQuestionView(APIView):
 				nq_serialized = QuestionSerializer(next_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
+			print('###QUARTOOOO#######')
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		"""
 		### Testing code ###
