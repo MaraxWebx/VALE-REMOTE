@@ -146,7 +146,7 @@ class NextQuestionView(APIView):
 			flows = QuestionFlow.objects.all().filter(parent=question)
 			if flows.exists() and flows.count() > 0:
 				if flows.count() == 1:
-					return flows.get(parent=question)
+					return flows.get(parent=question).son
 				elif not question.is_fork:
 					return None
 				else:
@@ -154,7 +154,7 @@ class NextQuestionView(APIView):
 						return None
 					for flow in flows:
 						if flow.choice == answer:
-							return flow
+							return flow.son
 			else:
 				return 0
 		else:
