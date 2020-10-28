@@ -76,9 +76,7 @@ function getQuestion(quest) {
       document.getElementById("ConfirmTextBtn").hidden = true;
 
       printRis();
-    }
-
-    if (quest.type === 'code') {
+    } else if (quest.type === 'code') {
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = false;
       document.getElementById("check").hidden = true;
@@ -86,9 +84,7 @@ function getQuestion(quest) {
       document.getElementById("StartTextBtn").hidden = false;
       document.getElementById("ConfirmTextBtn").hidden = true;
       printRis();
-    }
-
-    if (quest.type === 'check') {
+    } else if (quest.type === 'check') {
       document.getElementById("ConfirmTextBtn").hidden = false;
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = true;
@@ -102,8 +98,7 @@ function getQuestion(quest) {
       }
       document.getElementById("check").innerHTML = choices_list_html;
       printRis();
-    }
-    else {
+    }else {
       document.getElementById("boxRis").hidden = true;
       console.error("Errore caricamento input risposta");
 
