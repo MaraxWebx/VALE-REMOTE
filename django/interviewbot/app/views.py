@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.conf import settings
-from app.models import *
-from app.form import *
+from django.contrib.auth.decorators import permission_required
+
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, authentication_classes, permission_classes, permission_required
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+
 from app.serializers import *
 from app.next_question import * 
+from app.models import *
+from app.form import *
 
 # Create your views here.
 def upload_view(request):
