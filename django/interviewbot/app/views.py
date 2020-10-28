@@ -62,7 +62,7 @@ class NextQuestionView(APIView):
 
 		# Check se è prima domanda
 		if 'type' in dict:
-			if dict['type'] == 'first':
+			if dict['type'] == 'base':
 				first_question = Question.objects.get(pk=12)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
