@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, permission_required
 from app.serializers import *
 from app.next_question import * 
 
@@ -139,6 +139,7 @@ class NextQuestionView(APIView):
 			return None
 
 
+@permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
 	### POST REQUEST ###
 	if request.method == 'POST':
