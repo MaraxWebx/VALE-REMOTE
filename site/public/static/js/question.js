@@ -3,13 +3,13 @@ var prev_question_id;
 var textArea = document.getElementById("textArea");
 var textTmp;
 var vidTmp;
-​
+
 function question() {
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
-​
+
   
-​
+
   id = id + 1;
   if(id == 1){
     axios.get('/next/', {
@@ -30,12 +30,12 @@ function question() {
       textTmp = window.text; 
       vidTmp = window.formData;  
     }
-​
+
     if(question_type === 'code'){
       textTmp = textArea;
       vidTmp = "no_video";
     }
-​
+
     if(question_type === 'check'){
       textTmp = "Laurea";
       vidTmp = "no_video";
@@ -59,14 +59,14 @@ function question() {
       });
   }
 }
-​
+
 function getQuestion(quest) {
   var out = ''
   var i = 0;
   var titleOut;
-​
+
   if (quest.id !== undefined) {
-​
+
     if (quest.type === 'video') {
       document.querySelector('button#rec').hidden = false;
       document.getElementById("video").hidden = false;
@@ -74,10 +74,10 @@ function getQuestion(quest) {
       document.getElementById("check").hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
       document.getElementById("ConfirmTextBtn").hidden = true;
-​
+
       printRis();
     }
-​
+
     if (quest.type === 'code') {
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = false;
@@ -87,7 +87,7 @@ function getQuestion(quest) {
       document.getElementById("ConfirmTextBtn").hidden = true;
       printRis();
     }
-​
+
     if (quest.type === 'check') {
       document.getElementById("ConfirmTextBtn").hidden = false;
       document.getElementById("video").hidden = true;
@@ -106,7 +106,7 @@ function getQuestion(quest) {
     else {
       document.getElementById("boxRis").hidden = true;
       console.error("Errore caricamento input risposta");
-​
+
     }
   }
   else {
@@ -115,18 +115,18 @@ function getQuestion(quest) {
     document.getElementById("boxRis").innerHTML = '<h3 style= "color: red; background-color: white">' + 'Domande terminate' + '</h3>';
     document.getElementById("title").innerHTML = '<h1 style="text-align: center">' + 'Fine del questionario' + '</h1>';
     document.getElementById("question").innerHTML = "";
-​
+
   }
   function printRis() {
     out = '<a>' + quest.action + '</a><br>';
     titleOut = '<h1>' + 'Domanda ' + this.id + '</h1>';
     console.log(quest);
     i++;
-​
+
     document.getElementById("question").innerHTML = out;
     document.getElementById("title").innerHTML = titleOut;
   }
-​
+
 }
 /* function postText() {
   var textArea = document.getElementById("textArea");
