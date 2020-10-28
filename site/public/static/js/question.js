@@ -24,9 +24,9 @@ function getQuestion(quest) {
   var i = 0;
   var titleOut;
 
-  if (quest[i] !== undefined) {
+  if (quest.id !== undefined) {
 
-    if (quest[i].type === 'video') {
+    if (quest.type === 'video') {
       document.querySelector('button#rec').hidden = false;
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
@@ -37,7 +37,7 @@ function getQuestion(quest) {
       printRis();
     }
 
-    if (quest[i].type === 'code') {
+    if (quest.type === 'code') {
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = false;
       document.getElementById("check").hidden = true;
@@ -47,7 +47,7 @@ function getQuestion(quest) {
       printRis();
     }
 
-    if (quest[i].type === 'check') {
+    if (quest.type === 'check') {
       document.getElementById("ConfirmTextBtn").hidden = false;
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = true;
