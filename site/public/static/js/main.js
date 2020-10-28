@@ -165,7 +165,7 @@ function onBtnRecordClicked() {
 			videoElement.src = videoURL;
 
 			console.log(file);
-			//window.submitFile(file);		
+			window.submitFile(file);		
 		};
 
 		mediaRecorder.onpause = function () {
