@@ -61,11 +61,9 @@ class NextQuestionView(APIView):
 		dict = request.data
 
 		first_question = Question.objects.get(pk=12)
-		nq_serialized = QuestionSerializer(data=first_question)
-		if nq_serialized.is_valid():
-			return Response(nq_serialized.data, status=status.HTTP_200_OK)
-		else:
-			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+		nq_serialized = QuestionSerializer(first_question)
+		return Response(nq_serialized.data, status=status.HTTP_200_OK)
+		
 
 		"""
 		# Check se è la prima domanda del colloquio
