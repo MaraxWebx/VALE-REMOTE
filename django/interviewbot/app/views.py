@@ -60,38 +60,41 @@ class NextQuestionView(APIView):
 	def get(self, request, *arg, **kwargs):
 		dict = request.data
 
-		first_question = Question.objects.get(pk=12)
-		nq_serialized = QuestionSerializer(first_question)
-		return Response(nq_serialized.data, status=status.HTTP_200_OK)
-		
-
-		"""
-		# Check se è la prima domanda del colloquio
-		if 'first_question' in dict and request.session['first_question'] == 'yes':
-			frist_question = Question.objects.get(pk=12)
-			nq_serialized = QuestionSerializer(first_question)
-			if nq_serialized.is_valid():
+		# Check se è prima domanda
+		if 'type' in dict:
+			if dict['type'] == 'first':
+				first_question = Question.objects.get(pk=12)
+				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 			else:
-				return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+				return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
+		
 		# check se sono presenti tutte le informazioni nella richiesta
-		if not ('question' in dict and 'interview_id' in dict and 'choice_text' in dict and 'choice_vid' in dict):
+		if not ('question_id' in dict and 'answer_text' in dict and 'answer_vid' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		
 		# estrazione dei dati dalla richiesta
 		user_id 		= request.session['user_id']
-		question_id 	= dict['question']
+		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
-		answer_text 	= dict['choice_text']
-		answer_vid 		= dict['choice_vid']
+		answer_text 	= dict['answer_text']
+		answer_vid 		= dict['answer_vid']
+
+		user_obj = User.objects.get(pk=user_id)
+		ans_question = Question.objects.get(pk=question_id)
+		interview_obj = Interview.objects.get(pk=interview_id)
+
+		if type(answer_vid) is str and ans_question.type != 'video':
+			answer_vid = None
+		elif type(answer_vid) is str or ans_question.type != 'video':
+			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		# Salvataggio della risposta nel database
 		answer = Answer.objects.create(
-			interview = interview_id,
-			user = user_id,
-			question = question_id,
+			interview = interview_obj,
+			user = user_obj,
+			question = ans_question,
 			choice_text = answer_text,
 			choice_vid = answer_vid
 		)
@@ -114,7 +117,7 @@ class NextQuestionView(APIView):
 					return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		else:
 			return Response(status=status.HTTP_400_BAD_REQUEST)
-		
+		"""
 		### Testing code ###
 		next_question = Question.objects.create(
 			type = "video",
