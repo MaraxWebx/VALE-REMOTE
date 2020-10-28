@@ -58,7 +58,7 @@ class NextQuestionView(APIView):
 	authentication_classes = ([])
 
 	def get(self, request, *arg, **kwargs):
-		dict = request.POST
+		dict = request.query_params
 
 		# Check se è prima domanda
 		if 'type' in dict:
