@@ -1,10 +1,10 @@
-
+let formData = new FormData();
 
 submitFile = function(file) {
   //file = this.$refs.blob.files[0];
-  let formData = new FormData();
+ 
   formData.append('file', file);
-  console.log('>> formData >> ', formData);
+  console.log('>> formData >> ', formData.values);
 
   /* // HTTP POST on server
   axios.post('http://80.211.116.141/upload_video/',
