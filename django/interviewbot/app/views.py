@@ -186,9 +186,18 @@ def add_question(request):
 			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
 			if (not have_flow) or question.is_fork:
 				question_list.append(question)
+		
+		choice_dict = {}
+		for question in question_list:
+			if question.is_fork:
+				choices = question.choices
+				choices_arr = choices.split(';')
+				for choice in choices_arr:
+					choice_dict[choice] = question.action
 
 		return render(request, 'newquestion.html', {
-			'questions': question_list
+			'questions': question_list,
+			'choices': choice_dict,
 		})
 
 

@@ -35,7 +35,12 @@
         </select>
 
         <br/><label for="choice_fork">If the parent is a fork, which choice trigger this question?</label>
-        <input id="choice_fork" name="choice_fork" type="text">
+        <input id="choice_fork" name="choice_fork" list="choices_enabled">
+        <datalist id="choices_enabled">
+            {% for choice in choices %}
+                <option value="{{choice}}">{{choices[choice]}}</option>
+            {% endfor %}
+        </datalist>
 
         <br/><input type="submit">
 
