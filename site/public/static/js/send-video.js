@@ -1,9 +1,8 @@
-let formData = new FormData();
-
-
+//let formData = new FormData();
 
 submitFile = function(file) {
   //file = this.$refs.blob.files[0];
+  let formData = new FormData();
   formData.append('file', file);
   console.log('>> formData >> ', formData);
 
