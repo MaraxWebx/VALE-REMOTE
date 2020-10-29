@@ -40,7 +40,7 @@ function question() {
     }
 
     if(question_type === 'code'){
-      textTmp  = document.getElementById("textArea");
+      textTmp  = document.getElementById("textArea").value;
       vidTmp = "no_video";
     }
 
