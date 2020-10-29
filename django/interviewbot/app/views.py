@@ -18,7 +18,7 @@ from app.form import *
 def index(request):
 	if request.session.get('is_reg', False):
 		if request.session.get_cookie_age():
-		return redirect('/interview/')
+			return redirect('/interview/')
 	else:
 		request.session.clear_expired()
 		request.session.flush()
