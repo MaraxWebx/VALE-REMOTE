@@ -181,6 +181,21 @@ def add_question(request):
 			parent_obj=Question.objects.get(pk=int(parent))
 			flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
 			flow.save()
+
+		if 'is_join' in request.POST:
+			question_list = []
+			questions = Question.objects.all().order_by('-date_published')
+			for question in questions:
+				have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
+				if (not have_flow) or question.is_fork:
+					question_list.append(question)
+			request.session['parent_num'] = request.POST['is_join']
+			request.session['join_id'] = question.id
+			return render(request, 'addparent.html', context={
+				'questions': question_list
+				'parent_number' : request.POST['is_join']
+			})
+
 		return HttpResponse('New question added with id: ' + str(question.id))
 	
 	### GET REQUEST ###
@@ -202,6 +217,28 @@ def add_question(request):
 			'questions': question_list,
 			'choices': choices_arr,
 		})
+
+@permission_required('app.can_add_question', raise_exception=True)
+def add_parent_to_join(request):
+	if request.method == 'POST':
+		parent_obj=Question.objects.get(pk=int(request.POST['parent']))
+		if request.session.get('parent_num', -1) < 0 or request.session.get('join_id,',-1) < 0):
+			return HttpResponse("Error: Join_id not set.", status=400)
+		
+		son_obj = Question.objects.get(pk=request.session['join_id'])
+
+		n = request.session['parent_num']
+		for i in range(n):
+			if str(i) not in request.POST:
+				break
+			else:
+				parent_id = request.POST[str(i)]
+				parent_obj = Question.objects.get(pk=parent_id)
+				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice=choice_fork )
+				flow.save()
+
+		return HttpResponse("New question created with id: " + str(request.session['join_id']))
+
 """
 @permission_required(['app.can_add_question', 'app.can_view_question'], raise_exception=True)
 def get_questions_tree(request):

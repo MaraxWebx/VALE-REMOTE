@@ -9,7 +9,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('restex/', test_rest),
     path('next/', NextQuestionView.as_view()),
-    path('add_question/', add_question, name='add_question')
+    path('add_question/', add_question, name='add_question'),
+    path('add_parent/', add_parent_to_join, name='add_parent')
 ]
 
 if settings.DEBUG:

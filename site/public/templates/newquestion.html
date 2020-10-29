@@ -34,6 +34,9 @@
             {% endfor %}
         </select>
 
+        <br/><label for="is_join">This question is a join? (Multiple parents) Select the number of parent (the parent choosen before is not counted). You will be redirected to another page.</label>
+        <input type="number" name="is_join" id="is_join" required value="0"> 
+
         <br/><label for="choice_fork">If the parent is a fork, which choice trigger this question?</label>
         <input id="choice_fork" name="choice_fork" list="choices_enabled">
         <datalist id="choices_enabled">

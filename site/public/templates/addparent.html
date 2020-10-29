@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/add_parent/" method="POST">
+    {% csrf_token %}
+    <fieldset><legend>Select the parent</legend>
+        {% for i in range(parent_number) %}
+        <br/><label for="parent_list"> {{i}}) Question parent:</label>
+            <select id="parent_list" name="{{i}}">
+                <option value="" selected disabled hidden>Choose the parent here</option>
+                {% for parent in questions %}
+                    <option value="{{parent.id}}">{{parent.action}}</option>
+                {% endfor %}
+            </select>
+        {% endfor %}
+
+        <br/><input type="submit">
+    </fieldset>
+</form>
+
+{% endblock %}
