@@ -202,3 +202,9 @@ def add_question(request):
 			'questions': question_list,
 			'choices': choices_arr,
 		})
+"""
+@permission_required(['app.can_add_question', 'app.can_view_question'], raise_exception=True)
+def get_questions_tree(request):
+	if request.method == 'GET':
+
+"""

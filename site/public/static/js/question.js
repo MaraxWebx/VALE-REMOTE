@@ -3,6 +3,7 @@ var prev_question_id = "";
 var textArea = document.getElementById("textArea");
 var textTmp;
 var vidTmp;
+var choice_length;
 var acc = 0;
 
 function question() {
@@ -21,6 +22,7 @@ function question() {
       .then(function (response) {
         prev_question_id = response.data.id;
         question_type = response.data.type;
+        choice_length = response.data.length;
         getQuestion(response.data);
       })
       .catch(function (error) {
@@ -44,7 +46,19 @@ function question() {
     }
 
     if(question_type === 'check'){
-      textTmp = "Laurea";
+      var flag = false
+      for(j=0; j < choice_length; j++){
+        if (document.getElementById("" + j).checked) {
+          var x = document.getElementById("" + j).value;
+          textTmp = x;
+          flag = true;
+          break;
+        }
+      }
+      if(!flag){
+        alert('Seleziona una risposta');
+        return;
+      }
       vidTmp = "no_video";
     }
     axios.get('/next/', {
@@ -61,6 +75,7 @@ function question() {
         }
         prev_question_id = response.data.id;
         question_type = response.data.type;
+        choice_length = response.data.length;
         getQuestion(response.data);
       })
       .catch(function (error) {
@@ -103,7 +118,7 @@ function getQuestion(quest) {
       choices_splitted = quest.choices.split(";")
       choices_list_html =""
       for(var j = 0; j < choices_splitted.length; j++ ){
-        choices_list_html += '<input type="radio" id="'+ choices_splitted[j] + '" name="gender" value="'+ choices_splitted[j] + '"> <label for="'+ choices_splitted[j] + '">'+ choices_splitted[j] + '</label><br>';
+        choices_list_html += '<input type="radio" id="'+ j + '" name="gender" value="'+ choices_splitted[j] + '"> <label for="'+ choices_splitted[j] + '">'+ choices_splitted[j] + '</label><br>';
       }
       document.getElementById("check").innerHTML = choices_list_html;
       printRis();
