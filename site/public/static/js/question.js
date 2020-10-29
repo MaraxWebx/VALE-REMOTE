@@ -34,8 +34,8 @@ function question() {
       else acc = 0;
       console.log('Window.text: ' + window.text)
       console.log('Window.formData' + window.formData.get('file'))
-      textTmp = window.text; 
-      vidTmp = window.formData;  
+      textTmp = window.text;
+      vidTmp = "to_upload"; 
     }
 
     if(question_type === 'code'){
@@ -52,11 +52,13 @@ function question() {
          
          question_id : prev_question_id,
          answer_text : textTmp,
-         answer_vid : vidTmp
-        
+         answer_vid : vidTmp        
       }
     })
       .then(function (response) {
+        if(question_type === 'video'){
+          window.submitFile()
+        }
         prev_question_id = response.data.id;
         question_type = response.data.type;
         getQuestion(response.data);

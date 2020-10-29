@@ -1,14 +1,19 @@
 
 var formData = new FormData();
 
-submitFile = function(file) {
-  //file = this.$refs.blob.files[0];
- 
+prepareSubmit = function(file){
   formData.append('file', file);
   console.log('>> formData >> ', formData);
+}
 
-  /* // HTTP POST on server
-  axios.post('http://80.211.116.141/upload_video/',
+submitFile = function() {
+  //file = this.$refs.blob.files[0];
+ /*
+  formData.append('file', file);
+  console.log('>> formData >> ', formData);
+*/
+   // HTTP POST on server
+  axios.post('/next/',
       formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -19,5 +24,5 @@ submitFile = function(file) {
     })
     .catch(function () {
       console.log('FAILURE!!');
-    }); */
+    });
 }

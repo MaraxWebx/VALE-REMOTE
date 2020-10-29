@@ -67,13 +67,10 @@ class NextQuestionView(APIView):
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 			else:
-				print(dict, '##### PRIMO###############')
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 
-		
 		# check se sono presenti tutte le informazioni nella richiesta
-		if not ('question_id' in dict and 'answer_text' in dict and 'answer_vid' in dict):
-			print(dict, '##### SECONDO #############')
+		if not ('question_id' in dict and 'answer_text' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		
 		# estrazione dei dati dalla richiesta
@@ -81,17 +78,10 @@ class NextQuestionView(APIView):
 		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['answer_text']
-		answer_vid 		= dict['answer_vid']
-
+		
 		user_obj = User.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
 		interview_obj = Interview.objects.get(pk=interview_id)
-
-		if type(answer_vid) is str and ans_question.type != 'video':
-			answer_vid = None
-		elif type(answer_vid) is str or ans_question.type != 'video':
-			print('#########TERZOOO#######', answer_vid, ans_question.type, ans_question.id, type(answer_vid), (type(answer_vid) is str), (ans_question.type != 'video'))
-			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		# Salvataggio della risposta nel database
 		answer = Answer.objects.create(
@@ -99,12 +89,16 @@ class NextQuestionView(APIView):
 			user = user_obj,
 			question = ans_question,
 			choice_text = answer_text,
-			choice_vid = answer_vid
+			choice_vid = None
 		)
 		answer.save()
 
+		if dict['answer_vid'] == 'to_upload':
+			request.session['last_ans_id'] = answer.id
+		else:
+			request.session['last_ans_id'] = -1
+
 		# Generazione prossima domanda
-		
 		next_question = self.get_next_question(id=question_id, answer=answer_text)
 
 		if next_question is not None:
@@ -116,26 +110,19 @@ class NextQuestionView(APIView):
 				nq_serialized = QuestionSerializer(next_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
-			print('###QUARTOOOO#######')
 			return Response(status=status.HTTP_400_BAD_REQUEST)
-		"""
-		### Testing code ###
-		next_question = Question.objects.create(
-			type = "video",
-			action = "Questa è la prossima domanda.",
-			length = 0,
-			choices = "",
-		)
-
-		# Serializzazione della domanda per inviarla tramite REST
-
-		nq_serialized = QuestionSerializer(next_question)
-		if nq_serialized.is_valid():
-			return Response(nq_serialized.data, status=status.HTTP_200_OK)
+	
+	def post(self, request, *arg, **kwargs):
+		file = request.data.dict()['file']
+		if request.session.get('last_ans_id', -1) > 0:
+			last_ans = Answer.objects.get(pk=request.session['last_ans_id'])
+			request.session['last_ans_id'] = -1
+			last_ans.choice_vid = file
+			last_ans.save()
+			return Response(status=status.HTTP_201_CREATED)
 		else:
-			return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-		
-		"""
+			print(" ## ERR ## - User session doesn't have a last_ans_id setted")
+			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	def get_next_question(self, id, answer):
 

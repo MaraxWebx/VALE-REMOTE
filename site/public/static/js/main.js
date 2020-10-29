@@ -165,7 +165,8 @@ function onBtnRecordClicked() {
 			videoElement.src = videoURL;
 
 			console.log(file);
-			window.submitFile(file);		
+			window.prepareSubmit(file);
+			//window.submitFile(file);		
 		};
 
 		mediaRecorder.onpause = function () {
@@ -227,7 +228,6 @@ function onBtnStopClicked() {
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	videoElement.controls = true;
-
 	window.question();
 	//recBtn.disabled = false;
 	//progressBar.hidden = false;
