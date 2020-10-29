@@ -112,7 +112,7 @@ class NextQuestionView(APIView):
 			last_ans.save()
 			return Response(status=status.HTTP_201_CREATED)
 		else:
-			print(" ## ERR ## - User session doesn't have a last_ans_id setted")
+			print(" ## ERR ## - User session doesn't have a last_ans_id setted. Cannot save the video.")
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	def get_next_question(self, id, answer):
@@ -235,7 +235,10 @@ def add_parent_to_join(request):
 
 		question_list = []
 		questions = Question.objects.all().order_by('-date_published')
+		new_question = Question.objects.get(pk=int(question_id))
 		for question in questions:
+			if question is new_question:
+				continue
 			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
 			if (not have_flow) or question.is_fork:
 				question_list.append(question)
@@ -243,12 +246,3 @@ def add_parent_to_join(request):
 			'parent_number': range(int(n)),
 			'questions': question_list
 		})
-
-
-
-"""
-@permission_required(['app.can_add_question', 'app.can_view_question'], raise_exception=True)
-def get_questions_tree(request):
-	if request.method == 'GET':
-
-"""

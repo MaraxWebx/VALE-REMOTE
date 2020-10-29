@@ -4,6 +4,7 @@ var textTmp;
 var vidTmp;
 var choice_length;
 var acc = 0;
+var flag = false
 
 function question() {
   document.getElementById("boxRis").hidden = false;
@@ -44,7 +45,6 @@ function question() {
     }
 
     if(question_type === 'check'){
-      var flag = false
       for(j=0; j < choice_length; j++){
         if (document.getElementById("" + j).checked) {
           var x = document.getElementById("" + j).value;

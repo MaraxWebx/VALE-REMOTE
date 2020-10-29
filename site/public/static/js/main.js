@@ -203,7 +203,7 @@ function onBtnStartClicked() {
 
 function onBtnConfirmClicked() {
 
-	document.getElementById("ConfirmTextBtn").hidden = true;
+	if(window.flag) document.getElementById("ConfirmTextBtn").hidden = true;
 	document.getElementById("textArea").disabled = true;
 
 
