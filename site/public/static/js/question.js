@@ -89,7 +89,6 @@ function getQuestion(quest) {
   var titleOut;
 
   if (quest.id !== undefined) {
-
     if (quest.type === 'video') {
       document.querySelector('button#rec').hidden = false;
       document.getElementById("video").hidden = false;

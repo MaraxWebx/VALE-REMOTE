@@ -17,12 +17,20 @@ from app.form import *
 # Create your views here.
 def index(request):
 	if request.session.get('is_reg', False):
-		return render(request, 'index.html')
+		if request.session.get_cookie_age()
+		return redirect('/interview/')
 	else:
+		request.session.clear_expired()
 		request.session.flush()
-		request.session.set_expiry(0)
+		request.session.set_expiry(300)
 		request.session['is_reg'] = False
 		return render(request, 'credentials.html')
+
+def interview(request):
+	if  request.session.get('is_reg', False):
+		return render(request,'index.html')
+	else:
+		return redirect('/')
 
 @api_view(['GET', 'POST'])
 @authentication_classes([])
@@ -50,7 +58,7 @@ class NextQuestionView(APIView):
 
 	def get(self, request, *arg, **kwargs):
 		dict = request.query_params
-
+		request.session['refresh'] = True
 		# Check se è prima domanda
 		if 'type' in dict:
 			if dict['type'] == 'base':
@@ -105,6 +113,7 @@ class NextQuestionView(APIView):
 	
 	def post(self, request, *arg, **kwargs):
 		file = request.data.dict()['file']
+		request.session['refresh'] = True
 		if request.session.get('last_ans_id', -1) > 0:
 			last_ans = Answer.objects.get(pk=request.session['last_ans_id'])
 			request.session['last_ans_id'] = -1
