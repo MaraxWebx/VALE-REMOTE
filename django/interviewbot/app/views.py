@@ -235,12 +235,14 @@ def add_parent_to_join(request):
 		request.session['join_id'] = -1
 		return HttpResponse("New question created with id: " + str(request.session['join_id']))
 	elif request.method == 'GET':
+
+		return HttpResponse(str(n) + ' ' + str(question_id))
 		n = request.GET['n']
 		question_id = request.GET['id']
 
 		request.session['parent_num'] = n
 		request.session['join_id'] = question_id
-		
+
 		question_list = []
 		questions = Question.objects.all().order_by('-date_published')
 		for question in questions:
