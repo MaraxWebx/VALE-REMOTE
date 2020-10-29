@@ -1,6 +1,5 @@
 var id = 0;
 var prev_question_id = "";
-var textArea = document.getElementById("textArea");
 var textTmp;
 var vidTmp;
 var choice_length;
@@ -41,7 +40,7 @@ function question() {
     }
 
     if(question_type === 'code'){
-      textTmp = textArea;
+      textTmp  = document.getElementById("textArea");
       vidTmp = "no_video";
     }
 
