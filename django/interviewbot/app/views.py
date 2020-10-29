@@ -217,7 +217,7 @@ def add_question(request):
 def add_parent_to_join(request):
 	if request.method == 'POST':
 		if int(request.session.get('parent_num', -1)) < 0 or int(request.session.get('join_id,',-1)) < 0:
-			return HttpResponse("Error:Parent_num or Join_id not set.3", status=400)
+			return HttpResponse("Error:Parent_num or Join_id not set.", status=400)
 		
 		son_obj = Question.objects.get(pk=request.session['join_id'])
 
@@ -237,6 +237,10 @@ def add_parent_to_join(request):
 	elif request.method == 'GET':
 		n = request.GET['n']
 		question_id = request.GET['id']
+
+		request.session['parent_num'] = n
+		request.session['join_id'] = question_id
+		
 		question_list = []
 		questions = Question.objects.all().order_by('-date_published')
 		for question in questions:
