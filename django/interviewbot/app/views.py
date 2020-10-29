@@ -236,10 +236,10 @@ def add_parent_to_join(request):
 		return HttpResponse("New question created with id: " + str(request.session['join_id']))
 	elif request.method == 'GET':
 
-		return HttpResponse(str(n) + ' ' + str(question_id))
+		
 		n = request.GET['n']
 		question_id = request.GET['id']
-
+		return HttpResponse(str(n) + ' ' + str(question_id))
 		request.session['parent_num'] = n
 		request.session['join_id'] = question_id
 
