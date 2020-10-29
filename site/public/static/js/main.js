@@ -27,14 +27,15 @@ var soundMeter = null;
 document.getElementById("boxRis").hidden = true;
 
 function stopStream() {
-	if(localStream === undefined || localStream === null) return;
-	var tracks = localStream.getTracks();
-	tracks.forEach(function (track) {
-		console.log(tracks.length);
-		track.stop();
-	});
-	videoElement.srcObject = null;
-	console.log(constraints);
+	if(localStream !== undefined && localStream !== null){
+		var tracks = localStream.getTracks();
+		tracks.forEach(function (track) {
+			console.log(tracks.length);
+			track.stop();
+		});
+		videoElement.srcObject = null;
+		console.log(constraints);
+	}
 }
 
 
