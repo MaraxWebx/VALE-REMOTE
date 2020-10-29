@@ -9,7 +9,7 @@ var flag = false
 function question() {
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
-  document.getElementById("timeBox").hidden = false;
+  
 
   id = id + 1;
   if(id == 1){
@@ -96,7 +96,7 @@ function getQuestion(quest) {
       document.getElementById("check").hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
       document.getElementById("ConfirmTextBtn").hidden = true;
-      
+      document.getElementById("timeBox").hidden = false;
       printRis();
     } else if (quest.type === 'code') {
       document.getElementById("video").hidden = true;
