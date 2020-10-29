@@ -22,11 +22,14 @@ var chunks = [];
 var count = 0;
 var localStream = null;
 var soundMeter = null;
+var is_recording = false;
 
 
 document.getElementById("boxRis").hidden = true;
 
 function stopStream() {
+	if(!is_recording) return;
+	is_recording = false;
 	if(localStream !== undefined && localStream !== null){
 		var tracks = localStream.getTracks();
 		tracks.forEach(function (track) {
@@ -40,6 +43,8 @@ function stopStream() {
 
 
 function startCamera() {
+	if(is_recording) return;
+	is_recording = true;
 	constraints = {
 		audio: true,
 		video: {
