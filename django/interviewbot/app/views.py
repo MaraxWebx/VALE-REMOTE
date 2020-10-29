@@ -193,7 +193,7 @@ def add_question(request):
 			request.session['join_id'] = question.id
 			return render(request, 'addparent.html', context={
 				'questions': question_list,
-				'parent_number' : request.POST['is_join']
+				'parent_number' : range(request.POST['is_join'])
 			})
 
 		return HttpResponse('New question added with id: ' + str(question.id))
@@ -234,7 +234,7 @@ def add_parent_to_join(request):
 			else:
 				parent_id = request.POST[str(i)]
 				parent_obj = Question.objects.get(pk=parent_id)
-				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice=choice_fork )
+				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice="")
 				flow.save()
 
 		return HttpResponse("New question created with id: " + str(request.session['join_id']))
