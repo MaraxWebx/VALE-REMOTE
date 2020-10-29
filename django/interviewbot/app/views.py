@@ -216,6 +216,8 @@ def add_question(request):
 @permission_required('app.can_add_question', raise_exception=True)
 def add_parent_to_join(request):
 	if request.method == 'POST':
+		return HttpResponse(request.session['parent_num'] + ' ' + request.session['join_id'])
+
 		if int(request.session.get('parent_num', -1)) < 0 or int(request.session.get('join_id,',-1)) < 0:
 			return HttpResponse("Error:Parent_num or Join_id not set.", status=400)
 		
@@ -234,12 +236,10 @@ def add_parent_to_join(request):
 		request.session['parent_num'] = -1
 		request.session['join_id'] = -1
 		return HttpResponse("New question created with id: " + str(request.session['join_id']))
-	elif request.method == 'GET':
 
-		
+	elif request.method == 'GET':
 		n = request.GET['n']
 		question_id = request.GET['id']
-		return HttpResponse(str(n) + ' ' + str(question_id))
 		request.session['parent_num'] = n
 		request.session['join_id'] = question_id
 
