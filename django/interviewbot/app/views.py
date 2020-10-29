@@ -174,24 +174,18 @@ def add_question(request):
 		else:
 			choice_fork = None
 		
-		question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
-		question.save()
+		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
+		new_question.save()
 
 		if not (parent is None):
 			parent_obj=Question.objects.get(pk=int(parent))
-			flow = QuestionFlow.objects.create(parent=parent_obj, son=question, choice=choice_fork )
+			flow = QuestionFlow.objects.create(parent=parent_obj, son=new_question, choice=choice_fork )
 			flow.save()
 
 		if 'is_join' in request.POST:
-			question_list = []
-			questions = Question.objects.all().order_by('-date_published')
-			for question in questions:
-				have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
-				if (not have_flow) or question.is_fork:
-					question_list.append(question)
-			return redirect('/add_parent/?n=' + str(request.POST['is_join']) + '&id=' + str(question.id))
+			return redirect('/add_parent/?n=' + str(request.POST['is_join']) + '&id=' + str(new_question.id))
 
-		return HttpResponse('New question added with id: ' + str(question.id))
+		return HttpResponse('New question added with id: ' + str(new_question.id))
 	
 	### GET REQUEST ###
 	elif request.method =='GET':
@@ -228,10 +222,10 @@ def add_parent_to_join(request):
 				parent_obj = Question.objects.get(pk=parent_id)
 				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice="")
 				flow.save()
-
+		response = HttpResponse("New question created with id: " + str(request.session['join_id']))
 		request.session['parent_num'] = -1
 		request.session['join_id'] = -1
-		return HttpResponse("New question created with id: " + str(request.session['join_id']))
+		return response
 
 	elif request.method == 'GET':
 		n = request.GET['n']
