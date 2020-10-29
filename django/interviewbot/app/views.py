@@ -193,7 +193,7 @@ def add_question(request):
 			request.session['join_id'] = question.id
 			return render(request, 'addparent.html', context={
 				'questions': question_list,
-				'parent_number' : range(request.POST['is_join'])
+				'parent_number' : range(int(request.POST['is_join']))
 			})
 
 		return HttpResponse('New question added with id: ' + str(question.id))
