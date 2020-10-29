@@ -62,7 +62,7 @@
 
 
 						<div class="boxVideo">
-							<div id="timeBox" class="timeBox">
+							<div id="timeBox" class="timeBox" hidden>
 								<!--<div id="answerTime" hidden class="container time"> 
 												Registration closes in <span id="time">01:00</span> minutes!</div>-->
 								<h5>Tempo di risposta</h5>
@@ -79,10 +79,11 @@
 								<button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked(); question()"
 									hidden>Conferma</button>
 
-								<button class="bRec" id="rec" onclick="onBtnRecordClicked(); runSpeechRecognition()">
+								<button class="bRec" id="rec" onclick="FlagProgressBar(); 
+									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
 									<p>Record</p>
 								</button>
-
+								<!-- //TODO MODIFICATO IL BOTTONE -->
 								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop();" hidden>
 									<p>Stop</p>
 								</button>

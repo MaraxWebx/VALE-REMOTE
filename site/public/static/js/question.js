@@ -8,8 +8,7 @@ var acc = 0;
 function question() {
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
-
-  
+  document.getElementById("timeBox").hidden = false;
 
   id = id + 1;
   if(id == 1){
@@ -97,7 +96,7 @@ function getQuestion(quest) {
       document.getElementById("check").hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
       document.getElementById("ConfirmTextBtn").hidden = true;
-
+      
       printRis();
     } else if (quest.type === 'code') {
       document.getElementById("video").hidden = true;
@@ -106,6 +105,7 @@ function getQuestion(quest) {
       document.querySelector('button#rec').hidden = true;
       document.getElementById("StartTextBtn").hidden = false;
       document.getElementById("ConfirmTextBtn").hidden = true;
+      document.getElementById("timeBox").hidden = true;
       printRis();
     } else if (quest.type === 'check') {
       document.getElementById("ConfirmTextBtn").hidden = false;
@@ -114,6 +114,7 @@ function getQuestion(quest) {
       document.getElementById("check").hidden = false;
       document.querySelector('button#rec').hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
+      document.getElementById("timeBox").hidden = true;
       choices_splitted = quest.choices.split(";")
       choices_list_html =""
       for(var j = 0; j < choices_splitted.length; j++ ){
