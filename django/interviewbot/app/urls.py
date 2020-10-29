@@ -8,9 +8,6 @@ from .views import *
 urlpatterns = [
     path('', index, name='index'),
     path('restex/', test_rest),
-    path('upload/', upload_view, name='upload'),
-    path('videos/', video_preview, name='preview'),
-    path('upload_video/', VideoUploadView.as_view()),
     path('next/', NextQuestionView.as_view()),
     path('add_question/', add_question, name='add_question')
 ]

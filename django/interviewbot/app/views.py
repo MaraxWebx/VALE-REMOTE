@@ -15,11 +15,6 @@ from app.models import *
 from app.form import *
 
 # Create your views here.
-def upload_view(request):
-	form = VideoModelForm()
-	return render(request, 'upload_test.html', {'form':form})
-
-
 def index(request):
 	if request.session.get('is_reg', False):
 		return render(request, 'index.html')
@@ -28,10 +23,6 @@ def index(request):
 		request.session.set_expiry(0)
 		request.session['is_reg'] = False
 		return render(request, 'credentials.html')
-
-def video_preview(request):
-	model = VideoModel.objects.all()
-	return render(request, 'videos.html', {'query':model})
 
 @api_view(['GET', 'POST'])
 @authentication_classes([])
@@ -168,6 +159,8 @@ def add_question(request):
 		
 		if 'choices' in request.POST:
 			choices = request.POST['choices']
+			if choices.endswith(';'):
+				choices = choices[:-1]
 		else:
 			choices = ""
 
@@ -209,19 +202,3 @@ def add_question(request):
 			'questions': question_list,
 			'choices': choices_arr,
 		})
-
-
-class VideoUploadView(APIView):
-	parser_classes = [MultiPartParser]
-	permission_classes = ([])
-	authentication_classes = ([])
-
-	def post(self, request, *args, **kwargs):
-		file = request.data.dict()['file']
-		model = VideoModel.objects.create(video=file)
-		model.save()
-		return Response(status=status.HTTP_201_CREATED)
-
-	def get(self, request, *args, **kwargs):
-		form = VideoModelForm()
-		return render(request, 'upload_test.html', {'form':form} )

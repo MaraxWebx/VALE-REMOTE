@@ -34,7 +34,3 @@ class Answer(models.Model):
 	choice_text = models.CharField(max_length=500, null=True)
 	choice_vid = models.FileField(upload_to='videos/', null=True,)
 
-class VideoModel(models.Model):
-	video = models.FileField(upload_to='videos/')
-	# answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
-
