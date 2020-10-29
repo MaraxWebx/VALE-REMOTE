@@ -192,7 +192,7 @@ def add_question(request):
 			request.session['parent_num'] = request.POST['is_join']
 			request.session['join_id'] = question.id
 			return render(request, 'addparent.html', context={
-				'questions': question_list
+				'questions': question_list,
 				'parent_number' : request.POST['is_join']
 			})
 
@@ -215,7 +215,7 @@ def add_question(request):
 
 		return render(request, 'newquestion.html', {
 			'questions': question_list,
-			'choices': choices_arr,
+			'choices': choices_arr
 		})
 
 @permission_required('app.can_add_question', raise_exception=True)
