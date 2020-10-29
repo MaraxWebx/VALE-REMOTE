@@ -57,6 +57,7 @@ function question() {
         alert('Seleziona una risposta');
         return;
       }
+      flag = false;
       vidTmp = "no_video";
     }
     axios.get('/next/', {
