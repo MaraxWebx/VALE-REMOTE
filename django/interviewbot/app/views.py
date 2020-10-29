@@ -243,7 +243,7 @@ def add_parent_to_join(request):
 			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
 			if (not have_flow) or question.is_fork:
 				question_list.append(question)
-		render(request, 'addparent.html', context={
+		return render(request, 'addparent.html', context={
 			'parent_number': range(int(n)),
 			'questions': question_list
 		})
