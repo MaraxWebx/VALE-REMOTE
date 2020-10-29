@@ -221,7 +221,7 @@ def add_question(request):
 @permission_required('app.can_add_question', raise_exception=True)
 def add_parent_to_join(request):
 	if request.method == 'POST':
-		if request.session.get('parent_num', -1) < 0 or request.session.get('join_id,',-1) < 0:
+		if int(request.session.get('parent_num', -1)) < 0 or int(request.session.get('join_id,',-1)) < 0:
 			return HttpResponse("Error: Join_id not set.", status=400)
 		
 		son_obj = Question.objects.get(pk=request.session['join_id'])
