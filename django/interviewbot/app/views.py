@@ -236,6 +236,8 @@ def add_parent_to_join(request):
 				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice="")
 				flow.save()
 
+		request.session['parent_num'] = -1
+		request.session['join_id'] = -1
 		return HttpResponse("New question created with id: " + str(request.session['join_id']))
 
 """
