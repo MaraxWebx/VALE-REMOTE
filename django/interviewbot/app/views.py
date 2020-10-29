@@ -48,8 +48,6 @@ def test_rest(request):
 			request.session['interview_id'] = interview.id
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
-	elif request.method == 'OPTIONS':
-		return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class NextQuestionView(APIView):
 	parser_classes = [MultiPartParser]

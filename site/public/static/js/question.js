@@ -91,7 +91,6 @@ function getQuestion(quest) {
     if (quest.type === 'video') {
       //start video/audio stream
       window.startCamera();
-
       document.querySelector('button#rec').hidden = false;
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
@@ -104,7 +103,6 @@ function getQuestion(quest) {
     } else if (quest.type === 'code') {
       //stop video/audio stream
       window.stopStream();
-
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = false;
       document.getElementById("check").hidden = true;
@@ -117,7 +115,6 @@ function getQuestion(quest) {
     } else if (quest.type === 'check') {
       //stop video/audio stream
       window.stopStream();
-
       document.getElementById("ConfirmTextBtn").hidden = false;
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = true;
