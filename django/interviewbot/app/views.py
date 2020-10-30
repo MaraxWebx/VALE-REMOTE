@@ -266,9 +266,9 @@ def question_graph(request):
 		html = '<ul id=myUL>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
-			if vert is not None:
+			if vert is not None and not vert.seen_as_parent:
 				html += DFS(vert)
-				graph.reset_seen()
+				vert.seen_as_parent=True
 		html += '</ul>'
 		return render(request, 'graph.html',context={'graph': mark_safe(html)})
 
@@ -278,6 +278,7 @@ def DFS(v):
 
 	if not v.adjacent:
 		ret = '<li>' + v.question.action + '</li>'
+		v.seen=False
 		return ret
 	else:
 		ret = '<li><span class="caret">' + v.question.action + '</span></li>'
