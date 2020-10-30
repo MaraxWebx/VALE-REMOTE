@@ -78,7 +78,9 @@ function question() {
         getQuestion(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        document.getElementById("boxRis").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
+                                                       <span class="sr-only">Loading...</span>
+                                                      </div>`;
       });
   }
 }
