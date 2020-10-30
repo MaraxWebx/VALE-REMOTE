@@ -7,7 +7,7 @@ var acc = 0;
 var flag = false;
 
 function question() {
-  document.getElementById("boxRis").hidden = false;
+  document.getElementById("boxRis").hidden = true;
   document.getElementById("start").hidden = true;
 
   id = id + 1;
@@ -18,6 +18,7 @@ function question() {
       }
     })
       .then(function (response) {
+        document.getElementById("boxRis").hidden = false;
         prev_question_id = response.data.id;
         question_type = response.data.type;
         choice_length = response.data.length;
@@ -69,6 +70,7 @@ function question() {
       }
     })
       .then(function (response) {
+        document.getElementById("boxRis").hidden = false;
         if (question_type === 'video') {
           window.submitFile()
         }
