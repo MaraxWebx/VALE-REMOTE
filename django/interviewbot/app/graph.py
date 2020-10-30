@@ -70,4 +70,4 @@ class QuestionGraph:
                 for adj in vert.adjacent:
                     g.add_edges_from([(vert.id, vert.adjacent[adj].id, {'choice' : vert.adjacent[adj].choice})])
 
-        print(g)
+        print(list(g.edges))
