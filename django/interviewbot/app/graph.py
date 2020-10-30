@@ -8,7 +8,7 @@ class Vertex:
         self.choice = ""
 
     def __str__(self):
-        return str(self.id) + ' adjacent: ' + str([x.id for x in self.adjacent])
+        return str(self.id) + ' adjacent: ' + str([x for x in self.adjacent])
 
     def add_neighbor(self, neighbor_id, neighbor_vertex, choice=""):  
         self.adjacent[neighbor_id] = neighbor_vertex
