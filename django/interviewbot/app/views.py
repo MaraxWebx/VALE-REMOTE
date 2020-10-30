@@ -266,7 +266,7 @@ def question_graph(request):
 		html = '<ul id=myUL>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
-			if vert is not None:
+			if vert is not None and not vert.seen_as_child:
 				html += DFS(vert)
 		html += '</ul>'
 		return render(request, 'graph.html',context={'graph': mark_safe(html)})
@@ -283,6 +283,7 @@ def DFS(v):
 		ret += '<ul class="nested">'
 	for x in v.adjacent:
 		if not v.adjacent[x].seen:
+			v.adjacent[x].seen_as_child = true
 			ret += DFS(v.adjacent[x])
 
 	ret += '</ul>'
