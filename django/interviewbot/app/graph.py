@@ -65,7 +65,7 @@ class QuestionGraph:
         return self.vert_dict.keys()
 
     def print_graph(self):
-        g = nx.path_graph()
+        g = nx.Graph()
 
         for key in self.get_vertices():
             vert = self.get_vertex(key)
