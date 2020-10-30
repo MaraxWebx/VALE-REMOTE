@@ -15,7 +15,7 @@ var dataElement = document.querySelector('#data');
 //var downloadLink = document.querySelector('a#downloadLink');
 var flagStopBtn = false
 
-videoElement.controls = false;
+
 
 var mediaRecorder;
 var chunks = [];
@@ -255,7 +255,6 @@ function onBtnStopClicked() {
 	window.resetProgressBar();
 	flagStopBtn = true;
 	mediaRecorder.stop();
-	videoElement.controls = true;
 	window.question();
 	//recBtn.disabled = false;
 	//progressBar.hidden = false;
