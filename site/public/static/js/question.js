@@ -12,6 +12,7 @@ function question() {
 
   id = id + 1;
   if (id == 1) {
+    
     axios.get('/next/', {
       params: {
         type: 'base'
