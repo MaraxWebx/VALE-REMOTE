@@ -272,4 +272,4 @@ def question_graph(request):
 		"""
 
 		image_data = graph.print_graph()
-		return HttpResponse(image_data, content_type="image/png")
+		return HttpResponse(image_data)

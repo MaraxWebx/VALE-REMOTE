@@ -76,7 +76,7 @@ class QuestionGraph:
         plt.figure(figsize=(40,30), dpi=70)
         nx.draw(g, with_labels=True)
         buf = io.BytesIO()
-        plt.savefig(buf, format='png')
+        plt.savefig(buf, format='jpg')
         buf.seek(0)
         string = base64.b64encode(buf.read())
         uri = 'data:image/png;base64,' + urllib.parse.quote(string)
