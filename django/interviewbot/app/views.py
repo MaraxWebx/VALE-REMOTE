@@ -269,4 +269,21 @@ def question_graph(request):
 				print(vert)
 			else:
 				print('None')
-		return HttpResponse('graph printed in log!')
+
+		html_graph = "<ul>"
+		for key in keys:
+			vert = graph.get_vertex(key)
+			if not vert.seen:
+				html_graph += DFS(vert)
+		html_graph += '</ul>'
+		return HttpResponse(html_graph)
+
+def DFS(vert):
+	ret = '<li>' + vert.question.action + '</li> <ul>'
+	vert.seen = True
+	for adj in vert.adjacent:
+		if not vert.adjacent[adj].seen:
+			ret += DFS(vert.adjacent[adj])
+	ret += '</ul>'
+	return ret
+			

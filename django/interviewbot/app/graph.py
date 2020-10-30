@@ -6,6 +6,7 @@ class Vertex:
         self.id = node.id
         self.adjacent = {}
         self.choice = ""
+        self.seen = False
 
     def __str__(self):
         return str(self.question.action) + ' adjacent: ' + str([self.adjacent[x].question.action for x in self.adjacent])
