@@ -77,9 +77,9 @@ class QuestionGraph:
         pos = nx.spring_layout(g, scale=0.2)
         nx.draw_networkx_nodes(g,pos)
         nx.draw_networkx_edges(g,pos)
+        y_off = 0.02
+        nx.draw_networkx_labels(g, pos = {k:([v[0], v[1]+y_off]) for k,v in pos.items()})
         nx.draw(g, with_labels=True, arrows=True)
-        nx.draw_networkx_labels(G, pos = {k:([v[0], v[1]+y_off]) for k,v in pos.items()})
-        
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
         buf.seek(0)
