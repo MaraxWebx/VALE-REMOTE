@@ -277,7 +277,6 @@ def DFS(v):
 
 	if not v.adjacent:
 		ret = '<li>' + v.question.action + '</li>'
-		v.seen=False
 		v.seen_as_leaf=True
 		return ret
 	else:
