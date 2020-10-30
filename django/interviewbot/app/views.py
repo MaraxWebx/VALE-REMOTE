@@ -283,7 +283,7 @@ def DFS(v):
 		ret += '<ul class="nested">'
 	for x in v.adjacent:
 		if not v.adjacent[x].seen:
-			v.adjacent[x].seen_as_child = true
+			v.adjacent[x].seen_as_child = True
 			ret += DFS(v.adjacent[x])
 
 	ret += '</ul>'
