@@ -288,7 +288,7 @@ def DFS(v):
 		ret += '<ul>'
 	for x in v.adjacent:
 		if not v.adjacent[x].seen:
-			DFS(v.adjacent[x])
+			ret += DFS(v.adjacent[x])
 
 	ret += '</ul>'
 	return ret
