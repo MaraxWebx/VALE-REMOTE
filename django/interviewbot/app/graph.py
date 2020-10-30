@@ -74,8 +74,12 @@ class QuestionGraph:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
         plt.figure(dpi=120)
+        pos = nx.spring_layout(g, scale=0.2)
+        nx.draw_networkx_nodes(g,pos)
+        nx.draw_networkx_edges(g,pos)
         nx.draw(g, with_labels=True, arrows=True)
-
+        nx.draw_networkx_labels(G, pos = {k:([v[0], v[1]+y_off]) for k,v in pos.items()})
+        
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
         buf.seek(0)
