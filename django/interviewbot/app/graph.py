@@ -14,7 +14,7 @@ class Vertex:
 
     def add_neighbor(self, neighbor_id, neighbor_vertex, choice):  
         self.adjacent[neighbor_id] = neighbor_vertex
-        neighbor_vertex.choie = choice
+        neighbor_vertex.choice = choice
 
     def get_connections(self):
         return self.adjacent.keys()  
