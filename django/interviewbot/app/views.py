@@ -273,19 +273,24 @@ def question_graph(request):
 		html = '<ul>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
-			if not vert.seen:
+			if vert is not None:
 				html += DFS(vert)
 		html += '</ul>'
 		return HttpResponse(html)
 
 def DFS(v):
 	v.seen = True
-	ret = '<li>' + v.question.action + '</li><ul>'
+	ret = '<li>' + v.question.action + '</li>'
+
+	if not v.adjacent:
+		return ret
+	else:
+		ret += '<ul>'
 	for x in v.adjacent:
 		if not v.adjacent[x].seen:
 			DFS(v.adjacent[x])
 
-	ret += '</u>'
+	ret += '</ul>'
 	return ret
 
 
