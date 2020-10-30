@@ -64,27 +64,3 @@ class QuestionGraph:
     def get_vertices(self):
         return self.vert_dict.keys()
 
-    def print_graph(self):
-        g = nx.DiGraph()
-
-        for key in self.get_vertices():
-            vert = self.get_vertex(key)
-            if vert is not None:
-                for adj in vert.adjacent:
-                    g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
-
-        plt.figure(dpi=120)
-        pos = nx.spring_layout(g, scale=0.2)
-        nx.draw_networkx_nodes(g,pos)
-        nx.draw_networkx_edges(g,pos)
-        y_off = 0.02
-        nx.draw_networkx_labels(g, pos = {k:([v[0], v[1]+y_off]) for k,v in pos.items()})
-       # nx.draw(g, with_labels=True, arrows=True)
-        buf = io.BytesIO()
-        plt.savefig(buf, format='jpg')
-        buf.seek(0)
-        string = base64.b64encode(buf.read())
-        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
-        html = '<img src = "%s"/>' % uri
-        return html
-

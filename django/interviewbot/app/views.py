@@ -270,6 +270,22 @@ def question_graph(request):
 			else:
 				print('None')
 		"""
+		html = '<ul>'
+		for key in graph.get_vertices():
+			vert = graph.get_vertex(key)
+			if not vert.seen:
+				html += DFS(vert)
+		html += '</ul>'
+		return HttpResponse(html)
 
-		image_data = graph.print_graph()
-		return HttpResponse(image_data)
+def DFS(v):
+	v.seen = True
+	ret = '<ul><li>' + v.question.action + '</li><ul>'
+	for x in v.adjacent:
+		if not v.adjacent[x].seen:
+			DFS(v.adjacent[x])
+
+	ret += '</u>'
+	return ret
+
+
