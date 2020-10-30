@@ -14,7 +14,6 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
-from igraph import *
 
 # Create your views here.
 def index(request):
@@ -262,7 +261,7 @@ def question_graph(request):
 		questionflow = QuestionFlow.objects.all()
 		for flow in questionflow:
 			graph.add_edge(flow.parent, flow.son, flow.choice)
-
+		"""
 		keys = graph.get_vertices()
 		for key in keys:
 			vert = graph.get_vertex(key)
@@ -270,17 +269,9 @@ def question_graph(request):
 				print(vert)
 			else:
 				print('None')
-
-		ig = Graph()
-		ig.add_vertices(graph.num_vertices)
-		for key in keys:
-			vert = graph.get_vertex(key)
-			if vert is not None:
-				for adj in vert.adjacent:
-					ig.add_edges([vert.index, vert.adjacent[adj].index])
-
-		print(ig)
-
+		"""
+		
+		print_graph(graph)
 		return HttpResponse('printed!')
 
 		
