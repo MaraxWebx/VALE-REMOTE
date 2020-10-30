@@ -77,5 +77,5 @@ class QuestionGraph:
         imagedata = StringIO()
         plt.savefig(imagedata, format='png')
 
-        return imgdata
+        return imagedata
 
