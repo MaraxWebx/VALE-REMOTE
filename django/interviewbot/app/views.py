@@ -261,26 +261,18 @@ def question_graph(request):
 		questionflow = QuestionFlow.objects.all()
 		for flow in questionflow:
 			graph.add_edge(flow.parent, flow.son, flow.choice)
-		"""
-		keys = graph.get_vertices()
-		for key in keys:
-			vert = graph.get_vertex(key)
-			if vert is not None:
-				print(vert)
-			else:
-				print('None')
-		"""
-		html = '<ul>'
+		
+		html = '<div class="tree"> <ul>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
 			if vert is not None and not vert.seen:
 				html += DFS(vert)
-		html += '</ul>'
-		return HttpResponse(html)
+		html += '</ul> </div>'
+		return render(html)
 
 def DFS(v):
 	v.seen = True
-	ret = '<li>' + v.question.action + '</li>'
+	ret = '<li><a href="#">' + v.question.action + '</a></li>'
 
 	if not v.adjacent:
 		return ret
