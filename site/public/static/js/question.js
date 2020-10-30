@@ -25,7 +25,7 @@ function question() {
         getQuestion(response.data);
       })
       .catch(function (error) {
-        document.getElementById("boxRis").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
+        document.getElementById("spinner").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
                                                        <span class="sr-only">Loading...</span>
                                                       </div>`;
       });
@@ -80,7 +80,7 @@ function question() {
         getQuestion(response.data);
       })
       .catch(function (error) {
-        document.getElementById("boxRis").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
+        document.getElementById("spinner").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
                                                        <span class="sr-only">Loading...</span>
                                                       </div>`;
       });
