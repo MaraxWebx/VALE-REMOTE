@@ -74,7 +74,7 @@ class QuestionGraph:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
         plt.figure( dpi=70)
-        nx.draw_shell(g, with_labels=True)
+        nx.draw_kamada_kawai(g, with_labels=True)
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
         buf.seek(0)
