@@ -67,7 +67,6 @@ class QuestionGraph:
         for key in self.get_vertices():
             vert = self.get_vertex(key)
             if vert is not None:
-                for adj in vert.adjacent:
-                    g.add_edge(vert.id, vert.adjacent[adj].id)
+                g.add_node(vert.id)
 
         print(g)
