@@ -65,7 +65,7 @@ class QuestionGraph:
         return self.vert_dict.keys()
 
     def print_graph(self):
-        g = nx.Graph()
+        g = nx.path_graph()
 
         for key in self.get_vertices():
             vert = self.get_vertex(key)
@@ -74,7 +74,7 @@ class QuestionGraph:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
         plt.figure( dpi=70)
-        nx.draw_kamada_kawai(g, with_labels=True)
+        nx.draw(g, with_labels=True)
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
         buf.seek(0)
