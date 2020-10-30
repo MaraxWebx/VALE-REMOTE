@@ -279,8 +279,12 @@ def question_graph(request):
 		return HttpResponse(html_graph)
 
 def DFS(vert):
-	ret = '<li>' + vert.question.action + '</li> <ul>'
-	vert.seen = True
+	ret = '<li>' + vert.question.action + '</li>'
+	if vert.adjacent:
+		vert.seen = True
+		ret += '<ul>'
+	else:
+		return ret
 	for adj in vert.adjacent:
 		if not vert.adjacent[adj].seen:
 			ret += DFS(vert.adjacent[adj])
