@@ -280,7 +280,7 @@ def question_graph(request):
 
 def DFS(v):
 	v.seen = True
-	ret = '<ul><li>' + v.question.action + '</li><ul>'
+	ret = '<li>' + v.question.action + '</li><ul>'
 	for x in v.adjacent:
 		if not v.adjacent[x].seen:
 			DFS(v.adjacent[x])
