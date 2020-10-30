@@ -73,7 +73,7 @@ class QuestionGraph:
                 for adj in vert.adjacent:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
-        plt.figure(figsize=(4,3), dpi=70)
+        plt.figure( dpi=70)
         nx.draw(g, with_labels=True)
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
