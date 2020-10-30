@@ -1,7 +1,7 @@
 from app.models import *
 import networkx as nx
 import matplotlib.pyplot as plt
-from io import StringIO
+import StringIO
 
 class Vertex:
     def __init__(self, node, index):
@@ -74,8 +74,9 @@ class QuestionGraph:
 
         plt.figure(figsize=(4,3), dpi=70)
         nx.draw(g, with_labels=True)
-        imagedata = StringIO()
+        imagedata = StringIO.StringIO()
         plt.savefig(imagedata, format='png')
+        imagedata.seek(0)
 
         return imagedata
 
