@@ -263,7 +263,7 @@ def question_graph(request):
 		for flow in questionflow:
 			graph.add_edge(flow.parent, flow.son, flow.choice)
 		
-		html = '<ul>'
+		html = '<h1>List of all possible path</h1><br/><ul>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
 			if not vert.seen_as_child:
