@@ -61,6 +61,6 @@ class QuestionGraph:
         return self.vert_dict.keys()
     
     def reset_seen(self):
-        for vert in vert_dict.values():
+        for vert in self.vert_dict.values():
             vert.seen = False
 
