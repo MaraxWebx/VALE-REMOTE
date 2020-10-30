@@ -268,6 +268,7 @@ def question_graph(request):
 			vert = graph.get_vertex(key)
 			if vert is not None and not vert.seen_as_child:
 				html += DFS(vert)
+				graph.reset_seen()
 		html += '</ul>'
 		return render(request, 'graph.html',context={'graph': mark_safe(html)})
 
