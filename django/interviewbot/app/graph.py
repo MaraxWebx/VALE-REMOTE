@@ -68,6 +68,6 @@ class QuestionGraph:
             vert = self.get_vertex(key)
             if vert is not None:
                 for adj in vert.adjacent:
-                    g.add_edges_from([(vert.id, vert.adjacent[adj].id, {'choice' : vert.adjacent[adj].choice})])
+                    g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
         print(list(g.edges))
