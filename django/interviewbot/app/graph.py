@@ -6,7 +6,6 @@ class Vertex:
         self.adjacent = {}
         self.choice = ""
         self.seen = False
-        self.seen_as_leaf = False
         self.index = index
 
     def __str__(self):
