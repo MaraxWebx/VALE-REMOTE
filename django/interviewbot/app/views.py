@@ -272,7 +272,8 @@ def question_graph(request):
 		"""
 
 		graph.print_graph()
-		return HttpResponse('printed!')
+		image_data = open("/var/www/site/public/static/graph.png", "rb").read()
+    	return HttpResponse(image_data, content_type="image/png")
 
 		
 		

@@ -1,5 +1,6 @@
 from app.models import *
 import networkx as nx
+import matplotlib.pyplot as plt
 
 class Vertex:
     def __init__(self, node, index):
@@ -70,4 +71,7 @@ class QuestionGraph:
                 for adj in vert.adjacent:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
-        print(list(g.edges))
+        plt.figure(figsize=(4,3), dpi=70)
+        nx.draw(g, with_labels=True)
+        plt.savefig('/var/www/site/public/static/graph.png')
+        
