@@ -266,7 +266,7 @@ def question_graph(request):
 		for key in keys:
 			vert = graph.get_vertex(key)
 			if vert is not None:
-				print(vert)
+				print(vert.question)
 			else:
 				print('None')
 		return HttpResponse('graph printed in log!')
