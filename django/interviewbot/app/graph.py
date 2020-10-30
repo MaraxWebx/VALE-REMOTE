@@ -61,13 +61,13 @@ class QuestionGraph:
     def get_vertices(self):
         return self.vert_dict.keys()
 
-def print_graph(question_graph):
-    g = nx.Graph
+    def print_graph(self):
+        g = nx.Graph
 
-    for key in question_graph.get_vertices():
-        vert = question_graph.get_vertex(key)
-        if vert is not None:
-            for adj in vert.adjacent:
-                g.add_edge(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})
+        for key in self.get_vertices():
+            vert = self.get_vertex(key)
+            if vert is not None:
+                for adj in vert.adjacent:
+                    g.add_edge(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})
 
-    print(g)
+        print(g)

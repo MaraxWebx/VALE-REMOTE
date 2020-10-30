@@ -270,8 +270,8 @@ def question_graph(request):
 			else:
 				print('None')
 		"""
-		
-		print_graph(graph)
+
+		graph.print_graph()
 		return HttpResponse('printed!')
 
 		
