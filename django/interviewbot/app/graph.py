@@ -1,8 +1,3 @@
-from app.models import *
-import networkx as nx
-import matplotlib.pyplot as plt
-import io
-import urllib, base64
 
 class Vertex:
     def __init__(self, node, index):
@@ -11,6 +6,7 @@ class Vertex:
         self.adjacent = {}
         self.choice = ""
         self.seen = False
+        self.seen_as_parent = False
         self.index = index
 
     def __str__(self):
@@ -63,4 +59,8 @@ class QuestionGraph:
 
     def get_vertices(self):
         return self.vert_dict.keys()
+    
+    def reset_seen(self):
+        for vert in vert_dict.values():
+            vert.seen = False
 
