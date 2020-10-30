@@ -11,6 +11,7 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 
 from app.serializers import *
 from app.next_question import * 
+from app.graph import *
 from app.models import *
 from app.form import *
 
@@ -253,3 +254,19 @@ def add_parent_to_join(request):
 			'parent_number': range(int(n)),
 			'questions': question_list
 		})
+
+def question_graph(request):
+	if request.method == 'GET':
+		graph = QuestionGraph()
+		questionflow = QuestionFlow.objects.all()
+		for flow in questionflow:
+			graph.add_edge(flow.parent, flow.son, flow.choice)
+
+		keys = graph.get_vertices()
+		for key in keys:
+			vert = graph.get_vertex(key)
+			if vert is not None:
+				print(vert)
+			else:
+				print('None')
+		return HttpResponse('graph printed in log!')

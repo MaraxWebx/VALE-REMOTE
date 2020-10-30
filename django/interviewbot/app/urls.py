@@ -11,7 +11,8 @@ urlpatterns = [
     path('next/', NextQuestionView.as_view()),
     path('add_question/', add_question, name='add_question'),
     path('add_parent/', add_parent_to_join, name='add_parent'),
-    path('interview/', interview, name='interview')
+    path('interview/', interview, name='interview'),
+    path('graph/', question_graph, name='graph')
 ]
 
 if settings.DEBUG:
