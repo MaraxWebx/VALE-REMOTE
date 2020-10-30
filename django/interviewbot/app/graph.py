@@ -1,12 +1,13 @@
 from app.models import *
 
 class Vertex:
-    def __init__(self, node):
+    def __init__(self, node, index):
         self.question = node
         self.id = node.id
         self.adjacent = {}
         self.choice = ""
         self.seen = False
+        self.index = index
 
     def __str__(self):
         return str(self.question.action) + ' adjacent: ' + str([self.adjacent[x].question.action for x in self.adjacent])
@@ -36,8 +37,8 @@ class QuestionGraph:
         return iter(self.vert_dict.values())
 
     def add_vertex(self, node):
+        new_vertex = Vertex(node, self.num_vertices)
         self.num_vertices = self.num_vertices + 1
-        new_vertex = Vertex(node)
         self.vert_dict[node.id] = new_vertex
         return new_vertex
 

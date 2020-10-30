@@ -14,6 +14,7 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
+from igraph import *
 
 # Create your views here.
 def index(request):
@@ -270,24 +271,18 @@ def question_graph(request):
 			else:
 				print('None')
 
-		html_graph = "<ul>"
+		ig = Graph()
+		ig.add_vertices(graph.num_vertices)
 		for key in keys:
 			vert = graph.get_vertex(key)
-			if not vert.seen:
-				html_graph += DFS(vert)
-		html_graph += '</ul>'
-		return HttpResponse(html_graph)
+			if vert is not None:
+				for adj in vert.adjacent:
+					ig.add_edges([vert.index, vert.adjacent[adj].index])
 
-def DFS(vert):
-	ret = '<li>' + vert.question.action + '</li>'
-	if vert.adjacent:
-		vert.seen = True
-		ret += '<ul>'
-	else:
-		return ret
-	for adj in vert.adjacent:
-		if not vert.adjacent[adj].seen:
-			ret += DFS(vert.adjacent[adj])
-	ret += '</ul>'
-	return ret
+		print(ig)
+
+		return HttpResponse('printed!')
+
+		
+		
 			
