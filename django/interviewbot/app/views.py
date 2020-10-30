@@ -273,7 +273,7 @@ def question_graph(request):
 		html = '<ul>'
 		for key in graph.get_vertices():
 			vert = graph.get_vertex(key)
-			if vert is not None:
+			if vert is not None and not vert.seen:
 				html += DFS(vert)
 		html += '</ul>'
 		return HttpResponse(html)
