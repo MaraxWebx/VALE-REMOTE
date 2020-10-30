@@ -73,4 +73,4 @@ class QuestionGraph:
 
         plt.figure(figsize=(4,3), dpi=70)
         nx.draw(g, with_labels=True)
-        plt.savefig('/home/cloud/graph.png')
+        plt.savefig('/var/www/media/graph.png')
