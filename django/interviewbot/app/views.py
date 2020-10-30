@@ -269,7 +269,7 @@ def question_graph(request):
 			if vert is not None and not vert.seen:
 				html += DFS(vert)
 		html += '</ul> </div>'
-		return render(request, 'graph.html',context={'graph': make_safe(html)})
+		return render(request, 'graph.html',context={'graph': mark_safe(html)})
 
 def DFS(v):
 	v.seen = True
