@@ -261,7 +261,7 @@ def question_graph(request):
 		graph = QuestionGraph()
 		questionflow = QuestionFlow.objects.all()
 		for flow in questionflow:
-			graph.add_edge(flow.parent, flow.son, flow.choice)
+			graph.add_edge(flow.parent, flow.son, choice=flow.choice)
 		
 		html = '<h1>List of all possible path</h1><br/><ul>'
 		for key in graph.get_vertices():

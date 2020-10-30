@@ -12,7 +12,7 @@ class Vertex:
     def __str__(self):
         return str(self.question.action)
 
-    def add_neighbor(self, neighbor_id, neighbor_vertex, choice=""):  
+    def add_neighbor(self, neighbor_id, neighbor_vertex, choice):  
         self.adjacent[neighbor_id] = neighbor_vertex
         neighbor_vertex.choie = choice
 
