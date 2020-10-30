@@ -3,7 +3,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import io
 import urllib, base64
-from networkx.drawing.nx_agraph import graphviz_layout
 
 class Vertex:
     def __init__(self, node, index):
@@ -75,8 +74,7 @@ class QuestionGraph:
                     g.add_edges_from([(vert, vert.adjacent[adj], {'choice' : vert.adjacent[adj].choice})])
 
         plt.figure( dpi=70)
-        pos = graphviz_layout(g)
-        nx.draw(g, pos, with_labels=True, arrows=True)
+        nx.draw(g, with_labels=True, arrows=True)
 
         buf = io.BytesIO()
         plt.savefig(buf, format='jpg')
