@@ -14,7 +14,7 @@ class Vertex:
         self.index = index
 
     def __str__(self):
-        return str(self.question.action) + ' adjacent: ' + str([self.adjacent[x].question.action for x in self.adjacent])
+        return str(self.question.action)
 
     def add_neighbor(self, neighbor_id, neighbor_vertex, choice=""):  
         self.adjacent[neighbor_id] = neighbor_vertex
