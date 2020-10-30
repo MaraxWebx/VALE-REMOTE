@@ -1,7 +1,8 @@
 from app.models import *
 import networkx as nx
 import matplotlib.pyplot as plt
-import StringIO
+import io
+import urllib, base64
 
 class Vertex:
     def __init__(self, node, index):
@@ -74,9 +75,11 @@ class QuestionGraph:
 
         plt.figure(figsize=(4,3), dpi=70)
         nx.draw(g, with_labels=True)
-        imagedata = StringIO.StringIO()
-        plt.savefig(imagedata, format='png')
-        imagedata.seek(0)
-
-        return imagedata
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+        html = '<img src = "%s"/>' % uri
+        return html
 
