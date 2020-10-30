@@ -271,6 +271,5 @@ def question_graph(request):
 				print('None')
 		"""
 
-		graph.print_graph()
-		image_data = open("/var/www/media/graph.png", "rb").read()
+		image_data = graph.print_graph()
 		return HttpResponse(image_data, content_type="image/png")
