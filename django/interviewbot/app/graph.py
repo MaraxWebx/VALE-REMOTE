@@ -1,4 +1,4 @@
-from models import *
+from app.models import *
 
 class Vertex:
     def __init__(self, node):
