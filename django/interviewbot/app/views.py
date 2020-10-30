@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required
+from django.utils.safestring import mark_safe
 
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
@@ -268,7 +269,7 @@ def question_graph(request):
 			if vert is not None and not vert.seen:
 				html += DFS(vert)
 		html += '</ul> </div>'
-		return render(html)
+		return render(request, 'graph.html',context={'graph': make_safe(html)})
 
 def DFS(v):
 	v.seen = True
