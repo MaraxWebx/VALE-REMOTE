@@ -273,12 +273,12 @@ def question_graph(request):
 
 def DFS(v):
 	v.seen = True
-	ret = '<li>--' + v.choice + '-->' + v.question.action + '</li>'
+	ret = '<li>--' + v.get_choice() + '-->' + v.question.action + '</li>'
 
 	if not v.adjacent:
 		return ret
 	else:
-		ret = '<li>--' + v.choice + '-->'+ v.question.action + '</li>'
+		ret = '<li>--' + v.get_choice() + '-->'+ v.question.action + '</li>'
 		ret += '<ul>'
 	for x in v.adjacent:
 		v.adjacent[x].seen_as_child = True

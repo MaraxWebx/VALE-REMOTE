@@ -25,6 +25,12 @@ class Vertex:
     def get_question(self):
         return self.question
 
+    def get_choice(self):
+        if self.choice == "":
+            return ""
+        else:
+            return '(' + self.choice + ')'
+
     def get_weight(self, neighbor):
         return self.adjacent[neighbor]
 
