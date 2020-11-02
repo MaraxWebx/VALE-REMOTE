@@ -213,7 +213,8 @@ def add_question(request):
 
 		return render(request, 'newquestion.html', {
 			'questions': question_list,
-			'choices': choices_arr
+			'choices': choices_arr,
+			'esito': ""
 		})
 
 @permission_required('app.can_add_question', raise_exception=True)
@@ -231,10 +232,27 @@ def add_parent_to_join(request):
 				parent_obj = Question.objects.get(pk=parent_id)
 				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice="")
 				flow.save()
-		response = HttpResponse("New question created with id: " + str(request.session['join_id']))
+		# response = HttpResponse("New question created with id: " + str(request.session['join_id']))
 		request.session['parent_num'] = -1
 		request.session['join_id'] = -1
-		return response
+		question_list = []
+		questions = Question.objects.all().order_by('-date_published')
+		for question in questions:
+			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
+			if (not have_flow) or question.is_fork:
+				question_list.append(question)
+		
+		choices_arr = []
+		for question in question_list:
+			if question.is_fork:
+				choices = question.choices
+				choices_arr += choices.split(';')
+
+		return render(request, 'newquestion.html', {
+			'questions': question_list,
+			'choices': choices_arr,
+			'esito': "Domanda aggiunta con successo."
+		})
 
 	elif request.method == 'GET':
 		n = request.GET['n']
@@ -255,7 +273,8 @@ def add_parent_to_join(request):
 			'parent_number': range(int(n)),
 			'questions': question_list
 		})
-
+		
+@permission_required('app.can_add_question', raise_exception=True)
 def question_graph(request):
 	if request.method == 'GET':
 		graph = QuestionGraph()

@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<p>{{ esito }}</p>
+
 <form action="/add_question/" method="POST">
     {% csrf_token %}
     <fieldset>
