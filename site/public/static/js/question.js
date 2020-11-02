@@ -5,6 +5,7 @@ var vidTmp;
 var choice_length;
 var acc = 0;
 var flag = false;
+var i = 1;
 
 function question() {
   document.getElementById("boxRis").hidden = true;
@@ -90,7 +91,6 @@ function question() {
 
 function getQuestion(quest) {
   var out = ''
-  var i = 0;
   var titleOut;
 
   if (quest.id !== undefined) {
@@ -154,7 +154,7 @@ function getQuestion(quest) {
   }
   function printRis() {
     out = '<a>' + quest.action + '</a><br>';
-    titleOut = '<h1>' + 'Domanda ' + this.id + '</h1>';
+    titleOut = '<h1>' + 'Domanda ' + i + '</h1>';
     console.log(quest);
     i++;
 
