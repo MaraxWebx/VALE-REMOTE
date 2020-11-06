@@ -1,4 +1,4 @@
-
+var file;
 
 function saveData() {
    var firstName = document.msform.firstname.value;
@@ -34,9 +34,9 @@ function saveData() {
   */
  
   let formData = new FormData();
-   formData.append('file', this.file);
+   formData.append('file', file);
    console.log('>> formData >> ', formData);
-   console.log(this.file.type);
+   console.log(file.type);
  
    {
 
