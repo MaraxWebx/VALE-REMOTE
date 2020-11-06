@@ -44,24 +44,27 @@ function saveData() {
       }
     ).then((response) => {
       console.log('Response:', response);
+      let formData = new FormData();
+      formData.append('file', file);
+      
+      axios.post('/file/',
+      formData, {
+        headers: {
+          'Content-Type': 'application/pdf'
+        }
+      }
+      ).then(function () {
+        console.log('SUCCESS!!');
+      })
+      .catch(function () {
+        console.log('FAILURE!!');
+      });
       swal("In bocca al lupo!","","success");
     }, (error) => {
       console.log(error);
     });
-    let formData = new FormData();
-    formData.append('file', file);
-    axios.post('/file/',
-    formData, {
-      headers: {
-        'Content-Type': 'application/pdf'
-      }
-    }
-    ).then(function () {
-      console.log('SUCCESS!!');
-    })
-    .catch(function () {
-      console.log('FAILURE!!');
-    });
+
+    
     
 
    document.msform.reset();
