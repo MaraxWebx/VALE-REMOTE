@@ -54,7 +54,7 @@ function saveData() {
           }
        )
         .then((response) => {
-          console.log(response);
+          console.log('Response:', response);
         }, (error) => {
           console.log(error);
         });
