@@ -1,4 +1,6 @@
 
+/*basic reset*/
+* {margin: 0; padding: 0;}
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
@@ -27,8 +29,8 @@ h1{
   
   color: #476692 ;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 800;
+  font-size: 24px;
   margin:0;
 }
 h3 {
@@ -38,295 +40,135 @@ h3 {
   font-weight: 600;
   font-size: 20px;
  
-  
 }
-h5 {
+
+h4 {
   color: #476692;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   margin:0;
-  
+}
+h5{
+color: #476692;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin:0;
+  float: left;
+
 }
 
 hr{
   color: #476692;
   border-top: 2px solid #476692;
 }
+
 /*HEADE */
 
-
-
 .topBar{
-  height: 100px;
-  background-color: #476692;
-  border-bottom: #222;
-  margin: 0;
-}
-#logo img{
-  width:140px;
-  height: auto;
-	position:fixed;
-	z-index: 19;
-	left:30px;
-	top:20px;
-
-}
-/******************************BOX GENERALE***************/
-.fullBox
-{
-  margin-top: 50px;
-}
-/*********************************COLONNA  DESTRA-VIDEO-RISPOSTE***************************************************/
-
-.videoSection{
-  align-items: center;
-}
-
-
-/*TIMER*/
-.time{
-  color:#ffffff;
-  font-family: 'Montserrat', sans-serif;
-  padding: 10px;
-}
-.timeBox{
+	height: 100px;
+	background-color: #476692;
+	border-bottom: #222;
+	margin: 0;
+  }
+  #logo img{
+	width:140px;
+	height: auto;
+	  position:fixed;
+	  z-index: 19;
+	  left:30px;
+	  top:20px;
   
-  border-radius: 20px;
-  margin: 0  0 20px 0;
-  box-shadow: 2px 2px 3px #222222;
-  background-color: #ffffff;
-    padding:10px;
-    display: flex;
-    color:#476692;
-    align-items: center;
-    width: 400px;
-    height: 60px;
+  }
+
+/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 20px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding:30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+label{
+	float: left;
+	color: #476692;
+	font-family: 'Montserrat', sans-serif;
+	align-content: flex-start;
+	font-weight: 400;
+}
+#msform .action-button:hover, #msform .action-button:focus {
   
+    outline: none;
 }
-
-
-/*BOX VIDEO*/
-
-.boxVideo{
-  margin-left: 23%;
+input:focus {
+    outline: none;
 }
-
-video {
- 
-  background:#476692;
-  box-shadow: 2px 3px 3px #222222;
-  border-radius: 40px;
-}
-
-/*BOTTONI*/
-
-#controls {
-  display: flex;
-  margin-top: 20px;
-  width: 400px;
-}
-
-
-.bRec {
-  flex-grow: 1;
-  height: 30px;
-  min-width: 30px;
-  border: none;
-  border-radius: 0.15rem;
-  background:#ffffff;
-  margin-left: 2px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color:#476692;
-  font-weight: 600;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  box-shadow: 2px 2px 2px #222222;
-}
-
-.bRec:hover, .bRec:focus {
-  outline: none;
-  background: #c72d1c;
- color: #ffffff;
-}
-
-.bStop{
-  flex-grow: 1;
-  height: 30px;
-  border: none;
-  background:red;
-  margin-left: 2px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color:#ffffff;
-  font-weight: 600;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  box-shadow: 2px 2px 2px #222222;
-}
-.okButton{
-  flex-grow: 1;
-  height: 30px;
-  width: 400px;
-  border: none;
-  background:#ffffff;
-  margin-left: 2px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color:#476692;
-  font-weight: 600;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  box-shadow: 2px 2px 2px #222222;
-  text-decoration: none;
- 
-}
-
-.spinner-border {
-  display: inline-block;
-  width: 5rem;
-  height: 5rem;
-  border: .40em solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  -webkit-animation: spinner-border .75s linear infinite;
-  animation: spinner-border .75s linear infinite;
-}
-
-/****************************************************************************COLONNA SINISTRA-DOMANDE****************************************************************************/
-.boxQ
-{
-  background-color: #ffffff;
-  border-radius: 20px;
-  color:#476692 ;
-  margin-left:-70px;
-  height: 650px;
-  width: 500px;
-  box-shadow: 2px 3px 3px #222222;
-  padding: 20px;
-}
-
-
-
-@media (min-width:760px) and (max-width:1000px){
-
-  .boxQ {
-     margin-left: 0; 
-    width: auto;
-}
-
-.boxVideo {
-  margin-left: 0;
+::placeholder{
+	color:#999;
+	font-family: 'Montserrat', sans-serif;
 
 }
-video {
-
-  width: 100%;
-}
-.timeBox {
+/*inputs*/
+ input:required:focus{
+	border: 2px solid red !important;
+	outline: none;
+  } 
+   
   
-  width: auto;
-  
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
 }
-#controls {
-  
-  width: auto;
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #476692 ;
+	font-weight: bold;
+	color: white;
+	border: 1px solid #476692;
+	border-radius: 20px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+	box-shadow: 2px 2px 2px #222222;
 }
-
-}
-/******************************RESPONISVEEEEEE******************************/
-
-
-
-
-/******************************IPAD******************************/
-@media (min-width:760px) and (max-width:1000px){
-
-  .boxQ {
-     margin-left: 0; 
-    width: auto;
-}
-
-.boxVideo {
-  margin-left: 0;
-
-}
-video {
-
-  width: 100%;
-}
-.timeBox {
-  
-  width: auto;
-  
-}
-#controls {
-  
-  width: auto;
+#msform .action-button:hover{
+	
+	background-color: #ffffff;
+	color: #476692;
+	border:1px solid #476692;
 }
 
+/*headings*/
+
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+	margin-top: 5px;
 }
 
-/******************************IPHONE6/7/8 plus******************************/
-@media (min-width:400px) and (max-width:598px){
-  .boxQ {
-    margin-left: 0; 
-   width: auto;
-   height: 150px;
-   margin-bottom: 20PX;
-}
 
-.boxVideo {
- margin-left: 0;
 
-}
-video {
- height: 280px;
- width: 100%;
-}
-.timeBox {
- 
- width: auto;
- 
-}
-#controls {
- 
- width: auto;
-}
-}
 
-/******************************IPHONE6/7/8******************************/
-@media (min-width:300px) and (max-width:375px){
-
-  .boxQ {
-    margin-left: 0; 
-   width: auto;
-   height: 130px;
-   margin-bottom: 20PX;
-}
-
-.boxVideo {
- margin-left: 0;
-
-}
-video {
- height: 250px;
- width: 100%;
-}
-.timeBox {
- 
- width: auto;
- 
-}
-#controls {
- 
- width: auto;
-}
-}
