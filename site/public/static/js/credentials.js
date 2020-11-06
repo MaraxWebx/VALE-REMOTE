@@ -41,18 +41,18 @@ function saveData() {
      swal("In bocca al lupo!","","success");
      (async () => {
  
-       axios.post('/file/', {
+       axios.post('/file/', 
  
          //rejectUnauthorized: false,
         // firstname: firstName,
         // lastname: lastName,
          //email: eMail,
-         formData,
-           headers: {
-             'Content-Type': 'multipart/form-data'
-           }
-         
-       })
+         formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+       )
          .then((response) => {
            console.log(response);
          }, (error) => {
