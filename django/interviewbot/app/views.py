@@ -155,7 +155,10 @@ class NextQuestionView(APIView):
 def test_file(request):
 	file = request.data['file']
 
-	id = request.session['user_id']
+	id = request.session.get('user_id', -1)
+
+	if id < 0:
+		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	user = User.objects.get(pk=id)
 
