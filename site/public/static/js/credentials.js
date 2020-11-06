@@ -25,11 +25,13 @@ function saveData() {
      document.msform.email.focus();
      return false;
  }
+ /*
  if(this.file.type=="file"){
    swal("allegare CV!","", "error");
    document.getElementById("file").focus();
    return false;
   }
+  */
  
   let formData = new FormData();
    formData.append('file', this.file);
