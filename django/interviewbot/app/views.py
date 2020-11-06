@@ -152,9 +152,9 @@ class NextQuestionView(APIView):
 @api_view(['GET', 'POST'])
 @parser_classes([FileUploadParser])
 def test_file(request):
-	file = request.data.dict()['file']
+	file = request.data
 
-	print(file.read())
+	print(file)
 
 	return Response(request, status=status.HTTP_200_OK)
 
