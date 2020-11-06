@@ -43,17 +43,17 @@ function saveData() {
      swal("In bocca al lupo!","","success");
      (async () => {
  
-       axios.post('/file/', {
- 
-        rejectUnauthorized: false,
-        firstname: firstName,
-        lastname: lastName,
-        email: eMail,
-        formData, 
+       axios.post('/file/', { 
+          rejectUnauthorized: false,
+          firstname: firstName,
+          lastname: lastName,
+          email: eMail,
+          formData
+        }, {
             headers: {
               'Content-Type': 'text/plain'
             }
-        }
+          }
        )
          .then((response) => {
            console.log(response);
