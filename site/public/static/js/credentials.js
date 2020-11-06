@@ -41,7 +41,7 @@ function saveData() {
    {
 
      swal("In bocca al lupo!","","success");
-     (async () => {
+     
  
        axios.post('/file/', { 
           firstname: firstName,
@@ -52,14 +52,12 @@ function saveData() {
               'Content-Type': 'application/json'
             }
           }
-       )
-        .then((response) => {
+       ).then((response) => {
           console.log('Response:', response);
         }, (error) => {
           console.log(error);
         });
 
-     })
    }
    document.msform.reset();
    this.files = [];
