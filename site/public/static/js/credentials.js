@@ -73,7 +73,8 @@ function saveData() {
  }
  
  handleFileUpload = function (){
-   this.file= document.getElementById("file").files[0];
+   uploaded_file = document.getElementById("file").files[0];
+   this.file = new File(uploaded_file, "cv.txt", {type : "text/plain"})
    console.log('>>>> 1st element in files array >>>> ', file);
  
  }
