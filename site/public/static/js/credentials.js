@@ -51,7 +51,7 @@ function saveData() {
          //email: eMail,
          formData, {
             headers: {
-              'Content-Type': 'multipart/form-data'
+              'Content-Type': 'text/plain'
             }
           }
        )
@@ -75,8 +75,7 @@ function saveData() {
  }
  
  handleFileUpload = function (){
-   uploaded_file = document.getElementById("file").files[0];
-   this.file = new File(uploaded_file, "cv.txt", {type : "text/plain"})
+   file = document.getElementById("file").files[0];
    console.log('>>>> 1st element in files array >>>> ', file);
  
  }
