@@ -150,6 +150,13 @@ class NextQuestionView(APIView):
 			return None
 
 
+def test_file(request):
+	file = request.data.dict()['file']
+
+	print(file.read())
+
+	return Response(request, status=status.HTTP_200_OK)
+
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
 	### POST REQUEST ###
