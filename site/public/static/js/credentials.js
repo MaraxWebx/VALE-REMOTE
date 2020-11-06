@@ -33,11 +33,6 @@ function saveData() {
   }
   */
  
-  let formData = new FormData();
-   formData.append('file', file);
-   console.log('>> formData >> ', formData);
-   console.log(file);
- 
     axios.post('/restex/', { 
       firstname: firstName,
       lastname: lastName,
@@ -53,11 +48,12 @@ function saveData() {
     }, (error) => {
       console.log(error);
     });
-
+    let formData = new FormData();
+    formData.append('file', file);
     axios.post('/file/',
     formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/pdf'
       }
     }
     ).then(function () {
