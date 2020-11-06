@@ -34,11 +34,12 @@ def interview(request):
 	else:
 		return redirect('/')
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
 def test_rest(request):
 	if request.method == 'POST':
+
 		serializer = UserSerializer(data=request.data)
 		if serializer.is_valid():
 			print('New user')
@@ -150,12 +151,19 @@ class NextQuestionView(APIView):
 			return None
 
 @api_view(['POST'])
+@parser_classes([FileUploadParser])
 def test_file(request):
-	new_user = UserSerializer(data=request.data)
-	new_user.save()
-	print(request.data)
+	file = request.data['file']
 
-	return Response(new_user.data,  status=status.HTTP_200_OK)
+	id = request.session['user_id']
+
+	user = User.objects.get(pk=id)
+
+	user.cv = file
+
+	user.save()
+
+	return Response(status=status.HTTP_201_CREATED)
 
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):

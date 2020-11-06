@@ -38,7 +38,7 @@ function saveData() {
    console.log('>> formData >> ', formData);
    console.log(file);
  
-    axios.post('/file/', { 
+    axios.post('/restex/', { 
       firstname: firstName,
       lastname: lastName,
       email: eMail,
@@ -52,6 +52,19 @@ function saveData() {
       swal("In bocca al lupo!","","success");
     }, (error) => {
       console.log(error);
+    });
+
+    axios.post('/file/',
+    formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    ).then(function () {
+      console.log('SUCCESS!!');
+    })
+    .catch(function () {
+      console.log('FAILURE!!');
     });
     
 
