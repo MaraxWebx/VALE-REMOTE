@@ -47,7 +47,11 @@ function saveData() {
           firstname: firstName,
           lastname: lastName,
           email: eMail,
-        }
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
        )
          .then((response) => {
            console.log(response);

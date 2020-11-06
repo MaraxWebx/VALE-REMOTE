@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import permission_required
 from django.utils.safestring import mark_safe
 
 from rest_framework.views import APIView
-from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
+from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser, JSONParser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
@@ -150,7 +150,7 @@ class NextQuestionView(APIView):
 			return None
 
 @api_view(['POST'])
-@parser_classes([MultiPartParser, FormParser])
+@parser_classes([JSONParser])
 def test_file(request):
 
 	print(request.data)
