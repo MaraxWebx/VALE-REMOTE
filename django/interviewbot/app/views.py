@@ -154,7 +154,7 @@ class NextQuestionView(APIView):
 def test_file(request):
 	file = request.data['file']
 
-	print(file.read())
+	print(request.data)
 
 	return Response( status=status.HTTP_200_OK)
 
