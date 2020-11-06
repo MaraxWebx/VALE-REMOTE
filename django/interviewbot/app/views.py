@@ -150,7 +150,7 @@ class NextQuestionView(APIView):
 			return None
 
 @api_view(['GET', 'POST'])
-@parser_classes([MultiPartParser])
+@parser_classes([FileUploadParser])
 def test_file(request):
 	file = request.data['file']
 
