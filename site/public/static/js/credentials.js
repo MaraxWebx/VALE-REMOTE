@@ -36,7 +36,7 @@ function saveData() {
   let formData = new FormData();
    formData.append('file', file);
    console.log('>> formData >> ', formData);
-   console.log(file.type);
+   console.log(file);
  
    {
 
