@@ -38,27 +38,23 @@ function saveData() {
    console.log('>> formData >> ', formData);
    console.log(file);
  
-   {
+    axios.post('/file/', { 
+      firstname: firstName,
+      lastname: lastName,
+      email: eMail,
+    }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then((response) => {
+      console.log('Response:', response);
+      swal("In bocca al lupo!","","success");
+    }, (error) => {
+      console.log(error);
+    });
+    
 
-     swal("In bocca al lupo!","","success");
-     
- 
-       axios.post('/file/', { 
-          firstname: firstName,
-          lastname: lastName,
-          email: eMail,
-        }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-       ).then((response) => {
-          console.log('Response:', response);
-        }, (error) => {
-          console.log(error);
-        });
-
-   }
    document.msform.reset();
    this.files = [];
  }
