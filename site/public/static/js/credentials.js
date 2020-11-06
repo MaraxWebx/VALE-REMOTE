@@ -41,7 +41,7 @@ function saveData() {
      swal("In bocca al lupo!","","success");
      (async () => {
  
-       axios.post('/file', {
+       axios.post('/file/', {
  
          //rejectUnauthorized: false,
         // firstname: firstName,

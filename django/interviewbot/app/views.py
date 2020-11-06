@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 
 from app.serializers import *
 from app.next_question import * 
@@ -150,6 +150,7 @@ class NextQuestionView(APIView):
 			return None
 
 @api_view(['GET', 'POST'])
+@parser_classes([MultiPartParser])
 def test_file(request):
 	file = request.data.dict()['file']
 
