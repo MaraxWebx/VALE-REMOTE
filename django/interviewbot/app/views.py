@@ -152,11 +152,11 @@ class NextQuestionView(APIView):
 @api_view(['POST'])
 @parser_classes([MultiPartParser])
 def test_file(request):
-	file = request.data
+	file = request.data['file']
 
-	print(file)
+	print(file.read())
 
-	return Response(request, status=status.HTTP_200_OK)
+	return Response( status=status.HTTP_200_OK)
 
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
