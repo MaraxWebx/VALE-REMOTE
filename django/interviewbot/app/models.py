@@ -22,6 +22,7 @@ class User(models.Model):
 	firstname = models.CharField(max_length=50)
 	lastname = models.CharField(max_length=50)
 	email = models.CharField(max_length=100)
+	cv = models.FileField(upload_to='user_cvs/', null = True)
 
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)

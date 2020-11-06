@@ -150,7 +150,6 @@ class NextQuestionView(APIView):
 			return None
 
 @api_view(['POST'])
-@parser_classes([JSONParser])
 def test_file(request):
 
 	print(request.data)
