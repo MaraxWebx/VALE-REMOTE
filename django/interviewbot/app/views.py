@@ -149,7 +149,7 @@ class NextQuestionView(APIView):
 		else:
 			return None
 
-
+@api_view(['GET', 'POST'])
 def test_file(request):
 	file = request.data.dict()['file']
 
