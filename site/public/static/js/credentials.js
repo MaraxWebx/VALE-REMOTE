@@ -53,20 +53,13 @@ function saveData() {
             }
           }
        )
-         .then((response) => {
-           console.log(response);
-         }, (error) => {
-           console.log(error);
-         });
- 
- 
-       const response = await axios({
-         url: 'file/',
-         method: 'get'
-       })
-       console.log(response);
- 
-     })()
+        .then((response) => {
+          console.log(response);
+        }, (error) => {
+          console.log(error);
+        });
+
+     })
    }
    document.msform.reset();
    this.files = [];

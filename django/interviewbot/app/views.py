@@ -151,10 +151,11 @@ class NextQuestionView(APIView):
 
 @api_view(['POST'])
 def test_file(request):
-
+	new_user = UserSerializer(data=request.data)
+	new_user.save()
 	print(request.data)
 
-	return Response( status=status.HTTP_200_OK)
+	return Response(new_user.data,  status=status.HTTP_200_OK)
 
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
