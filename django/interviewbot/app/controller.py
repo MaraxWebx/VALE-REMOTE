@@ -1,6 +1,6 @@
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
-from app.sentiment_analyzer import SentimentAnalyzer
+from app.text_sentiment import SentimentAnalyzer
 import time
 
 class Controller:
