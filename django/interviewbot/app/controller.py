@@ -2,11 +2,9 @@ import time
 
 class Controller:
 	def __init__(self, bow_path=None):
-        from app.text_analyzer import TextAnalyzer
-        from app.text_filter import Filter
-        from app.text_sentiment import SentimentAnalyzer
-
-        
+		from text_analyzer import TextAnalyzer
+		from text_filter import Filter
+		from text_sentiment import SentimentAnalyzer
 		print('Starting controller...\n- Starting analyzer')
 		self.analyzer = TextAnalyzer()
 		print('\tAnalyzer is ready')
