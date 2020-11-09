@@ -56,7 +56,9 @@ function saveData() {
       }
     }
     ).then(function () {
-      swal("In bocca al lupo!", "L'intervista sta per iniziare...", "success");
+      swal("In bocca al lupo","Inizio intervista...","success")
+      .then(() => {
+        window.location.reload();});
       console.log('SUCCESS!!');
     })
       .catch(function () {
