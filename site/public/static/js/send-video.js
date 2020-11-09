@@ -7,12 +7,6 @@ prepareSubmit = function(file){
 }
 
 submitFile = function() {
-  //file = this.$refs.blob.files[0];
- /*
-  formData.append('file', file);
-  console.log('>> formData >> ', formData);
-*/
-   // HTTP POST on server
   axios.post('/next/',
       formData, {
         headers: {
