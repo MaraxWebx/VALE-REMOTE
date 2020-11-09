@@ -17,7 +17,6 @@ from app.models import *
 from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
-from sentita import calculate_polarity
 
 """
 bow_path = "/var/www/site/bow.json"
