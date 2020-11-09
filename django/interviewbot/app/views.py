@@ -15,7 +15,9 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
-from app.controller import Controller
+from app.text_sentiment import SentimentAnalyzer
+from app.text_analyzer import TextAnalyzer
+from app.text_filter import Filter
 
 """
 bow_path = "/var/www/site/bow.json"
