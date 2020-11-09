@@ -30,7 +30,7 @@ function saveData() {
 
 
   if (this.file === undefined) {
-    swal("allegare CV!", "", "error");
+    swal("Allegare CV!", "", "error");
     document.getElementById("file").focus();
     return false;
   }
@@ -56,7 +56,7 @@ function saveData() {
       }
     }
     ).then(function () {
-      swal("Inizio intervista", "", "success");
+      swal("In bocca al lupo!", "L'intervista sta per iniziare...", "success");
       console.log('SUCCESS!!');
     })
       .catch(function () {
