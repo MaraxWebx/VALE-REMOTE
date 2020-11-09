@@ -97,8 +97,10 @@ function getQuestion(quest) {
 
     if (quest.type === 'video') {
       //start video/audio stream
+      document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.startCamera();
-      window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);      document.getElementById("video").hidden = false;
+      window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);      
+      document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
       document.getElementById("video").hidden = false;
       document.getElementById("check").hidden = true;
@@ -109,6 +111,7 @@ function getQuestion(quest) {
 
     } else if (quest.type === 'code') {
       //stop video/audio stream
+      document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.stopStream();
       document.getElementById("video").hidden = true;
       document.getElementById("code").hidden = false;
@@ -117,10 +120,13 @@ function getQuestion(quest) {
       document.getElementById("StartTextBtn").hidden = false;
       document.getElementById("ConfirmTextBtn").hidden = true;
       document.getElementById("timeBox").hidden = true;
+      
+
       printRis();
 
     } else if (quest.type === 'check') {
       //stop video/audio stream
+      document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.stopStream();
       document.getElementById("ConfirmTextBtn").hidden = false;
       document.getElementById("video").hidden = true;
@@ -129,6 +135,8 @@ function getQuestion(quest) {
       document.querySelector('button#rec').hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
       document.getElementById("timeBox").hidden = true;
+      
+
 
       choices_splitted = quest.choices.split(";")
       choices_list_html = ""

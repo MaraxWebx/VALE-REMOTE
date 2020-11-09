@@ -10,7 +10,6 @@ function resetProgressBar(){
    
     timeleft = 15;
     timetotal = 15;
-    document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
 }
 
 function progress(timeleft, timetotal, $element) {
