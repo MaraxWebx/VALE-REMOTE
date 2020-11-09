@@ -15,6 +15,10 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
+from app.controller import Controller
+
+bow_path = "/var/www/site/bow.json"
+controller = Controller()
 
 # Create your views here.
 def index(request):
