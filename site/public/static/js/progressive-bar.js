@@ -23,5 +23,11 @@ function progress(timeleft, timetotal, $element) {
                 progress(timeleft - 1, timetotal, $element);
             }, 1060);
         }
+        if (progressBarWidth === 0) {
+            onBtnStopClicked(); 
+            window.btnStop(); 
+            window.question(); 
+            document.getElementById("time").hidden = true;
+        }
     }
 };

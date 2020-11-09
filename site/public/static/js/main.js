@@ -119,10 +119,6 @@ function onBtnRecordClicked() {
 		stopBtn.hidden = false;
 		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
-		if (stopBtn.hidden === false) {
-			window.setTimeout(' onBtnStopClicked(); window.btnStop(); window.question(); document.getElementById("time").hidden = true;', 15000);  //auto stop record afther xx minutes
-		}
-
 
 		/* use the stream */
 		log('Start recording...');
@@ -227,6 +223,8 @@ function onBtnStartClicked() {
 
 function onBtnConfirmClicked() {
 
+	document.getElementById("textArea").disabled = true;
+	
 	/* if (window.flag) {
 		document.getElementById("ConfirmTextBtn").hidden = true;		
 	}

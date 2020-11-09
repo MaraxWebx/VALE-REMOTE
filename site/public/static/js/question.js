@@ -46,6 +46,7 @@ function question() {
     if (question_type === 'code') {
       textTmp = document.getElementById("textArea").value;
       vidTmp = "no_video";
+      document.getElementById("textArea").value = "";
     }
 
     if (question_type === 'check') {

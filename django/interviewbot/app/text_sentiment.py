@@ -1,10 +1,20 @@
+from sentita import calculate_polarity
 
 class SentimentAnalyzer:
 
-	def __init__(self, strings, polarity, bow):
+	def __init__(self, strings, bow):
 		self.strings = strings
-		self.polarity = polarity
 		self.bow = bow
+
+		out = []
+		for string in self.strings:
+			res = ""
+			for word in string:
+				res += word.text + ' '
+			out.append(res)
+			
+		result2, polarity = calculate_polarity(out)
+		self.polarity = polarity
 		self.analysis = self.__analyze()
 
 
