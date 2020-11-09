@@ -112,7 +112,7 @@ function onBtnRecordClicked() {
 		alert('Could not get local stream from mic/camera');
 	} else {
 		//progressBar.hidden = false;
-
+		document.getElementById("time").hidden = false;
 		//answerTime.hidden = false;
 		recBtn.hidden = true;
 		//pauseResBtn.disabled = false;
@@ -120,7 +120,7 @@ function onBtnRecordClicked() {
 		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
 		if (stopBtn.hidden === false) {
-			//window.setTimeout(" onBtnStopClicked(); window.btnStop(); ", 10000);  //auto stop record afther xx minutes
+			window.setTimeout(' onBtnStopClicked(); window.btnStop(); window.question(); document.getElementById("time").hidden = true;', 15000);  //auto stop record afther xx minutes
 		}
 
 
@@ -255,7 +255,7 @@ function onBtnStopClicked() {
 	window.resetProgressBar();
 	flagStopBtn = true;
 	mediaRecorder.stop();
-	window.question();
+	//window.question();
 	//recBtn.disabled = false;
 	//progressBar.hidden = false;
 	//pauseResBtn.disabled = true;

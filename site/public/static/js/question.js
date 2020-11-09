@@ -98,9 +98,9 @@ function getQuestion(quest) {
     if (quest.type === 'video') {
       //start video/audio stream
       window.startCamera();
-      document.querySelector('button#rec').hidden = false;
-      document.getElementById("video").hidden = false;
+      window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);      document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
+      document.getElementById("video").hidden = false;
       document.getElementById("check").hidden = true;
       document.getElementById("StartTextBtn").hidden = true;
       document.getElementById("ConfirmTextBtn").hidden = true;

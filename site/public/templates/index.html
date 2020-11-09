@@ -21,7 +21,7 @@
 	<header class="topBar">
 		<div id="logo">
 			<a href="#">
-				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+				<img src="css/img/logo-top.png" alt="LOGOITC">
 			</a>
 
 		</div>
@@ -38,7 +38,7 @@
 
 			<div class="row">
 
-				<!--COLONNA SINISTRA-->
+				<!--COLONNA DESTRA-->
 				<section class="col-md-6  col-sm questionSection">
 					<div class="boxQ">
 						<div id="title">
@@ -47,31 +47,38 @@
 						<hr>
 						<div id="question"></div>
 					</div>
-					<button id="start" style=margin-top:10px class="bRec" type="button"
-						onclick="question(); progress(60, 60, $('#progressBar'));">Inizia</button>
+					<div class="qControl">
+					<!-----cambio classe bottone in bStart-->
+					<button id="start" style=margin-top:10px class="bStart" type="button"
+						onclick="question()">Inizia</button>
+					</div>
 				</section>
 
 
 
 
 
-				<!--COLONNA DESTRA-->
-				<div id="spinner"></div>
+				<!--COLONNA SINISTRA-->
 				<section id="boxRis" class="col-md-6 col-sm ">
 					<div class="videoSection">
-						<h3>Risposta</h3>
+						
 
 
 						<div class="boxVideo">
+							<h2 class="titleRis">Risposta</h2>
 							<div id="timeBox" class="timeBox" hidden>
 								<!--<div id="answerTime" hidden class="container time"> 
 												Registration closes in <span id="time">01:00</span> minutes!</div>-->
 								<h5>Tempo di risposta</h5>
-								<div id="progressBar">
+								<div id="progressBar" >
+									
 									<div class="bar"></div>
+									<p class="time" id="time"></p>
+								
 								</div>
+									
 							</div>
-							<div id="video"><video autoplay muted="true"> </video></div>
+							<div id="video"><video autoplay muted="true"> </video></div>	
 							<div id="code"><textarea id="textArea" rows="20" cols="70" placeholder="AREA DI TESTO"
 									disabled></textarea></div>
 							<div id="check"> </div>
@@ -80,12 +87,12 @@
 								<button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked(); question()"
 									hidden>Conferma</button>
 
-								<button class="bRec" id="rec" onclick="FlagProgressBar(); 
+								<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
 									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
 									<p>Record</p>
 								</button>
-								<!-- //TODO MODIFICATO IL BOTTONE -->
-								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop();" hidden>
+								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
+									hidden>
 									<p>Stop</p>
 								</button>
 								<!--<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>Pause</button>-->
