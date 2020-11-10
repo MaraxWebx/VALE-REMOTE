@@ -87,9 +87,13 @@ function question() {
         getQuestion(response.data);
       })
       .catch(function (error) {
+        console.error("Error in get request:", error)
+        /* 
         document.getElementById("spinner").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
                                                        <span class="sr-only">Loading...</span>
                                                       </div>`;
+
+        */
       });
   }
 }
@@ -160,7 +164,8 @@ function getQuestion(quest) {
   else {
     console.warn("errore caricamento domanda/Domanda terminata");
     //document.getElementById("boxRis").hidden = true;
-    document.getElementById("boxRis").innerHTML = '<h3 style= "color: red; background-color: white">' + 'Domande terminate' + '</h3>';
+    window.stopStream();
+    document.getElementById("boxRis").innerHTML = '<h3 style= "color: red; background-color: white">' + 'Domande terminate!' + '</h3>';
     document.getElementById("title").innerHTML = '<h1 style="text-align: center">' + 'Fine del questionario' + '</h1>';
     document.getElementById("question").innerHTML = "";
 
