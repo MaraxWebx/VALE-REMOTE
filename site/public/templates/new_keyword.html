@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>{{ esito }}</p>
+
+<form action="/add_kw/" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Insert new keyword:</legend>
+        <br/>
+        <label for="kword">Word:</label>
+        <input type="text" id="kword" name="word">
+        <label for="n">Number of questions:</label>
+        <input type="number" name="n" id="n" min="1" required value="1">
+
+        <br/><input type="submit">
+    </fieldset>
+</form>
+
+{% endblock %}

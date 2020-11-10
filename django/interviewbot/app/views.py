@@ -175,6 +175,79 @@ def test_file(request):
 
 	return Response(status=status.HTTP_201_CREATED)
 
+
+@permission_required('app.can_add_question', raise_exception=True)
+def keyword_managment(request):
+	if request.method == 'GET':
+		if request.session.get('what', False):
+			request.session['what'] = False
+		return render(request, 'new_keyword.html', context = {'esito':''})
+
+	elif request.method == 'POST':
+		if 'what' in request.POST:
+			if not request.session.get('what', False):  #new word
+				request.session['what'] = True
+				if 'word' in request.POST and 'n' in request.POST:
+					word = request.POST['word']
+					request.session['word'] = word
+					request.session['n'] = request.POST['n']
+					n = request.session['n']
+					return render(request, 'new_kw_question.html', context={'num':n})
+					#INIZIA INSERIMENTO DOMANDE
+				else:
+					#MISSING PARAMETERS
+					return HttpResponse('Missing essentials parameters')
+
+			else:										#new questionflow
+				request.session['what'] = False
+				if request.session.get('word', False) and request.session.get('n', False):
+					n = int(request.session['n'])
+					if n > 0:
+						tmp_parent = request.session.get('last_id', None)
+						if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
+							return HttpResponse('Missing essentials parameters')
+						
+						type 		= request.POST['type']
+						action 		= request.POST['action']
+						length		= request.POST['length']
+						if 'choices' in request.POST:
+							choices = request.POST['choices']
+							if choices.endswith(';'):
+								choices = choices[:-1]
+						else:
+							choices = ""
+						
+						new_quest = Question.objects.create(type=type, action=action, length=length, choices=choices)
+						new_quest.save()
+
+						if tmp_parent is not None:
+							parent = Question.objects.get(pk=int(tmp_parent))
+							flow = QuestionFlow.objects.create(parent=parent, son = new_quest)
+							flow.save()
+						else:
+							word = request.session['word']
+							kw = KeyWords.objects.create(word=word, start_question=new_quest)
+							kw.save()
+						
+						request.session['last_id'] = new_quest.id
+						request.session['n'] = n - 1
+						if n - 1 <= 0:
+							request.session['what'] = False
+							return render(request, 'new_keyword.html', context = {'esito':"Keyword aggiunta con successo."})
+							# MOSTRA FINE 
+					else:
+						request.session['what'] = False
+						return HttpResponse("Numero di domande non valido.")
+					return render(request, 'new_kw_question.html', context={'num':n})
+				else:
+					return HttpResponse("Numero parametri errato")
+
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+		
+
+
+
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
 	### POST REQUEST ###

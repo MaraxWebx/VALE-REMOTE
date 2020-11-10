@@ -2,12 +2,12 @@ from sentita import calculate_polarity
 
 class SentimentAnalyzer:
 
-	def __init__(self, strings, bow):
-		self.strings = strings
+	def __init__(self, bow):
 		self.bow = bow
 
+	def analyze(self, strings):
 		out = []
-		for string in self.strings:
+		for string in strings:
 			res = ""
 			for word in string:
 				res += word.text + ' '
@@ -15,14 +15,15 @@ class SentimentAnalyzer:
 			
 		result2, polarity = calculate_polarity(out)
 		self.polarity = polarity
-		self.analysis = self.__analyze()
+		self.analysis = self.__analyze(strings)
 
 
-	def __analyze(self):
-		self.output = {}
+
+	def __analyze(self, strings):
+		output = {}
 
 		i=-1
-		for doc in self.strings:
+		for doc in strings:
 			i+=1
 
 			keyword = self.__checkwords(doc)
@@ -33,36 +34,15 @@ class SentimentAnalyzer:
 
 			pos = sent[0]
 			neg = sent[1]
-			"""
-			while pos < 1 and neg < 1:
-				pos *= 10
-				neg *= 10
-			"""
+
 			for subj in keyword:
 
-				if subj in self.output:
-					self.output[subj] += (pos-neg)
+				if subj in output:
+					output[subj] += (pos-neg)
 				else:
-					self.output[subj] = (pos-neg)
+					output[subj] = (pos-neg)
 				
-				"""
-				if neg - pos > 0.5:
-					if subj in self.output:
-						self.output[subj] -=1
-					else:
-						self.output[subj] = -1
-				elif pos - neg > 0.5:
-					if subj in self.output:
-						self.output[subj] +=1
-					else:
-						self.output[subj] = +1
-				else:
-					if subj in self.output:
-						self.output[subj] +=0
-					else:
-						self.output[subj] = 0
-				"""
-		return self.output
+		return output
 
 	def get_analysis(self):
 		return self.analysis

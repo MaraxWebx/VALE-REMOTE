@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p> Domande restanti: {{ num }}</p>
+
+<form action="/add_kw/" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Insert new question:</legend>
+        <br/><label for="type">Insert question type*:</label>
+        <select id="type" name="type" required>
+            <option value="" selected disabled hidden>Choose the type here</option>
+            <option value="video">Request a video</option>
+            <option value="check">Show multiple choises</option>
+            <option value="code">Let user insert text</option>
+        </select>
+
+        <br/><label for="action">Insert the question text*:</label>
+        <input id="action" type="text" name="action" required>
+
+        <br/><label for="length">Change the number of choices if the type is "check"*:</label>
+        <input type="number" name="length" id="length" required value="0"> 
+
+        <br/><label for="choices">Insert the choices separated by a "<b>;</b>":</label>
+        <input type="text" name="choices" id="choices">
+
+        <br/><input type="submit">
+
+        <br/> Fields marked with * are required.
+    </fieldset>
+</form>
+
+{% endblock %}

@@ -35,3 +35,7 @@ class Answer(models.Model):
 	choice_text = models.CharField(max_length=500, null=True)
 	choice_vid = models.FileField(upload_to='videos/', null=True,)
 
+class KeyWords(models.Model):
+	word = models.CharField(max_length=100, null=False, blank=False)
+	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
