@@ -179,13 +179,13 @@ def test_file(request):
 @permission_required('app.can_add_question', raise_exception=True)
 def keyword_managment(request):
 	if request.method == 'GET':
-		request.session['what'] = False
+		request.session['what'] = -1
 		return render(request, 'new_keyword.html', context = {'esito':''})
 
 	elif request.method == 'POST':
 		if 'what' in request.POST:
-			if not request.session.get('what', False):  #new word
-				request.session['what'] = True
+			if request.session.get('what', -1) < 0:  #new word
+				request.session['what'] = 1
 				if 'word' in request.POST and 'n' in request.POST:
 					word = request.POST['word']
 					request.session['word'] = word
@@ -198,7 +198,6 @@ def keyword_managment(request):
 					return HttpResponse('Missing essentials parameters')
 
 			else:										#new questionflow
-				request.session['what'] = False
 				if request.session.get('word', False) and request.session.get('n', False):
 					n = int(request.session['n'])
 					if n > 0:
@@ -231,11 +230,11 @@ def keyword_managment(request):
 						request.session['last_id'] = new_quest.id
 						request.session['n'] = n - 1
 						if n - 1 <= 0:
-							request.session['what'] = False
+							request.session['what'] = -1
 							return render(request, 'new_keyword.html', context = {'esito':"Keyword aggiunta con successo."})
 							# MOSTRA FINE 
 					else:
-						request.session['what'] = False
+						request.session['what'] = -1
 						return HttpResponse("Numero di domande non valido.")
 					return render(request, 'new_kw_question.html', context={'num':n})
 				else:
