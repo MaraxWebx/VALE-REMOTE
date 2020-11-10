@@ -175,7 +175,7 @@ def test_file(request):
 
 	return Response(status=status.HTTP_201_CREATED)
 
-
+@api_view(['POST','GET'])
 @permission_required('app.can_add_question', raise_exception=True)
 def keyword_managment(request):
 	if request.method == 'GET':
