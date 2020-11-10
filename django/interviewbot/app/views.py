@@ -179,8 +179,7 @@ def test_file(request):
 @permission_required('app.can_add_question', raise_exception=True)
 def keyword_managment(request):
 	if request.method == 'GET':
-		if request.session.get('what', False):
-			request.session['what'] = False
+		request.session['what'] = False
 		return render(request, 'new_keyword.html', context = {'esito':''})
 
 	elif request.method == 'POST':
