@@ -232,7 +232,11 @@ def keyword_managment(request):
 						if n - 1 <= 0:
 							request.session['what'] = -1
 							return render(request, 'new_keyword.html', context = {'esito':"Keyword aggiunta con successo."})
-							# MOSTRA FINE 
+							# MOSTRA FINE
+						else:
+							return render(request, 'new_kw_question.html', context={'num':n})
+							# PROSSIMA DOMANDA
+
 					else:
 						request.session['what'] = -1
 						return HttpResponse("Numero di domande non valido.")
