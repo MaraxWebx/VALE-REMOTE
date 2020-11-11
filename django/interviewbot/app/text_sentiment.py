@@ -88,45 +88,44 @@ class SentimentAnalyzer:
 
 
     def __checkwords(self, string):
-		results=[]
-		for word in string:
-			iniziale = list(word.lemma_)[0].upper()
-			if iniziale in self.data:
-				for keyword in self.data[iniziale]:
-					if word.lemma_.lower() == keyword.lower():
-						results.append(word.text.lower())
-		return results
+        results=[]
+        for word in string:
+            iniziale = list(word.lemma_)[0].upper()
+            if iniziale in self.data:
+                for keyword in self.data[iniziale]:
+                    if word.lemma_.lower() == keyword.lower():
+                        results.append(word.text.lower())
+        return results
 
     
     def execute(self, strings):
-        out = []
-		for string in self.strings:
-			res = ""
-			for word in string:
-				res += word.text + ' '
-			out.append(res)
-		
-        results, polarity = self.calculate_polarity(out)
-        self.polarity = polarity
-        self.output = {}
+    out = []
+    for string in self.strings:
+        res = ""
+        for word in string:
+            res += word.text + ' '
+        out.append(res)
 
-		i=-1
-		for doc in self.strings:
-			i+=1
+    results, polarity = self.calculate_polarity(out)
+    self.polarity = polarity
+    self.output = {}
 
-			keyword = self.__checkwords(doc)
-			if not keyword:
-				continue
+    i=-1
+    for doc in self.strings:
+        i+=1
 
-			sent = self.polarity[i]
+        keyword = self.__checkwords(doc)
+        if not keyword:
+            continue
 
-			pos = sent[0]
-			neg = sent[1]
-			for subj in keyword:
-				if subj in self.output:
-					self.output[subj] += (pos-neg)
-				else:
-					self.output[subj] = (pos-neg)
+        sent = self.polarity[i]
+        pos = sent[0]
+        neg = sent[1]
+        for subj in keyword:
+            if subj in self.output:
+                self.output[subj] += (pos-neg)
+            else:
+                self.output[subj] = (pos-neg)
 
-		return self.output
+    return self.output
 
