@@ -82,10 +82,8 @@ class SentimentAnalyzer:
         sent_model = self.model
         preds = sent_model.predict([test_wemb_idxs])
         K.clear_session()
-        for i in range(n_ctest_sents):
-            results.append(sentences[i] + ' - ' + 'opos: ' + str(preds[i][0]) + ' - oneg: ' + str(preds[i][1]))
-            print(sentences[i],' - opos: ', preds[i][0], ' - oneg: ', preds[i][1])
-        return results, preds
+        return preds
+
 
 
     def __checkwords(self, string):
@@ -107,8 +105,7 @@ class SentimentAnalyzer:
                 res += word.text + ' '
             out.append(res)
 
-        results, polarity = self.calculate_polarity(out)
-        self.polarity = polarity
+        self.polarity = self.calculate_polarity(out)
         self.output = {}
 
         i=-1
