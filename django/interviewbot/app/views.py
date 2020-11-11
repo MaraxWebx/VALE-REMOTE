@@ -17,9 +17,12 @@ from app.models import *
 from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
-from app.text_sentiment import SentimentAnalyzer
 
-SA = SentimentAnalyzer()
+
+"""
+bow_path = "/var/www/site/bow.json"
+controller = Controller()
+"""
 
 # Create your views here.
 def index(request):
@@ -160,7 +163,7 @@ class NextQuestionView(APIView):
 				filter = Filter()
 				filter_results = filter.execute(analyze_results)
 
-				sentiment = SA.execute(filter_results)
+				sentiment = settings.SA.execute(filter_results)
 
 				key_max = ""
 				value_max = -999999999
