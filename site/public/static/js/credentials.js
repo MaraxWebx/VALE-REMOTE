@@ -62,8 +62,8 @@ function saveData() {
       console.log('SUCCESS!!');
     })
       .catch( (error) => {
-        swal("errore", "", error);
-        console.log('FAILURE!!');
+        swal("errore", "", "error");
+        console.log(error);
       });
     
   }, (error) => {
