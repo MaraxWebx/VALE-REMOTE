@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
-
+import keras.models
+from keras import backend as K
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
+import spacy
+import os
+import pickle
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
