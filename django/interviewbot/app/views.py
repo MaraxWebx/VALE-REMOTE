@@ -164,6 +164,11 @@ def test_file(request):
 	file = request.data['file']
 
 	if not file.name.endswith('.pdf'):
+		id = request.session.get('user_id', -1)
+		if id > 0:
+			user = User.objects.get(pk=id)
+			user.delete()
+		request.session['is_reg'] = False
 		return Response(status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 	
 	id = request.session.get('user_id', -1)
