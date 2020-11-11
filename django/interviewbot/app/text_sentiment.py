@@ -24,17 +24,17 @@ class SentimentAnalyzer:
         for word in keyword:
             self.__add_data(word.word)
 
-    def __add_data(self, string=""):
-		if string == "":
-			print("Can't add empty string.")
-			return
-		doc = self.nlp(string)
-		string = doc[0].lemma_
-		iniziale = list(string)[0].upper()
-		if iniziale in self.data:
-			self.data[iniziale].append(string)
-		else:
-			self.data[iniziale] = [string]
+        def __add_data(self, string=""):
+        if string == "":
+            print("Can't add empty string.")
+            return
+        doc = self.nlp(string)
+        string = doc[0].lemma_
+        iniziale = list(string)[0].upper()
+        if iniziale in self.data:
+            self.data[iniziale].append(string)
+        else:
+            self.data[iniziale] = [string]
 
     def create_features(self, text, maxlen):
         doc = self.nlp(text)
