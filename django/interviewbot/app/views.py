@@ -18,17 +18,9 @@ from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 
-import tensorflow as tf
+from keras import backend as K
 
-with tf.Session():
-	import keras.models
-	from keras import backend as K
-	from keras.preprocessing.sequence import pad_sequences
-	import numpy as np
-	import spacy
-	import os
-	import pickle
-
+K.clear_session()
 
 """
 bow_path = "/var/www/site/bow.json"
