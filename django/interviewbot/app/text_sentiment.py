@@ -6,6 +6,7 @@ import spacy
 import os
 import pickle
 from pathlib import Path
+from app.model import KeyWords
 
 class SentimentAnalyzer:
 
