@@ -8,8 +8,9 @@ import pickle
 from pathlib import Path
 
 class SentimentAnalyzer:
-	def __init__(self):
-		self.model_load_path = Path(__file__).resolve().parent.parent
+
+    def __init__(self):
+        self.model_load_path = Path(__file__).resolve().parent.parent
         """
 		self.model = keras.models.load_model(self.model_load_path + 'saved_model.h5')
 		self.MAX_SEQUENCE_LENGTH = 35
@@ -20,7 +21,7 @@ class SentimentAnalyzer:
 		with open(self.model_load_path + 'wemb_ind.pkl', 'rb') as f:    
 			self.wemb_ind = pickle.load(f)
         """
-        print('###############', BASE_DIR)
+        print('###############', self.model_load_path)
 
 
 	def create_features(self, text, maxlen):
