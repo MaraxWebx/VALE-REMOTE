@@ -1,55 +1,21 @@
 import it_core_news_md
 import json
 import time
+from app.model import KeyWords
 
 class Filter:
 
-	def __init__(self, path=None, read=False):
-		if path is None:
-			print('No datapath specified, default = "file.json"')
-			self.datapath = 'file.json' # default directory
-		else:
-			self.datapath = path
-		self.data_exists = False
-
-		if read:
-			try:
-				with open(self.datapath , 'r') as read_file:
-					self.data = json.load(read_file)
-					self.data_exists = True
-					print('Data load successfully')
-			except:
-				print("File data doesn't exists in the specified path.")
-				self.data_exists = False
-				self.data = None
-
+	def __init__(self):
 		self.nlp = it_core_news_md.load()
+		keyword = KeyWords.object.all()
+		self.data = {}
+		for word in keyword:
+			self.__add_data(word.word)
 
-
-	def change_path(self, path=None):
-		if path is None:
-			print('Specify a path.')
-			return
-		self.datapath = path
-		print('New path:', path)
-
-
-	def read_data(self):
-		try:
-			with open(self.datapath , 'r') as read_file:
-				self.data = json.load(read_file)
-				self.data_exists = True
-				print('Data load successfully')
-		except:
-			print("File data doesn't exists in the specified path. Change it with command change_path(path).")
-			self.data_exists = False
-
-
-	def add_data(self, string=""):
+	def __add_data(self, string=""):
 		if string == "":
 			print("Can't add empty string.")
 			return
-
 		doc = self.nlp(string)
 		string = doc[0].lemma_
 		iniziale = list(string)[0].upper()
@@ -57,26 +23,6 @@ class Filter:
 			self.data[iniziale].append(string)
 		else:
 			self.data[iniziale] = [string]
-
-
-	def get_data(self, print_result=False):
-		if print_result:
-			print('Current data:')
-			for letter in self.data:
-				print("\n" + letter + ":")
-				for word in self.data[letter]:
-					print(word)
-
-		return self.data
-
-
-	def flush(self):
-		if self.data_exists:
-			with open(self.datapath, 'w') as write_file:
-				json.dump(self.data, write_file)
-
-	def get_bow(self):
-		return self.data
 
 	def __check_string(self, string):
 		iniziale = list(string.lemma_)[0].upper()
@@ -94,7 +40,7 @@ class Filter:
 		return lemmatized_strings
 
 
-	def execute(self, strings=None):
+	def execute(self, strings=None, as_string=False):
 		if strings is None:
 			print('No strings for input. Insert a list of string as paramenter')
 			return
@@ -134,17 +80,19 @@ class Filter:
 			if is_rilevant:
 				self.output.append(string)
 		self.endtime = time.time_ns() // 1000000
+		if as_string:
+			return self.get_results_as_string(self.output)
 		return self.output
 
 
 	def get_benchmark(self):
 		return str(self.endtime - self.starttime)
 
-	def get_results_as_string(self):
-		out = []
-		for result in self.output:
+	def get_results_as_string(self, data):
+		data = []
+		for result in data:
 			res = ""
 			for word in result:
 				res += word.text + ' '
-			out.append(res)
-		return out
+			data.append(res)
+		return data

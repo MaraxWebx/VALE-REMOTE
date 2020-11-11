@@ -19,8 +19,22 @@ class SentimentAnalyzer:
         self.nlp = spacy.load('it_core_news_sm')
         with open(self.model_load_path + 'wemb_ind.pkl', 'rb') as f:    
             self.wemb_ind = pickle.load(f)
-        print('###### SENTIMENT ANALYZER IS READY ######')
+        keyword = KeyWords.object.all()
+		self.data = {}
+		for word in keyword:
+			self.__add_data(word.word)
 
+    def __add_data(self, string=""):
+		if string == "":
+			print("Can't add empty string.")
+			return
+		doc = self.nlp(string)
+		string = doc[0].lemma_
+		iniziale = list(string)[0].upper()
+		if iniziale in self.data:
+			self.data[iniziale].append(string)
+		else:
+			self.data[iniziale] = [string]
 
     def create_features(self, text, maxlen):
         doc = self.nlp(text)
@@ -71,3 +85,48 @@ class SentimentAnalyzer:
             results.append(sentences[i] + ' - ' + 'opos: ' + str(preds[i][0]) + ' - oneg: ' + str(preds[i][1]))
             print(sentences[i],' - opos: ', preds[i][0], ' - oneg: ', preds[i][1])
         return results, preds
+
+
+    def __checkwords(self, string):
+		results=[]
+		for word in string:
+			iniziale = list(word.lemma_)[0].upper()
+			if iniziale in self.data:
+				for keyword in self.data[iniziale]:
+					if word.lemma_.lower() == keyword.lower():
+						results.append(word.text.lower())
+		return results
+
+    
+    def execute(self, strings):
+        out = []
+		for string in self.strings:
+			res = ""
+			for word in string:
+				res += word.text + ' '
+			out.append(res)
+		
+        results, polarity = self.calculate_polarity(out)
+        self.polarity = polarity
+        self.output = {}
+
+		i=-1
+		for doc in self.strings:
+			i+=1
+
+			keyword = self.__checkwords(doc)
+			if not keyword:
+				continue
+
+			sent = self.polarity[i]
+
+			pos = sent[0]
+			neg = sent[1]
+			for subj in keyword:
+				if subj in self.output:
+					self.output[subj] += (pos-neg)
+				else:
+					self.output[subj] = (pos-neg)
+
+		return self.output
+

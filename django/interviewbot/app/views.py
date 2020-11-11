@@ -19,7 +19,6 @@ from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 
 
-
 """
 bow_path = "/var/www/site/bow.json"
 controller = Controller()
@@ -142,20 +141,40 @@ class NextQuestionView(APIView):
 
 		question = Question.objects.get(id=id)
 		if question is not None:
-			flows = QuestionFlow.objects.all().filter(parent=question)
-			if flows.exists() and flows.count() > 0:
-				if flows.count() == 1:
-					return flows.get(parent=question).son
-				elif not question.is_fork:
-					return None
-				else:
-					if answer == "" or answer is None:
+			if question.type == 'check' or question.type == 'code':
+				flows = QuestionFlow.objects.all().filter(parent=question)
+				if flows.exists() and flows.count() > 0:
+					if flows.count() == 1:
+						return flows.get(parent=question).son
+					elif not question.is_fork:
 						return None
-					for flow in flows:
-						if flow.choice == answer:
-							return flow.son
+					else:
+						if answer == "" or answer is None:
+							return None
+						for flow in flows:
+							if flow.choice == answer:
+								return flow.son
+				else:
+					return 0
 			else:
-				return 0
+				analyzer = TextAnalyzer(answer)
+				analyze_results = analyzer.analyze()
+
+				filter = Filter()
+				filter_results = filter.execute(analyze_results)
+
+				sentiment = settings.SA.execute(filter_results)
+
+				key_max = ""
+				value_max = -999999999
+
+				for key in sentiment:
+					if sentiment[key] > value_max:
+						value_max = sentiment[key]
+						key_max = key
+				kw_question = KeyWords.objects.get(word=key_max)
+				return kw_question.start_question
+
 		else:
 			return None
 
