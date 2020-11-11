@@ -61,8 +61,8 @@ function saveData() {
         window.location.reload();});
       console.log('SUCCESS!!');
     })
-      .catch(function () {
-        swal("errore", "", "error");
+      .catch(function (error) {
+        swal("errore", "", error);
         console.log('FAILURE!!');
       });
     
