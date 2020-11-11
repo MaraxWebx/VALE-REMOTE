@@ -20,7 +20,7 @@ class SentimentAnalyzer:
         self.nlp = spacy.load('it_core_news_sm')
         with open(self.model_load_path + 'wemb_ind.pkl', 'rb') as f:    
             self.wemb_ind = pickle.load(f)
-        keyword = KeyWords.object.all()
+        keyword = KeyWords.objects.all()
         self.data = {}
         for word in keyword:
             self.__add_data(word.word)

@@ -7,7 +7,7 @@ class Filter:
 
 	def __init__(self):
 		self.nlp = it_core_news_md.load()
-		keyword = KeyWords.object.all()
+		keyword = KeyWords.objects.all()
 		self.data = {}
 		for word in keyword:
 			self.__add_data(word.word)
