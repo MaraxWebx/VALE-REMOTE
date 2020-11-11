@@ -1,7 +1,7 @@
 import it_core_news_md
 import json
 import time
-from app.model import KeyWords
+from app.models import KeyWords
 
 class Filter:
 
