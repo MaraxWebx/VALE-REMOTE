@@ -63,7 +63,7 @@ function saveData() {
     })
       .catch( (error) => {
         swal("errore", "", "error");
-        console.log(error);
+        console.log(error.response.status);
       });
     
   }, (error) => {
