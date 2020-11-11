@@ -165,6 +165,8 @@ class NextQuestionView(APIView):
 
 				filter = Filter()
 				filter_results = filter.execute(analyze_results)
+				
+				# Controllare che filter non sia vuoto
 
 				sentiment = SA.execute(filter_results)
 
@@ -175,6 +177,8 @@ class NextQuestionView(APIView):
 					if sentiment[key] > value_max:
 						value_max = sentiment[key]
 						key_max = key
+
+				# controllare la soglia minima
 
 				print('############ finding : ', key_max)
 				kw_question = KeyWords.objects.filter(word=key_max)[0]

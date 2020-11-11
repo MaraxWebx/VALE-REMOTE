@@ -11,6 +11,7 @@ class Question(models.Model):
 	choices = models.CharField(max_length=500, default="", null=True, blank=True)
 	is_fork = models.BooleanField(default=False)
 	date_published = models.DateTimeField('date published', auto_now_add=True)
+	to_analyze = models.BooleanField(default=False)
 	addedby = models.CharField(max_length=100, default="Anymous")
 
 class QuestionFlow(models.Model):
