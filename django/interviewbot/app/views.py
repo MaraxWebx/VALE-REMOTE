@@ -18,6 +18,15 @@ from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 
+import keras.models
+from keras import backend as K
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
+import spacy
+import os
+import pickle
+
+
 """
 bow_path = "/var/www/site/bow.json"
 controller = Controller()
