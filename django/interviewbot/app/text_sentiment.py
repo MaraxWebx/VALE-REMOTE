@@ -10,7 +10,7 @@ from pathlib import Path
 class SentimentAnalyzer:
 
     def __init__(self):
-        self.model_load_path = Path(__file__).resolve().parent.parent + '/keras/'
+        self.model_load_path = str(Path(__file__).resolve().parent.parent) + '/keras/'
         self.model = keras.models.load_model(self.model_load_path + 'saved_model.h5')
         self.MAX_SEQUENCE_LENGTH = 35
         self.EMBEDDING_DIM = 300
