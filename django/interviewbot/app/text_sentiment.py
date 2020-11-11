@@ -24,7 +24,7 @@ class SentimentAnalyzer:
         for word in keyword:
             self.__add_data(word.word)
 
-        def __add_data(self, string=""):
+    def __add_data(self, string=""):
         if string == "":
             print("Can't add empty string.")
             return
