@@ -10,8 +10,7 @@ from pathlib import Path
 class SentimentAnalyzer:
 
     def __init__(self):
-        self.model_load_path = Path(__file__).resolve().parent.parent
-        """
+        self.model_load_path = Path(__file__).resolve().parent.parent + '/keras/'
         self.model = keras.models.load_model(self.model_load_path + 'saved_model.h5')
         self.MAX_SEQUENCE_LENGTH = 35
         self.EMBEDDING_DIM = 300
@@ -19,9 +18,8 @@ class SentimentAnalyzer:
         self.NB_WEMBS = self.MAX_N_WEMBS
         self.nlp = spacy.load('it_core_news_sm')
         with open(self.model_load_path + 'wemb_ind.pkl', 'rb') as f:    
-        self.wemb_ind = pickle.load(f)
-        """
-        print('###############', self.model_load_path)
+            self.wemb_ind = pickle.load(f)
+        print('###### SENTIMENT ANALYZER IS READY ######')
 
 
     def create_features(self, text, maxlen):
