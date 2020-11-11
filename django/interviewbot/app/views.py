@@ -144,7 +144,7 @@ class NextQuestionView(APIView):
 
 		question = Question.objects.get(id=id)
 		if question is not None:
-			if question.type == 'check' or question.type == 'code':
+			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
 				flows = QuestionFlow.objects.all().filter(parent=question)
 				if flows.exists() and flows.count() > 0:
 					if flows.count() == 1:
@@ -160,6 +160,10 @@ class NextQuestionView(APIView):
 				else:
 					return 0
 			else:
+				print("########################################################")
+				print("#####################ANALYZE :", id, "####################")
+				print("########################################################")
+
 				analyzer = TextAnalyzer(answer)
 				analyze_results = analyzer.analyze()
 

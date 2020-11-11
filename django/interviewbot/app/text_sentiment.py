@@ -71,7 +71,6 @@ class SentimentAnalyzer:
 
 
     def calculate_polarity(self, sentences):
-        results = []
         sentences = list(map(lambda x: x.lower(), sentences))
         #sentences = list(map(lambda x: re.sub('[^a-zA-z0-9\s]','',x), sentences))
         X_ctest = list(self.process_texts(sentences, self.MAX_SEQUENCE_LENGTH))
