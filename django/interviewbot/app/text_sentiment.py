@@ -99,33 +99,33 @@ class SentimentAnalyzer:
 
     
     def execute(self, strings):
-    out = []
-    for string in self.strings:
-        res = ""
-        for word in string:
-            res += word.text + ' '
-        out.append(res)
+        out = []
+        for string in self.strings:
+            res = ""
+            for word in string:
+                res += word.text + ' '
+            out.append(res)
 
-    results, polarity = self.calculate_polarity(out)
-    self.polarity = polarity
-    self.output = {}
+        results, polarity = self.calculate_polarity(out)
+        self.polarity = polarity
+        self.output = {}
 
-    i=-1
-    for doc in self.strings:
-        i+=1
+        i=-1
+        for doc in self.strings:
+            i+=1
 
-        keyword = self.__checkwords(doc)
-        if not keyword:
-            continue
+            keyword = self.__checkwords(doc)
+            if not keyword:
+                continue
 
-        sent = self.polarity[i]
-        pos = sent[0]
-        neg = sent[1]
-        for subj in keyword:
-            if subj in self.output:
-                self.output[subj] += (pos-neg)
-            else:
-                self.output[subj] = (pos-neg)
+            sent = self.polarity[i]
+            pos = sent[0]
+            neg = sent[1]
+            for subj in keyword:
+                if subj in self.output:
+                    self.output[subj] += (pos-neg)
+                else:
+                    self.output[subj] = (pos-neg)
 
-    return self.output
+        return self.output
 
