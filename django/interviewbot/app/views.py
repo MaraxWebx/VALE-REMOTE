@@ -18,7 +18,6 @@ from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 
-from keras.models import load_model
 
 """
 bow_path = "/var/www/site/bow.json"
