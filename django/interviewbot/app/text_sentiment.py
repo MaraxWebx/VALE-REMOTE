@@ -20,9 +20,9 @@ class SentimentAnalyzer:
         with open(self.model_load_path + 'wemb_ind.pkl', 'rb') as f:    
             self.wemb_ind = pickle.load(f)
         keyword = KeyWords.object.all()
-		self.data = {}
-		for word in keyword:
-			self.__add_data(word.word)
+        self.data = {}
+        for word in keyword:
+            self.__add_data(word.word)
 
     def __add_data(self, string=""):
 		if string == "":
