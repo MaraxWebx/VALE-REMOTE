@@ -163,11 +163,10 @@ function getQuestion(quest) {
   }
   else {
     console.warn("errore caricamento domanda/Domanda terminata");
-    //document.getElementById("boxRis").hidden = true;
+    document.getElementById("boxRis").hidden = true;
     window.stopStream();
-    document.getElementById("boxRis").innerHTML = '<h3 style= "color: red; background-color: white">' + 'Domande terminate!' + '</h3>';
-    document.getElementById("title").innerHTML = '<h1 style="text-align: center">' + 'Fine del questionario' + '</h1>';
-    document.getElementById("question").innerHTML = "";
+    document.getElementById("title").innerHTML = '<h1 style="text-align: center; color: red">' + 'Fine del questionario' + '</h1>';
+    document.getElementById("question").innerHTML = '<h1 style="text-align: center; margin-top: 200px ">Verrai ricontatto prossimamente da un nostro responsabile</h1>';
 
   }
   function printRis() {
