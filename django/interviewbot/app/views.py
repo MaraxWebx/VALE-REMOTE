@@ -163,7 +163,8 @@ class NextQuestionView(APIView):
 def test_file(request):
 	file = request.data['file']
 
-	print('###########', file.name)
+	if not file.name.endswith('.pdf'):
+		return Response(status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 	
 	id = request.session.get('user_id', -1)
 
