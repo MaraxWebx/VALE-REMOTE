@@ -18,6 +18,13 @@ from app.form import *
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 
+import keras.models
+from keras import backend as K
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
+import spacy
+import os
+import pickle
 
 """
 bow_path = "/var/www/site/bow.json"
@@ -172,16 +179,12 @@ def test_file(request):
 		return Response(status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 	
 	id = request.session.get('user_id', -1)
-
 	if id < 0:
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	user = User.objects.get(pk=id)
-
 	user.cv = file
-
 	user.save()
-
 	return Response(status=status.HTTP_201_CREATED)
 
 @api_view(['POST','GET'])
