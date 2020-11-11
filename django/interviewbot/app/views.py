@@ -162,6 +162,8 @@ class NextQuestionView(APIView):
 @parser_classes([MultiPartParser])
 def test_file(request):
 	file = request.data['file']
+
+	print('###########', file.name)
 	
 	id = request.session.get('user_id', -1)
 
