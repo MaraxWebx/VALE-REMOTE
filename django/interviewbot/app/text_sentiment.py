@@ -101,7 +101,7 @@ class SentimentAnalyzer:
     
     def execute(self, strings):
         out = []
-        for string in self.strings:
+        for string in strings:
             res = ""
             for word in string:
                 res += word.text + ' '
@@ -112,7 +112,7 @@ class SentimentAnalyzer:
         self.output = {}
 
         i=-1
-        for doc in self.strings:
+        for doc in strings:
             i+=1
 
             keyword = self.__checkwords(doc)

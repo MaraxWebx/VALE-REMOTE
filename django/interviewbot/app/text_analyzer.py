@@ -1,5 +1,4 @@
 import it_core_news_md as it_core
-import time
 import pandas
 
 class TextAnalyzer:
@@ -63,17 +62,11 @@ class TextAnalyzer:
 		if self.doc is None:
 			raise Exception("No text input given. Init this class with corpus as parameter or use put(corpus) method.")
 
-
-	def get_benchmark(self):
-		return str(self.end - self.start)
-        
-
 	def analyze(self):
 		self.__check_doc()
 
 		index = 0
 		self.data = []
-		self.start = time.time_ns() // 1000000 
 		while index < self.LENGTH:
 			self.__analyze_token(self.doc[index])
 			if self.__check_if_complete() or self.doc[index].text == '.':
@@ -81,7 +74,6 @@ class TextAnalyzer:
 			index += 1
 
 		self.__reset_variables()
-		self.end = time.time_ns() // 1000000 
 		return self.data
 
 

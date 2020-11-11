@@ -1,6 +1,5 @@
 import it_core_news_md
 import json
-import time
 from app.models import KeyWords
 
 class Filter:
@@ -44,7 +43,6 @@ class Filter:
 		if strings is None:
 			print('No strings for input. Insert a list of string as paramenter')
 			return
-		self.starttime = time.time_ns() // 1000000
 		self.output = []
 		#tokenized_strings = self.__tokenize(strings)
 		for string in strings:
@@ -79,14 +77,10 @@ class Filter:
 
 			if is_rilevant:
 				self.output.append(string)
-		self.endtime = time.time_ns() // 1000000
 		if as_string:
 			return self.get_results_as_string(self.output)
 		return self.output
 
-
-	def get_benchmark(self):
-		return str(self.endtime - self.starttime)
 
 	def get_results_as_string(self, data):
 		data = []
