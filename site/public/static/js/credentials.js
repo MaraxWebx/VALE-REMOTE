@@ -62,7 +62,9 @@ function saveData() {
       console.log('SUCCESS!!');
     })
       .catch( (error) => {
-        swal("errore", "", "error");
+        if(error.response.status == 415){
+          swal("Formato del file non valido","Formati supportati: PDF","error")
+        }
         console.log(error.response.status);
       });
     
