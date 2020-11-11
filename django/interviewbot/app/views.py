@@ -175,7 +175,9 @@ class NextQuestionView(APIView):
 					if sentiment[key] > value_max:
 						value_max = sentiment[key]
 						key_max = key
-				kw_question = KeyWords.objects.get(word=key_max)
+
+				print('############finding : ', key_max)
+				kw_question = KeyWords.objects.filter(word=key_max)[0]
 				return kw_question.start_question
 
 		else:
