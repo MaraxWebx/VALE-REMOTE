@@ -116,8 +116,8 @@ class NextQuestionView(APIView):
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
 				if int(request.session.get('last_base_quest', - 1)) > 0:
-					question = Question.objects.get(id=request.session['last_base_	ywar'])
-					session['last_base_quest'] = -1
+					question = Question.objects.get(id=request.session['last_base_quest'])
+					request.session['last_base_quest'] = -1
 					flows = QuestionFlow.objects.all().filter(parent=question)
 					if flows.exists() and flows.count() > 0:
 						next_question = flows.get(parent=question).son
