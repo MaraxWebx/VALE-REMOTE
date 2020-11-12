@@ -170,7 +170,7 @@ class NextQuestionView(APIView):
 				
 				if not filter_results:
 					last_id = session.get('last_base_quest', -1)
-					if last_id > 0:
+					if int(last_id) > 0:
 						question = Question.objects.get(id=id)
 						flows = QuestionFlow.objects.all().filter(parent=question)
 						if flows.exists() and flows.count() > 0:
@@ -184,8 +184,8 @@ class NextQuestionView(APIView):
 								for flow in flows:
 									if flow.choice == answer:
 										return flow.son
-						else:
-							return 0
+					else:
+						return 0
 
 				sentiment = SA.execute(filter_results)
 
@@ -199,7 +199,7 @@ class NextQuestionView(APIView):
 
 				if value_max < 0.1:
 					last_id = session.get('last_base_quest', -1)
-					if last_id > 0:
+					if int(last_id) > 0:
 						question = Question.objects.get(id=id)
 						flows = QuestionFlow.objects.all().filter(parent=question)
 						if flows.exists() and flows.count() > 0:
@@ -213,8 +213,8 @@ class NextQuestionView(APIView):
 								for flow in flows:
 									if flow.choice == answer:
 										return flow.son
-						else:
-							return 0
+					else:
+						return 0
 
 				kw_question = KeyWords.objects.filter(word=key_max)[0]
 				return kw_question.start_question
