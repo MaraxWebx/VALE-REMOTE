@@ -110,7 +110,8 @@ class NextQuestionView(APIView):
 			request.session['last_ans_id'] = -1
 
 		# Generazione prossima domanda
-		next_question = self.get_next_question(id=question_id, answer=answer_text)
+
+		next_question = self.get_next_question(id=question_id, answer=answer_text, request.session)
 
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
@@ -136,7 +137,7 @@ class NextQuestionView(APIView):
 			print(" ## ERR ## - User session doesn't have a last_ans_id setted. Cannot save the video.")
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
-	def get_next_question(self, id, answer):
+	def get_next_question(self, id, answer, session):
 
 		# In questo metodo si deve far riferimento alla classe per l'elaborazione del
 		# linguaggio naturale. Per ora le biforcazioni ci sono solamente per le domande
@@ -145,6 +146,7 @@ class NextQuestionView(APIView):
 		question = Question.objects.get(id=id)
 		if question is not None:
 			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
+				session['last_base_quest'] = id
 				flows = QuestionFlow.objects.all().filter(parent=question)
 				if flows.exists() and flows.count() > 0:
 					if flows.count() == 1:
@@ -166,7 +168,24 @@ class NextQuestionView(APIView):
 				filter = Filter()
 				filter_results = filter.execute(analyze_results)
 				
-				# Controllare che filter non sia vuoto
+				if not filter_results:
+					last_id = session.get('last_base_quest', -1)
+					if last_id > 0:
+						question = Question.objects.get(id=id)
+						flows = QuestionFlow.objects.all().filter(parent=question)
+						if flows.exists() and flows.count() > 0:
+							if flows.count() == 1:
+								return flows.get(parent=question).son
+							elif not question.is_fork:
+								return None
+							else:
+								if answer == "" or answer is None:
+									return None
+								for flow in flows:
+									if flow.choice == answer:
+										return flow.son
+						else:
+							return 0
 
 				sentiment = SA.execute(filter_results)
 
@@ -178,9 +197,25 @@ class NextQuestionView(APIView):
 						value_max = sentiment[key]
 						key_max = key
 
-				# controllare la soglia minima
+				if value_max < 0.1:
+					last_id = session.get('last_base_quest', -1)
+					if last_id > 0:
+						question = Question.objects.get(id=id)
+						flows = QuestionFlow.objects.all().filter(parent=question)
+						if flows.exists() and flows.count() > 0:
+							if flows.count() == 1:
+								return flows.get(parent=question).son
+							elif not question.is_fork:
+								return None
+							else:
+								if answer == "" or answer is None:
+									return None
+								for flow in flows:
+									if flow.choice == answer:
+										return flow.son
+						else:
+							return 0
 
-				print('############ finding : ', key_max)
 				kw_question = KeyWords.objects.filter(word=key_max)[0]
 				return kw_question.start_question
 
