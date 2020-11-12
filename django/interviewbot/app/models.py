@@ -12,6 +12,7 @@ class Question(models.Model):
 	is_fork = models.BooleanField(default=False)
 	date_published = models.DateTimeField('date published', auto_now_add=True)
 	to_analyze = models.BooleanField(default=False)
+	is_technical = models.BooleanField(default=False)
 	addedby = models.CharField(max_length=100, default="Anymous")
 
 class QuestionFlow(models.Model):
