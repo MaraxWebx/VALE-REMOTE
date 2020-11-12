@@ -115,9 +115,16 @@ class NextQuestionView(APIView):
 
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
-				# Terminato, ritorna un messaggio adeguato e settare che il colloqui 
-				# per quell'user è terminato e può essere analizzato dalle recruiter
-				return Response(status=status.HTTP_202_ACCEPTED)
+				if int(request.session.get('last_base_quest', - 1)) > 0:
+					question = Question.objects.get(id=request.session['last_base_	ywar'])
+					session['last_base_quest'] = -1
+					flows = QuestionFlow.objects.all().filter(parent=question)
+					if flows.exists() and flows.count() > 0:
+						next_question = flows.get(parent=question).son
+					else:
+						return Response(status=status.HTTP_202_ACCEPTED)
+				else:
+					return Response(status=status.HTTP_202_ACCEPTED)
 			else:
 				nq_serialized = QuestionSerializer(next_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
@@ -146,7 +153,8 @@ class NextQuestionView(APIView):
 		question = Question.objects.get(id=id)
 		if question is not None:
 			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
-				session['last_base_quest'] = id
+				if int(session.get('last_base_quest',-1)) < 0 :
+					session['last_base_quest'] = id
 				flows = QuestionFlow.objects.all().filter(parent=question)
 				if flows.exists() and flows.count() > 0:
 					if flows.count() == 1:
