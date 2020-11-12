@@ -20,6 +20,10 @@ function question() {
       }
     })
       .then(function (response) {
+        if(response.status !== 200){
+          spinner();
+        } 
+        console.log("status getQuestion: " + response.status);
         document.getElementById("boxRis").hidden = false;
         prev_question_id = response.data.id;
         question_type = response.data.type;
@@ -28,12 +32,7 @@ function question() {
       })
       .catch(function (error) {
         console.error("Error in get request:", error)
-        /* 
-        document.getElementById("spinner").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
-                                                       <span class="sr-only">Loading...</span>
-                                                      </div>`;
-
-        */
+       
       });
   } else {
 
@@ -88,12 +87,7 @@ function question() {
       })
       .catch(function (error) {
         console.error("Error in get request:", error)
-        /* 
-        document.getElementById("spinner").innerHTML = `<div style="text-align:center" class="spinner-border text-light" role="status">
-                                                       <span class="sr-only">Loading...</span>
-                                                      </div>`;
-
-        */
+        
       });
   }
 }
@@ -179,4 +173,11 @@ function getQuestion(quest) {
     document.getElementById("title").innerHTML = titleOut;
   }
 
+}
+
+function spinner(){
+  document.getElementById("spinner").innerHTML = `<div class="spinner-border text-light" role="status">
+                                                  <span class="sr-only">Loading...</span>
+                                                  </div>`
+  document.getElementById("boxRis").hidden = true;
 }
