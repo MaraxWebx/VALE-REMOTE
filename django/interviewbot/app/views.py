@@ -160,10 +160,6 @@ class NextQuestionView(APIView):
 				else:
 					return 0
 			else:
-				print("########################################################")
-				print("#####################ANALYZE :", id, "####################")
-				print("########################################################")
-
 				analyzer = TextAnalyzer(answer)
 				analyze_results = analyzer.analyze()
 
