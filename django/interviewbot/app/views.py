@@ -175,7 +175,7 @@ class NextQuestionView(APIView):
 				else:
 					return 0
 			else:
-				if int(session.get('last_base_quest',-1)) < 0  or not session.get('have_forked', False):
+				if not session.get('have_forked', False):
 					session['last_base_quest'] = id
 				session['have_forked'] = True
 				
