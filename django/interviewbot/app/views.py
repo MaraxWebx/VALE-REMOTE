@@ -119,7 +119,7 @@ class NextQuestionView(APIView):
 					question = Question.objects.get(id=request.session['last_base_quest'])
 					request.session['last_base_quest'] = -1
 					flows = QuestionFlow.objects.all().filter(parent=question)
-					if flows.exists() and flow.count() == 1
+					if flows.exists() and flow.count() == 1:
 						next_question = flows.get(parent=question).son
 					elif flows.count() > 0:
 						for flow in flows:
