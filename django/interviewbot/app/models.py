@@ -6,7 +6,7 @@ import datetime
 
 class Question(models.Model):
 	type = models.CharField(max_length=15, default="", null=True, blank=True)
-	action = models.CharField(max_length=300)
+	action = models.CharField(max_length=1500)
 	length = models.IntegerField(default=0)
 	choices = models.CharField(max_length=500, default="", null=True, blank=True)
 	is_fork = models.BooleanField(default=False)
