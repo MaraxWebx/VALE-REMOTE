@@ -70,7 +70,7 @@ class Filter:
 					is_rilevant = True
 					break
 
-			if len(string) > 2 and not is_rilevant:		# non contiene parole chiave, vediamo se ha senso
+			if len(string) > 1 and not is_rilevant:		# non contiene parole chiave, vediamo se ha senso
 				if contain_verb:
 					if contain_noun or contain_propn or contain_num:
 						is_rilevant = True
