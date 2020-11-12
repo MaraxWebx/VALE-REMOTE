@@ -118,6 +118,7 @@ class NextQuestionView(APIView):
 				if int(request.session.get('last_base_quest', - 1)) > 0:
 					question = Question.objects.get(id=request.session['last_base_quest'])
 					request.session['last_base_quest'] = -1
+					request.session['have_forked'] = False
 					flows = QuestionFlow.objects.all().filter(parent=question)
 					if flows.exists() and flows.count() == 1:
 						next_question = flows.get(parent=question).son
@@ -157,7 +158,7 @@ class NextQuestionView(APIView):
 		question = Question.objects.get(id=id)
 		if question is not None:
 			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
-				if int(session.get('last_base_quest',-1)) < 0 :
+				if int(session.get('last_base_quest',-1)) < 0  and not session.get('have_forked', False):
 					session['last_base_quest'] = id
 				flows = QuestionFlow.objects.all().filter(parent=question)
 				if flows.exists() and flows.count() > 0:
@@ -174,8 +175,11 @@ class NextQuestionView(APIView):
 				else:
 					return 0
 			else:
+				session['have_forked'] = True
+				
 				analyzer = TextAnalyzer(answer)
 				analyze_results = analyzer.analyze()
+				
 
 				filter = Filter()
 				filter_results = filter.execute(analyze_results)
