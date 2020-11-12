@@ -158,7 +158,7 @@ class NextQuestionView(APIView):
 		question = Question.objects.get(id=id)
 		if question is not None:
 			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
-				if int(session.get('last_base_quest',-1)) < 0  and not session.get('have_forked', False):
+				if int(session.get('last_base_quest',-1)) < 0  or not session.get('have_forked', False):
 					session['last_base_quest'] = id
 				flows = QuestionFlow.objects.all().filter(parent=question)
 				if flows.exists() and flows.count() > 0:
