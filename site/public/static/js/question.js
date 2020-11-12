@@ -11,6 +11,8 @@ function question() {
   document.getElementById("boxRis").hidden = true;
   document.getElementById("start").hidden = true;
 
+  showSpinner();
+
   id = id + 1;
   if (id == 1) {
     
@@ -20,9 +22,7 @@ function question() {
       }
     })
       .then(function (response) {
-        if(response.status !== 200){
-          spinner();
-        } 
+        hideSpinner()
         console.log("status getQuestion: " + response.status);
         document.getElementById("boxRis").hidden = false;
         prev_question_id = response.data.id;
@@ -76,6 +76,7 @@ function question() {
       }
     })
       .then(function (response) {
+        hideSpinner()
         document.getElementById("boxRis").hidden = false;
         if (question_type === 'video') {
           window.submitFile()
@@ -175,9 +176,15 @@ function getQuestion(quest) {
 
 }
 
-function spinner(){
+function showSpinner(){
   document.getElementById("spinner").innerHTML = `<div class="spinner-border text-light" role="status">
                                                   <span class="sr-only">Loading...</span>
                                                   </div>`
   document.getElementById("boxRis").hidden = true;
 }
+
+function hideSpinner(){
+  document.getElementById("spinner").hidden = true
+  document.getElementById("boxRis").hidden = false;
+}
+
