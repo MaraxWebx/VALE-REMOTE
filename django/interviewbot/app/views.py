@@ -111,7 +111,7 @@ class NextQuestionView(APIView):
 
 		# Generazione prossima domanda
 
-		next_question = self.get_next_question(id=question_id, answer=answer_text, request.session)
+		next_question = self.get_next_question(id=question_id, answer=answer_text, session=request.session)
 
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
