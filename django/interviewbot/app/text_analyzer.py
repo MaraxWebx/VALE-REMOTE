@@ -201,9 +201,9 @@ class TextAnalyzer:
 		
 
 	def __analyze_conj(self, token):
-		if token.i + 1 < self.LENGTH and self.doc[token.i+1].pos_ == 'NOUN' or self.doc[token.i+1].pos_ == 'PROPN':
+		if token.i + 1 < self.LENGTH and (self.doc[token.i+1].pos_ == 'NOUN' or self.doc[token.i+1].pos_ == 'PROPN'):
 			self.conj_join = True
-		elif token.i + 2 < self.LENGTH and self.doc[token.i+2].pos_ == 'NOUN' or self.doc[token.i+2].pos_ == 'PROPN':
+		elif token.i + 2 < self.LENGTH and (self.doc[token.i+2].pos_ == 'NOUN' or self.doc[token.i+2].pos_ == 'PROPN'):
 			self.conj_join = True
 		else:
 			self.__reset_variables()
