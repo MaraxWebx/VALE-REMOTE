@@ -240,7 +240,7 @@ function enableCode(){
 		opacity: 1
 	})
 }
-function disabledCode(){
+function disableCode(){
 	$('.CodeMirror').css({
 		opacity: 0.3
 	})
