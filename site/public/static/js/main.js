@@ -216,6 +216,7 @@ function onBtnStartClicked() {
 
 	//progress(10, 10, $('#progressBar'));		//set time to progress bar
 	enableCode();
+	editor.getDoc().setValue('');
 	//editor.getDoc().setValue('');
 	editor.setOption("readOnly", false);
 	document.getElementById("StartTextBtn").hidden = true;
