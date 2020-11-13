@@ -57,8 +57,8 @@ function question() {
 
     if (question_type === 'code') {
       textTmp = editor.getValue();
-      textTmp = textTmp.replace('\n', '<br>')
-      textTmp = textTmp.replace('\t', '  ')
+      textTmp = textTmp.replace(/\n/g, '<br>')
+      textTmp = textTmp.replace(/\t/g, '  ')
       textTmp = '<pre>' + textTmp + '</pre>'
       console.log(textTmp)
       vidTmp = "no_video";
