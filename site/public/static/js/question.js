@@ -56,7 +56,8 @@ function question() {
     }
 
     if (question_type === 'code') {
-      textTmp = editor.getValue(); 
+      textTmp = editor.getValue();
+      console.log(textTmp) 
       vidTmp = "no_video";
       editor.getDoc().setValue('');
     }

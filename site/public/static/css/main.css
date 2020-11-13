@@ -103,7 +103,7 @@ hr{
   border-radius: 20px;
   margin-top: 10px;
   border: 0;
-  height: 530px;
+  height: 530px !important;
   width:  100%;
   box-shadow: 2px 2px 3px #222222;
   opacity: 0.3;
