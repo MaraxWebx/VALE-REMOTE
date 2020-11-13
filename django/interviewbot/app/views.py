@@ -40,7 +40,7 @@ def index(request):
 		return render(request, 'credentials.html')
 
 def interview(request):
-	if  request.session.get('is_reg', False):
+	if  request.session.get('is_reg', False) and User.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
 		return render(request,'index.html')
 	else:
 		return redirect('/')
