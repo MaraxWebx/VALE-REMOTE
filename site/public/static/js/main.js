@@ -215,15 +215,17 @@ function onBtnRecordClicked() {
 function onBtnStartClicked() {
 
 	//progress(10, 10, $('#progressBar'));		//set time to progress bar
-
-	document.getElementById("textArea").disabled = false;
+	enableCode();
+	//editor.getDoc().setValue('');
+	editor.setOption("readOnly", "false");
 	document.getElementById("StartTextBtn").hidden = true;
 	document.getElementById("ConfirmTextBtn").hidden = false;
 }
 
 function onBtnConfirmClicked() {
 
-	document.getElementById("textArea").disabled = true;
+	disableCode();
+	editor.setOption("readOnly", "nocursor");
 	
 	/* if (window.flag) {
 		document.getElementById("ConfirmTextBtn").hidden = true;		
@@ -231,6 +233,17 @@ function onBtnConfirmClicked() {
 	document.getElementById("textArea").disabled = true; */
 
 
+}
+
+function enableCode(){
+	$('.CodeMirror').css({
+		opacity: 1
+	})
+}
+function disabledCode(){
+	$('.CodeMirror').css({
+		opacity: 0.3
+	})
 }
 
 navigator.mediaDevices.ondevicechange = function (event) {

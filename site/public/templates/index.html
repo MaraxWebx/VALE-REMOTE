@@ -13,6 +13,10 @@
 	<!-- Progressive bar CSS / Main.css -->
 	<link rel="stylesheet" href="{% static 'css/progressive-bar.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	<!-- CodeMirror CSS -->
+	<!-- CodeMirror css -->
+	<link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
+	<link rel="stylesheet" href="{% static '/node_modules/codemirror/theme/darcula.css' %}">
 
 </head>
 
@@ -81,8 +85,7 @@
 									
 							</div>
 							<div id="video"><video autoplay muted="true"> </video></div>	
-							<div id="code"><textarea id="textArea" rows="20" cols="70" placeholder="AREA DI TESTO"
-									disabled></textarea></div>
+							<div id="code"><textarea id="textArea"></textarea></div>
 							<div id="check" class="checkBox"> </div>
 							<div id="controls">
 								<button class="bRec" id="StartTextBtn" onclick="onBtnStartClicked()">Rispondi</button>
@@ -117,9 +120,12 @@
 
 
 <!--  SCRIPT JS  -->
+<script src=“{% static '/node_modules/codemirror/lib/codemirror.js' %}”></script>
+<script src=“{% static '/node_modules/codemirror/mode/javascript/javascript.js' %}”></script>
+<script src=“{% static '/node_modules/codemirror/addon/edit/closebrackets.js' %}”></script>
 <script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static '/js/send-video.js' %}"></script>
-<script src="{% static './node_modules/axios/dist/axios.min.js' %}"></script>
+<script src="{% static '/node_modules/axios/dist/axios.min.js' %}"></script>
 <script src="{% static 'js/speechRecognition.js' %}"></script>
 <script src="{% static 'js/question.js' %}"></script>
 <script src="{% static 'js/progressive-bar.js' %}"></script>

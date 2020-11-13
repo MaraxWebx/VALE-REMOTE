@@ -7,6 +7,15 @@ var acc = 0;
 var flag = false;
 var i = 1;
 
+var codeType = "javascript";
+var editor =  CodeMirror.fromTextArea(document.getElementById("textArea"),{
+  mode: codeType,
+  lineNumbers: true,
+  autoCloseBrackets: true,
+  readOnly: 'nocursor',
+  theme: 'darcula'
+});
+
 function question() {
   document.getElementById("boxRis").hidden = true;
   document.getElementById("start").hidden = true;
@@ -47,9 +56,9 @@ function question() {
     }
 
     if (question_type === 'code') {
-      textTmp = document.getElementById("textArea").value;
+      textTmp = editor.getValue(); 
       vidTmp = "no_video";
-      document.getElementById("textArea").value = "";
+      editor.getDoc().setValue('');
     }
 
     if (question_type === 'check') {

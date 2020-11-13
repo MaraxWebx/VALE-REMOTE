@@ -98,6 +98,17 @@ hr{
   color: #476692;
   font-size: 16px;
 }
+
+.CodeMirror {
+  border-radius: 20px;
+  margin-top: 10px;
+  border: 0;
+  height: 530px;
+  width:  100%;
+  box-shadow: 2px 2px 3px #222222;
+  opacity: 0.3;
+
+}
 .videoSection{
   align-items: center;
 }
@@ -131,7 +142,7 @@ text-align: center;
 /*BOX VIDEO*/
 
 .boxVideo{
-  margin-left: 23%;
+  margin-left: 15%;
 }
 
 video {
@@ -146,7 +157,7 @@ video {
 #controls {
   display: flex;
   margin-top: 20px;
-  width: 400px;
+  width: 100%;
 }
 
 
@@ -211,16 +222,6 @@ video {
  
 }
 
-.spinner-border {
-  display: inline-block;
-  width: 5rem;
-  height: 5rem;
-  border: .40em solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  -webkit-animation: spinner-border .75s linear infinite;
-  animation: spinner-border .75s linear infinite;
-}
 /***maretta**/
 textarea:focus{
   outline: none;
