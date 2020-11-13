@@ -43,6 +43,8 @@ def interview(request):
 	if  request.session.get('is_reg', False) and User.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
 		return render(request,'index.html')
 	else:
+		request.session['is_reg'] = False
+		request.session['user_id'] = -1
 		return redirect('/')
 
 @api_view(['POST'])
