@@ -26,6 +26,9 @@ class User(models.Model):
 	email = models.CharField(max_length=100)
 	cv = models.FileField(upload_to='user_cvs/', null = True)
 
+	def __str__(self):
+		return self.firstname + ' ' + self.lastname
+
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -36,8 +39,15 @@ class Answer(models.Model):
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
 	choice_text = models.CharField(max_length=500, null=True)
 	choice_vid = models.FileField(upload_to='videos/', null=True,)
+	registered = models.DateTimeField('date published', auto_now_add=True)
+
+	def __str__(self):
+		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type
 
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.word
 
