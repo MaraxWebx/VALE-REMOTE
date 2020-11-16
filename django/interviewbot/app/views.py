@@ -74,11 +74,12 @@ class NextQuestionView(APIView):
 		dict = request.query_params
 		request.session['refresh'] = True
 		# Check se è prima domanda
+		force_base = False
 		if not request.session.get('accept_privacy', False):
-			dict['type'] = 'base'
+			force_base = True
 
 		if 'type' in dict:
-			if dict['type'] == 'base':
+			if dict['type'] == 'base' or force_base:
 				first_question = Question.objects.get(pk=55)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
@@ -103,7 +104,7 @@ class NextQuestionView(APIView):
 				first_question = Question.objects.get(pk=76)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
-				
+
 		user_obj = User.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
 		interview_obj = Interview.objects.get(pk=interview_id)
