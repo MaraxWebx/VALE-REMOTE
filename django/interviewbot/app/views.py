@@ -350,9 +350,6 @@ def keyword_managment(request):
 
 	return Response(status=status.HTTP_400_BAD_REQUEST)
 
-		
-
-
 
 @permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
@@ -421,6 +418,7 @@ def add_question(request):
 			'esito': ""
 		})
 
+
 @permission_required('app.can_add_question', raise_exception=True)
 def add_parent_to_join(request):
 	if request.method == 'POST':
@@ -477,37 +475,5 @@ def add_parent_to_join(request):
 			'parent_number': range(int(n)),
 			'questions': question_list
 		})
-		
-@permission_required('app.can_add_question', raise_exception=True)
-def question_graph(request):
-	if request.method == 'GET':
-		graph = QuestionGraph()
-		questionflow = QuestionFlow.objects.all()
-		for flow in questionflow:
-			graph.add_edge(flow.parent, flow.son, choice=flow.choice)
-		
-		html = '<h1>List of all possible path</h1><br/><ul>'
-		for key in graph.get_vertices():
-			vert = graph.get_vertex(key)
-			if not vert.seen_as_child:
-				html += DFS(vert)
-		html += '</ul>'
-		return render(request, 'graph.html',context={'graph': mark_safe(html)})
-
-def DFS(v):
-	v.seen = True
-	ret = '<li>--' + v.get_choice() + '-->' + v.question.action + '</li>'
-
-	if not v.adjacent:
-		return ret
-	else:
-		ret = '<li>--' + v.get_choice() + '-->'+ v.question.action + '</li>'
-		ret += '<ul>'
-	for x in v.adjacent:
-		v.adjacent[x].seen_as_child = True
-		ret += DFS(v.adjacent[x])
-
-	ret += '</ul>'
-	return ret
 
 
