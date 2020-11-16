@@ -233,7 +233,7 @@ class NextQuestionView(APIView):
 						value_max = sentiment[key]
 						key_max = key
 
-				if value_max < 0:
+				if value_max < -0.25:
 					last_id = session.get('last_base_quest', -1)
 					if int(last_id) > 0:
 						question = Question.objects.get(id=id)
