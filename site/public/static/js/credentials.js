@@ -1,12 +1,12 @@
 var file;
+var firstName;
+var lastName;
+var eMail;
 
 function saveData() {
-
-
-  var firstName = document.msform.firstname.value;
-  var lastName = document.msform.lastname.value;
-  var eMail = document.msform.email.value;
-
+  firstName = document.msform.firstname.value;
+  lastName = document.msform.lastname.value;
+  eMail = document.msform.email.value;
 
   if (firstName === "") {
     swal("Inserire Nome!", "", "error");
@@ -27,14 +27,16 @@ function saveData() {
     return false;
   }
 
-
-
   if (this.file === undefined) {
     swal("Allegare CV!", "", "error");
     document.getElementById("file").focus();
     return false;
   }
 
+  terms();
+}
+
+function uploadData() {
   axios.post('/restex/', {
     firstname: firstName,
     lastname: lastName,
@@ -73,9 +75,6 @@ function saveData() {
     console.log(error);
   });
 
-
-
-
   document.msform.reset();
   this.files = [];
 }
@@ -83,8 +82,29 @@ function saveData() {
 handleFileUpload = function () {
   file = document.getElementById("file").files[0];
   console.log('>>>> 1st element in files array >>>> ', file);
-
 }
+
+function terms() {
+  swal({
+    title: "Normativa sulla privacy",
+    text: `Proseguendo il colloquio, 
+    autorizza il trattamento dei suoi dati personali presenti nel video-colloquio
+     e nel curriculum vitae ai sensi dell'art. 13 del Decreto Legislativo 30 giugno 2003, n. 196 
+    "Codice in materia di protezione dei dati personali" e dell'art. 13 del GDPR (Regolamento UE 2016/679)`,
+    icon: "info",
+    buttons: ["Non Accetto", "Accetto"],
+    dangerMode: true
+  })
+    .then((willUpload) => {
+      if (willUpload) {
+        uploadData();
+      } else {
+        document.msform.reset();
+        this.files = [];
+      }
+    });
+}
+
 /*
 var file;
 
