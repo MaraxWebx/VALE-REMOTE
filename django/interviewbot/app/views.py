@@ -77,7 +77,7 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
-				first_question = Question.objects.get(pk=55)
+				first_question = Question.objects.get(pk=56)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 			else:
@@ -92,20 +92,6 @@ class NextQuestionView(APIView):
 		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['answer_text']
-
-		if int(question_id) == 55 or int(question_id) == 76:
-			if "non accetto" in answer_text.lower():
-				request.session['accept_privacy'] = False
-				first_question = Question.objects.get(pk=76)
-				nq_serialized = QuestionSerializer(first_question)
-				return Response(nq_serialized.data, status=status.HTTP_200_OK)
-			elif "accetto" in answer_text.lower():
-				request.session['accept_privacy'] = True
-			else:
-				request.session['accept_privacy'] = False
-				first_question = Question.objects.get(pk=76)
-				nq_serialized = QuestionSerializer(first_question)
-				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 
 		user_obj = User.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
