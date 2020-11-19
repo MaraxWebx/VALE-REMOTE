@@ -195,6 +195,9 @@ class NextQuestionView(APIView):
 						for flow in flows:
 							if flow.choice == answer:
 								return flow.son
+						for flow in flows:
+							if flow.choice == "":
+								return flow.son
 				else:
 					if not question.is_technical:
 						session['last_base_quest'] = -1
