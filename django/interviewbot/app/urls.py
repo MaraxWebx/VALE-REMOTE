@@ -15,7 +15,7 @@ urlpatterns = [
     path('file/', test_file, name='test_file'),
     path('add_kw/', keyword_managment, name='add_keyword'),
     path('dashboard/', dashboard_index, name='dashboard'),
-    path('login_recruiter/', login_recruiter, name='login')
+    path('login_rectruiter/', login_recruiter, name='login')
 ]
 
 if settings.DEBUG:
