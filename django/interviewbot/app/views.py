@@ -70,7 +70,8 @@ def test_rest(request):
 			new_user = serializer.save() 
 			request.session['is_reg'] = True
 			request.session['user_id'] = new_user.id
-			interview = Interview.objects.create(user=new_user)
+			type = InterviewType.objects.get(pk = int(request.session.get('interview', 1)))
+			interview = Interview.objects.create(user=new_user, type = type)
 			interview.save()
 			request.session['interview_id'] = interview.id
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
