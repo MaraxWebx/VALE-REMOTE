@@ -8,7 +8,7 @@ admin.site.register(KeyWords)
 admin.site.register(CandidateUser)
 admin.site.register(Interview)
 
-class QuestionAnswer(models.Answer):
+class QuestionAnswer(Answer):
     readonly_fields = ('date',)
 
 admin.site.register(QuestionAnswer)
