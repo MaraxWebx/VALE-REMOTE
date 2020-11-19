@@ -29,15 +29,22 @@ controller = Controller()
 
 # Create your views here.
 def index(request):
-	if request.session.get('is_reg', False):
-		
-		return redirect('/interview/')
-	else:
-		request.session.clear_expired()
-		request.session.flush()
-		request.session.set_expiry(300)
-		request.session['is_reg'] = False
-		return render(request, 'credentials.html')
+	if request.method == 'GET':
+		if request.session.get('is_reg', False):
+			return redirect('/interview/')
+		else:
+			if 'interview' in request.GET:
+				interviewtype_id = request.GET['interview']
+				interviewtype = InterviewType.objects.filter( pk = int(interviewtype_id))
+				if interviewtype.exists() and interviewtype.count() == 1:
+					request.session['interview'] = interviewtype_id
+				else:
+					request.session['interview'] = -1
+			request.session.clear_expired()
+			request.session.flush()
+			request.session.set_expiry(300)
+			request.session['is_reg'] = False
+			return render(request, 'credentials.html')
 
 def interview(request):
 	if  request.session.get('is_reg', False) and CandidateUser.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
@@ -77,13 +84,13 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
-				if 'interview' in dict and dict['interview'] > 0:
+				if 'interview' in request.session and request.session.get('interview', -1 ) > 0:
 					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
 						first_question = interviewtype[0].start_question
 						nq_serialized = QuestionSerializer(first_question)
 						return Response(nq_serialized.data, status=status.HTTP_200_OK)
-						
+
 				first_question = Question.objects.get(pk=56)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
