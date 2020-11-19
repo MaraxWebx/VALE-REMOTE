@@ -31,11 +31,11 @@ class CandidateUser(models.Model):
 
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE)
 
 class Answer(models.Model):
 	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE)
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
 	choice_text = models.CharField(max_length=500, null=True)
 	choice_vid = models.FileField(upload_to='videos/', null=True,)
