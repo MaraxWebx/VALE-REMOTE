@@ -88,6 +88,10 @@
 					<div class="videoSection">
 						<div class="boxVideo">
 							<h2 class="titleRis">Risposta</h2>
+							<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
+									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
+									<p>Record</p>
+								</button>
 							<div id="timeBox" class="timeBox" hidden>
 								<!--<div id="answerTime" hidden class="container time"> 
 												Registration closes in <span id="time">01:00</span> minutes!</div>-->
@@ -100,6 +104,7 @@
 								</div>
 									
 							</div>
+							
 							<div id="video"><video autoplay muted="true"> </video></div>	
 							<div id="code"><textarea id="textArea"></textarea></div>
 							<div id="check" class="checkBox"> </div>
@@ -108,10 +113,7 @@
 								<button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked(); question()"
 									hidden>Conferma</button>
 
-								<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
-									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
-									<p>Record</p>
-								</button>
+								
 								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
 									hidden>
 									<p>Stop</p>
