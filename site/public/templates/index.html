@@ -105,8 +105,11 @@
 							<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
 									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
 									<p>Record</p>
-								</button>
-
+							</button>
+							<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
+								hidden>
+								<p>Stop</p>
+							</button>
 							<div id="video"><video autoplay muted="true"> </video></div>	
 							<div id="code"><textarea id="textArea"></textarea></div>
 							<div id="check" class="checkBox"> </div>
@@ -116,10 +119,7 @@
 									hidden>Conferma</button>
 
 								
-								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
-									hidden>
-									<p>Stop</p>
-								</button>
+								
 								<!--<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>Pause</button>-->
 
 								<!--<button id="stateButton" onclick="onStateClicked()">trace state</button>-->
