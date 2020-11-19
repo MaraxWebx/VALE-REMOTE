@@ -495,6 +495,7 @@ def login_recruiter(request):
 	if request.method == 'POST':
 		email = request.POST['email']
 		password = request.POST['password']
+		print("###########", email, password)
 		user = authenticate(request, email=email, password=password)
 		if user is not None:
 			if user.is_active:
