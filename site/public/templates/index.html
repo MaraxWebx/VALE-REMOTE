@@ -87,11 +87,9 @@
 				<section id="boxRis" class="col-md-6 col-sm ">
 					<div class="videoSection">
 						<div class="boxVideo">
+							
 							<h2 class="titleRis">Risposta</h2>
-							<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
-									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
-									<p>Record</p>
-								</button>
+							
 							<div id="timeBox" class="timeBox" hidden>
 								<!--<div id="answerTime" hidden class="container time"> 
 												Registration closes in <span id="time">01:00</span> minutes!</div>-->
@@ -100,9 +98,12 @@
 									
 									<div class="bar"></div>
 									<p class="time" id="time"></p>
-								
-								</div>
 									
+								</div>
+								<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
+									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
+									<p>Record</p>
+								</button>
 							</div>
 							
 							<div id="video"><video autoplay muted="true"> </video></div>	
