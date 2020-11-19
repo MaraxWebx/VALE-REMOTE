@@ -47,6 +47,7 @@ class Answer(models.Model):
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+	interviewtype = models.ForeignKey(InterviewType, on_delete=model.CASCADE)
 
 	def __str__(self):
 		return self.word + ' (' + str(self.id) + ')'
@@ -54,5 +55,5 @@ class KeyWords(models.Model):
 class InterviewType(models.Model):
 	interview_name = models.CharField(max_length=200, null = False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
-	
+
 
