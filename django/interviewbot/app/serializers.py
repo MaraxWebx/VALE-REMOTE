@@ -8,7 +8,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = CandidateUser
         fields = '__all__'
 
 class AnswerSerializer(serializers.ModelSerializer):
