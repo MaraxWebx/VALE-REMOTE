@@ -509,8 +509,10 @@ def login_recruiter(request):
 	return render('/login_recruiter/', context = {'form':form})
 
 
-@login_required(redirect_field_name='login_recruiter/')
 def dashboard_index(request):
+	if not request.user.is_authenticated:
+        return redirect('login_rectruiter/')
+		
 	colloqui = Interview.objects.all()
 	user = request.user
 
