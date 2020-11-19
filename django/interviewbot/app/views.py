@@ -90,7 +90,7 @@ class NextQuestionView(APIView):
 				print('DOMANDA BASE, interview =', str(request.session.get('interview', -1 )))
 				if int(request.session.get('interview', -1 )) > 0:
 					print('TROVATO INTERVIEW = ', request.session['interview'])
-					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
+					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
 						print('PARTE COLLOQUIO')
 						first_question = interviewtype[0].start_question
