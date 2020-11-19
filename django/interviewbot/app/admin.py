@@ -7,8 +7,4 @@ admin.site.register(QuestionFlow)
 admin.site.register(KeyWords)
 admin.site.register(CandidateUser)
 admin.site.register(Interview)
-
-class QuestionAnswer(Answer):
-    readonly_fields = ('date',)
-
-admin.site.register(QuestionAnswer)
+admin.site.register(Answer)
