@@ -3,6 +3,6 @@ from .models import *
 
 
 class LoginForm(forms.Form):
-    email = forms.CharField(max_length=150, required=True)
+    username = forms.CharField(max_length=150, required=True)
     password = forms.CharField(widget=forms.PasswordInput, max_length=50, required=True)
-    
+

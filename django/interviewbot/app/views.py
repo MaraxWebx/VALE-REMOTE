@@ -493,10 +493,10 @@ def add_parent_to_join(request):
 def login_recruiter(request):
 	form = LoginForm()
 	if request.method == 'POST':
-		email = request.POST['email']
+		username = request.POST['username']
 		password = request.POST['password']
-		print("###########", email, password)
-		user = authenticate(request, email=email, password=password)
+		print("###########", username, password)
+		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			if user.is_active:
 				login(request, user)
