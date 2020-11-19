@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52.16" height="50" viewBox="0 0 52.16 50">
+  <g id="Raggruppa_4" data-name="Raggruppa 4" transform="translate(-714 -454.95)">
+    <path id="Icon_material-account-box" data-name="Icon material-account-box" d="M4.5,8.944V40.056A4.688,4.688,0,0,0,9.4,44.5H43.708a4.7,4.7,0,0,0,4.9-4.444V8.944a4.7,4.7,0,0,0-4.9-4.444H9.4A4.688,4.688,0,0,0,4.5,8.944Zm29.406,8.889c0,3.689-3.284,6.667-7.352,6.667S19.2,21.522,19.2,17.833s3.284-6.667,7.352-6.667S33.906,14.144,33.906,17.833ZM11.852,35.611c0-4.444,9.8-6.889,14.7-6.889s14.7,2.444,14.7,6.889v2.222H11.852Z" transform="translate(709.5 460.45)" fill="#476692"/>
+    <path id="Icon_material-done" data-name="Icon material-done" d="M11.464,20.445,6.691,15.673,5.1,17.264l6.364,6.364L25.1,9.991,23.509,8.4Z" transform="translate(741.06 446.55)" fill="#07b100"/>
+  </g>
+</svg>
