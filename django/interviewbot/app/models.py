@@ -42,7 +42,7 @@ class Answer(models.Model):
 	registered = models.DateTimeField('date published', auto_now_add=True)
 
 	def __str__(self):
-		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + '(' + self.id + ')'
+		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + '(' + str(self.id) + ')'
 
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)
