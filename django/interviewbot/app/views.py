@@ -34,6 +34,7 @@ def index(request):
 			return redirect('/interview/')
 		else:
 			if 'interview' in request.GET:
+				print('TROVATO INTERVIEW IN GET')
 				interviewtype_id = request.GET['interview']
 				interviewtype = InterviewType.objects.filter( pk = int(interviewtype_id))
 				if interviewtype.exists() and interviewtype.count() == 1:
@@ -84,13 +85,16 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
+				print('DOMANDA BASE: ')
 				if 'interview' in request.session and request.session.get('interview', -1 ) > 0:
+					print('TROVATO INTERVIEW = ', request.session['interview'])
 					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
+						print('PARTE COLLOQUIO')
 						first_question = interviewtype[0].start_question
 						nq_serialized = QuestionSerializer(first_question)
 						return Response(nq_serialized.data, status=status.HTTP_200_OK)
-
+				print('COLLOQUIO DEFAULT')
 				first_question = Question.objects.get(pk=56)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
