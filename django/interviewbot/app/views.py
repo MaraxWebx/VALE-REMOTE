@@ -77,6 +77,13 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
+				if 'interview' in dict and dict['interview'] > 0:
+					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
+					if interviewtype.exists() and interviewtype.count() == 1:
+						first_question = interviewtype[0].start_question
+						nq_serialized = QuestionSerializer(first_question)
+						return Response(nq_serialized.data, status=status.HTTP_200_OK)
+						
 				first_question = Question.objects.get(pk=56)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
