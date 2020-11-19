@@ -320,7 +320,7 @@ video {
 
 /*BOTTONI*/
 
-.controls {
+#controls {
   display: flex;
   margin-top: 20px;
   width: 100%;
