@@ -33,6 +33,10 @@ def index(request):
 		if request.session.get('is_reg', False):
 			return redirect('/interview/')
 		else:
+			request.session.clear_expired()
+			request.session.flush()
+			request.session.set_expiry(300)
+			request.session['is_reg'] = False
 			interviewtype_id = request.GET.get('interview', -1)
 			if int(interviewtype_id) > 0:
 				print('TROVATO INTERVIEW > 0 ')
@@ -43,10 +47,6 @@ def index(request):
 				else:
 					print('TROVATO INTERVIEW NON VALIDO')
 					request.session['interview'] = -1
-			request.session.clear_expired()
-			request.session.flush()
-			request.session.set_expiry(300)
-			request.session['is_reg'] = False
 			return render(request, 'credentials.html')
 
 def interview(request):
