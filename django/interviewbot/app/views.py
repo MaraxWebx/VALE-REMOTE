@@ -253,8 +253,8 @@ class NextQuestionView(APIView):
 										return flow.son
 					else:
 						return 0
-
-				kw_question = KeyWords.objects.filter(word=key_max)[0]
+				interviewtype = InterviewType.objects.get(pk = int(session.get('interview',1)))
+				kw_question = KeyWords.objects.filter(word=key_max, interviewtype = interviewtype)[0]
 				return kw_question.start_question
 
 		else:
