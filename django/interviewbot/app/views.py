@@ -508,7 +508,7 @@ def login_recruiter(request):
 	return render('/login_recruiter/', context = {'form':form})
 
 
-@login_required('login_recruiter/')
+@login_required(login_url='login_recruiter/')
 def dashboard_index(request):
 	colloqui = Interview.objects.all()
 	user = request.user
