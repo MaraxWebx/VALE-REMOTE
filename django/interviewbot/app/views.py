@@ -177,7 +177,7 @@ class NextQuestionView(APIView):
 								return flow.son
 				else:
 					if not question.is_technical:
-						return -1
+						session['last_base_quest'] = -1
 					return 0
 			else:
 				if not session.get('have_forked', False):
