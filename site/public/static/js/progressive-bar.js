@@ -1,5 +1,5 @@
-var timeleft = 15;
-var timetotal = 15;
+var timeleft = 30;
+var timetotal = 30;
 var stop = false;
 
 function FlagProgressBar() {
@@ -7,9 +7,13 @@ function FlagProgressBar() {
 }
 
 function resetProgressBar(){
-   
-    timeleft = 15;
-    timetotal = 15;
+    timeleft = 30;
+    timetotal = 30;
+}
+
+function resetProgressBar(time){
+    timeleft = time;
+    timetotal = time;
 }
 
 function progress(timeleft, timetotal, $element) {
