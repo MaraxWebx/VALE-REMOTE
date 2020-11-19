@@ -29,9 +29,15 @@ class CandidateUser(models.Model):
 	def __str__(self):
 		return self.firstname + ' ' + self.lastname
 
+class InterviewType(models.Model):
+	interview_name = models.CharField(max_length=200, null = False, blank=False)
+	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
 	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE)
+	analyzed = models.BooleanField(default=False)
+	type = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
 
 class Answer(models.Model):
 	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
@@ -43,12 +49,6 @@ class Answer(models.Model):
 
 	def __str__(self):
 		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + ' (' + str(self.id) + ')'
-
-
-class InterviewType(models.Model):
-	interview_name = models.CharField(max_length=200, null = False, blank=False)
-	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
-
 
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)

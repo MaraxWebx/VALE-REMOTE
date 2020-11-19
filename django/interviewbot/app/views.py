@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.conf import settings
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
+from django.contrib.auth import authenticate, login
 from django.utils.safestring import mark_safe
 
 from rest_framework.views import APIView
@@ -488,6 +489,32 @@ def add_parent_to_join(request):
 		})
 
 
+def login_recruiter(request):
+	form = LoginForm()
+	if request.method == 'POST':
+		email = request.POST['email']
+		password = request.POST['password']
+		user = authenticate(request, email=email, password=password)
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+				return redirect('/dashboard/')
+			else:
+				return render('/login_recruiter/', context = {'login_message' : 'This account is blocked.', 'form':form})
+		else:
+			return render('/login_recruiter/', context = {'login_message' : 'Email or password are invalid.', 'form':form})  
+
+	# GET #
+	return render('/login_recruiter/', context = {'form':form})
+
+
+@login_required('login_recruiter/')
 def dashboard_index(request):
-	return render(request, 'dashboard.html')
+	colloqui = Interview.objects.all()
+	user = request.user
+
+	return render(request, 'dashboard.html', context = {
+		'colloqui' : colloqui,
+		'user' : user
+	})
 

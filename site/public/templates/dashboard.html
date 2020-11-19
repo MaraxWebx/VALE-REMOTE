@@ -50,16 +50,16 @@
 <div class="recInfo1">
     <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
     <h1>
-        RECRUITER 00001
+        {{ user.frist_name }} {{ user.last_name}}
     </h1>
 </div>
 <div class="recInfo2">
 
 
-<div class="lastAcc"><h4>Ultimo accesso:</h4><p>20/20/20</p></div>
+<div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
 
 <div class="email">
-    <h4>E-mail:</h4><p>recruiteruno@gmail.com</p>
+    <h4>E-mail:</h4><p> {{ user.email }}</p>
 </div>
 
 </div>
@@ -76,13 +76,20 @@
 <!---ULTIMI COLLOQUI  ESAMINATI ---->
               <div class="col">
                   
-                  <h2>ULTIMI ESAMINATI</h2>
+                  <h2>COLLOQUI DISPONIBILI</h2>
 
                   <div class="list-group tLast">
-                    <a href="#" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-es.svg' %}"  alt="colloqui-esaminati "><img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi"><h4 class="nome">COLLOQUIO ESAMINATO</h4> 
-                      <h5 class="data" >Data:</h5><p class="data">2020020</p>
-                      <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c">---</p></a>
-      
+
+                    {% for colloquio in colloqui %}
+                        {% if colloquio.analyzed %}
+                            <a href="#" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-es.svg' %}"  alt="colloqui-esaminati "><h4 class="nome">{{ colloquio.user.frist_name }} {{ colloquio.user.last_name }}</h4> 
+                            <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
+                            <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
+                        {% else %}
+                            <a href="#" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi"><h4 class="nome">{{ colloquio.user.frist_name }} {{ colloquio.user.last_name }}</h4> 
+                                <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
+                            <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
+                    {% endfor %}
                   </div>
               </div>
 
