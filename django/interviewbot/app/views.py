@@ -87,7 +87,7 @@ class NextQuestionView(APIView):
 		if 'type' in dict:
 			if dict['type'] == 'base':
 				print('DOMANDA BASE: ')
-				if 'interview' in request.session and request.session.get('interview', -1 ) > 0:
+				if int(request.session.get('interview', -1 )) > 0:
 					print('TROVATO INTERVIEW = ', request.session['interview'])
 					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
