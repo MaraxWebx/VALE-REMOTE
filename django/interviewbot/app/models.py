@@ -20,7 +20,7 @@ class QuestionFlow(models.Model):
 	son = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question')
 	choice = models.CharField(max_length=100, default="", null=True, blank=True)
 
-class User(models.Model):
+class CandidateUser(models.Model):
 	firstname = models.CharField(max_length=50)
 	lastname = models.CharField(max_length=50)
 	email = models.CharField(max_length=100)
@@ -42,7 +42,7 @@ class Answer(models.Model):
 	registered = models.DateTimeField('date published', auto_now_add=True)
 
 	def __str__(self):
-		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type
+		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + '(' + self.id + ')'
 
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)
