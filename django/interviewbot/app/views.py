@@ -41,6 +41,7 @@ def index(request):
 					print('SETTATO INTERVIEW =', interviewtype_id)
 					request.session['interview'] = interviewtype_id
 				else:
+					print('TROVATO INTERVIEW NON VALIDO')
 					request.session['interview'] = -1
 			request.session.clear_expired()
 			request.session.flush()
@@ -86,7 +87,7 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
-				print('DOMANDA BASE: ')
+				print('DOMANDA BASE, interview =', str(request.session.get('interview', -1 )))
 				if int(request.session.get('interview', -1 )) > 0:
 					print('TROVATO INTERVIEW = ', request.session['interview'])
 					interviewtype = InterviewType.objects.filter(pk = int(dict['interview']))
