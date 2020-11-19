@@ -42,12 +42,13 @@ class Answer(models.Model):
 	registered = models.DateTimeField('date published', auto_now_add=True)
 
 	def __str__(self):
-		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + '(' + str(self.id) + ')'
+		return self.user.firstname + ' ' + self.user.lastname + ' ' + self.question.type + ' (' + str(self.id) + ')'
 
 class KeyWords(models.Model):
 	word = models.CharField(max_length=100, null=False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.word
+		return self.word + ' (' + str(self.id) + ')'
+
 

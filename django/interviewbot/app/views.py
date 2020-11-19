@@ -40,7 +40,7 @@ def index(request):
 		return render(request, 'credentials.html')
 
 def interview(request):
-	if  request.session.get('is_reg', False) and User.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
+	if  request.session.get('is_reg', False) and CandidateUser.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
 		return render(request,'index.html')
 	else:
 		request.session['is_reg'] = False
@@ -93,7 +93,7 @@ class NextQuestionView(APIView):
 		interview_id 	= request.session['interview_id']
 		answer_text 	= dict['answer_text']
 
-		user_obj = User.objects.get(pk=user_id)
+		user_obj = CandidateUser.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
 		interview_obj = Interview.objects.get(pk=interview_id)
 
@@ -254,7 +254,7 @@ def test_file(request):
 	if not file.name.endswith('.pdf'):
 		id = request.session.get('user_id', -1)
 		if id > 0:
-			user = User.objects.get(pk=id)
+			user = CandidateUser.objects.get(pk=id)
 			user.delete()
 		request.session['is_reg'] = False
 		return Response(status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
@@ -263,7 +263,7 @@ def test_file(request):
 	if id < 0:
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
-	user = User.objects.get(pk=id)
+	user = CandidateUser.objects.get(pk=id)
 	user.cv = file
 	user.save()
 	return Response(status=status.HTTP_201_CREATED)
