@@ -501,17 +501,17 @@ def login_recruiter(request):
 				login(request, user)
 				return redirect('/dashboard/')
 			else:
-				return render('/login_recruiter/', context = {'login_message' : 'This account is blocked.', 'form':form})
+				return render('login_recruiter.html', context = {'login_message' : 'This account is blocked.', 'form':form})
 		else:
-			return render('/login_recruiter/', context = {'login_message' : 'Email or password are invalid.', 'form':form})  
+			return render('login_recruiter.html', context = {'login_message' : 'Email or password are invalid.', 'form':form})  
 
 	# GET #
-	return render('/login_recruiter/', context = {'form':form})
+	return render('login_recruiter.html', context = {'form':form})
 
 
 def dashboard_index(request):
 	if not request.user.is_authenticated:
-		return redirect('login_rectruiter/')
+		return redirect('/login_rectruiter/')
 	colloqui = Interview.objects.all()
 	user = request.user
 	return render(request, 'dashboard.html', context = {
