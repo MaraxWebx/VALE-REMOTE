@@ -330,7 +330,6 @@ video {
 .bRec {
   flex-grow: 1;
   height: 30px;
-  min-width: 30px;
   border: none;
   border-radius: 0.15rem;
   background:#ffffff;
