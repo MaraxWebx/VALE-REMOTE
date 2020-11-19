@@ -13,7 +13,8 @@ urlpatterns = [
     path('add_parent/', add_parent_to_join, name='add_parent'),
     path('interview/', interview, name='interview'),
     path('file/', test_file, name='test_file'),
-    path('add_kw/', keyword_managment, name='add_keyword')
+    path('add_kw/', keyword_managment, name='add_keyword'),
+    path('dashboard/', dashboard_index, name='dashboard')
 ]
 
 if settings.DEBUG:

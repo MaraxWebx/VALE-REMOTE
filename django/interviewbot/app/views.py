@@ -488,3 +488,6 @@ def add_parent_to_join(request):
 		})
 
 
+def dashboard_index(request):
+	return render(request, 'dashboard.html')
+
