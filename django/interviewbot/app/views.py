@@ -33,11 +33,12 @@ def index(request):
 		if request.session.get('is_reg', False):
 			return redirect('/interview/')
 		else:
-			if 'interview' in request.GET:
-				print('TROVATO INTERVIEW IN GET')
-				interviewtype_id = request.GET['interview']
+			interviewtype_id = request.GET.get('interview', -1)
+			if int(interviewtype_id) > 0:
+				print('TROVATO INTERVIEW > 0 ')
 				interviewtype = InterviewType.objects.filter( pk = int(interviewtype_id))
 				if interviewtype.exists() and interviewtype.count() == 1:
+					print('SETTATO INTERVIEW =', interviewtype_id)
 					request.session['interview'] = interviewtype_id
 				else:
 					request.session['interview'] = -1
