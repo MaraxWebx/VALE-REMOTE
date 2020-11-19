@@ -116,7 +116,7 @@ function getQuestion(quest) {
       //start video/audio stream
       document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.startCamera();
-      window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);
+      window.setTimeout("document.querySelector('button#rec').hidden = false", 1500);
       if(choice_length > 0) window.resetProgressBar(choice_length)
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;

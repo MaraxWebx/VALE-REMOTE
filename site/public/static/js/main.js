@@ -48,7 +48,7 @@ function startCamera() {
 	constraints = {
 		audio: true,
 		video: {
-			width: { min: 320, ideal: 400, max: 640 },
+			width: { min: 320, ideal: 457, max: 457 },
 			height: { min: 240, ideal: 420, max: 480 },
 			framerate: 30
 		}
