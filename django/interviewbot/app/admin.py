@@ -5,6 +5,6 @@ from .models import *
 admin.site.register(Question)
 admin.site.register(QuestionFlow)
 admin.site.register(KeyWords)
-admin.site.register(User)
+admin.site.register(CandidateUser)
 admin.site.register(Interview)
 admin.site.register(Answer)
