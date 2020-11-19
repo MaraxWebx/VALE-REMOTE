@@ -19,7 +19,7 @@ from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 from app.text_sentiment import SentimentAnalyzer
 
-SA = SentimentAnalyzer()
+# SA = SentimentAnalyzer()
 
 
 """
