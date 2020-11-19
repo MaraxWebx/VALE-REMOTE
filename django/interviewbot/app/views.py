@@ -511,11 +511,9 @@ def login_recruiter(request):
 
 def dashboard_index(request):
 	if not request.user.is_authenticated:
-        return redirect('login_rectruiter/')
-		
+		return redirect('login_rectruiter/')
 	colloqui = Interview.objects.all()
 	user = request.user
-
 	return render(request, 'dashboard.html', context = {
 		'colloqui' : colloqui,
 		'user' : user
