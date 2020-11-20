@@ -38,7 +38,7 @@ function progress(timeleft, timetotal, $element) {
 
 function progress_auto_record(timeleft_auto, timetotal_auto, $element){
     if (window.user_start_record === false) {
-        document.getElementById("progressBar").hidden = false;
+        document.getElementById("progressBar_auto").hidden = false;
         var progressBarWidth = timeleft_auto * $element.width() / timetotal_auto;
         $('.bar_auto').animate({ width: progressBarWidth }, 500);
         $('.time_auto').html(Math.floor(timeleft_auto / 60) + ":" + timeleft_auto % 60);

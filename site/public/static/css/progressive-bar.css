@@ -8,6 +8,16 @@
   box-shadow: 2px 2px 3px #222222;
 }
 
+#progressBar_auto {
+  width: 50%;
+  margin: 10px auto;
+  height: 22px;
+  background-color: #999999;
+  border-radius: 10px;
+  color:#fff;
+  box-shadow: 2px 2px 3px #222222;
+}
+
 #progressBar .bar {
   height: 100%;
   text-align: left;
@@ -30,7 +40,7 @@
 
 }
 
-#progressBar .bar_auto {
+#progressBar_auto .bar_auto {
   height: 100%;
   text-align: left;
   padding: 0 10px;
@@ -43,7 +53,7 @@
   box-shadow: 2px 2px 3px #222222;
 }
 
-#progressBar .time_auto {
+#progressBar_auto .time_auto {
 
   color:#476692;
   font-size: 12px;
