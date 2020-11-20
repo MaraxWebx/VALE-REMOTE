@@ -533,10 +533,10 @@ def dashboard_interview(request, id):
 	list_ans = []
 	for answer in answers:
 		list_ans.append({
-			'type':answer.question.type,
-			'quest':answer.question.action,
+			'type':str(answer.question.type),
+			'quest':str(answer.question.action),
 			'vid':answer.choice_vid,
-			'text':answer.choice_text
+			'text':str(answer.choice_text)
 		})
 
 
