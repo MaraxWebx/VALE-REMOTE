@@ -17,6 +17,7 @@ function resetProgressBar(time){
 }
 
 function progress(timeleft, timetotal, $element) {
+    console.log("(1) TIME: " + window.timeleft + "/" + window.timetotal + " AUTO:" + timeleft_auto + "/" + timetotal_auto)
     if (stop === true) {
         document.getElementById("progressBar").hidden = false;
         var progressBarWidth = timeleft * $element.width() / timetotal;
@@ -37,6 +38,7 @@ function progress(timeleft, timetotal, $element) {
 };
 
 function progress_auto_record(timeleft_auto, timetotal_auto, $element){
+    console.log("(2) TIME: " + window.timeleft + "/" + window.timetotal + " AUTO:" + timeleft_auto + "/" + timetotal_auto)
     if (window.user_start_record === false) {
         document.getElementById("progressBar_auto").hidden = false;
         var progressBarWidth = timeleft_auto * $element.width() / timetotal_auto;
