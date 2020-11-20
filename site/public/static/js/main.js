@@ -118,7 +118,7 @@ function create_UUID(){
 }
 
 function autoStartRecording(){
-	window.getElementById("string_progress").innerHTML = "La registrazione inizierà tra"
+	document.getElementById("string_progress").innerHTML = "La registrazione inizierà tra"
 	window.progress_auto_record(20,20, window.getElementById("progressBar"))
 }
 
@@ -135,7 +135,7 @@ function onBtnRecordClicked() {
 		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
 		user_start_record = true;
-		window.getElementById("string_progress").innerHTML = "Tempo di risposta"
+		document.getElementById("string_progress").innerHTML = "Tempo di risposta"
 
 
 		/* use the stream */
