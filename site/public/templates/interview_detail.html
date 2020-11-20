@@ -86,7 +86,7 @@
                                 <div id="video"><video controls width="300"><source src="https://itcinterview.it/media/{{ answer.choice_vid }}"> </video></div>
                             {% elif answer.question.type == "code" or answer.question.type == "check" %}
                                 <h1>Risposta testo</h1>
-                                <div id="code"><textarea id="textArea">{{ answer.choice_text }}</textarea></div>	
+                                <p class="textQ">{{ answer.choice_text }}</p>
                             {% endif %}
                         </div>
 
