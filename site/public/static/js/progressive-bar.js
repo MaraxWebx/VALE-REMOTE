@@ -14,9 +14,9 @@ function resetProgressBar(){
 function start_progress(timeleft, timetotal, $element){
     if( timetotal >= window.timer){
         timetotal = window.timer-1;
-        timeleft = window.timer-1;
-        progress(timeleft, timetotal, $element);
+        timeleft = window.timer-1;    
     }
+    progress(timeleft, timetotal, $element);
 }
 
 function progress(timeleft, timetotal, $element) {
