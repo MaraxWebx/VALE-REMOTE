@@ -3,6 +3,7 @@ var question_time = 10;
 var timer_id;
 
 function restart_timer(){
+    clearInterval(timer_id)
     display = document.querySelector("#timer_time_left")
     start_timer(display, question_time)
 }
