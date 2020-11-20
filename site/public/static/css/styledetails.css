@@ -191,7 +191,7 @@ img.icon-menu {
     margin-top:50px;
 }
 .boxcolloquio{
-    height: 100px;
+    height: auto;
     width: 100%;
     margin: 0 auto;
     border-radius: 20px;

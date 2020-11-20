@@ -81,7 +81,6 @@
 
                         </div>
                         <div class="col-6 boxRisposta">
-                            <h1>{{ answer.question.type }} </h1>
                             {% if answer.question.type == "video" %}
                                 <h1>Risposta video </h1>
                                 <div id="video"><video controls width="300"><source src="https://itcinterview.it/media/{{ answer.choice_vid }}"> </video></div>
