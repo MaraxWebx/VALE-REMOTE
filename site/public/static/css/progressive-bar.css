@@ -8,16 +8,6 @@
   box-shadow: 2px 2px 3px #222222;
 }
 
-#progressBar_auto {
-  width: 50%;
-  margin: 10px auto;
-  height: 22px;
-  background-color: #999999;
-  border-radius: 10px;
-  color:#fff;
-  box-shadow: 2px 2px 3px #222222;
-}
-
 #progressBar .bar {
   height: 100%;
   text-align: left;
@@ -32,28 +22,6 @@
 }
 
 #progressBar .time {
-
-  color:#476692;
-  font-size: 12px;
-  text-align: right;
-  margin-top: -8px;
-
-}
-
-#progressBar_auto .bar_auto {
-  height: 100%;
-  text-align: left;
-  padding: 0 10px;
-  line-height: 22px; /* same as #progressBar height if we want text middle aligned */
-  width: 0;
-  background-color: #476692;
-  box-sizing: border-box;
-  border-radius: 10px;
-  color:#fff;
-  box-shadow: 2px 2px 3px #222222;
-}
-
-#progressBar_auto .time_auto {
 
   color:#476692;
   font-size: 12px;

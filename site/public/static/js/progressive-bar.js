@@ -17,7 +17,6 @@ function resetProgressBar(time){
 }
 
 function progress(timeleft, timetotal, $element) {
-    console.log("(1) TIME: " + timeleft + "/" + timetotal)
     if (stop === true) {
         document.getElementById("progressBar").hidden = false;
         var progressBarWidth = timeleft * $element.width() / timetotal;
@@ -36,26 +35,3 @@ function progress(timeleft, timetotal, $element) {
         }
     }
 };
-
-function progress_auto_record(timeleft_auto, timetotal_auto, $element){
-    console.log("(2) TIME: " + window.timeleft + "/" + window.timetotal + " AUTO:" + timeleft_auto + "/" + timetotal_auto)
-    if (window.user_start_record === false) {
-        document.getElementById("progressBar_auto").hidden = false;
-        var progressBarWidth = timeleft_auto * $element.width() / timetotal_auto;
-        $('.bar_auto').animate({ width: progressBarWidth }, 500);
-        $('.time_auto').html(Math.floor(timeleft_auto / 60) + ":" + timeleft_auto % 60);
-        if (timeleft_auto > 0) {
-            setTimeout(function () {
-                progress_auto_record(timeleft_auto - 1, timetotal_auto, $element);
-            }, 1060);
-        }
-        if (progressBarWidth === 0) {
-            resetProgressBar();
-            window.user_start_record === true;
-            FlagProgressBar();
-            progress(30, 30, $('#progressBar'));
-            window.onBtnRecordClicked(); 
-            window.runSpeechRecognition();
-        }
-    }
-}

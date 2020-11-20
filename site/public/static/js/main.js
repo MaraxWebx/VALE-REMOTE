@@ -23,7 +23,6 @@ var count = 0;
 var localStream = null;
 var soundMeter = null;
 var is_recording = false;
-var user_start_record = false;
 
 
 document.getElementById("boxRis").hidden = true;
@@ -117,31 +116,18 @@ function create_UUID(){
     return uuid;
 }
 
-function autoStartRecording(){
-	document.getElementById("string_progress").innerHTML = "La registrazione inizierà tra";
-	window.progress_auto_record(5,5, $('#progressBar_auto'));
-
-	document.getElementById("progressBar").hidden = true;
-	document.getElementById("progressBar_auto").hidden = false;
-
-}
-
 function onBtnRecordClicked() {
 	if (localStream == null) {
 		alert('Could not get local stream from mic/camera');
 	} else {
 		//progressBar.hidden = false;
-		document.getElementById("progressBar").hidden = false;
-		document.getElementById("progressBar_auto").hidden = true;
+		document.getElementById("time").hidden = false;
 		//answerTime.hidden = false;
 		recBtn.hidden = true;
 		//pauseResBtn.disabled = false;
 		stopBtn.hidden = false;
 		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
-		user_start_record = true;
-		document.getElementById("string_progress").innerHTML = "Tempo di risposta"
-
 
 		/* use the stream */
 		log('Start recording...');
@@ -289,7 +275,6 @@ navigator.mediaDevices.ondevicechange = function (event) {
 function onBtnStopClicked() {
 	window.stop = false;
 	window.resetProgressBar();
-	user_start_record = false;
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	//window.question();
