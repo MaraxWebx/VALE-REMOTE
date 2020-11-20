@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required, login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
 
 from rest_framework.views import APIView
@@ -501,12 +501,15 @@ def login_recruiter(request):
 				login(request, user)
 				return redirect('/dashboard/')
 			else:
-				return render(request, 'login_recruiter.html', context = {'login_message' : 'This account is blocked.', 'form':form})
+				return render(request, 'login_recruiter.html', context = {'login_message' : 'This account is not active.', 'form':form})
 		else:
 			return render(request, 'login_recruiter.html', context = {'login_message' : 'Email or password are invalid.', 'form':form})  
 
 	# GET #
-	return render(request, 'login_recruiter.html', context = {'form':form})
+	if not request.user.is_authenticated:
+		return render(request, 'login_recruiter.html', context = {'form':form})
+	else:
+		return redirect('/dashboard/')
 
 
 def dashboard_index(request):
@@ -518,4 +521,24 @@ def dashboard_index(request):
 		'colloqui' : colloqui,
 		'user' : user
 	})
+
+
+def dashboard_interview(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter/')
+	interview = Interview.objects.get(pk=id)
+	user = interview.user
+	date = interview.date
+	answers = Answer.objects.filter(interview=interview)
+
+	return render(request, 'interview_detail.html', context = {
+		'user' : user,
+		'date' : date,
+		'answers' : answers
+	})
+
+
+def logout_recruiter(request):
+	logout(request)
+	return redirect('/login_rectruiter/')
 

@@ -12,6 +12,7 @@ function restart_timer(){
 function countdown_finished(){
     clearInterval(timer_id)
     // Gestire fine del tempo!
+    
 
 }
 
