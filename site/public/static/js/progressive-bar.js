@@ -17,7 +17,7 @@ function resetProgressBar(time){
 }
 
 function progress(timeleft, timetotal, $element) {
-    console.log("(1) TIME: " + window.timeleft + "/" + window.timetotal + " AUTO:" + timeleft_auto + "/" + timetotal_auto)
+    console.log("(1) TIME: " + window.timeleft + "/" + window.timetotal)
     if (stop === true) {
         document.getElementById("progressBar").hidden = false;
         var progressBarWidth = timeleft * $element.width() / timetotal;
