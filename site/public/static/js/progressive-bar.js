@@ -48,6 +48,7 @@ function progress_auto_record(timeleft_auto, timetotal_auto, $element){
             }, 1060);
         }
         if (progressBarWidth === 0) {
+            resetProgressBar();
             window.user_start_record === true;
             FlagProgressBar();
             progress(window.timeleft, window.timetotal, $element);
