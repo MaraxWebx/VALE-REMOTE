@@ -22,6 +22,7 @@ function question() {
   document.getElementById("box-ef").hidden = true;
   document.getElementById("bfine").hidden = true;
   document.getElementById("questionSection").hidden = false;
+  document.getElementById("boxQ").hidden=false;
 
   showSpinner();
 
