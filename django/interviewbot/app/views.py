@@ -530,21 +530,12 @@ def dashboard_interview(request, id):
 	user = interview.user
 	date = interview.date
 	answers = Answer.objects.filter(interview=interview)
-	list_ans = []
-	for answer in answers:
-		list_ans.append({
-			'type':str(answer.question.type),
-			'quest':str(answer.question.action),
-			'vid':answer.choice_vid,
-			'text':str(answer.choice_text)
-		})
-
 
 	return render(request, 'interview_detail.html', context = {
 		'type' : interview.type.interview_name,
 		'user' : user,
 		'date' : date,
-		'answers' : list_ans
+		'answers' : answers
 	})
 
 
