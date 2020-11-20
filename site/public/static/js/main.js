@@ -24,10 +24,13 @@ var localStream = null;
 var soundMeter = null;
 var is_recording = false;
 
-document.getElementById("bfine").hidden = true;
-document.getElementById("boxRis").hidden = true;
-document.getElementById("questionSection").hidden = true;
-document.getElementsById("box-ef").hidden=false;
+window.onload = () => {
+	document.getElementById("bfine").hidden = true;
+	document.getElementById("boxRis").hidden = true;
+	document.getElementById("questionSection").hidden = true;
+	document.getElementsById("box-ef").hidden=false;
+}
+
 
 function stopStream() {
 	if(!is_recording) return;
