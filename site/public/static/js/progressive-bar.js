@@ -11,11 +11,6 @@ function resetProgressBar(){
     timetotal = 30;
 }
 
-function resetProgressBar(time){
-    timeleft = time;
-    timetotal = time;
-}
-
 function progress(timeleft, timetotal, $element) {
     if (stop === true) {
         document.getElementById("progressBar").hidden = false;
