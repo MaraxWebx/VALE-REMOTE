@@ -68,9 +68,9 @@
         <div class="row">
             <div class="col-2">
             </div>
-
+            {% for answer in answers %}
             <div class="col-8  boxcolloquio" >
-                {% for answer in answers %}
+               
                     <div class="row">
                         <div class="col-6">
                             <div class="boxQ">
@@ -84,7 +84,7 @@
                             <h1>{{ answer.question.type }} </h1>
                             {% if answer.question.type == "video" %}
                                 <h1>Risposta video </h1>
-                                <div id="video"><video controls width="200"><source src="https://itcinterview.it/media/{{ answer.choice_vid }}"> </video></div>
+                                <div id="video"><video controls width="300"><source src="https://itcinterview.it/media/{{ answer.choice_vid }}"> </video></div>
                             {% elif answer.question.type == "code" or answer.question.type == "check" %}
                                 <h1>Risposta testo</h1>
                                 <div id="code"><textarea id="textArea">{{ answer.choice_text }}</textarea></div>	
@@ -92,9 +92,9 @@
                         </div>
 
                     </div>
-                {% endfor %}
+                
             </div>
-
+            {% endfor %}
             <div class="col-2">
             </div>
 
