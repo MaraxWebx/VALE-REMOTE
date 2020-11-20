@@ -32,8 +32,6 @@
 	</header>
 	<main>
 
-
-
 		<!--INSZIO RIGA!-->
 		<div class="container Fullbox">
 
@@ -77,10 +75,6 @@
 					
 				</section>
 
-
-
-
-
 				<!--COLONNA SINISTRA-->
 				<div id="spinner"  class="col-6 col-md-6 col-sm" hidden>
 					<div aria-busy="true" aria-label="Loading" role="status" class="container">
@@ -122,28 +116,25 @@
 								</div>
 								
 							</div>
-							<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
-									progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
-									<p>Record</p>
-							</button>
-							<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
-								hidden>
-								<p>Stop</p>
-							</button>
-							<div id="video"><video autoplay muted="true"> </video></div>	
-							<div id="code"><textarea id="textArea"></textarea></div>
-							<div id="check" class="checkBox"> </div>
+
 							<div id="controls">
+								<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
+										progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
+										<p>Record</p>
+								</button>
+								<button class="bStop" id="stop" onclick="onBtnStopClicked(); btnStop(); question()"
+									hidden>
+									<p>Stop</p>
+								</button>
 								<button class="bRec" id="StartTextBtn" onclick="onBtnStartClicked()">Rispondi</button>
 								<button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked(); question()"
 									hidden>Conferma</button>
-
-								
-								
-								<!--<button id="pauseRes" onclick="onPauseResumeClicked()" disabled>Pause</button>-->
-
-								<!--<button id="stateButton" onclick="onStateClicked()">trace state</button>-->
 							</div>
+
+							<div id="video"><video autoplay muted="true"> </video></div>	
+							<div id="code"><textarea id="textArea"></textarea></div>
+							<div id="check" class="checkBox"> </div>
+							
 							<div id="output"></div>
 							<!-- <div>
 												<button v-on:click="submitFile()">Submit</button>
