@@ -36,20 +36,20 @@ function progress(timeleft, timetotal, $element) {
     }
 };
 
-function progress_auto_record(timeleft, timetotal, $element){
+function progress_auto_record(timeleft_auto, timetotal_auto, $element){
     if (window.user_start_record === false) {
         document.getElementById("progressBar").hidden = false;
-        var progressBarWidth = timeleft * $element.width() / timetotal;
+        var progressBarWidth = timeleft_auto * $element.width() / timetotal_auto;
         $('.bar').animate({ width: progressBarWidth }, 500);
-        $('.time').html(Math.floor(timeleft / 60) + ":" + timeleft % 60);
-        if (timeleft > 0) {
+        $('.time').html(Math.floor(timeleft_auto / 60) + ":" + timeleft_auto % 60);
+        if (timeleft_auto > 0) {
             setTimeout(function () {
-                progress_auto_record(timeleft - 1, timetotal, $element);
+                progress_auto_record(timeleft_auto - 1, timetotal_auto, $element);
             }, 1060);
         }
         if (progressBarWidth === 0) {
             FlagProgressBar() 
-            progress(window.timeleft, window.timetotal, $element)
+            progress(timeleft, timetotal, $element)
             window.onBtnRecordClicked(); 
             window.runSpeechRecognition()
         }
