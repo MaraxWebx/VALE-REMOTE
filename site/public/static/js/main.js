@@ -119,7 +119,7 @@ function create_UUID(){
 
 function autoStartRecording(){
 	document.getElementById("string_progress").innerHTML = "La registrazione inizierà tra"
-	window.progress_auto_record(20,20, document.getElementById("progressBar"))
+	window.progress_auto_record(20,20, $('#progressBar'))
 }
 
 function onBtnRecordClicked() {
