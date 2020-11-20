@@ -183,7 +183,7 @@ function getQuestion(quest) {
   }
   function printRis() {
     out = '<a>' + quest.action + '</a><br>';
-    titleOut = '<h1>' + 'Domanda ' + i + '</h1>';
+    titleOut = 'Domanda ' + i ;
     console.log(quest);
     i++;
 
