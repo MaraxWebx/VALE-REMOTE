@@ -75,18 +75,18 @@
                         <div class="col-6">
                             <div class="boxQ">
                                 <h1 class="titleQ">DOMANDA</h1>
-                                <p class="textQ"> {{ answer.question.action }}</p>
+                                <p class="textQ"> {{ answer.quest }}</p>
                             </div>
 
 
                         </div>
                         <div class="col-6 boxRisposta">
-                            {% if answer.question.type == "video" %}
+                            {% if answer.type == "video" %}
                                 <h1>Risposta video </h1>
-                                <div id="video"><video controls><source src="{{ anwer.choice_vid.url }}"> </video></div>
-                            {% elif answer.question.type == "code" or answer.question.type == "check" %}
+                                <div id="video"><video controls><source src="{{ anwer.vid.url }}"> </video></div>
+                            {% elif answer.type == "code" or answer.type == "check" %}
                                 <h1>Risposta testo</h1>
-                                <div id="code"><textarea id="textArea">{{ answer.choice_text }}</textarea></div>	
+                                <div id="code"><textarea id="textArea">{{ answer.text }}</textarea></div>	
                             {% endif %}
                         </div>
 
