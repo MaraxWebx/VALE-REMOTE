@@ -118,8 +118,13 @@ function create_UUID(){
 }
 
 function autoStartRecording(){
-	document.getElementById("string_progress").innerHTML = "La registrazione inizierà tra"
-	window.progress_auto_record(20,20, $('#progressBar'))
+	document.getElementById("string_progress").innerHTML = "La registrazione inizierà tra";
+	window.progress_auto_record(5,5, $('#progressBar'));
+	document.getElementById("time").hidden = true;
+	document.getElementById("bar").hidden = true;
+	document.getElementById("time_auto").hidden = false;
+	document.getElementById("bar_auto").hidden = false;
+
 }
 
 function onBtnRecordClicked() {
@@ -128,6 +133,9 @@ function onBtnRecordClicked() {
 	} else {
 		//progressBar.hidden = false;
 		document.getElementById("time").hidden = false;
+		document.getElementById("bar").hidden = false;
+		document.getElementById("time_auto").hidden = true;
+		document.getElementById("bar_auto").hidden = true;
 		//answerTime.hidden = false;
 		recBtn.hidden = true;
 		//pauseResBtn.disabled = false;
