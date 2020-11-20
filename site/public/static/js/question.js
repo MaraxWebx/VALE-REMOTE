@@ -126,7 +126,7 @@ function getQuestion(quest) {
       document.getElementById("ConfirmTextBtn").hidden = true;
       document.getElementById("timeBox").hidden = false;
       printRis();
-
+      window.autoStartRecording();
     } else if (quest.type === 'code') {
       //stop video/audio stream
       document.getElementById("progressBar").hidden = true;     //hidden blu progress bar

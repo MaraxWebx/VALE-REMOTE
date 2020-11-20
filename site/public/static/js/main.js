@@ -23,6 +23,7 @@ var count = 0;
 var localStream = null;
 var soundMeter = null;
 var is_recording = false;
+var user_start_record = false;
 
 
 document.getElementById("boxRis").hidden = true;
@@ -106,6 +107,20 @@ function startCamera() {
 	}
 }
 
+function create_UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+}
+
+function autoStartRecording(){
+	window.getElementById("string_progress").innerHTML = "La registrazione inizierà tra"
+	window.progress_auto_record(20,20, window.getElementById("progressBar"))
+}
 
 function onBtnRecordClicked() {
 	if (localStream == null) {
@@ -119,6 +134,9 @@ function onBtnRecordClicked() {
 		stopBtn.hidden = false;
 		//progress(60, 60, $('#progressBar'));		//set time to progress bar
 		//startTimer(10, document.querySelector('#time'));
+		user_start_record = true;
+		window.getElementById("string_progress").innerHTML = "Tempo di risposta"
+
 
 		/* use the stream */
 		log('Start recording...');
@@ -172,9 +190,10 @@ function onBtnRecordClicked() {
 
 			stopBtn.hidden = true;
 			//downloadLink.innerHTML = '<button class="okButton" id="controls"><p>Scarica</p></button>';
-
-			var rand = Math.floor((Math.random() * 10000000));
-			var name = "video_" + rand + ".webm";
+			var d = new Date();
+			var date = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+			var uuid = window.create_UUID();
+			var name = "video_" + uuid + "_" + date + ".webm";
 			let file = new File([blob], name, { type: "video/webm" });
 
 			//downloadLink.setAttribute("download", file.name);
@@ -265,6 +284,7 @@ navigator.mediaDevices.ondevicechange = function (event) {
 function onBtnStopClicked() {
 	window.stop = false;
 	window.resetProgressBar();
+	user_start_record = false;
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	//window.question();

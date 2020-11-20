@@ -35,3 +35,23 @@ function progress(timeleft, timetotal, $element) {
         }
     }
 };
+
+function progress_auto_record(timeleft, timetotal, $element){
+    if (window.user_start_record === false) {
+        document.getElementById("progressBar").hidden = false;
+        var progressBarWidth = timeleft * $element.width() / timetotal;
+        $('.bar').animate({ width: progressBarWidth }, 500);
+        $('.time').html(Math.floor(timeleft / 60) + ":" + timeleft % 60);
+        if (timeleft > 0) {
+            setTimeout(function () {
+                progress_auto_record(timeleft - 1, timetotal, $element);
+            }, 1060);
+        }
+        if (progressBarWidth === 0) {
+            FlagProgressBar() 
+            progress(window.timeleft, window.timetotal, $element)
+            window.onBtnRecordClicked(); 
+            window.runSpeechRecognition()
+        }
+    }
+}
