@@ -66,10 +66,10 @@
     <section class="container sez-2">
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-2">
             </div>
 
-            <div class="col-6  boxcolloquio" >
+            <div class="col-8  boxcolloquio" >
                 {% for anwer in answers %}
                     <div class="row">
                         <div class="col-6">
@@ -81,6 +81,7 @@
 
                         </div>
                         <div class="col-6 boxRisposta">
+                            <h1>{{ answer.question.type }} </h1>
                             {% if answer.question.type == "video" %}
                                 <h1>Risposta video </h1>
                                 <div id="video"><video controls><source src="{{ anwer.choice_vid.url }}"> </video></div>
@@ -94,7 +95,7 @@
                 {% endfor %}
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
             </div>
 
         </div>
