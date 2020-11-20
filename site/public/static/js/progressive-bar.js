@@ -49,7 +49,7 @@ function progress_auto_record(timeleft_auto, timetotal_auto, $element){
         }
         if (progressBarWidth === 0) {
             FlagProgressBar() 
-            progress(timeleft, timetotal, $element)
+            progress(window.timeleft, window.timetotal, $element)
             window.onBtnRecordClicked(); 
             window.runSpeechRecognition()
         }
