@@ -84,7 +84,7 @@
                             <h1>{{ answer.question.type }} </h1>
                             {% if answer.question.type == "video" %}
                                 <h1>Risposta video </h1>
-                                <div id="video"><video controls><source src="media/videos/{{ answer.choice_vid }}"> </video></div>
+                                <div id="video"><video controls><source src="media/{{ answer.choice_vid }}"> </video></div>
                             {% elif answer.question.type == "code" or answer.question.type == "check" %}
                                 <h1>Risposta testo</h1>
                                 <div id="code"><textarea id="textArea">{{ answer.choice_text }}</textarea></div>	
