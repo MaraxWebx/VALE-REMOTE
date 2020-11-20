@@ -16,7 +16,8 @@ function countdown_finished(){
 }
 
 function start_timer(display, duration){
-    timer = duration, minutes, seconds;
+    timer = duration
+    var minutes, seconds;
     if (timer < 0) {
         display.textContent = "Tempo scaduto!";
         countdown_finished()
