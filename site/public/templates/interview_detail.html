@@ -75,7 +75,7 @@
                         <div class="col-6">
                             <div class="boxQ">
                                 <h1 class="titleQ">DOMANDA</h1>
-                                <p class="textQ"> {{ answer.question.action }}</p>
+                                <p class="textQ"> {{ answer.question.action|safe }}</p>
                             </div>
 
 
@@ -87,7 +87,7 @@
                                 <p class="textQ">{{ answer.choice_text }}</p>
                             {% elif answer.question.type == "code" or answer.question.type == "check" %}
                                 <h1>Risposta testo</h1>
-                                <p class="textQ">{{ answer.choice_text }}</p>
+                                <p class="textQ">{{ answer.choice_text|safe }}</p>
                             {% endif %}
                         </div>
 
