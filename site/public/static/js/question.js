@@ -17,8 +17,11 @@ var editor =  CodeMirror.fromTextArea(document.getElementById("textArea"),{
 });
 
 function question() {
-  document.getElementById("boxRis").hidden = true;
+  document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
+  document.getElementById("box-ef").hidden = true;
+  document.getElementById("bfine").hidden = true;
+  document.getElementById("questionSection").hidden = false;
 
   showSpinner();
 
@@ -172,10 +175,10 @@ function getQuestion(quest) {
   }
   else {
     console.warn("errore caricamento domanda/Domanda terminata");
-    document.getElementById("boxRis").hidden = true;
     window.stopStream();
-    document.getElementById("title").innerHTML = '<h1 style="text-align: center; color: red">' + 'Fine del questionario' + '</h1>';
-    document.getElementById("question").innerHTML = '<h1 style="text-align: center; margin-top: 200px ">Verrai ricontatto prossimamente da un nostro responsabile</h1>';
+    document.getElementById("boxRis").hidden = true;
+    document.getElementById("questionSection").hidden = true;
+    document.getElementById("bfine").hidden = false;
 
   }
   function printRis() {
