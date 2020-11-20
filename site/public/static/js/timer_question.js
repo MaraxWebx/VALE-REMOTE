@@ -1,6 +1,7 @@
 
 var question_time = 10;
 var timer_id;
+var timer=0;
 
 function restart_timer(){
     clearInterval(timer_id)
@@ -15,7 +16,7 @@ function countdown_finished(){
 }
 
 function start_timer(display, duration){
-    var timer = duration, minutes, seconds;
+    timer = duration, minutes, seconds;
     if (timer < 0) {
         display.textContent = "Tempo scaduto!";
         countdown_finished()
