@@ -1,5 +1,5 @@
 
-var question_time = 10;
+var question_time = 180;
 var timer_id;
 var timer=0;
 
