@@ -17,6 +17,7 @@ var editor =  CodeMirror.fromTextArea(document.getElementById("textArea"),{
 });
 
 function question() {
+
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
   document.getElementById("box-ef").hidden = true;
@@ -172,6 +173,7 @@ function getQuestion(quest) {
       console.error("Errore caricamento input risposta");
 
     }
+    window.restart_timer();
   }
   else {
     console.warn("errore caricamento domanda/Domanda terminata");

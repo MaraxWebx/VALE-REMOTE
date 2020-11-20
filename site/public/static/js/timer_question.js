@@ -1,5 +1,5 @@
 
-var question_time = 120;
+var question_time = 10;
 var timer_id;
 
 function restart_timer(){
