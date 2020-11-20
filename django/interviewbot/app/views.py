@@ -532,7 +532,7 @@ def dashboard_interview(request, id):
 	answers = Answer.objects.filter(interview=interview)
 
 	return render(request, 'interview_detail.html', context = {
-		'type' : interview.type.interview_name
+		'type' : interview.type.interview_name,
 		'user' : user,
 		'date' : date,
 		'answers' : answers
