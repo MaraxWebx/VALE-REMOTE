@@ -28,7 +28,7 @@ function start_timer(display, duration){
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds;
+        display.textContent = "Tempo rimanente: " + minutes + ":" + seconds;
 
         timer--;
 
