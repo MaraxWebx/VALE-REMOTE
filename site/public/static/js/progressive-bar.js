@@ -53,7 +53,7 @@ function progress_auto_record(timeleft_auto, timetotal_auto, $element){
             resetProgressBar();
             window.user_start_record === true;
             FlagProgressBar();
-            progress(window.timeleft, window.timetotal, $('#progressBar'));
+            progress(30, 30, $('#progressBar'));
             window.onBtnRecordClicked(); 
             window.runSpeechRecognition();
         }
