@@ -580,7 +580,7 @@ def dashboard_print_interview(request, id):
 	interview = InterviewType.objects.get(pk=id)
 	all_question = []
 	get_all_question(interview.start_question, all_question)
-	return render(request, '', context={
+	return render(request, 'list-questions.html', context={
 		'user'		: request.user,
 		'questions'	: all_question
 	})
@@ -588,9 +588,9 @@ def dashboard_print_interview(request, id):
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
-	for son in adj:
-		if son not in all_question:
-			get_all_question(son, all_question)
+	for flow in adj:
+		if flow.son not in all_question:
+			get_all_question(flow.son, all_question)
 
 
 def logout_recruiter(request):

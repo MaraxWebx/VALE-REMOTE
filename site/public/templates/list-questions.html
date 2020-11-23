@@ -66,25 +66,37 @@
 
 			<!------>
  <div class="container">
+	 {% for question in questions %}
 	<div class="row box-q">
 		<div class="col-6 align-self-center">
 			
 				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
-				<h1 style="display: inline;"> titolo testo </h1>
+				<p style="display: inline;"> {{ question.action }} </p>
 		
 		
 		</div>
 		<div class="col-4 align-self-center">
-            <h2>Tipo:</h2> <p>video</p>
-            <h2>Lunghezza:</h2><p>---</p>
+			<h3>Tipo:</h3> <p>{{ question.type }}</p>
+			{% if question.type == 'video' %}
+				<h3>Durata:</h3><p>{{ question.length }}</p>
+			{% elif question.type == 'check' %}
+				<h3>N. Risposte:</h3><p>{{ question.length }}</p>
+			{% elif question.type == 'code' %}
+				<h3>Linguaggio:</h3><p>{{ question.length }}</p>
+			{% else %}
+				<h3>Lunghezza:</h3><p>{{ question.length }}</p>
+			{% endif %}
            
 		</div>
 		<div class="col-2  align-self-center">
-            <img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="30" width="30" alt="setting ">
-            <img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+			<img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+			{% if not question.is_fork %}
+				<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="30" width="30" alt="setting ">
+			{% endif %}
+            
 		</div>
 	</div>
-
+	{% endfor %}
  </div>
 	
 
