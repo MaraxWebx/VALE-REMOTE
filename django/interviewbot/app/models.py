@@ -32,6 +32,8 @@ class CandidateUser(models.Model):
 class InterviewType(models.Model):
 	interview_name = models.CharField(max_length=200, null = False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+	addedby = models.CharField(max_length=100, default = "Human Resource")
+	date_published = models.DateTimeField('date published', auto_now_add=True)
 
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
