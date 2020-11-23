@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base target="_blank">
+	<title>Video Interview | Itconsulting.it</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+	<!-- CodeMirror css -->
+	<link rel="stylesheet" href="/node_modules/codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="./node_modules/codemirror/theme/darcula.css">
+
+	<!-- Progressive bar CSS / Main.css -->
+	<link rel="stylesheet" href="css/dash-add-questions.css">
+
+
+</head>
+
+<html oncontextmenu = "return false" onselectstart = "return false" ondragstart = "return false"> 
+
+	<header class="topBar">
+		<div id="logo">
+			<a href="#">
+				<img src="css/img/logo-top.png" alt="LOGOITC">
+			</a>
+
+		</div>
+
+	</header>
+
+<body>
+
+    <main>
+        <section class="container-fluid sez-1">
+            <div class="boxTitle">
+            <div class="recInfo1">
+                <img class="iconRec"src="css/icon/recruiter.svg" heigt="50" width="50" alt="colloqui ">
+                <h1>
+                    RECRUITER 00001
+                </h1>
+            </div>
+            <div class="recInfo2">
+            
+            
+            <div class="lastAcc"><h4>Ultimo accesso:</h4><p>20/20/20</p></div>
+            
+            <div class="email">
+                <h4>E-mail:</h4><p>recruiteruno@gmail.com</p>
+            </div>
+            
+            </div>
+            </div>
+
+        <div class="container">
+            <div class="row box-form">
+                
+                <div class="col">
+                    <form id="msform">
+            
+                        <div class="form-group">
+             
+                          <label for="type">Inserire il tipo di domanda:</label>
+                            <select id="type" name="type" required>
+                                <option value="" selected disabled hidden>Scegli uno di questi tipi</option>
+                                <option value="video">Risposta video</option>
+                                <option value="check">Scelta multipla</option>
+                                <option value="code">Testo</option>
+                            </select> <br>
+                         
+                           <label for="action">Inserire la domanda:</label>
+                            <input id="action" type="text" name="action" required> <br>
+                    
+                            <label for="length">Scegli il numero di "check":</label>
+                            <input type="number" name="length" id="length" required value="0"> <br>
+                            
+                    <input  class="action-button" type="submit">
+                    <input  class="action-button" type="submit">
+                      </form>
+                </div>
+                <div class="col">
+    
+                </div>
+            </div>
+    
+        </div>
+        
+    </main>
+</body>
+</html>
+
