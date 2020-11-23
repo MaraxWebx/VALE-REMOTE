@@ -76,15 +76,15 @@
 		
 		</div>
 		<div class="col-4 align-self-center">
-			<h2>Tipo:</h2> <p>{{ question.type }}</p>
+			<h3>Tipo:</h3> <p>{{ question.type }}</p>
 			{% if question.type == 'video' %}
-				<h2>Durata:</h2><p>{{ question.length }}</p>
+				<h3>Durata:</h3><p>{{ question.length }}</p>
 			{% elif question.type == 'check' %}
-				<h2>N. Risposte:</h2><p>{{ question.length }}</p>
+				<h3>N. Risposte:</h3><p>{{ question.length }}</p>
 			{% elif question.type == 'code' %}
-				<h2>Linguaggio:</h2><p>{{ question.length }}</p>
+				<h3>Linguaggio:</h3><p>{{ question.length }}</p>
 			{% else %}
-				<h2>Lunghezza:</h2><p>{{ question.length }}</p>
+				<h3>Lunghezza:</h3><p>{{ question.length }}</p>
 			{% endif %}
            
 		</div>
