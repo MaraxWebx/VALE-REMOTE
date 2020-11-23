@@ -123,7 +123,16 @@
                              <p>Non male </p> 
                             </div>
                         </div>
+                        {% for comment in comments %}
+                        <div class="row">
+                            <div class="feedback">
+                             <h4>{{ comment.author }}</h4>
+                             <p>{{ comment.content }} </p> 
+                            </div>
+                        </div>
+                        {% endfor %}
                     <form action="/dashboard/{{ id }}/add_comment" method ="POST">
+                        {% csrf_token %}
                      <div class="row">
                          
                          <textarea id="text" name="text" style="width:100%">
