@@ -233,6 +233,5 @@ a.link-container:active {
     position: fixed;
     height: auto;
     background-color: #fff !important;
-    width: 100%;
     border-radius: 20px;
 }
