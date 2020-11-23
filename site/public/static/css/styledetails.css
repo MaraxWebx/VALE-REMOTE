@@ -258,3 +258,30 @@ a:active{
 .no_padding{
     padding: 0px !important;
 }
+
+.btn-dash{
+    margin: 0 0 5px 0;
+    border-radius: 20px !important;
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color:  #476692;
+    font-weight: 600;
+    border: 0px;
+    margin: 10px auto;
+}
+button.btn.btn-dash:hover {
+    background-color:#476692;
+    color: #fff;
+}
+.btn-dash:active{
+    margin: 0 0 5px 0;
+    border-radius: 20px !important;
+    background:#476692 !important;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color:  #fff;
+    font-weight: 600;
+    border: 0px;
+    margin: 10px auto;
+}
