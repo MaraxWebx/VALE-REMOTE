@@ -211,11 +211,11 @@ img.icon-menu {
     font-weight: 600;
 }
 .nav-risp:hover{
-    background:#476692;
+    background:#476692 !important;
     color:  #fff;
 }
 .nav-risp:active{
-    background:#476692;
+    background:#476692 !important;
     color:  #fff;
 }
 div#v-pills-tab {
