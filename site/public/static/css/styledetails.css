@@ -235,3 +235,9 @@ a.link-container:active {
     background-color: #fff !important;
     border-radius: 20px;
 }
+
+a {
+    color: #476692;
+    text-decoration: none;
+    background-color: transparent;
+}
