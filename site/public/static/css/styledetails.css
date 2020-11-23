@@ -260,6 +260,8 @@ a:active{
 }
 
 .box-right{
+    position: sticky;
+    top: 70px;
     background-color: #fff;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     color:  #476692;
@@ -311,4 +313,9 @@ textarea{
 .title-note{
     text-align: center !important; 
     color:#476692 !important;
+}
+
+.box-feed{
+    height: 100px;
+    overflow-y: auto;
 }

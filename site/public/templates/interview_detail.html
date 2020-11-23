@@ -128,20 +128,16 @@
                            </div>
                         </div>
                         <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
-                        <div class="row">
-                            <div class="feedback">
-                             <h4>Recruiter</h4>
-                             <p>Non male </p> 
+                        <div class="box-feed">
+                            {% for comment in comments %}
+                            <div class="row">
+                                <div class="feedback">
+                                <h4>{{ comment.author }}</h4>
+                                <p>{{ comment.content }} </p> 
+                                </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% for comment in comments %}
-                        <div class="row">
-                            <div class="feedback">
-                             <h4>{{ comment.author }}</h4>
-                             <p>{{ comment.content }} </p> 
-                            </div>
-                        </div>
-                        {% endfor %}
                     <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
                         {% csrf_token %}
                      <div class="row">
