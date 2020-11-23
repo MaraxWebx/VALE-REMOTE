@@ -557,7 +557,7 @@ def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_recruiter')
 	
-	interview = Interview.object.get(pk=id)
+	interview = Interview.objects.get(pk=id)
 	interview.analyzed = not interview.analyzed
 	interview.save()
 	return redirect('/dashboard/'+id)
