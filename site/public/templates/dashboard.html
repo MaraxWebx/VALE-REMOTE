@@ -82,11 +82,11 @@
 
                     {% for colloquio in colloqui %}
                         {% if colloquio.analyzed %}
-                            <a href="/dashboard/{{ colloquio.id }}" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-es.svg' %}"  alt="colloqui-esaminati "><h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
+                            <a href="/dashboard/{{ colloquio.id }}" target = "_parent" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-es.svg' %}"  alt="colloqui-esaminati "><h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
                             <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
                             <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
                         {% else %}
-                            <a href="/dashboard/{{ colloquio.id }}" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi"><h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
+                            <a href="/dashboard/{{ colloquio.id }}"  target = "_parent" class="list-group-item list-group-item-action"><img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi"><h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
                                 <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
                             <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
                         {% endif %}
