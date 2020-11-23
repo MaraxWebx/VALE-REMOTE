@@ -530,13 +530,34 @@ def dashboard_interview(request, id):
 	user = interview.user
 	date = interview.date
 	answers = Answer.objects.filter(interview=interview)
+	comments = Comment.objects.filter(interview=interview)
 
 	return render(request, 'interview_detail.html', context = {
-		'type' : interview.type.interview_name,
-		'user' : user,
-		'date' : date,
-		'answers' : answers
+		'type' 		: 	interview.type.interview_name,
+		'user' 		: 	user,
+		'date' 		: 	date,
+		'answers' 	: 	answers,
+		'comments' 	: 	comments,
+		'interview' : 	interview
 	})
+
+def dashboard_interview_addcomment(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter/')
+	
+	interview = Interview.objects.get(pk=id)
+	content = request.POST['text']
+	user = request.user.first_name + ' ' + request.user.last_name
+	comment = Comment.objects.create(content=content, author = user, interview = interview)
+	comment.save()
+	return redirect('/dashboard/'+id)
+
+def dashboard_interview_toggle_mark(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+	
+	interview = Interview.object.get(pk=id)
+
 
 
 def logout_recruiter(request):

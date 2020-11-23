@@ -16,6 +16,7 @@ urlpatterns = [
     path('add_kw/', keyword_managment, name='add_keyword'),
     path('dashboard/', dashboard_index, name='dashboard'),
     path('dashboard/<int:id>', dashboard_interview, name='dashboard_interview'),
+    path('dashboard/<int:id>/add_comment', dashboard_interview_addcomment, name='dashboard_interview_addcomment'),
     path('login_rectruiter/', login_recruiter, name='login'),
     path('logout/', logout_recruiter, name='logout')
 ]
