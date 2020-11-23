@@ -566,7 +566,11 @@ def dashboard_interview_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
 	types = InterviewType.objects.all()
-	return render(request, 'questions-dash.html', context={'types':types})
+
+	return render(request, 'questions-dash.html', context={
+		'types'	: types,
+		'user'	: request.user
+		})
 
 	# get the list of interview type's
 
@@ -579,12 +583,11 @@ def dashboard_print_interview(request, id):
 	#ritorna la lista di tutte le domande per una intervista
 
 def get_all_question(node, all_question):
-	adj = Interview.objects.filter(parent=node)
+	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
 	for son in adj:
-		get_all_question(son, all_question)
-
-
+		if son not in all_question:
+			get_all_question(son, all_question)
 
 
 def logout_recruiter(request):
