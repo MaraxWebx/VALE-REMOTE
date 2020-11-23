@@ -583,12 +583,11 @@ def dashboard_print_interview(request, id):
 	#ritorna la lista di tutte le domande per una intervista
 
 def get_all_question(node, all_question):
-	adj = Interview.objects.filter(parent=node)
+	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
 	for son in adj:
-		get_all_question(son, all_question)
-
-
+		if son not in all_question:
+			get_all_question(son, all_question)
 
 
 def logout_recruiter(request):
