@@ -538,7 +538,7 @@ def dashboard_interview(request, id):
 		'date' 		: 	date,
 		'answers' 	: 	answers,
 		'comments' 	: 	comments,
-		'interview' : 	interview
+		'id' : 	id
 	})
 
 def dashboard_interview_addcomment(request, id):
