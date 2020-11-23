@@ -538,7 +538,7 @@ def dashboard_interview(request, id):
 		'date' 		: 	date,
 		'answers' 	: 	answers,
 		'comments' 	: 	comments,
-		'id' 		: 	id
+		'id' 		: 	id,
 		'an' 		: 	interview.analyzed
 	})
 
