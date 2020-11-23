@@ -66,21 +66,20 @@
 
 			<!------>
  <div class="container">
-	<div class="row box-q">
-		<div class="col-6 align-self-center">
-			
-				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
-				<h1 style="display: inline;"> tittolo intervista</h1>
-		
-		
+	 {% for type in types %}
+		<div class="row box-q">
+			<div class="col-6 align-self-center">
+					<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
+					<h1 style="display: inline;">{{ type.interview_name }}</h1>
+			</div>
+			<div class="col-4">
+				
+			</div>
+			<div class="col-2  align-self-center">
+				<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
+			</div>
 		</div>
-		<div class="col-4">
-			
-		</div>
-		<div class="col-2  align-self-center">
-			<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
-		</div>
-	</div>
+	{% endfor %}
 
  </div>
 	
