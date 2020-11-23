@@ -207,7 +207,7 @@ img.icon-menu {
     background: white;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     text-align: center;
-    color:  #476692;
+    color:  #476692 !important;
     font-weight: 600;
 }
 .nav-risp:hover{
@@ -218,28 +218,21 @@ img.icon-menu {
     background:#476692 !important;
     color:  #fff;
 }
-div#v-pills-tab {
-    height: auto;
-    background-color: #fff !important;
-    width: 100%;
-    border-radius: 20px;
-}
 
-a#v-pills-home-tab:hover {
+a.link-container:hover {
     background: #476692;
     color: #fff;
 }
 
-a#v-pills-home-tab:active {
+a.link-container:active {
     background: #476692;
     color: #fff;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: #fff;
-    background-color: #476692;
 }
 
 .link-container{
     position: fixed;
+    height: auto;
+    background-color: #fff !important;
+    width: 100%;
+    border-radius: 20px;
 }
