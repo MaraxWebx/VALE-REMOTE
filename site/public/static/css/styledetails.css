@@ -224,3 +224,13 @@ div#v-pills-tab {
     width: 100%;
     border-radius: 20px;
 }
+
+a#v-pills-home-tab:hover {
+    background: #476692;
+    color: #fff;
+}
+
+a#v-pills-home-tab:active {
+    background: #476692;
+    color: #fff;
+}
