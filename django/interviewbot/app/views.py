@@ -575,6 +575,8 @@ def dashboard_print_interview(request, id):
 		return redirect('/login_rectruiter')
 	interview = InterviewType.objects.get(pk=id)
 	all_question = []
+	get_all_question(interview.start_question, all_question)
+	#ritorna la lista di tutte le domande per una intervista
 
 def get_all_question(node, all_question):
 	adj = Interview.objects.filter(parent=node)
