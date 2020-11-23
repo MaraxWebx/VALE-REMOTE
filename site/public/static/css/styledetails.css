@@ -264,6 +264,7 @@ a:active{
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     color:  #476692;
     margin: 0px auto;
+    height: auto;
     border-radius: 20px !important;
 }
 .btn-dash{
@@ -291,4 +292,11 @@ button.btn.btn-dash:hover {
     font-weight: 600;
     border: 0px;
     margin: 10px auto;
+}
+
+.feedback{
+    overflow-y: auto;
+    margin : 0 0 5px 5px;
+    border:1px solid #476692;
+    border-radius: 10px;
 }
