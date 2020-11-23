@@ -123,14 +123,16 @@
                              <p>Non male </p> 
                             </div>
                         </div>
+                    <form action="/dashboard/{{interview.id}}/add_comment" method ="POST">
                      <div class="row">
                          
-                         <textarea style="width:100%">
+                         <textarea id="text" name="text" style="width:100%">
                          </textarea>
                      </div>
                      <div class="row">
-                         <button  type="button" class="btn btn-dash">INVIA FEEDBACK</button>
+                         <button  type="submit" class="btn btn-dash">INVIA FEEDBACK</button>
                     </div>
+                    </form>
 
             </div>
 
