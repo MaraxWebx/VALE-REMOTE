@@ -550,7 +550,7 @@ def dashboard_interview_addcomment(request, id):
 	user = request.user.first_name + ' ' + request.user.last_name
 	comment = Comment.objects.create(content=content, author = user, interview = interview)
 	comment.save()
-	return redirect('/dashboard/'+id)
+	return redirect('/dashboard/'+str(id))
 
 def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
