@@ -298,7 +298,7 @@ button.btn.btn-dash:hover {
 
 .feedback{
     overflow-y: auto;
-    margin : 0 5px 5px 5px;
+    margin : 0 5px 5px 0px;
     border:1px solid #476692;
     border-radius: 10px;
     width: auto;
@@ -316,6 +316,6 @@ textarea{
 }
 
 .box-feed{
-    height: 100px;
+    height: 200px;
     overflow-y: auto;
 }
