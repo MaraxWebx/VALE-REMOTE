@@ -241,3 +241,13 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
+
+a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+a:active{
+    background:#476692 !important;
+    color:  #fff;
+}
