@@ -581,7 +581,7 @@ def dashboard_print_interview(request, id):
 	all_question = []
 	get_all_question(interview.start_question, all_question)
 	return render(request, '', context={
-		'user'		: request.user
+		'user'		: request.user,
 		'questions'	: all_question
 	})
 
