@@ -19,7 +19,13 @@
 	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
 	<!-- Progressive bar CSS / Main.css -->
 	<link rel="stylesheet" href="{% static 'css/styledetails.css' %}">
-    
+    <script>
+        $("#toplinks, #bottomlinks").on('click','a', function(event){ 
+        event.preventDefault();
+        var o =  $( $(this).attr("href") ).offset();   
+        window.scrollTo(0,o);
+});
+    </script>
 </head>
 <body>
 
@@ -67,7 +73,7 @@
 
         <div class="row">
             <div class="col-2">
-                <div id="toplinks"><a href="#first">First</a> <a href="#second">Second</a></div>
+                <div id="toplinks"><a href="#{{ answers[7].id }}">First</a> <a href="#second">Second</a></div>
                 
                 <div id="bottomlinks"><a href="#first">First</a> <a href="#second">Second</a></div>
             </div>
