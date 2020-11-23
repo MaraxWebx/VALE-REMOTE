@@ -239,6 +239,6 @@ h5.data{
     background: white;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     position: relative;
-    margin-bottom: 1px solid  #476692;
+    border-bottom: 2px solid #476692 !important;
     margin: 20px auto;
 }
