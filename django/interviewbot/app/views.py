@@ -557,6 +557,9 @@ def dashboard_interview_toggle_mark(request, id):
 		return redirect('/login_recruiter')
 	
 	interview = Interview.object.get(pk=id)
+	interview.analyzed = not interview.analyzed
+	interview.save()
+	
 
 
 
