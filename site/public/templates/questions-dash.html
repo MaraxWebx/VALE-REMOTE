@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base target="_blank">
+	<title>Dashboard-Recruiter</title>
+	<!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+	<!-- Progressive bar CSS / Main.css -->
+	<link rel="stylesheet" href="{% static 'css/stylquestions.css' %}">
+    
+</head>
+<body>
+
+	<header class="topBar">
+		<div id="logo">
+			<a >
+				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+			</a>
+
+		</div>
+        <nav class="menu">
+            <ul >
+              <li><a href="/logout/"><img class="icon-menu"src="{% static 'css/icon/log-out.svg' %}"  alt="colloqui ">LOG OUT</a></li>
+            </ul>
+          </nav>
+
+
+
+          
+	</header>
+	<main>
+
+
+<div class="pannello">
+
+<!---TITOLO CON INFO SUL RECRUTIER ---->
+        <section class="container-fluid sez-1">
+<div class="boxTitle">
+<div class="recInfo1">
+    <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
+    <h1>
+        {{ user.first_name }} {{ user.last_name}}
+    </h1>
+</div>
+<div class="recInfo2">
+
+
+<div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
+
+<div class="email">
+    <h4>E-mail:</h4><p> {{ user.email }}</p>
+</div>
+
+</div>
+</div>
+
+
+<!--- domande ---->
+<section class="container-fluid sez-2">
+        
+	<div class="row boxInfo">
+
+
+	  <div class="col">
+		  
+		  <h2>Questionari</h2>
+		<h3>GESTISI I COLLOQUI: Inserisci le domande per ogni tipologia di colloquio</h3>
+	  <div class="row">
+ <div col="col">
+	<div class=" row list-group tLast">
+		<div class="col-4">
+			<a href="#" target = "_parent" class="list-group-item list-group-item-action">
+				<img src="{% static 'css/img/icona_question.png' %}"  alt="colloqui-esaminati ">
+				<h4 class="nome">QUESTIONARIO 1</h4>
+		</div>
+ <div class="col-4">
+	<h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
+	<h5 class="tipo-c" >Tipo di domanda:</h5><p class="tipo-c">---</p></a>
+</div>
+<div class="col-4"> 
+
+</div>
+ </div>
+ <img src="{% static 'css/img/setting.svg' %}"  alt="colloqui-esaminati ">
+ </div>
+ </div>
+
+</section>
+</div>
+</main>
+</body>
+</html>
