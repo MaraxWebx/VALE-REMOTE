@@ -207,16 +207,16 @@ img.icon-menu {
     background: white;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     text-align: center;
-    color:  #476692 !important;
+    color:  #476692;
     font-weight: 600;
 }
 .nav-risp:hover{
     background:#476692 !important;
-    color:  #fff;
+    color:  #fff !important;
 }
 .nav-risp:active{
     background:#476692 !important;
-    color:  #fff;
+    color:  #fff !important;
 }
 
 a.link-container:hover {
