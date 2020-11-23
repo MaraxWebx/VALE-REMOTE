@@ -117,13 +117,14 @@
                              <button type="button"class="btn  btn-dash">ELIMINA</button>
                            </div>
                            <div class="col">
-                             <form action="/dashboard/{{ id }}/mark" target="_parent">
+                            <form action="/dashboard/{{ id }}/mark" target="_parent">
                                 {% csrf_token %}
                                 {% if an %}
                                     <button  type="submit" class="btn  btn-dash">DA ESAMINARE</button>
                                 {% else %}
                                     <button  type="submit" class="btn  btn-dash">ESAMINATO</button>
                                 {% endif %}
+                            </form>
                            </div>
                         </div>
                         <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
