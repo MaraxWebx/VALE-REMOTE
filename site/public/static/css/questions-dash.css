@@ -173,3 +173,61 @@ h5.data{
     font-size: 12px;
     margin-left: 100px;
 }
+/******BOX CENTRALE***/
+
+.boxTitle{
+    height: 70px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    position: relative;
+    
+}
+
+.recInfo1{
+    position: absolute;;
+    top:10px;
+    left:20px;
+    display: inline-flex;
+    
+    
+}
+.recInfo1 h1{
+    display: inline-flex;
+   line-height: 50px;
+   font-weight: 700;
+}
+.iconRec{
+    margin-right: 10px;
+
+}
+
+
+.recInfo2{
+    position: absolute;
+    top:10px;
+    right: 20px;
+    display:inline-flex;
+}
+
+.lastAcc {
+ display: -webkit-box;
+ margin-right: 10px;
+ line-height: 50px;
+}
+.lastAcc h4{
+    line-height: 50px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+.email{
+    display: -webkit-box;
+    line-height: 50px;
+}
+.email h4{
+    line-height: 50px;
+    margin-right: 5px;
+    font-size: 16px;
+}
