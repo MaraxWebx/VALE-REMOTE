@@ -566,7 +566,7 @@ def dashboard_interview_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_recruiter')
 	types = InterviewType.objects.all()
-	return render(request, 'question-dash.html', context={'types':types})
+	return render(request, 'questions-dash.html', context={'types':types})
 
 	# get the list of interview type's
 
