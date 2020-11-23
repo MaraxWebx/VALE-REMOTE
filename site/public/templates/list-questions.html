@@ -89,10 +89,11 @@
            
 		</div>
 		<div class="col-2  align-self-center">
+			<img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 			{% if not question.is_fork %}
 				<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="30" width="30" alt="setting ">
 			{% endif %}
-            <img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+            
 		</div>
 	</div>
 	{% endfor %}
