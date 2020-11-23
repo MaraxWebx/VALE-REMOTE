@@ -562,6 +562,29 @@ def dashboard_interview_toggle_mark(request, id):
 	interview.save()
 	return redirect('/dashboard/'+str(id))
 
+def dashboard_interview_list(request):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+	types = InterviewType.objects.all()
+	return render(request, 'question-dash.html', context={'types':types})
+
+	# get the list of interview type's
+
+def dashboard_print_interview(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+	interview = InterviewType.objects.get(pk=id)
+	all_question = []
+
+def get_all_question(node, all_question):
+	adj = Interview.objects.filter(parent=node)
+	all_question.append(node)
+	for son in adj:
+		get_all_question(son, all_question)
+
+
+
+
 def logout_recruiter(request):
 	logout(request)
 	return redirect('/login_rectruiter/')
