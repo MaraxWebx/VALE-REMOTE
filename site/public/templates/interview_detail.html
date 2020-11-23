@@ -51,7 +51,11 @@
                 <section class="container-fluid sez-1">
         <div class="boxTitle">
         <div class="interviewInfo1">
+            {% if an %}
+            <img class="iconInterview"src="{% static 'css/icon/colloqui-es.svg' %}" heigt="50" width="50" alt="colloqui ">
+            {% else %}
             <img class="iconInterview"src="{% static 'css/icon/colloqui-new.svg' %}" heigt="50" width="50" alt="colloqui ">
+            {% endif %}
             <h1>
                 {{ user.firstname }} {{ user.lastname }}
             </h1>
@@ -113,7 +117,13 @@
                              <button type="button"class="btn  btn-dash">ELIMINA</button>
                            </div>
                            <div class="col">
-                             <button  type="button" class="btn  btn-dash">ESAMINATO</button>
+                             <form action="/dashboard/{{ id }}/mark" target="_parent">
+                                {% csrf_token %}
+                                {% if an %}
+                                    <button  type="submit" class="btn  btn-dash">DA ESAMINARE</button>
+                                {% else %}
+                                    <button  type="submit" class="btn  btn-dash">ESAMINATO</button>
+                                {% endif %}
                            </div>
                         </div>
                         <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
