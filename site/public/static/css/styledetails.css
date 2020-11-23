@@ -239,3 +239,7 @@ a#v-pills-home-tab:active {
     color: #fff;
     background-color: #476692;
 }
+
+.link-container{
+    position: fixed;
+}
