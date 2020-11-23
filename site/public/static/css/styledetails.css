@@ -302,3 +302,8 @@ button.btn.btn-dash:hover {
     width: auto;
     padding:10px;
 }
+
+textarea{
+    resize: none;
+    margin: 5px;
+}
