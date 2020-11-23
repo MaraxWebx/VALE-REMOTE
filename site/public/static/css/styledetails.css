@@ -209,7 +209,7 @@ img.icon-menu {
     text-align: center;
     color:  #476692;
     font-weight: 600;
-    padding: 5px;
+    padding: 10px;
 }
 .nav-risp:hover{
     background:#476692 !important;
@@ -235,6 +235,7 @@ a.link-container:active {
     height: auto;
     background-color: #fff !important;
     border-radius: 20px;
+    overflow: scroll;
 }
 
 a {
