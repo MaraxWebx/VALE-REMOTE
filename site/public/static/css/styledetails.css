@@ -231,7 +231,8 @@ a.link-container:active {
 }
 
 .link-container{
-    position: fixed;
+    position: sticky;
+    top : 50;
     height: auto;
     background-color: #fff !important;
     border-radius: 20px;
