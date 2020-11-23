@@ -307,3 +307,8 @@ textarea{
     resize: none;
     margin: 5px;
 }
+
+.title-note{
+    text-align: center !important; 
+    color:#476692 !important;
+}
