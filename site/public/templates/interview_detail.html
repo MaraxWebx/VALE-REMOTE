@@ -75,7 +75,7 @@
             <div class="col-2">
                 <div class="link-container">
                     {% for answer in answers %} 
-                        <div id="toplinks" class="nav-risp"><a href="#{{ answer.id }}" target = "_parent">Domanda {{ forloop.counter }}</a> </div>
+                        <a href="#{{ answer.id }}" target = "_parent"><div id="toplinks" class="nav-risp">Domanda {{ forloop.counter }}</div></a> 
                     {% endfor %}
                 </div>
             </div>
