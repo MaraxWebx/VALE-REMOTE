@@ -544,7 +544,7 @@ def dashboard_interview(request, id):
 
 def dashboard_interview_addcomment(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_recruiter/')
+		return redirect('/login_rectruiter/')
 	
 	interview = Interview.objects.get(pk=id)
 	content = request.POST['text']
@@ -555,7 +555,7 @@ def dashboard_interview_addcomment(request, id):
 
 def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_recruiter')
+		return redirect('/login_rectruiter')
 	
 	interview = Interview.objects.get(pk=id)
 	interview.analyzed = not interview.analyzed
@@ -564,7 +564,7 @@ def dashboard_interview_toggle_mark(request, id):
 
 def dashboard_interview_list(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_recruiter')
+		return redirect('/login_rectruiter')
 	types = InterviewType.objects.all()
 	return render(request, 'questions-dash.html', context={'types':types})
 
@@ -572,7 +572,7 @@ def dashboard_interview_list(request):
 
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_recruiter')
+		return redirect('/login_rectruiter')
 	interview = InterviewType.objects.get(pk=id)
 	all_question = []
 
