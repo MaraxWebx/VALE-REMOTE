@@ -319,3 +319,8 @@ textarea{
     height: 200px;
     overflow-y: auto;
 }
+
+.feed-row{
+    margin: 0px;
+    
+}
