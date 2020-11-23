@@ -580,7 +580,10 @@ def dashboard_print_interview(request, id):
 	interview = InterviewType.objects.get(pk=id)
 	all_question = []
 	get_all_question(interview.start_question, all_question)
-	#ritorna la lista di tutte le domande per una intervista
+	return render(request, '', context={
+		'user'		: request.user
+		'questions'	: all_question
+	})
 
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
