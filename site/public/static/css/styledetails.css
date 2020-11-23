@@ -233,10 +233,10 @@ a.link-container:active {
 .link-container{
     position: sticky;
     top : 60px;
-    height: auto;
+    height: 300px;
     background-color: #fff !important;
     border-radius: 20px;
-    overflow-y: auto
+    overflow-y: auto;
 }
 
 a {
