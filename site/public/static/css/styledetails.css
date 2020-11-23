@@ -201,7 +201,7 @@ img.icon-menu {
 }
 
 .nav-risp{
-    width: 100%;
+    width: 200px;
     margin: 0 0 5px 0;
     border-radius: 20px !important;
     background: white;
@@ -209,6 +209,7 @@ img.icon-menu {
     text-align: center;
     color:  #476692;
     font-weight: 600;
+    padding: 10px;
 }
 .nav-risp:hover{
     background:#476692 !important;
