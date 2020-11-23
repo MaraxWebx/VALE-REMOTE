@@ -232,7 +232,7 @@ a.link-container:active {
 
 .link-container{
     position: sticky;
-    top : 60px;
+    top : 70px;
     height: 400px;
     background-color: #fff !important;
     border-radius: 20px;
