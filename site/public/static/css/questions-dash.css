@@ -231,3 +231,13 @@ h5.data{
     margin-right: 5px;
     font-size: 16px;
 }
+
+.box-q{
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    position: relative;
+    margin-bottom: 1px solid  #476692;
+}

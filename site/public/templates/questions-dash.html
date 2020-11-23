@@ -35,66 +35,50 @@
             </ul>
 		</nav>          
 	</header>
+
+
 	<main>
 
-
-
 <!---TITOLO CON INFO SUL RECRUTIER ---->
-        <section class="container-fluid">
-<div class="boxTitle">
-<div class="recInfo1">
-    <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
-    <h1>
-        {{ user.first_name }} {{ user.last_name}}
-    </h1>
-</div>
-<div class="recInfo2">
-
-
-<div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
-
-<div class="email">
-    <h4>E-mail:</h4><p> {{ user.email }}</p>
-</div>
-
-</div>
-</div>
-        </section>
-
-<!--- domande ---->
-<section class="container-fluid sez-2">
-        
-	<div class="row boxInfo">
-
-
-	  <div class="col">
-		  
-		  <h2>Questionari</h2>
-		<h3>GESTISI I COLLOQUI: Inserisci le domande per ogni tipologia di colloquio</h3>
-	  </div>
-
+ <!---TITOLO CON INFO SUL RECRUTIER ---->
+ <section class="container-fluid sez-1">
+	<div class="boxTitle">
+	<div class="recInfo1">
+		<img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
+		<h1>
+			{{ user.first_name }} {{ user.last_name}}
+		</h1>
+	</div>
+	<div class="recInfo2">
+	
+	
+	<div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
+	
+	<div class="email">
+		<h4>E-mail:</h4><p> {{ user.email }}</p>
+	</div>
+	
+	</div>
 	</div>
 
-	<div class=" row list-group tLast">
-		<div class="col-4">
-			<a href="#" target = "_parent" class="list-group-item list-group-item-action">
-				<img src="{% static 'css/img/icona_question.png' %}"  alt="colloqui-esaminati ">
-				<h4 class="nome">QUESTIONARIO 1</h4>
-		</div>
- <div class="col-4">
-	<h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
-	<h5 class="tipo-c" >Tipo di domanda:</h5><p class="tipo-c">---</p></a>
-</div>
-<div class="col-4"> 
-</div>
-<img src="{% static 'css/img/setting.svg' %}"  alt="colloqui-esaminati ">
-</div>
-</div>
- 
- </div>
+	</section>
 
-</section>
-</div>
+
+			<!------>
+
+	<div class="row box-q">
+		<div class="col">
+			<img class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
+          <h1> tittolo intervista</h1>
+		</div>
+		<div class="col">
+			
+		</div>
+		<div class="col">
+			<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="50" width="50" alt="setting ">
+		</div>
+	</div>
+
 </main>
 </body>
 </html>
