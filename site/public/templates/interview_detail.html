@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         {% endfor %}
-                    <form action="/dashboard/{{ id }}/add_comment" method ="POST">
+                    <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
                         {% csrf_token %}
                      <div class="row">
                          
