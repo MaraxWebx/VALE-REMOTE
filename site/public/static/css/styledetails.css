@@ -251,3 +251,7 @@ a:active{
     background:#476692 !important;
     color:  #fff !important;
 }
+
+.no_padding{
+    padding: 0px !important;
+}
