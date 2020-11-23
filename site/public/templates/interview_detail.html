@@ -69,7 +69,7 @@
             <div class="col-2">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     {% for answer in answers %}
-                        <a class="nav-link active nav-risp" id="v-pills-home-tab" data-toggle="pill" href="#{{ answer.id }}" role="tab" aria-controls="v-pills-home" aria-selected="true">Domanda {{ forloop.counter }}</a>
+                        <a class="nav-link nav-risp" id="v-pills-home-tab" data-toggle="pill" href="#{{ answer.id }}" role="tab" aria-controls="{{ answer.id }}" aria-selected="true">Domanda {{ forloop.counter }}</a>
                     {% endfor %}
                 </div>
             </div>
