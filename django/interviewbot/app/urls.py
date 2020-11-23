@@ -19,7 +19,7 @@ urlpatterns = [
     path('dashboard/<int:id>/add_comment', dashboard_interview_addcomment, name='dashboard_interview_addcomment'),
     path('dashboard/<int:id>/mark', dashboard_interview_toggle_mark, name='dashboard_interview_togglemark'),
     path('dashboard/questions', dashboard_interview_list, name='dashboard_interview_list'),
-    path('dashboard/questions/<int:id>', dashboard_interview_list, name='dashboard_interview_list'),
+    path('dashboard/questions/<int:id>', dashboard_print_interview, name='dashboard_print_interview'),
     path('login_rectruiter/', login_recruiter, name='login'),
     path('logout/', logout_recruiter, name='logout')
 ]
