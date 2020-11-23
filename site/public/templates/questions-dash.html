@@ -67,6 +67,7 @@
 			<!------>
  <div class="container">
 	 {% for type in types %}
+	 	<a href="/dashboard/questions/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
 		<div class="row box-q">
 			<div class="col-6 align-self-center">
 					<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
@@ -79,6 +80,7 @@
 				<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
 			</div>
 		</div>
+		</a>
 	{% endfor %}
 
  </div>

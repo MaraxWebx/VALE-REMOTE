@@ -580,7 +580,7 @@ def dashboard_print_interview(request, id):
 	interview = InterviewType.objects.get(pk=id)
 	all_question = []
 	get_all_question(interview.start_question, all_question)
-	return render(request, '', context={
+	return render(request, 'list-question.html', context={
 		'user'		: request.user,
 		'questions'	: all_question
 	})
