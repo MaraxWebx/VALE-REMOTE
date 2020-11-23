@@ -66,17 +66,26 @@
 
 			<!------>
  <div class="container">
+	 {% for question in all_question %}
 	<div class="row box-q">
 		<div class="col-6 align-self-center">
 			
 				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
-				<h1 style="display: inline;"> titolo testo </h1>
+				<h1 style="display: inline;"> {{ question.action }} </h1>
 		
 		
 		</div>
 		<div class="col-4 align-self-center">
-            <h2>Tipo:</h2> <p>video</p>
-            <h2>Lunghezza:</h2><p>---</p>
+			<h2>Tipo:</h2> <p>{{ question.type }}</p>
+			{% if question.type == 'video' %}
+				<h2>Durata:</h2><p>{{ question.length }}</p>
+			{% elif question.type == 'check' %}
+				<h2>N. Risposte:</h2><p>{{ question.length }}</p>
+			{% elif question.type == 'code' %}
+				<h2>Linguaggio:</h2><p>{{ question.length }}</p>
+			{% else %}
+				<h2>Lunghezza:</h2><p>{{ question.length }}</p>
+			{% end if %}
            
 		</div>
 		<div class="col-2  align-self-center">
@@ -84,7 +93,7 @@
             <img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 		</div>
 	</div>
-
+	{% endfor %}
  </div>
 	
 
