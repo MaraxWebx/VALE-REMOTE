@@ -33,15 +33,16 @@ class InterviewType(models.Model):
 	interview_name = models.CharField(max_length=200, null = False, blank=False)
 	start_question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
-class Comment(models.Model):
-	content = models.CharField(max_length=500, null = False, blank = False)
-
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
 	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE)
 	analyzed = models.BooleanField(default=False)
-	
 	type = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
+	content = models.CharField(max_length=500, null = False, blank = False)
+	author = models.CharField(max_length=100, null = False, blank = False)
 
 class Answer(models.Model):
 	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
