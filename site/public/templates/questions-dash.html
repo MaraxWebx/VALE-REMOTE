@@ -78,9 +78,9 @@
 	 	
 			<div class="col-8 ">
 				{% for type in types %}
-				<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
+					
 				<div class="row box-q">
-				
+					<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">
 				<div class="col-6 align-self-center ">
 						<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
 						<h1 style="display: inline;">{{ type.interview_name }}</h1>
@@ -91,8 +91,9 @@
 				<div class="col-2  align-self-center">
 					<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
 				</div>
+			</a>
 				</div>
-				</a>
+
 				</div>
 			{% endfor %}
 			</div>
