@@ -79,11 +79,14 @@
                     
                             <label for="length" id = "length_label" hidden>Scegli il numero di "check":</label>
                             <input type="number" name="length" id="length" required value="0" hidden> <br>
+
+                            <label for="length" id = "lang_label" hidden>Seleziona il codice del linguaggio:</label>
+                            <input type="number" name="lang" id="lang" required value="0" hidden> <br>
                             
                             <label for="choices" id="choices_label" hidden>Inserisci le scelte separandole con "<b>;</b>":</label>
                             <input type="text" name="choices" id="choices" hidden>
 
-                            <label for="is_fork" hidden>Questa domanda sarà diramata?</label>
+                            <label for="is_fork" id="is_fork_label" hidden>Questa domanda sarà diramata?</label>
                             <input type="checkbox" name="is_fork" id="is_fork" hidden><br>
 
                             <div hidden id="box-parent"> 
@@ -116,6 +119,9 @@
         function onTypeSelected(){
             document.getElementById("action").hidden = false;
             document.getElementById("action_label").hidden = false;
+            document.getElementById("is_fork").hidden = false;
+            document.getElementById("is_fork_label").hidden = false;
+            document.getElementById("box-parent").hidden = false;
             if(document.getElementById("type").value === "check"){
                 document.getElementById("length").hidden = false;
                 document.getElementById("length_label").hidden = false;
@@ -126,6 +132,14 @@
                 document.getElementById("length_label").hidden = true;
                 document.getElementById("choices").hidden = true;
                 document.getElementById("choices_label").hidden = true;
+            }
+
+            if(document.getElementById("type").value === "code"){
+                document.getElementById("lang").hidden = false;
+                document.getElementById("lang_label").hidden = false;
+            }else{
+                document.getElementById("lang").hidden = true;
+                document.getElementById("lang_label").hidden = true;
             }
         }
 

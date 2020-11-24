@@ -370,12 +370,16 @@ def add_question(request):
 
 	### POST REQUEST ###
 	if request.method == 'POST':
-		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
+		if not ('type' in request.POST and 'action' in request.POST ):
 			return HttpResponse('Missing essentials parameters')
 		
 		type 		= request.POST['type']
 		action 		= request.POST['action']
-		length		= request.POST['length']
+
+		if 'length' in request.POST:
+			length	= request.POST['length']
+		elif 'lang' in request.POST:
+			length = request.POST['lang']
 		
 		if 'choices' in request.POST:
 			choices = request.POST['choices']
