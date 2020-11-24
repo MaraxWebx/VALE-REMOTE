@@ -83,22 +83,21 @@
 		 
 	<div class="col-8 box-q">
 		<div class="row">
-<div col="col-6align-self-center">
-		
-	
-				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
-				<h1 style="display: inline;">{{ type.interview_name }}</h1>
-		</div>
-		<div class="col-auto">
-			
-		</div>
-		<div class="col-auto  align-self-center">
-			<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
-			<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
-		</div>
-	</a>
+				<div col="col-6align-self-center">
+						
+					
+								<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
+								<h1 style="display: inline;">{{ type.interview_name }}</h1>
+						</div>
+						<div class="col-auto">
+							
+						</div>
+						<div class="col-auto  align-self-center">
+							<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
+							<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action"></a>
+					</div>
+				</div>
 	</div>
-</div>
 {% endfor %}
 
  <div class="col-2">
