@@ -66,24 +66,42 @@
 
 			<!------>
  <div class="container">
-	 {% for type in types %}
+
+<div class="row">
+
+
+ <div class="col-2">
+   <button class="btn-add">
+	   add new
+   </button>
+ </div>
+
+
+	{% for type in types %}
 	 	
-		<div class="row box-q">
-			<a href="/dashboard/questions/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
-			<div class="col-6 align-self-center">
-					<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
-					<h1 style="display: inline;">{{ type.interview_name }}</h1>
-			</div>
-			<div class="col-4">
-				
-			</div>
-			<div class="col-2  align-self-center">
-				<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
-			</div>
-		</a>
+	<div class="col box-q">
+		<a href="/dashboard/questions/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
+		<div class="col-6 align-self-center">
+				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
+				<h1 style="display: inline;">{{ type.interview_name }}</h1>
 		</div>
-		
-	{% endfor %}
+		<div class="col-4">
+			
+		</div>
+		<div class="col-2  align-self-center">
+			<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
+		</div>
+	</a>
+	</div>
+	
+{% endfor %}
+
+ <div class="col-2">
+	 
+ </div>
+</div>
+	
+	 
 
  </div>
 	
