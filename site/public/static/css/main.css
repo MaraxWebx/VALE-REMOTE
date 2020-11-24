@@ -83,14 +83,16 @@ hr{
 {
   margin-top: 50px;
 }
-
-.box-e-f{
-  width: 400px;
-  margin: 20px auto;
+.col-6.valestart {
   text-align: center;
+}
+.box-e-f{
+  width: 600px;
+  margin: 20px auto;
+  text-align: left;
   position: relative;
   background-color: #FFFFFF;
-  padding: 30px;
+  padding: 20px;
   border-radius: 20px;
 }
 
