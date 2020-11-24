@@ -78,11 +78,14 @@
 
 
 	{% for type in types %}
-	 	<div class="row">
+	 	
 
 		 
-	<div class="col-4 box-q">
+	<div class="col-8 box-q">
+		<div class="row">
+<div col="col-4">
 		<a href="/dashboard/questions/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">	
+		</div>
 		<div class="col-6 align-self-center">
 				<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
 				<h1 style="display: inline;">{{ type.interview_name }}</h1>
