@@ -364,8 +364,10 @@ def keyword_managment(request):
 	return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_required('app.can_add_question', raise_exception=True)
 def add_question(request):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter/')
+
 	### POST REQUEST ###
 	if request.method == 'POST':
 		if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
