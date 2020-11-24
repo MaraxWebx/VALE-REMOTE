@@ -60,10 +60,10 @@
 
         <div class="container">
             <div class="row box-form">
-                
+                <div class="col"></div>
                 <div class="col text-center">
                     <form id="msform" action="/dashboard/interviews/add_interview" method="POST" target="_parent">
-                        <h1>Inserisci un nuovo questionario</h1>
+                        <h1>Inserisci un nuovo questionario</h1><br>
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="action" id="action_label">Inserire il nome dell intervista</label>
@@ -72,6 +72,7 @@
                         </div>
                     </form>
                 </div>
+                <div class="col"></div>
             </div>
     
         </div>
