@@ -2,13 +2,24 @@
 
 {% block content %}
 
+<header class="topBar">
+    <div id="logo">
+        <a >
+            <img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+        </a>
+
+    </div>
+      
+</header>
+<main>
+
 {% if login_message %}
     <p> {{ login_message }} </p>
 {% endif %}
-<form action="/login_rectruiter/" method="post">
+<form action="/login_rectruiter/" method="post" id="msform">
     {% csrf_token %}
         {{ form }}
     <input type="submit" value="Login" />
 </form>
-
+</main>
 {% endblock %}
