@@ -67,14 +67,14 @@
                         <div class="form-group">
              
                           <label for="type">Inserire il tipo di domanda:</label>
-                            <select id="type" name="type" required>
+                            <select id="type" name="type" required onchange="onTypeSelected()">
                                 <option value="" selected disabled hidden>Scegli uno di questi tipi</option>
                                 <option value="video">Risposta video</option>
                                 <option value="check">Scelta multipla</option>
                                 <option value="code">Testo</option>
                             </select> <br>
                          
-                           <label for="action" hidden>Inserire la domanda:</label>
+                           <label for="action" id="action_label" hidden>Inserire la domanda:</label>
                             <input id="action" type="text" name="action" required hidden> <br>
                     
                             <label for="length" hidden>Scegli il numero di "check":</label>
@@ -93,14 +93,14 @@
                             {% endfor %}           
                              </div>
             
-                   <label for="choice_fork">Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
-                    <input id="choice_fork" name="choice_fork" list="choices_enabled">
-                    <datalist id="choices_enabled">
+                   <label for="choice_fork" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
+                    <input id="choice_fork" name="choice_fork" list="choices_enabled" hidden>
+                    <datalist id="choices_enabled" >
                         {% for choice in choices %}
                             <option value="{{choice}}"></option>
                         {% endfor %}
                     </datalist> <br>
-                    <input  class="action-button" type="submit">
+                    <input  class="action-button" type="submit" hidden>
                       </form>
                 </div>
                 <div class="col">
@@ -111,6 +111,14 @@
         </div>
         
     </main>
+
+    <script>
+        function onTypeSelected(){
+            document.getElementById("action").hidden = false;
+            document.getElementById("action_label").hidden = false;
+        }
+
+    </script>
 </body>
 </html>
 
