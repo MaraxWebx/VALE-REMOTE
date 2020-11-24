@@ -421,7 +421,7 @@ def add_question(request):
 				choices = question.choices
 				choices_arr += choices.split(';')
 
-		return render(request, 'newquestion.html', {
+		return render(request, 'dash-add-questions.html', {
 			'questions': question_list,
 			'choices': choices_arr,
 			'user': request.user
