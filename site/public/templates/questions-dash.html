@@ -77,11 +77,12 @@
  </div>
 
 
-	{% for type in types %}
+	
 	 	
 
 		 
 	<div class="col-8 box-q">
+		{% for type in types %}
 		<div class="row">
 				<div col="col-6align-self-center">
 						
@@ -93,12 +94,14 @@
 							
 						</div>
 						<div class="col-auto  align-self-center">
-							<img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
-							<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action"></a>
+							
+							<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action"><img class="iconRec"src="{% static 'css/img/setting.svg' %}" heigt="30" width="30" alt="setting ">
+							</a>
 					</div>
 				</div>
+		{% endfor %}
 	</div>
-{% endfor %}
+
 
  <div class="col-2">
 	 
