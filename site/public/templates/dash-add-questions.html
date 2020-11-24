@@ -77,10 +77,10 @@
                            <label for="action" id="action_label" hidden>Inserire la domanda:</label>
                             <input id="action" type="text" name="action" required hidden> <br>
                     
-                            <label for="length" hidden>Scegli il numero di "check":</label>
+                            <label for="length" id = "length_label" hidden>Scegli il numero di "check":</label>
                             <input type="number" name="length" id="length" required value="0" hidden> <br>
                             
-                            <label for="choices" hidden>Inserisci le scelte separandole con "<b>;</b>":</label>
+                            <label for="choices" id="choices_label" hidden>Inserisci le scelte separandole con "<b>;</b>":</label>
                             <input type="text" name="choices" id="choices" hidden>
 
                             <label for="is_fork" hidden>Questa domanda sarà diramata?</label>
@@ -116,6 +116,17 @@
         function onTypeSelected(){
             document.getElementById("action").hidden = false;
             document.getElementById("action_label").hidden = false;
+            if(document.getElementById("type").value === "check"){
+                document.getElementById("length").hidden = false;
+                document.getElementById("length_label").hidden = false;
+                document.getElementById("choices").hidden = false;
+                document.getElementById("choices_label").hidden = false;
+            }else{
+                document.getElementById("length").hidden = true;
+                document.getElementById("length_label").hidden = true;
+                document.getElementById("choices").hidden = true;
+                document.getElementById("choices_label").hidden = true;
+            }
         }
 
     </script>
