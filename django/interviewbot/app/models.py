@@ -14,6 +14,7 @@ class Question(models.Model):
 	to_analyze = models.BooleanField(default=False)
 	is_technical = models.BooleanField(default=False)
 	addedby = models.CharField(max_length=100, default="Anymous")
+	id_interview_type = models.IntegerField(default=1)
 
 class QuestionFlow(models.Model):
 	parent = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='parent')
