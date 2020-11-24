@@ -37,7 +37,7 @@ class InterviewType(models.Model):
 
 class Interview(models.Model):
 	date = models.DateTimeField('date published', auto_now_add=True)
-	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE)
+	user = models.ForeignKey(CandidateUser, on_delete=models.CASCADE, blank=True, null=True)
 	analyzed = models.BooleanField(default=False)
 	type = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
 
