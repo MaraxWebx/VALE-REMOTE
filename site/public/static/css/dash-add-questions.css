@@ -1,0 +1,198 @@
+/*basic reset*/
+* {margin: 0; padding: 0;}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*FORMATTAZIONE FONT E DOCUMENTO  */
+body {
+    line-height: 1.5;
+    font-family: sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color:black;
+  background-color: #476692;
+  height:100%;
+}
+html{
+  height:100%;
+} 
+p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin:0;
+}
+h1{
+  color: #476692 ;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  margin:0;
+}
+h3 {
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+h4 {
+  color: #476692;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0;
+}
+h5{
+color: #476692;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin:0;
+  float: left;
+}
+hr{
+  color: #476692;
+  border-top: 2px solid #476692;
+}
+/*HEADE */
+.topBar{
+    height: 100px;
+    background-color: #476692;
+    border-bottom: #222;
+    margin: 0;
+  }
+  #logo img{
+    width:140px;
+    height: auto;
+      position:fixed;
+      z-index: 19;
+      left:30px;
+      top:20px;
+  }
+  /******BOX CENTRALE***/
+
+.boxTitle{
+    height: 70px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    position: relative;
+    
+}
+
+.recInfo1{
+    position: absolute;;
+    top:10px;
+    left:20px;
+    display: inline-flex;
+    
+    
+}
+.recInfo1 h1{
+    display: inline-flex;
+   line-height: 50px;
+   font-weight: 700;
+}
+.iconRec{
+    margin-right: 10px;
+
+}
+
+
+.recInfo2{
+    position: absolute;
+    top:10px;
+    right: 20px;
+    display:inline-flex;
+}
+
+.lastAcc {
+ display: -webkit-box;
+ margin-right: 10px;
+ line-height: 50px;
+}
+.lastAcc h4{
+    line-height: 50px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+.email{
+    display: -webkit-box;
+    line-height: 50px;
+}
+.email h4{
+    line-height: 50px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+/*form styles*/
+.box-form{
+    margin:40px auto;
+}
+#msform {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+}
+#msform .inputArea{
+  padding: 15px;
+  border: 1px solid #ccc;
+
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #476692;
+}
+label{
+
+    color: #476692;
+    font-family: 'Montserrat', sans-serif;
+    align-content: flex-start;
+    font-weight: 400;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+::placeholder{
+    color:#999;
+    font-family: 'Montserrat', sans-serif;
+}
+
+  .inputArea:hover::before {
+    border-color: #476692;
+    background-color: #476692;
+    color: #fff;
+  }
+  .inputArea:active::before {
+    background:#476692;
+  }
+  .inputArea:hover::after {
+    background:#476692 !important;
+  }
+.inputWeb::-webkit-file-upload-button {
+	visibility: hidden;
+	display: inline-block;
+    
+  }
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #476692 ;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #476692;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px 5px;
+    box-shadow: 2px 2px 2px #222222;
+    float: right;
+}
+#msform .action-button:hover{
+    background-color: #FFFFFF;
+    color: #476692;
+    border:1px solid #476692;
+}
