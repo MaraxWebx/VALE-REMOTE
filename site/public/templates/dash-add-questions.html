@@ -97,8 +97,9 @@
                                 <input type="checkbox" id="check_{{parent.id}}" name="check_parent" value="{{parent.id}}">
                             {% endfor %}           
                              </div>
+                             <br>
             
-                   <label for="choice_fork" id="choice_fork_label" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
+                   <label for="choice_fork" id="choice_fork_label" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label><br>
                     <input id="choice_fork" name="choice_fork" list="choices_enabled" hidden>
                     <datalist id="choices_enabled" >
                         {% for choice in choices %}
