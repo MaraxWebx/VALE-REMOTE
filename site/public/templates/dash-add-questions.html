@@ -84,7 +84,7 @@
                             <input type="number" name="lang" id="lang" required value="0" hidden> <br>
                             
                             <label for="choices" id="choices_label" hidden>Inserisci le scelte separandole con "<b>;</b>":</label>
-                            <input type="text" name="choices" id="choices" hidden>
+                            <input type="text" name="choices" id="choices" hidden> <br>
 
                             <label for="is_fork" id="is_fork_label" hidden>Questa domanda sarà diramata?</label>
                             <input type="checkbox" name="is_fork" id="is_fork" hidden><br>
@@ -97,14 +97,14 @@
                             {% endfor %}           
                              </div>
             
-                   <label for="choice_fork" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
+                   <label for="choice_fork" id="choice_fork_label" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
                     <input id="choice_fork" name="choice_fork" list="choices_enabled" hidden>
                     <datalist id="choices_enabled" >
                         {% for choice in choices %}
                             <option value="{{choice}}"></option>
                         {% endfor %}
                     </datalist> <br>
-                    <input  class="action-button" type="submit" hidden>
+                    <input  class="action-button" type="submit" id="sendbtt" hidden>
                       </form>
                 </div>
                 <div class="col">
@@ -123,6 +123,9 @@
             document.getElementById("is_fork").hidden = false;
             document.getElementById("is_fork_label").hidden = false;
             document.getElementById("box-parent").hidden = false;
+            document.getElementById("choice_fork_label").hidden = false;
+            document.getElementById("choice_fork").hidden = false;
+            document.getElementById("sendbtt").hidden = false;
             if(document.getElementById("type").value === "check"){
                 document.getElementById("length").hidden = false;
                 document.getElementById("length_label").hidden = false;
