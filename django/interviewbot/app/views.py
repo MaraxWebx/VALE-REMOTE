@@ -374,11 +374,6 @@ def add_question(request):
 		type 		= request.POST['type']
 		action 		= request.POST['action']
 		length		= request.POST['length']
-
-		if 'parent' in request.POST:
-			parent 	= request.POST['parent']
-		else:
-			parent = None
 		
 		if 'choices' in request.POST:
 			choices = request.POST['choices']
@@ -400,13 +395,12 @@ def add_question(request):
 		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
 		new_question.save()
 
-		if not (parent is None):
-			parent_obj=Question.objects.get(pk=int(parent))
-			flow = QuestionFlow.objects.create(parent=parent_obj, son=new_question, choice=choice_fork )
-			flow.save()
-
-		if 'is_join' in request.POST:
-			return redirect('/add_parent/?n=' + str(request.POST['is_join']) + '&id=' + str(new_question.id))
+		if 'check_parent' in request.POST:
+			parents = request.POST.getlist('check_parent')
+			for parent_id in parents:
+				parent = Question.objects.get(pk=int(parent_id))
+				flow = QuestionFlow.objects.create(parent=parent, son=new_question, choice=choice_fork )
+				flow.save()
 
 		return HttpResponse('New question added with id: ' + str(new_question.id))
 	
@@ -428,7 +422,7 @@ def add_question(request):
 		return render(request, 'newquestion.html', {
 			'questions': question_list,
 			'choices': choices_arr,
-			'esito': ""
+			'user': request.user
 		})
 
 

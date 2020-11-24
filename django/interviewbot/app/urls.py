@@ -9,7 +9,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('restex/', test_rest),
     path('next/', NextQuestionView.as_view()),
-    path('add_question/', add_question, name='add_question'),
+    # path('add_question/', add_question, name='add_question'),
     path('add_parent/', add_parent_to_join, name='add_parent'),
     path('interview/', interview, name='interview'),
     path('file/', test_file, name='test_file'),
@@ -19,6 +19,7 @@ urlpatterns = [
     path('dashboard/<int:id>/add_comment', dashboard_interview_addcomment, name='dashboard_interview_addcomment'),
     path('dashboard/<int:id>/mark', dashboard_interview_toggle_mark, name='dashboard_interview_togglemark'),
     path('dashboard/questions', dashboard_interview_list, name='dashboard_interview_list'),
+    path('dashboard/add_question', add_question, name='dashboard_add_question'),
     path('dashboard/questions/<int:id>', dashboard_print_interview, name='dashboard_print_interview'),
     path('login_rectruiter/', login_recruiter, name='login'),
     path('logout/', logout_recruiter, name='logout')

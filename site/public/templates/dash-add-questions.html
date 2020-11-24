@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -9,14 +11,14 @@
 	<title>Video Interview | Itconsulting.it</title>
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
 
 	<!-- CodeMirror css -->
-	<link rel="stylesheet" href="/node_modules/codemirror/lib/codemirror.css">
-	<link rel="stylesheet" href="./node_modules/codemirror/theme/darcula.css">
+	<link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
+	<link rel="stylesheet" href="{% static './node_modules/codemirror/theme/darcula.css' %}">
 
 	<!-- Progressive bar CSS / Main.css -->
-	<link rel="stylesheet" href="css/dash-add-questions.css">
+	<link rel="stylesheet" href="{% static 'css/dash-add-questions.css' %}">
 
 
 </head>
@@ -26,7 +28,7 @@
 	<header class="topBar">
 		<div id="logo">
 			<a href="#">
-				<img src="css/img/logo-top.png" alt="LOGOITC">
+				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
 			</a>
 
 		</div>
@@ -39,18 +41,18 @@
         <section class="container-fluid sez-1">
             <div class="boxTitle">
             <div class="recInfo1">
-                <img class="iconRec"src="css/icon/recruiter.svg" heigt="50" width="50" alt="colloqui ">
+                <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
                 <h1>
-                    RECRUITER 00001
+                    {{ user.first_name }} {{ user.last_name}}
                 </h1>
             </div>
             <div class="recInfo2">
             
             
-            <div class="lastAcc"><h4>Ultimo accesso:</h4><p>20/20/20</p></div>
+            <div class="lastAcc"><h4>Ultimo accesso:</h4><p>{{ user.last_login }}</p></div>
             
             <div class="email">
-                <h4>E-mail:</h4><p>recruiteruno@gmail.com</p>
+                <h4>E-mail:</h4><p>{{ user.email }}</p>
             </div>
             
             </div>
@@ -60,7 +62,7 @@
             <div class="row box-form">
                 
                 <div class="col">
-                    <form id="msform">
+                    <form id="msform" action="/add_question/" method="POST">
             
                         <div class="form-group">
              
@@ -72,37 +74,32 @@
                                 <option value="code">Testo</option>
                             </select> <br>
                          
-                           <label for="action">Inserire la domanda:</label>
-                            <input id="action" type="text" name="action" required> <br>
+                           <label for="action" hidden>Inserire la domanda:</label>
+                            <input id="action" type="text" name="action" required hidden> <br>
                     
-                            <label for="length">Scegli il numero di "check":</label>
-                            <input type="number" name="length" id="length" required value="0"> <br>
+                            <label for="length" hidden>Scegli il numero di "check":</label>
+                            <input type="number" name="length" id="length" required value="0" hidden> <br>
                             
-                            
-                            <label for="is_fork">Questa domanda sarà diramata?</label>
-                            <input type="checkbox" name="is_fork" id="is_fork"><br>
-             
-                          <label for="parent_list">Quanti padri ha questa domanda?</label>
-                        <select id="parent_list" name="parent"><br>
+                            <label for="choices" hidden>Inserisci le scelte separandole con "<b>;</b>":</label>
+                            <input type="text" name="choices" id="choices" hidden>
 
-                        <option value="" selected disabled hidden>Choose the parent here</option>
-                        {% for parent in questions %}
-                            <option value="{{parent.id}}">{{parent.action}}</option>
-                        {% endfor %}
-                    </select>
+                            <label for="is_fork" hidden>Questa domanda sarà diramata?</label>
+                            <input type="checkbox" name="is_fork" id="is_fork" hidden><br>
+
+                            <div hidden id="box-parent"> 
+                            {% for parent in questions %}
+                                <label for="check_{{parent.id}}">{{parent.action}}</label>
+                                <input type="checkbox" id="check_{{parent.id}}" name="check_parent" value="{{parent.id}}">
+                            {% endfor %}           
+                             </div>
             
-            
-           <label for="is_join">Qunati parenta ha la domanda?</label>
-                    <input type="number" name="is_join" id="is_join" required value="0"> 
-            
-                   <label for="choice_fork">Se questo parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
+                   <label for="choice_fork">Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label>
                     <input id="choice_fork" name="choice_fork" list="choices_enabled">
                     <datalist id="choices_enabled">
-                   
+                        {% for choice in choices %}
                             <option value="{{choice}}"></option>
-                      
+                        {% endfor %}
                     </datalist> <br>
-                    <input  class="action-button" type="submit">
                     <input  class="action-button" type="submit">
                       </form>
                 </div>
