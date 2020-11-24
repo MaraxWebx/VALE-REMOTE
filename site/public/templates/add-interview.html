@@ -62,22 +62,22 @@
             <div class="row box-form">
                 
                 <div class="col">
-                    <form id="msform" action="/dashboard/add_question" method="POST" target="_parent">
-                 
+                    <form id="msform" action="/dashboard/interviews/add_interview" method="POST" target="_parent">
+                        {% csrf_token %}
                         <div class="form-group">
-        
-                           <label for="action" id="action_label" hidden>Inserire il nome dell intervista</label>
+                            <label for="action" id="action_label">Inserire il nome dell intervista</label>
                             <input id="action" type="text" name="action" required > <br>
-                               
-                 </div>
-
+                            <input  class="action-button" type="submit">
+                        </div>
+                    </form>
+                </div>
                 <div class="col">
     
                 </div>
             </div>
     
         </div>
-        
+        </section>
     </main>
 
    

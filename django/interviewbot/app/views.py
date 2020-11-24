@@ -363,10 +363,26 @@ def keyword_managment(request):
 
 	return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
-def add_question(request):
+def add_interview(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter/')
+
+	if request.method=='GET':
+		return render(request, 'add-interview.html')
+	elif request.method=='POST':
+		if not 'action' in request.POST:
+			return HttpResponse('Missing interview name')
+		name = request.POST['action']
+		new_interview_type = InterviewType.objects.create(interview_name = name, addedby=(str(request.user.first_name) + ' ' + str(request.user.last_name)))
+		new_interview_type.save()
+		return redirect('/dashboard/interviews/')
+
+
+def add_question(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter/')
+	if not InterviewType.objects.all().filter(pk=id).exists():
+		return redirect('/dashboard/interviews/')
 
 	### POST REQUEST ###
 	if request.method == 'POST':
@@ -398,7 +414,7 @@ def add_question(request):
 		else:
 			choice_fork = None
 		
-		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork)
+		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork, id_interview_type=int(id))
 		new_question.save()
 
 		if 'check_parent' in request.POST:
@@ -413,7 +429,7 @@ def add_question(request):
 	### GET REQUEST ###
 	elif request.method =='GET':
 		question_list = []
-		questions = Question.objects.all().order_by('-date_published')
+		questions = Question.objects.all().filter(id_interview_type=int(id)).order_by('-date_published')
 		for question in questions:
 			have_flow = QuestionFlow.objects.all().filter(parent=question)
 			if (not have_flow.exists()) or (question.is_fork and (have_flow.count() < question.length)):
@@ -515,7 +531,7 @@ def login_recruiter(request):
 def dashboard_index(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter/')
-	colloqui = Interview.objects.all()
+	colloqui = Interview.objects.all().order_by('-date_published')
 	user = request.user
 	return render(request, 'dashboard.html', context = {
 		'colloqui' : colloqui,
@@ -562,7 +578,7 @@ def dashboard_interview_toggle_mark(request, id):
 	interview.save()
 	return redirect('/dashboard/'+str(id))
 
-def dashboard_interview_list(request):
+def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
 	types = InterviewType.objects.all()
