@@ -85,6 +85,7 @@ hr{
 }
 .col-6.valestart {
   text-align: center;
+  animation: show 3s 1 ease-in-out;
 }
 .box-e-f{
   width: 600px;
@@ -94,11 +95,12 @@ hr{
   background-color: #FFFFFF;
   padding: 20px;
   border-radius: 20px;
+  
 }
 
 .btn-inizia{
   height: 30px;
-  width: 300px;
+  width: 100%;
   border: none;
   border-radius: 0.15rem;
   background:#476692;
