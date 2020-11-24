@@ -62,8 +62,8 @@
             <div class="row box-form">
                 
                 <div class="col">
-                    <form id="msform" action="/dashboard/add_question" method="POST">
-            
+                    <form id="msform" action="/dashboard/add_question" method="POST" target="_parent">
+                        {% csrf_token %}
                         <div class="form-group">
              
                           <label for="type">Inserire il tipo di domanda:</label>
