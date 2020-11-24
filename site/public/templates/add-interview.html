@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base target="_blank">
+	<title>Video Interview | Itconsulting.it</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+
+	<!-- CodeMirror css -->
+	<link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
+	<link rel="stylesheet" href="{% static './node_modules/codemirror/theme/darcula.css' %}">
+
+	<!-- Progressive bar CSS / Main.css -->
+	<link rel="stylesheet" href="{% static 'css/dash-add-questions.css' %}">
+
+
+</head>
+
+<html oncontextmenu = "return false" onselectstart = "return false" ondragstart = "return false"> 
+
+	<header class="topBar">
+		<div id="logo">
+			<a href="#">
+				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+			</a>
+
+		</div>
+
+	</header>
+
+<body>
+
+    <main>
+        <section class="container-fluid sez-1">
+            <div class="boxTitle">
+            <div class="recInfo1">
+                <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
+                <h1>
+                    {{ user.first_name }} {{ user.last_name}}
+                </h1>
+            </div>
+            <div class="recInfo2">
+            
+            
+            <div class="lastAcc"><h4>Ultimo accesso:</h4><p>{{ user.last_login }}</p></div>
+            
+            <div class="email">
+                <h4>E-mail:</h4><p>{{ user.email }}</p>
+            </div>
+            
+            </div>
+            </div>
+
+        <div class="container">
+            <div class="row box-form">
+                
+                <div class="col">
+                    <form id="msform" action="/dashboard/add_question" method="POST" target="_parent">
+                 
+                        <div class="form-group">
+        
+                           <label for="action" id="action_label" hidden>Inserire il nome dell intervista</label>
+                            <input id="action" type="text" name="action" required > <br>
+                               
+                 </div>
+
+                <div class="col">
+    
+                </div>
+            </div>
+    
+        </div>
+        
+    </main>
+
+   
+</body>
+</html>
+
