@@ -444,7 +444,8 @@ def add_question(request, id):
 		return render(request, 'dash-add-questions.html', {
 			'questions': question_list,
 			'choices': choices_arr,
-			'user': request.user
+			'user': request.user,
+			'id' : id
 		})
 
 
