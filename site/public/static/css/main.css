@@ -83,7 +83,7 @@ hr{
 {
   margin-top: 50px;
 }
-.col-6.valestart {
+.valestart {
   text-align: center;
   animation: show 3s 1 ease-in-out;
 }
