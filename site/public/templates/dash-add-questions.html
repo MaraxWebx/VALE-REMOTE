@@ -91,6 +91,7 @@
 
                             <div hidden id="box-parent"> 
                             {% for parent in questions %}
+                                <br>
                                 <label for="check_{{parent.id}}">{{parent.action|truncatechars:50}}</label>
                                 <input type="checkbox" id="check_{{parent.id}}" name="check_parent" value="{{parent.id}}">
                             {% endfor %}           
