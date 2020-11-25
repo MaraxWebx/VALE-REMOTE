@@ -375,7 +375,7 @@ def keyword_managment(request):
 
 def add_interview(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter/')
+		return redirect('/login_rectruiter')
 
 	if request.method=='GET':
 		return render(request, 'add-interview.html')
@@ -385,14 +385,14 @@ def add_interview(request):
 		name = request.POST['action']
 		new_interview_type = InterviewType.objects.create(interview_name = name, addedby=(str(request.user.first_name) + ' ' + str(request.user.last_name)))
 		new_interview_type.save()
-		return redirect('/dashboard/interviews/')
+		return redirect('/dashboard/interviews')
 
 
 def add_question(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter/')
+		return redirect('/login_rectruiter')
 	if not InterviewType.objects.all().filter(pk=id).exists():
-		return redirect('/dashboard/interviews/')
+		return redirect('/dashboard/interviews')
 
 	### POST REQUEST ###
 	if request.method == 'POST':
@@ -541,7 +541,7 @@ def login_recruiter(request):
 
 def dashboard_index(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter/')
+		return redirect('/login_rectruiter')
 	colloqui = Interview.objects.all().order_by('-date')
 	user = request.user
 	return render(request, 'dashboard.html', context = {
@@ -552,7 +552,7 @@ def dashboard_index(request):
 
 def dashboard_interview(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter/')
+		return redirect('/login_rectruiter')
 	interview = Interview.objects.get(pk=id)
 	user = interview.user
 	date = interview.date
@@ -585,7 +585,7 @@ def dashboard_interview(request, id):
 
 def dashboard_interview_addcomment(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter/')
+		return redirect('/login_rectruiter')
 	
 	interview = Interview.objects.get(pk=id)
 	content = request.POST['text']
@@ -602,6 +602,11 @@ def dashboard_interview_toggle_mark(request, id):
 	interview.analyzed = not interview.analyzed
 	interview.save()
 	return redirect('/dashboard/'+str(id))
+
+def dashboard_interview_delete(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter')
+	
 
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
@@ -637,5 +642,5 @@ def get_all_question(node, all_question):
 
 def logout_recruiter(request):
 	logout(request)
-	return redirect('/login_rectruiter/')
+	return redirect('/login_rectruiter')
 

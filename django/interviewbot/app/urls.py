@@ -18,6 +18,7 @@ urlpatterns = [
     path('dashboard/<int:id>', dashboard_interview, name='dashboard_interview'),
     path('dashboard/<int:id>/add_comment', dashboard_interview_addcomment, name='dashboard_interview_addcomment'),
     path('dashboard/<int:id>/mark', dashboard_interview_toggle_mark, name='dashboard_interview_togglemark'),
+    path('dashboard/<int:id>/delete', dashboard_interview_delete, name='dashboard_interview_delete'),
     path('dashboard/interviews', dashboard_interview_type_list, name='dashboard_interview_list'),
     path('dashboard/interviews/<int:id>', dashboard_print_interview, name='dashboard_print_interview'),
     path('dashboard/interviews/<int:id>/add_question', add_question, name='dashboard_add_question'),
