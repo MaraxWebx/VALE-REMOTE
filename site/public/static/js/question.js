@@ -181,6 +181,7 @@ function getQuestion(quest) {
     document.getElementById("boxRis").hidden = true;
     document.getElementById("questionSection").hidden = true;
     document.getElementById("bfine").hidden = false;
+    document.getElementById("colVale").hidden = true;
 
   }
   function printRis() {

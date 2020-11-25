@@ -25,10 +25,10 @@ var soundMeter = null;
 var is_recording = false;
 
 window.onload = () => {
+	document.getElementById("colVale").hidden = true;
 	document.getElementById("bfine").hidden = true;
 	document.getElementById("boxRis").hidden = true;
 	document.getElementById("questionSection").hidden = true;
-	document.getElementById("colVale").hidden = true;
 	document.getElementById("box-ef").hidden=false;
 }
 
