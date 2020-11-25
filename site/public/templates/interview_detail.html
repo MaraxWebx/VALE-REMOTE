@@ -124,7 +124,7 @@
             <div class="col-3 box-right">
                 <div class="row">
                            <div class="col">
-                             <button type="button"class="btn-dash"><img src="{% static 'css/icon/trash.svg' %}"  width="20px";alt="elimina"></button>
+                             <button type="button"class="btn-dash" href="/dashboard/{{ id }}/delete" target="_parent"><img src="{% static 'css/icon/trash.svg' %}"  width="20px";alt="elimina"></button>
                            </div>
                            <div class="col">
                             <form action="/dashboard/{{ id }}/mark" target="_parent">
