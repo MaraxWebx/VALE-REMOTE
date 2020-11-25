@@ -42,6 +42,11 @@ class Interview(models.Model):
 	analyzed = models.BooleanField(default=False)
 	type = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
 
+class MatchKeyword(models.Model):
+	word = models.CharField(max_length=100, null=False, blank=False)
+	rating = models.FloatField(null=False, blank=False)
+	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
+
 class Comment(models.Model):
 	interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
 	content = models.CharField(max_length=500, null = False, blank = False)

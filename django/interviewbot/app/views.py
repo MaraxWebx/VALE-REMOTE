@@ -239,9 +239,19 @@ class NextQuestionView(APIView):
 
 				key_max = ""
 				value_max = -999999999
-
+				interview = Interview.objects.get(pk=int(session['interview_id']))
 				for key in sentiment:
 					print("########### VALUE:", key, "POL:", sentiment[key], "##############")
+					try:
+						old_match = MatchKeyword.objects.get(word=str(key), interview=interview)
+						old_match.rating = float(old_match.rating) + float(sentiment[key])
+						old_match.save()
+					except MatchKeyword.DoesNotExists:
+						new_match = MatchKeyword.objects.create(word=str(key), rating = float(sentiment[key]), interview=interview)
+						new_match.save()
+					except MatchKeyword.MultipleObjectsReturned:
+						print('Cant save this keyword polarity cause multiple entry with same name and interview in database. Check the database instances.')
+
 					if sentiment[key] > value_max:
 						value_max = sentiment[key]
 						key_max = key
@@ -548,6 +558,19 @@ def dashboard_interview(request, id):
 	date = interview.date
 	answers = Answer.objects.filter(interview=interview)
 	comments = Comment.objects.filter(interview=interview)
+	keywords = {}
+	matched = MatchKeyword.objects.all().filter(interview=interview)
+	for key in matched:
+		value = float(key.rating)
+		if value < -0.25:
+			explain = 'Insufficiente'
+		elif value < 0:
+			explain = 'Sufficiente'
+		elif value < 0.25:
+			explain = 'Buono'
+		else:
+			explain = 'Ottimo'
+		keywords[str(key.word)] = explain
 
 	return render(request, 'interview_detail.html', context = {
 		'type' 		: 	interview.type.interview_name,
@@ -556,7 +579,8 @@ def dashboard_interview(request, id):
 		'answers' 	: 	answers,
 		'comments' 	: 	comments,
 		'id' 		: 	id,
-		'an' 		: 	interview.analyzed
+		'an' 		: 	interview.analyzed,
+		'keywords'	:	keywords
 	})
 
 def dashboard_interview_addcomment(request, id):
