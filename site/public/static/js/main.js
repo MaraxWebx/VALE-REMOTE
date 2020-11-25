@@ -238,6 +238,7 @@ function onBtnStartClicked() {
 	editor.setOption("readOnly", false);
 	document.getElementById("StartTextBtn").hidden = true;
 	document.getElementById("ConfirmTextBtn").hidden = false;
+	document.getElementById("colVale").hidden = false;
 }
 
 function onBtnConfirmClicked() {
