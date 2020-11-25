@@ -613,6 +613,8 @@ def dashboard_interview_delete(request, id):
 	except CandidateUser.DoesNotExist:
 		return HttpResponse(request, 'Selected user does not exists')
 
+	return HttpResponse(request, 'Some errors')
+
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
