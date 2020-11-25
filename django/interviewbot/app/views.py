@@ -606,7 +606,14 @@ def dashboard_interview_toggle_mark(request, id):
 def dashboard_interview_delete(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
-	
+	try:
+		user = CandidateUser.objects.get(pk=int(id))
+		user.delete()
+		return redirect('/dashboard')
+	except CandidateUser.DoesNotExist:
+		return HttpResponse(request, 'Selected user does not exists')
+
+	return HttpResponse(request, 'Some errors')
 
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
