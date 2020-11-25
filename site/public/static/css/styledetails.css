@@ -284,12 +284,12 @@ a:active{
     .icon-trash{
         height: 20px;
         width: 20px;
-        background-image: url(css/icon/trash-withe.svg);
+        background-image: url(../css/icon/trash-withe.svg)
         background-position: center;
         background-size:cover;
     }
     .icon-trash:hover{
-        background-image: url(css/icon/trash-blue.svg);
+        background-image: url(../css/icon/trash-blue.svg);
 
     }
 
