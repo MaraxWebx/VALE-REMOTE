@@ -246,7 +246,7 @@ class NextQuestionView(APIView):
 						old_match = MatchKeyword.objects.get(word=str(key), interview=interview)
 						old_match.rating = float(old_match.rating) + float(sentiment[key])
 						old_match.save()
-					except MatchKeyword.DoesNotExists:
+					except MatchKeyword.DoesNotExist:
 						new_match = MatchKeyword.objects.create(word=str(key), rating = float(sentiment[key]), interview=interview)
 						new_match.save()
 					except MatchKeyword.MultipleObjectsReturned:
