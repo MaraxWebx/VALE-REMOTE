@@ -159,19 +159,19 @@
                     </div>
                     </form>
                 </div>
-                <div class="box-right">
-                    <div class="row">
-                        <h4>Le informazioni estratte da VALE:</h4>
-                        {% for key,value in keywords.items %}
-                            <h3>{{ key }} :</h3> <p> {{ value }} </p>
-                        {% empty %}
-                            <p>Non sono presenti informazioni.</p>
-                        {% endfor %}
-                    </div>
-                </div>
+                
 
             </div>
-
+            <div class="box-right">
+                <div class="row">
+                    <h4>Le informazioni estratte da VALE:</h4>
+                    {% for key,value in keywords.items %}
+                        <h3>{{ key }} :</h3> <p> {{ value }} </p>
+                    {% empty %}
+                        <p>Non sono presenti informazioni.</p>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </section>
 </main>
