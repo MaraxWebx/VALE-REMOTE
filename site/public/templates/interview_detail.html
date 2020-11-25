@@ -136,19 +136,19 @@
                                 {% endif %}
                             </form>
                            </div>
-                        </div>
-                        <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
-                        <div class="box-feed">
+                </div>
+                <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
+                <div class="box-feed">
                             {% for comment in comments %}
                             <div class="row feed-row">
                                 <div class="feedback">
-                                <h4>{{ comment.author }}</h4>
-                                <p>{{ comment.content }} </p> 
+                                    <h4>{{ comment.author }}</h4>
+                                    <p>{{ comment.content }} </p> 
                                 </div>
                             </div>
                             {% endfor %}
-                        </div>
-                    <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
+                </div>
+                <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
                         {% csrf_token %}
                      <div class="row">
                          
@@ -157,21 +157,22 @@
                      <div class="row">
                          <button  type="submit" class="btn btn-dash">INVIA FEEDBACK</button>
                     </div>
-                    </form>
+                </form>
+                <div class="box-right">
+                    <div class="row">
+                        <h4>Le informazioni estratte da VALE:</h4>
+                        {% for key,value in keywords.items %}
+                            <h3>{{ key }} :</h3> <p> {{ value }} </p>
+                        {% empty %}
+                            <p>Non sono presenti informazioni.</p>
+                        {% endfor %}
+                    </div>
                 </div>
+            </div>
                 
 
             </div>
-            <div class="box-right">
-                <div class="row">
-                    <h4>Le informazioni estratte da VALE:</h4>
-                    {% for key,value in keywords.items %}
-                        <h3>{{ key }} :</h3> <p> {{ value }} </p>
-                    {% empty %}
-                        <p>Non sono presenti informazioni.</p>
-                    {% endfor %}
-                </div>
-            </div>
+
         </div>
     </section>
 </main>
