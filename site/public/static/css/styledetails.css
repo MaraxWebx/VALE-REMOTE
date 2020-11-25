@@ -287,6 +287,11 @@ a:active{
         color:  #fff;
        
     }
+    .btn-dash p :hover{
+      
+        color:  #666;
+       
+    }
     
 
 .btn-dash:active{
