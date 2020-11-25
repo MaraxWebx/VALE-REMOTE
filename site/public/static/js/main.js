@@ -28,7 +28,7 @@ window.onload = () => {
 	document.getElementById("bfine").hidden = true;
 	document.getElementById("boxRis").hidden = true;
 	document.getElementById("questionSection").hidden = true;
-	document.getElementById("boxVale").hidden = true;
+	document.getElementById("colVale").hidden = true;
 	document.getElementById("box-ef").hidden=false;
 }
 
