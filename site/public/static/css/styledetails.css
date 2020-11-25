@@ -276,13 +276,17 @@ a:active{
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
         text-align: center;
         color:  #fff;
-        font-weight: 500;
+        font-weight: 600;
         border: 0px;
         width: 100%;
-        height: 80px;
+        height: 50px;
         margin: 10px auto;
     }
- 
+    .btn-dash p{
+      
+        color:  #fff;
+       
+    }
     
 
 .btn-dash:active{
