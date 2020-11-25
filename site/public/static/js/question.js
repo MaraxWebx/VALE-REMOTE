@@ -17,6 +17,7 @@ var editor =  CodeMirror.fromTextArea(document.getElementById("textArea"),{
 });
 
 function question() {
+  window.countdown_finished();
   document.getElementById("colVale").hidden = false;
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
