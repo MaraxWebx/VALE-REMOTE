@@ -77,7 +77,7 @@
 
         <div class="row">
             <div class="col-2 no_padding">
-                <button class="btn-dash"><a href="/dashboard/" target = "_parent"><div id="toplinks" > <img src="{% static 'css/icon/back-withe.svg' %}" width="20px"alt="torna dietro">back </div></a> </button>
+                <a href="/dashboard/" target = "_parent"> <button class="btn-dash"><div id="toplinks" > <img src="{% static 'css/icon/back-withe.svg' %}" width="20px"alt="torna dietro"> </div>back </button></a>
                 <div class="link-container">
                     
                     {% for answer in answers %} 
@@ -132,9 +132,9 @@
                             <form action="/dashboard/{{ id }}/mark" target="_parent">
                                 {% csrf_token %}
                                 {% if an %}
-                                    <button  type="submit" class="btn  btn-dash">DA ESAMINARE</button>
+                                    <button  type="submit" class="btn  btn-dash"> <p>DA ESAMINARE</p></button>
                                 {% else %}
-                                    <button  type="submit" class="btn  btn-dash">ESAMINATO</button>
+                                    <button  type="submit" class="btn  btn-dash"><p>ESAMINATO</p></button>
                                 {% endif %}
                             </form>
                            </div>
