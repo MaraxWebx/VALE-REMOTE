@@ -1,7 +1,7 @@
 <svg id="Raggruppa_12" data-name="Raggruppa 12" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-  <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M19.868,31.187l18.919-18.9a3.573,3.573,0,0,0-5.061-5.046L12.291,28.657a3.566,3.566,0,0,0-.1,4.927L33.711,55.152a3.573,3.573,0,0,0,5.061-5.046Z" transform="translate(-0.251 -6.194)" fill="#476692"/>
   <g id="Rettangolo_73" data-name="Rettangolo 73" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
     <rect width="50" height="50" stroke="none"/>
     <rect x="0.5" y="0.5" width="49" height="49" fill="none"/>
   </g>
+  <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M19.868,31.187l18.919-18.9a3.573,3.573,0,1,0-5.061-5.046L12.291,28.657a3.566,3.566,0,0,0-.1,4.927L33.711,55.152a3.573,3.573,0,0,0,5.061-5.046Z" transform="translate(-0.251 -6.194)" fill="#476692"/>
 </svg>
