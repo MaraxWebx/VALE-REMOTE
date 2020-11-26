@@ -292,10 +292,12 @@ h5.data{
     padding: 20px;
     max-height: 0;
     width: 100%;
+    opacity:0;
     overflow: hidden;
   }
 
   .boxformopen{
       max-height: 200px;
+      opacity: 1;
 
   }
