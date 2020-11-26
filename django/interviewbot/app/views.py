@@ -533,8 +533,8 @@ def dashboard_delete_interviewtype(request, id):
 	return render('/dashboard/interviews')
 
 def dashboard_edit_interviewtype(request, id):
-
-
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter')
 
 
 def get_all_question(node, all_question):
