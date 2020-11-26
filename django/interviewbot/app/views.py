@@ -477,6 +477,8 @@ def dashboard_interview_delete(request, id):
 	return HttpResponse(request, 'Some errors')
 
 def dashboard_question_edit(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter')
 	if request.method == 'GET':
 		question = Question.objects.get(pk=int(id))
 		return render(request, '', context = {'question' : question})  ### <-- Add edit template
@@ -529,6 +531,9 @@ def dashboard_delete_interviewtype(request, id):
 			quest.delete()
 	interview.delete()
 	return render('/dashboard/interviews')
+
+def dashboard_edit_interviewtype(request, id):
+
 
 
 
