@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -9,14 +10,14 @@
 	<title>Video Interview | Itconsulting.it</title>
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
 
 	<!-- CodeMirror css -->
-	<link rel="stylesheet" href="/node_modules/codemirror/lib/codemirror.css">
-	<link rel="stylesheet" href="./node_modules/codemirror/theme/darcula.css">
+	<link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
+	<link rel="stylesheet" href="{% static './node_modules/codemirror/theme/darcula.css' %}">
 
 	<!-- Progressive bar CSS / Main.css -->
-	<link rel="stylesheet" href="css/dash-add-questions.css">
+	<link rel="stylesheet" href="{% static 'css/dash-add-questions.css' %}">
 
 
 </head>
@@ -26,7 +27,7 @@
 	<header class="topBar">
 		<div id="logo">
 			<a href="#">
-				<img src="css/img/logo-top.png" alt="LOGOITC">
+				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
 			</a>
 
 		</div>
@@ -38,55 +39,35 @@
     <main>
         <section class="container-fluid sez-1">
             <div class="boxTitle">
-            <div class="recInfo1">
-                <img class="iconRec"src="css/icon/recruiter.svg" heigt="50" width="50" alt="colloqui ">
-                <h1>
-                    RECRUITER 00001
-                </h1>
-            </div>
-            <div class="recInfo2">
+                <div class="recInfo1">
+                    <img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
+                    <h1>
+                        {{ user.first_name }} {{ user.last_name}}
+                    </h1>
+                </div>
+                <div class="recInfo2">
+                
+                
+                <div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
+                
+                <div class="email">
+                    <h4>E-mail:</h4><p> {{ user.email }}</p>
+                </div>
+                
+                </div>
+                </div>
             
-            
-            <div class="lastAcc"><h4>Ultimo accesso:</h4><p>20/20/20</p></div>
-            
-            <div class="email">
-                <h4>E-mail:</h4><p>recruiteruno@gmail.com</p>
-            </div>
-            
-            </div>
-            </div>
-
+        </section>
         <div class="container">
             <div class="row box-form">
                 
                 <div class="col">
-                    <form id="msform">
+                    <form id="msform" method="POST" target="_parent" action="/dashboard/interviews/{{ id }}/edit/{{ q_id}}">
             
                         <div class="form-group">
-                            
-                          <label for="type">Inserire il tipo di domanda:</label>
-                            <select id="type" name="type" required>
-                                {% if type == 'video' %}
-                                    <option value="video" selected>Risposta video</option>
-                                    <option value="check">Scelta multipla</option>
-                                    <option value="code">Testo</option>
-                                {% elif type == 'check' %}
-                                    <option value="video">Risposta video</option>
-                                    <option value="check" selected>Scelta multipla</option>
-                                    <option value="code">Testo</option>
-                                {% elif type == 'code' %}
-                                    <option value="video">Risposta video</option>
-                                    <option value="check">Scelta multipla</option>
-                                    <option value="code" selected>Testo</option>
-                                {% endif %}
-                            </select> <br>
-                         
+                            {% csrf_token %}
                            <label for="action">Testo della domanda:</label>
                             <input id="action" type="text" name="action" required value="{{ action }}"><br>
-                            {% if type == 'check' %}
-                                <label for="length">Numero risposte: </label>
-                                <input type="number" name="length" id="length" required value="{{ length }}"> <br>
-                            {% endif %}
 
                             
                     <input  class="action-button" type="submit">
