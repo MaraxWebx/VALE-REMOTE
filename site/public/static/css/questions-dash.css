@@ -278,8 +278,10 @@ h5.data{
   .boxTitleQest{
       height: auto;
       width: 100%;
-      margin: 0 auto;
+      margin: 20px auto;
     border-radius: 20px;
     background: white;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+    padding: 20px;
+    
   } 
