@@ -517,7 +517,7 @@ def dashboard_print_interview(request, id):
 		'user'		: request.user,
 		'questions'	: all_question,
 		'interview'	: interview.interview_name,
-		'id'		: str(id)
+		'id'		: str(id),
 		'link' 		: link
 	})
 
