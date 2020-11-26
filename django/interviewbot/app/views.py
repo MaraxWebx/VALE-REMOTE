@@ -40,13 +40,10 @@ def index(request):
 			request.session['is_reg'] = False
 			interviewtype_id = request.GET.get('interview', -1)
 			if int(interviewtype_id) > 0:
-				print('TROVATO INTERVIEW > 0 ')
 				interviewtype = InterviewType.objects.filter( pk = int(interviewtype_id))
 				if interviewtype.exists() and interviewtype.count() == 1:
-					print('SETTATO INTERVIEW =', interviewtype_id)
 					request.session['interview'] = interviewtype_id
 				else:
-					print('TROVATO INTERVIEW NON VALIDO')
 					request.session['interview'] = -1
 			return render(request, 'credentials.html')
 
@@ -89,16 +86,12 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
-				print('DOMANDA BASE, interview =', str(request.session.get('interview', -1 )))
 				if int(request.session.get('interview', -1 )) > 0:
-					print('TROVATO INTERVIEW = ', request.session['interview'])
 					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
-						print('PARTE COLLOQUIO')
 						first_question = interviewtype[0].start_question
 						nq_serialized = QuestionSerializer(first_question)
 						return Response(nq_serialized.data, status=status.HTTP_200_OK)
-				print('COLLOQUIO DEFAULT')
 				first_question = Question.objects.get(pk=56)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
@@ -175,10 +168,6 @@ class NextQuestionView(APIView):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	def get_next_question(self, id, answer, session):
-
-		# In questo metodo si deve far riferimento alla classe per l'elaborazione del
-		# linguaggio naturale. Per ora le biforcazioni ci sono solamente per le domande
-		# che presentano choices quindi non c'è una reale elaborazione del testo.
 
 		question = Question.objects.get(id=id)
 		if question is not None:
@@ -303,75 +292,6 @@ def test_file(request):
 	user.save()
 	return Response(status=status.HTTP_201_CREATED)
 
-@api_view(['POST','GET'])
-@permission_required('app.can_add_question', raise_exception=True)
-def keyword_managment(request):
-	if request.method == 'GET':
-		request.session['what'] = -1
-		return render(request, 'new_keyword.html', context = {'esito':''})
-
-	elif request.method == 'POST':
-			if request.session.get('what', -1) < 0:  #new word
-				request.session['what'] = 1
-				if 'word' in request.POST and 'n' in request.POST:
-					word = request.POST['word']
-					request.session['word'] = word
-					request.session['n'] = request.POST['n']
-					n = request.session['n']
-					return render(request, 'new_kw_question.html', context={'num':n})
-					#INIZIA INSERIMENTO DOMANDE
-				else:
-					#MISSING PARAMETERS
-					return HttpResponse('Missing essentials parameters')
-
-			else:										#new questionflow
-				if request.session.get('word', False) and request.session.get('n', False):
-					n = int(request.session['n'])
-					if n > 0:
-						tmp_parent = request.session.get('last_id', None)
-						if not ('type' in request.POST and 'action' in request.POST and 'length' in request.POST):
-							return HttpResponse('Missing essentials parameters')
-						
-						type 		= request.POST['type']
-						action 		= request.POST['action']
-						length		= request.POST['length']
-						if 'choices' in request.POST:
-							choices = request.POST['choices']
-							if choices.endswith(';'):
-								choices = choices[:-1]
-						else:
-							choices = ""
-						
-						new_quest = Question.objects.create(type=type, action=action, length=length, choices=choices)
-						new_quest.save()
-
-						if tmp_parent is not None:
-							parent = Question.objects.get(pk=int(tmp_parent))
-							flow = QuestionFlow.objects.create(parent=parent, son = new_quest)
-							flow.save()
-						else:
-							word = request.session['word']
-							kw = KeyWords.objects.create(word=word, start_question=new_quest)
-							kw.save()
-						
-						request.session['last_id'] = new_quest.id
-						request.session['n'] = n - 1
-						if n - 1 <= 0:
-							request.session['what'] = -1
-							return render(request, 'new_keyword.html', context = {'esito':"Keyword aggiunta con successo."})
-							# MOSTRA FINE
-						else:
-							return render(request, 'new_kw_question.html', context={'num':n})
-							# PROSSIMA DOMANDA
-
-					else:
-						request.session['what'] = -1
-						return HttpResponse("Numero di domande non valido.")
-					return render(request, 'new_kw_question.html', context={'num':n})
-				else:
-					return HttpResponse("Numero parametri errato")
-
-	return Response(status=status.HTTP_400_BAD_REQUEST)
 
 def add_interview(request):
 	if not request.user.is_authenticated:
@@ -457,65 +377,6 @@ def add_question(request, id):
 			'user': request.user,
 			'id' : id
 		})
-
-
-@permission_required('app.can_add_question', raise_exception=True)
-def add_parent_to_join(request):
-	if request.method == 'POST':
-		
-		son_obj = Question.objects.get(pk=request.session['join_id'])
-
-		n = int(request.session['parent_num'])
-		for i in range(n):
-			if str(i) not in request.POST:
-				break
-			else:
-				parent_id = request.POST[str(i)]
-				parent_obj = Question.objects.get(pk=parent_id)
-				flow = QuestionFlow.objects.create(parent=parent_obj, son=son_obj, choice="")
-				flow.save()
-		# response = HttpResponse("New question created with id: " + str(request.session['join_id']))
-		request.session['parent_num'] = -1
-		request.session['join_id'] = -1
-		question_list = []
-		questions = Question.objects.all().order_by('-date_published')
-		for question in questions:
-			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
-			if (not have_flow) or question.is_fork:
-				question_list.append(question)
-		
-		choices_arr = []
-		for question in question_list:
-			if question.is_fork:
-				choices = question.choices
-				choices_arr += choices.split(';')
-
-		return render(request, 'newquestion.html', {
-			'questions': question_list,
-			'choices': choices_arr,
-			'esito': "Domanda aggiunta con successo."
-		})
-
-	elif request.method == 'GET':
-		n = request.GET['n']
-		question_id = request.GET['id']
-		request.session['parent_num'] = n
-		request.session['join_id'] = question_id
-
-		question_list = []
-		questions = Question.objects.all().order_by('-date_published')
-		new_question = Question.objects.get(pk=int(question_id))
-		for question in questions:
-			if question is new_question:
-				continue
-			have_flow = QuestionFlow.objects.all().filter(parent=question).exists()
-			if (not have_flow) or question.is_fork:
-				question_list.append(question)
-		return render(request, 'addparent.html', context={
-			'parent_number': range(int(n)),
-			'questions': question_list
-		})
-
 
 def login_recruiter(request):
 	form = LoginForm()
@@ -630,14 +491,33 @@ def dashboard_interview_type_list(request):
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
-	interview = InterviewType.objects.get(pk=id)
+	interview = InterviewType.objects.get(pk=int(id))
 	all_question = []
 	if interview.start_question:
 		get_all_question(interview.start_question, all_question)
+
+	link = 'https://itcinterview.it/?interview=' + str(id)
 	return render(request, 'list-questions.html', context={
 		'user'		: request.user,
-		'questions'	: all_question
+		'questions'	: all_question,
+		'interview'	: interview.interview_name,
+		'link' 		: link
 	})
+
+def dashboard_delete_interviewtype(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_rectruiter')
+	interview = InterviewType.objects.get(pk=int(id))
+	question = interview.start_question
+	all_question = []
+	if question:
+		get_all_question(question, all_question)
+		for quest in all_question:
+			quest.delete()
+	interview.delete()
+	return render('/dashboard/interviews')
+
+
 
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
