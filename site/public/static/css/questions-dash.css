@@ -285,3 +285,17 @@ h5.data{
     padding: 20px;
     
   } 
+
+  #boxform{
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+    padding: 20px;
+    max-height: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #boxform .open{
+      max-height: 200px;
+
+  }
