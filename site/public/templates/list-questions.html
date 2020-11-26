@@ -68,6 +68,22 @@
 
 			<!------>
  <div class="container">
+	 <div class="row">
+		 <div class="col boxTitle">
+			<div class="row">
+				<div class="col">
+					<h1>
+						{{ interview }}
+					</h1>
+				</div>
+				<div class="col align-self-center">
+					<img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+					<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="setting ">
+					
+				</div>
+			</div>
+		 </div>
+	 </div>
 	 {% for question in questions %}
 	<div class="row box-q">
 		<div class="col-6 align-self-center">
@@ -93,7 +109,7 @@
 		<div class="col-2  align-self-center">
 			<img class="iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 			{% if not question.is_fork %}
-				<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="30" width="30" alt="setting ">
+				<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="setting ">
 			{% endif %}
             
 		</div>

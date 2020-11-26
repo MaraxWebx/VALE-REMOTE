@@ -264,13 +264,13 @@ h5.data{
     width: 100%;
     border: none;
     border-radius: 0.15rem;
-    background:#476692;
+    background:#fff;
     margin-left: 2px;
     cursor: pointer;
     display: block;
     margin:30px auto;
     align-items: center;
-    color:#fff ;
+    color:#476692 ;
     font-weight: 600;
     border-radius: 20px;
     box-shadow: 2px 2px 2px #222222;
