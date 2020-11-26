@@ -295,7 +295,7 @@ h5.data{
     overflow: hidden;
   }
 
-  #boxform .open{
+  .boxformopen{
       max-height: 200px;
 
   }
