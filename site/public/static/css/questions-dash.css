@@ -288,14 +288,13 @@ h5.data{
 
   #boxform{
     border: 0px;
-
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
     padding: 20px;
     height: 0;
     width: 100%;
     opacity:0;
     overflow: hidden;
     display: none;
+    transition:  all 4s ease-in-out;
   }
 
   .boxformopen{
