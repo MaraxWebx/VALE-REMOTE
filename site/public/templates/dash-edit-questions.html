@@ -63,30 +63,9 @@
                     <form id="msform">
             
                         <div class="form-group">
-                            
-                          <label for="type">Inserire il tipo di domanda:</label>
-                            <select id="type" name="type" required>
-                                {% if type == 'video' %}
-                                    <option value="video" selected>Risposta video</option>
-                                    <option value="check">Scelta multipla</option>
-                                    <option value="code">Testo</option>
-                                {% elif type == 'check' %}
-                                    <option value="video">Risposta video</option>
-                                    <option value="check" selected>Scelta multipla</option>
-                                    <option value="code">Testo</option>
-                                {% elif type == 'code' %}
-                                    <option value="video">Risposta video</option>
-                                    <option value="check">Scelta multipla</option>
-                                    <option value="code" selected>Testo</option>
-                                {% endif %}
-                            </select> <br>
                          
                            <label for="action">Testo della domanda:</label>
                             <input id="action" type="text" name="action" required value="{{ action }}"><br>
-                            {% if type == 'check' %}
-                                <label for="length">Numero risposte: </label>
-                                <input type="number" name="length" id="length" required value="{{ length }}"> <br>
-                            {% endif %}
 
                             
                     <input  class="action-button" type="submit">
