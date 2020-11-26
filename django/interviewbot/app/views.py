@@ -476,20 +476,23 @@ def dashboard_interview_delete(request, id):
 
 	return HttpResponse(request, 'Some errors')
 
-def dashboard_question_edit(request, id):
+def dashboard_question_edit(request, id, q_id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
 	if request.method == 'GET':
-		question = Question.objects.get(pk=int(id))
-		return render(request, '', context = {'question' : question})  ### <-- Add edit template
+		question = Question.objects.get(pk=int(q_id))
+		return render(request, 'dash-edit-questions.html', context = {
+			'action' : question.action, 
+			'id' : str(id), 
+			'q_id' : q_id}) 
+
 	elif request.method == 'POST':
 		if 'action' in request.POST:
 			new_act = request.POST['action']
-			question = Question.objects.get(pk=int(id))
+			question = Question.objects.get(pk=int(q_id))
 			question.action = new_act
 			question.save()
 			return redirect('/dashboard/interview/' + str(id))
-
 
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
@@ -500,8 +503,6 @@ def dashboard_interview_type_list(request):
 		'types'	: types,
 		'user'	: request.user
 		})
-
-	# get the list of interview type's
 
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
@@ -516,6 +517,7 @@ def dashboard_print_interview(request, id):
 		'user'		: request.user,
 		'questions'	: all_question,
 		'interview'	: interview.interview_name,
+		'id'		: str(id)
 		'link' 		: link
 	})
 
@@ -535,7 +537,13 @@ def dashboard_delete_interviewtype(request, id):
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
-
+	if 'new_name' in request.POST:
+		inttype = InterviewType.objects.get(pk=int(id))
+		inttype.interview_name = request.POST['new_name']
+		inttype.save()
+		return redirect('/dashboard/interviews/'+str(id))
+	else:
+		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
@@ -543,7 +551,6 @@ def get_all_question(node, all_question):
 	for flow in adj:
 		if flow.son not in all_question:
 			get_all_question(flow.son, all_question)
-
 
 def logout_recruiter(request):
 	logout(request)
