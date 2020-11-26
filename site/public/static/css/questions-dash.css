@@ -304,3 +304,15 @@ h5.data{
       
 
   }
+  .boxform2{
+    border: 0px;
+    padding: 20px;
+    height: 0;
+    width: 100%;
+    opacity:0;
+    overflow: hidden;
+    display: none;
+    transition:  all 4s ease-in-out;
+  }
+
+ 
