@@ -290,14 +290,15 @@ h5.data{
     background: white;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
     padding: 20px;
-    max-height: 0;
+    height: 0;
     width: 100%;
     opacity:0;
     overflow: hidden;
   }
 
   .boxformopen{
-      max-height: 200px;
-      opacity: 1;
+      height: 200px !important;
+      opacity: 1 !important;
+      
 
   }
