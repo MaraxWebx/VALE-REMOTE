@@ -492,7 +492,7 @@ def dashboard_question_edit(request, id, q_id):
 			question = Question.objects.get(pk=int(q_id))
 			question.action = new_act
 			question.save()
-			return redirect('/dashboard/interview/' + str(id))
+			return redirect('/dashboard/interviews/' + str(id))
 
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
