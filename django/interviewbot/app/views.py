@@ -483,7 +483,8 @@ def dashboard_question_edit(request, id, q_id):
 		question = Question.objects.get(pk=int(q_id))
 		return render(request, 'dash-edit-questions.html', context = {
 			'action' : question.action, 
-			'id' : str(id), 
+			'id' : str(id),
+			'user': request.user,
 			'q_id' : q_id}) 
 
 	elif request.method == 'POST':
