@@ -531,12 +531,9 @@ def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
 	interview = InterviewType.objects.get(pk=int(id))
-	question = interview.start_question
-	all_question = []
-	if question:
-		get_all_question(question, all_question)
-		for quest in all_question:
-			quest.delete()
+	all_question = Question.objects.all().filter(id_interview_type=int(id))
+	for quest in all_question:
+		quest.delete()
 	interview.delete()
 	return render('/dashboard/interviews')
 
