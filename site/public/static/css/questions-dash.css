@@ -323,15 +323,11 @@ h5.data{
     transition:  all 4s ease-in-out;
   }
 
-  
+
  /* -- Tooltip -- */
 
- .tooltip {
-    position: relative;
-    display: inline-block;
-  }
   
-  .tooltip .tooltiptext {
+.tooltiptext {
     visibility: hidden;
     width: 140px;
     background-color: #555;
@@ -348,7 +344,7 @@ h5.data{
     transition: opacity 0.3s;
   }
   
-  .tooltip .tooltiptext::after {
+.tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -359,7 +355,7 @@ h5.data{
     border-color: #555 transparent transparent transparent;
   }
   
-  .tooltip:hover .tooltiptext {
+.tooltiptext:hover {
     visibility: visible;
     opacity: 1;
   }
