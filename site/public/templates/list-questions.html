@@ -77,11 +77,11 @@
 					</h1>
 				</div>
 				<div class="col align-self-center text-right">
-					<img  id="edit-interview "class="iconRec "src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+					<img  onclick="toggleClass()" id="edit-interview "class="iconRec "src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 					<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="delete ">
 					<a href="#"><img class="iconRec"src="{% static 'css/icon/copialink.svg' %}" heigt="20" width="20" alt="copy "></a>
 				</div>
-				<div class="boxform1">
+				<div class="boxform">
 					<form>
 						<label>
 							Cambia nome:
@@ -119,7 +119,7 @@
 		</div>
 		<div class="col-2  align-self-center">
 			
-				<img  id="edit-{{ question.id }}"class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+				<img  id="edit-{{ question.id }}" class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 			
 		</div>
 
@@ -155,15 +155,22 @@
 </main>
 <script type="text/javascript">
 
+function toggleClass(){
+	console.log('si');
+	$('.boxform').toggleClass("boxformopen1");
+}
+
 $(document).ready(function(){
+
 	$('#edit-interview').on('click',function(){
 		console.log('si');
-		$('.boxform1').toggleClass("boxformopen1");
+		$('.boxform').toggleClass("boxformopen1");
 	});
+
 	{% for question in questions %}
-		$('#edit-{{ question.id }}').on('click',function(){
-			$('.boxform-{{ question.id }}').toggleClass("boxformopen");
-		});
+	$('#edit-{{ question.id }}').on('click',function(){
+		$('.boxform-{{ question.id }}').toggleClass("boxformopen");
+	});
 	{% endfor %}
 });
 
