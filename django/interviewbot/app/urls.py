@@ -7,7 +7,7 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('restex/', test_rest),
+    path('restex/', registration_view),
     path('next/', NextQuestionView.as_view()),
     path('interview/', interview, name='interview'),
     path('file/', test_file, name='test_file'),

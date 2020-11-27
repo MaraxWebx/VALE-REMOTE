@@ -58,7 +58,7 @@ def interview(request):
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
-def test_rest(request):
+def registration_view(request):
 	if request.method == 'POST':
 
 		serializer = UserSerializer(data=request.data)

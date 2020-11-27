@@ -119,7 +119,7 @@
 		</div>
 		<div class="col-2  align-self-center">
 			
-				<img  id="edit2"class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
+				<img  id="edit-{{ question.id }}"class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 			
 		</div>
 
@@ -156,15 +156,14 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-
 	$('#edit1').on('click',function(){
-
 		$('.boxform').toggleClass("boxformopen");
 	});
-	$('#edit2').on('click',function(){
-
-$('.boxform2').toggleClass("boxformopen");
-});
+	{{ for question in questions }}
+		$('#edit-{{ question.id }}').on('click',function(){
+			$('.boxform2').toggleClass("boxformopen");
+		});
+	{{ endfor }}
 });
 
 
