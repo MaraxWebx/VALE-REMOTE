@@ -156,16 +156,10 @@
 <script type="text/javascript">
 
 function toggleClass(){
-	console.log('si');
 	$('.boxform').toggleClass("boxformopen1");
 }
 
 $(document).ready(function(){
-
-	$('#edit-interview').on('click',function(){
-		console.log('si');
-		$('.boxform').toggleClass("boxformopen1");
-	});
 
 	{% for question in questions %}
 	$('#edit-{{ question.id }}').on('click',function(){
