@@ -3,7 +3,7 @@
 {% block content %}
 <header class="topBar">
     <div id="logo">
-        <a href="/dashboard" target="_parent">
+        <a >
             <img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
         </a>
 
@@ -54,29 +54,23 @@
             <div class="row boxInfo">
 
 <!---ULTIMI COLLOQUI  ESAMINATI ---->
-    
-<h2>COLLOQUI DISPONIBILI</h2>
-              <div class="col-4 list-group tLast">
-              
-
+              <div class="col">
                   
+                  <h2>COLLOQUI DISPONIBILI</h2>
+
+                  <div class="list-group tLast">
 
                     {% for colloquio in colloqui %}
                         {% if colloquio.analyzed %}
-                        <a href="/dashboard/{{ colloquio.id }}"  target = "_parent" class="list-group-item list-group-item-action">
-                            <img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi">
                             <a href="/dashboard/{{ colloquio.id }}" target = "_parent" class="list-group-item list-group-item-action">
                                 <img src="{% static 'css/icon/colloqui-es.svg' %}"  alt="colloqui-esaminati ">
                                 <h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
-                                <h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
-
-                            </div>
-                            <div class="col-4">
                             <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
                             <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
                         {% else %}
-                            
-                                
+                            <a href="/dashboard/{{ colloquio.id }}"  target = "_parent" class="list-group-item list-group-item-action">
+                                <img src="{% static 'css/icon/colloqui-new.svg' %}" alt="colloqui-nuovi">
+                                <h4 class="nome">{{ colloquio.user.firstname }} {{ colloquio.user.lastname }}</h4> 
                                 <h5 class="data" >Data:</h5><p class="data"> {{ colloquio.date }}</p>
                             <h5 class="tipo-c" >Tipo di colloqui:</h5><p class="tipo-c"> {{ colloquio.type.interview_name }}</p></a>
                         {% endif %}
