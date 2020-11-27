@@ -304,6 +304,14 @@ h5.data{
       
 
   }
+
+  .boxformopen1{
+    height: auto !important;
+    opacity: 1 !important;
+    display: block !important;
+    
+
+}
   .boxform2{
     border: 0px;
     padding: 20px;
@@ -314,5 +322,3 @@ h5.data{
     display: none;
     transition:  all 4s ease-in-out;
   }
-
- 

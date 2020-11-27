@@ -7,7 +7,7 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('restex/', test_rest),
+    path('restex/', registration_view),
     path('next/', NextQuestionView.as_view()),
     path('interview/', interview, name='interview'),
     path('file/', test_file, name='test_file'),
@@ -19,7 +19,8 @@ urlpatterns = [
     path('dashboard/interviews', dashboard_interview_type_list, name='dashboard_interview_list'),
     path('dashboard/interviews/<int:id>', dashboard_print_interview, name='dashboard_print_interview'),
     path('dashboard/interviews/<int:id>/add_question', add_question, name='dashboard_add_question'),
-    path('dashboard/interviews/<int:id>/edit', dashboard_edit_interviewtype, name='dashboard_add_question'),
+    path('dashboard/interviews/<int:id>/edit', dashboard_edit_interviewtype, name='dashboard_edit_interview'),
+    path('dashboard/interviews/<int:id>/delete', dashboard_delete_interviewtype, name='dashboard_delete_interview'),
     path('dashboard/interviews/<int:id>/edit/<int:q_id>', dashboard_question_edit, name='dashboard_edit_question'),
     path('dashboard/interviews/add_interview', add_interview, name='dashboard_add_interview'),
     path('login_rectruiter/', login_recruiter, name='login'),

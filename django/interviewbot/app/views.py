@@ -58,7 +58,7 @@ def interview(request):
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
-def test_rest(request):
+def registration_view(request):
 	if request.method == 'POST':
 
 		serializer = UserSerializer(data=request.data)
@@ -354,7 +354,12 @@ def add_question(request, id):
 				flow = QuestionFlow.objects.create(parent=parent, son=new_question, choice=choice_fork )
 				flow.save()
 
-		return HttpResponse('New question added with id: ' + str(new_question.id))
+		interview = InterviewType.objects.get(pk=int(id))
+		if not interview.start_question:
+			interview.start_question = new_question
+			interview.save()
+
+		return redirect('/dashboard/interviews/' + str(id))
 	
 	### GET REQUEST ###
 	elif request.method =='GET':
@@ -526,14 +531,11 @@ def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
 	interview = InterviewType.objects.get(pk=int(id))
-	question = interview.start_question
-	all_question = []
-	if question:
-		get_all_question(question, all_question)
-		for quest in all_question:
-			quest.delete()
+	all_question = Question.objects.all().filter(id_interview_type=int(id))
+	for quest in all_question:
+		quest.delete()
 	interview.delete()
-	return render('/dashboard/interviews')
+	return redirect('/dashboard/interviews')
 
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
