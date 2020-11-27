@@ -81,7 +81,7 @@
 					<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="delete ">
 					<a href="#"><img class="iconRec"src="{% static 'css/icon/copialink.svg' %}" heigt="20" width="20" alt="copy "></a>
 				</div>
-				<div class="boxform">
+				<div class="boxform1">
 					<form>
 						<label>
 							Cambia nome:
@@ -157,7 +157,8 @@
 
 $(document).ready(function(){
 	$('#edit1').on('click',function(){
-		$('.boxform').toggleClass("boxformopen");
+		console.log('si')
+		$('.boxform1').toggleClass("boxformopen1");
 	});
 	{% for question in questions %}
 		$('#edit-{{ question.id }}').on('click',function(){
