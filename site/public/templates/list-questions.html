@@ -159,11 +159,11 @@ $(document).ready(function(){
 	$('#edit1').on('click',function(){
 		$('.boxform').toggleClass("boxformopen");
 	});
-	{{ for question in questions }}
+	{% for question in questions %}
 		$('#edit-{{ question.id }}').on('click',function(){
 			$('.boxform2').toggleClass("boxformopen");
 		});
-	{{ endfor }}
+	{% endfor %}
 });
 
 
