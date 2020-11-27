@@ -83,6 +83,7 @@
 				</div>
 				<div class="boxform">
 					<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent">
+						{% csrf_token %}
 						<label>
 							Cambia nome:
 						</label>
