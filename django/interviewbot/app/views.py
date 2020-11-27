@@ -535,7 +535,7 @@ def dashboard_delete_interviewtype(request, id):
 	for quest in all_question:
 		quest.delete()
 	interview.delete()
-	return render('/dashboard/interviews')
+	return redirect('/dashboard/interviews')
 
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
