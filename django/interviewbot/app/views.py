@@ -354,7 +354,12 @@ def add_question(request, id):
 				flow = QuestionFlow.objects.create(parent=parent, son=new_question, choice=choice_fork )
 				flow.save()
 
-		return HttpResponse('New question added with id: ' + str(new_question.id))
+		interview = InterviewType.objects.get(int(id))
+		if not interview.start_question:
+			interview.start_question = new_question
+			interview.save()
+
+		return redirect('/dashboard/interviews/' + str(id))
 	
 	### GET REQUEST ###
 	elif request.method =='GET':
