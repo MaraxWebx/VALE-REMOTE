@@ -354,7 +354,7 @@ def add_question(request, id):
 				flow = QuestionFlow.objects.create(parent=parent, son=new_question, choice=choice_fork )
 				flow.save()
 
-		interview = InterviewType.objects.get(int(id))
+		interview = InterviewType.objects.get(pk=int(id))
 		if not interview.start_question:
 			interview.start_question = new_question
 			interview.save()
