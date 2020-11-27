@@ -79,7 +79,7 @@
 				<div class="col align-self-center text-right">
 					<img  onclick="toggleClass()" id="edit-interview "class="iconRec "src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 					<img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="delete ">
-					<button onclick="myFunction()" onmouseout="outFunc()"><img class="iconRec"src="{% static 'css/icon/copialink.svg' %}" heigt="20" width="20" alt="copy "></button>
+					<div class="tooltip"><button onclick="myFunction()" onmouseout="outFunc()"><img class="iconRec"src="{% static 'css/icon/copialink.svg' %}" heigt="20" width="20" alt="copy "></button></div>
 				</div>
 				<div class="boxform">
 					<input type="text" value="https://itcinterview.it/?interview={{ id }}" id="myInput" hidden>
