@@ -218,6 +218,7 @@ img.icon-menu {
 }
 h4.nome {
     line-height: 50px;
+    display: inline-flex;
 }
 
 
