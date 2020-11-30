@@ -58,7 +58,6 @@
     cursor: pointer;
     font-weight: 700;
     font-size: 14px;
-    margin-right: -80px;
     border-radius: 20px;
   }
     .action-button {
@@ -94,6 +93,7 @@
     <p> {{ login_message }} </p>
 {% endif %}
 <form action="/login_rectruiter/" method="post" id="msform" target="_parent">
+    <img src="{% static 'css/img/visoVale.png' %}" width="50px" alt="vale">
     {% csrf_token %}
         {{ form }}
         <br>
