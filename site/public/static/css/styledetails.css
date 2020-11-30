@@ -299,6 +299,10 @@ a:active{
     .btn-d:after{
        content: "";
         background-image: url(../css/icon/trash-withe.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
         width:20px;
         height: 20px;
       
