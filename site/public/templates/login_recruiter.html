@@ -85,7 +85,7 @@
     </style>
     <div id="logo">
         <a >
-            <img class="imglog" src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+            <img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
         </a>
 
     </div>
@@ -97,7 +97,7 @@
     <p> {{ login_message }} </p>
 {% endif %}
 <form action="/login_rectruiter/" method="post" id="msform" target="_parent">
-    <img src="{% static 'css/img/visoVale.png' %}" width="50px" alt="vale">
+    <img  class="imglog" src="{% static 'css/img/visoVale.png' %}" width="50px" alt="vale">
     {% csrf_token %}
         {{ form }}
         <br>
