@@ -98,6 +98,12 @@
 {% endif %}
 <form action="/login_rectruiter/" method="post" id="msform" target="_parent">
     <img  class="imglog" src="{% static 'css/img/visoVale.png' %}" width="50px" alt="vale">
+    <h1>
+        Benvenuta!
+    </h1>
+    <h3>
+        Inserisci le credenziali per accedere al pannello
+    </h3>
     {% csrf_token %}
         {{ form }}
         <br>
