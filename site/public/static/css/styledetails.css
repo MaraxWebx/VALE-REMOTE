@@ -367,7 +367,6 @@ a:active{
         background: #fff;
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
         text-align: center;
-        
         font-weight: 600;
         border: 0px;
         width: 100%;
@@ -381,7 +380,7 @@ a:active{
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-         top: 10%;
+         top: 25px;
         right: 42%;
          width:20px;
          height: 20px;
@@ -393,8 +392,8 @@ a:active{
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-         top: 10%;
-        right: 42%;
+         top: 15px;
+        right: 45%;
          width:20px;
          height: 20px;
      }
