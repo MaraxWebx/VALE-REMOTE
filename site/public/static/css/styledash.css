@@ -244,13 +244,14 @@ h5.tipo-c{
     line-height: 50px;
     font-size: 12px;
     display: inline-flex;
+    margin-right: 5px;
  
 }
 h5.data{
     line-height: 50px;
     font-size: 12px;
     display: inline-flex;
- 
+   
 }
 
 
