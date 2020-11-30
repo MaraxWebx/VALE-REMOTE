@@ -400,17 +400,8 @@ a:active{
      }
 
 
-    .btn-dash p{
-      
-        color:  #fff;
-       
-    }
-    .btn-dash p :hover{
-      
-        color:  #666;
-       
-    }
-    
+   
+
 
 .btn-dash:active{
     margin: 0 0 5px 0;
