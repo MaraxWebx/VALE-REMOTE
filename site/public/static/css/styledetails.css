@@ -296,6 +296,19 @@ a:active{
         height: 50px;
         margin: 10px auto;
     }
+    .btn-d :hover{
+        margin: 0 0 5px 0;
+        border-radius: 20px !important;
+        background: #fff;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+        text-align: center;
+    
+        font-weight: 600;
+        border: 0px;
+        width: 100%;
+        height: 50px;
+        margin: 10px auto;
+    }
     .btn-d:after{
        content: "";
         background-image: url(../css/icon/trash-withe.svg);
@@ -303,17 +316,27 @@ a:active{
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
+         top: 37%;
+        right: 42%;
         width:20px;
         height: 20px;
       
     }
     .btn-d:hover:after{
         content: "";
-         background-image: url(/css/icon/trash-blue.svg);
+        background-image: url(../css/icon/trash-blue.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+         top: 37%;
+        right: 42%;
          width:20px;
          height: 20px;
        
      }
+
+
     .btn-dash p{
       
         color:  #fff;
