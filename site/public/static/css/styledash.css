@@ -75,6 +75,7 @@ h5{
   }
   img{
       vertical-align: auto !important;
+      display: inline-flex;
   }
   /****menu*****/
   .menu{
@@ -223,28 +224,32 @@ h4.nome {
 .tLast-info-2{
     display:inline-flex;
     text-align: left;
+    display: inline-flex;
 }
 
 
 p.data {
     line-height: 50px;
     font-size: 12px;
-    margin-left: 5px;
+    display: inline-flex;
 }
 p.tipo-c {
     line-height: 50px;
     font-size: 12px;
-    margin-left: 10px;
+    display: inline-flex;
+  
 }
 h5.tipo-c{
     line-height: 50px;
     font-size: 12px;
-    margin-left: 10px;
+    display: inline-flex;
+ 
 }
 h5.data{
     line-height: 50px;
     font-size: 12px;
-    margin-left: 100px;
+    display: inline-flex;
+ 
 }
 
 
