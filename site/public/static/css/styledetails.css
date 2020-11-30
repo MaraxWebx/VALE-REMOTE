@@ -298,7 +298,7 @@ a:active{
     }
     .btn-d:after{
        content: "";
-        background-image: url(/css/icon/trash-withe.svg);
+        background-image: url(../css/icon/trash-withe.svg);
         width:20px;
         height: 20px;
       
