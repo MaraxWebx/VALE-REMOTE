@@ -283,7 +283,7 @@ a:active{
         margin: 10px auto;
     }
 
-    .btn-detail{
+    .btn-d{
         margin: 0 0 5px 0;
         border-radius: 20px !important;
         background: #476692;
@@ -296,14 +296,14 @@ a:active{
         height: 50px;
         margin: 10px auto;
     }
-    .btn-detail::after{
+    .btn-d:after{
        content: "";
         background-image: url(/css/icon/trash-withe.svg);
         width:20px;
         height: 20px;
       
     }
-    .btn-detail:hover:after{
+    .btn-d:hover:after{
         content: "";
          background-image: url(/css/icon/trash-blue.svg);
          width:20px;
