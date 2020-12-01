@@ -134,22 +134,8 @@ img.icon-menu {
     display: inline-flex;
 }
 
-.tLast{
-    border-radius: 20px;
-    margin-top: 30px;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-}
-.tLast-info-1{ 
-    display:inline-flex;
-}
 h4.nome {
     line-height: 50px;
-}
-
-
-.tLast-info-2{
-    display:inline-flex;
-    text-align: left;
 }
 
 
@@ -298,50 +284,3 @@ h5.data{
     height: 20px;
     margin-left: 10px;
  }
-  .boxTitleQest{
-      height: auto;
-      width: 100%;
-      margin: 20px auto;
-    border-radius: 20px;
-    background: white;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
-    padding: 20px;
-    
-  } 
-
-  .boxform{
-    border: 0px;
-    padding: 20px;
-    height: 0;
-    width: 100%;
-    opacity:0;
-    overflow: hidden;
-    display: none;
-    transition:  all 4s ease-in-out;
-  }
-
-  .boxformopen{
-      height: auto !important;
-      opacity: 1 !important;
-      display: block !important;
-      
-
-  }
-
-  .boxformopen1{
-    height: auto !important;
-    opacity: 1 !important;
-    display: block !important;
-    
-
-}
-  .boxform2{
-    border: 0px;
-    padding: 20px;
-    height: 0;
-    width: 100%;
-    opacity:0;
-    overflow: hidden;
-    display: none;
-    transition:  all 4s ease-in-out;
-  }
