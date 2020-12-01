@@ -7,14 +7,15 @@ var acc = 0;
 var flag = false;
 var i = 1;
 
-var codeType = "javascript";
+var codeType = ["javascript", "javascript", "python", "php", "clike", "htmlembedded"];
 var editor =  CodeMirror.fromTextArea(document.getElementById("textArea"),{
-  mode: codeType,
+  mode: codeType[0],
   lineNumbers: true,
   autoCloseBrackets: true,
   readOnly: 'nocursor',
   theme: 'darcula'
 });
+
 
 function question() {
   window.countdown_finished();
@@ -134,6 +135,7 @@ function getQuestion(quest) {
 
     } else if (quest.type === 'code') {
       //stop video/audio stream
+      if(parseInt(choice_length) > 0) editor.setOption("mode", codeType[parseInt(choice_length)])
       document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.stopStream();
       document.getElementById("video").hidden = true;
