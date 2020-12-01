@@ -67,10 +67,7 @@ h5{
   #logo img{
     width:140px;
     height: auto;
-      position:fixed;
-      z-index: 19;
-      left:30px;
-      top:20px;
+     
   
   }
   img{
