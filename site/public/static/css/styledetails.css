@@ -497,10 +497,10 @@ a:active{
      .btn-back{
         margin: 0 0 5px 0;
         border-radius: 20px !important;
-        background: #476692;
+        background:  #fff;
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
         text-align: center;
-        color:  #fff;
+        color: #476692;
         font-weight: 600;
         border: 0px;
         width: 100%;
@@ -510,9 +510,9 @@ a:active{
      .btn-back:hover{
         margin: 0 0 5px 0;
         border-radius: 20px !important;
-        background: #fff;
+        background: #476692;
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-        color: #476692;
+        color: #fff;
         text-align: center;
         font-weight: 600;
         border: 0px;
@@ -528,7 +528,7 @@ a:active{
         background-repeat: no-repeat;
         position: absolute;
          top: 25px;
-        right: 42%;
+        left: 42%;
          width:20px;
          height: 20px;
      }
@@ -540,7 +540,7 @@ a:active{
         background-repeat: no-repeat;
         position: absolute;
          top: 25px;
-        right: 45%;
+        left: 45%;
          width:20px;
          height: 20px;
      }
