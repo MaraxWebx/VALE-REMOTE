@@ -134,7 +134,7 @@
 		<div class="boxform2 boxform-{{ question.id }}">
 			<form  method="POST" target="_parent" action="/dashboard/interviews/{{ id }}/edit/{{ question.id }}">
             
-				
+				<div class="form-group">
 					{% csrf_token %}
 				   <label for="action">Testo della domanda:</label>
 					<input id="action" type="text" name="action" required value="{{ action }}"><br>
