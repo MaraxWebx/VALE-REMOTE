@@ -354,9 +354,10 @@ line-height: 50px;
   text-align: center;
   font-weight: 600;
   border: 0px;
-  width: 100%;
+  width: 125px;
   height: 50px;
   margin: 10px auto;
+  position: relative;
 }
 .btn-back::after{
   content: "";
