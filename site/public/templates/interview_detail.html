@@ -183,9 +183,9 @@
                     <div class="row vale-word" style="margin-top: 10px; padding: 15px; border-top: 1px solid #476692;">
                        <img src="{% static 'css/img/visoVale.png' %}" width="30" height="30"> <h4>VALE dice:</h4><br>
                         {% for key,value in keywords.items %}
-                            <h4>{{ key }} : </h4><p>{{ value }} </p>
+                            <h4 style="display: block;">{{ key }} : </h4><p>{{ value }} </p>
                         {% empty %}
-                            <p>Non sono presenti informazioni.</p>
+                            <p style="display: block;" >Non sono presenti informazioni.</p>
                         {% endfor %}
                     </div>
             </div>
