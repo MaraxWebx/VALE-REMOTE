@@ -122,13 +122,13 @@
             </div>
             
             <div class="col-3 box-right">
-                <div class="row">
-                           <div class="col">
+               
+                           <div class="row">
                             <a href="/dashboard/{{ id }}/delete" target = "_parent"> <button type="button"class="btn-d">
                               
                                 </button></a>
                            </div>
-                           <div class="col">
+                           <div class="row">
                             <form action="/dashboard/{{ id }}/mark" target="_parent">
                                 {% csrf_token %}
                                 {% if an %}
@@ -138,12 +138,12 @@
                                 {% endif %}
                             </form>
                            </div>
-                           <div class="col">
+                           <div class="row">
                                <button  type="submit" class="btn-b">
                                 scarica cv
                                </button>
                            </div>
-                </div>
+                
                 <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
                 <div class="box-feed">
                             {% for comment in comments %}
