@@ -582,8 +582,23 @@ def get_video_interview(request, name):
 
 	elif request.method == 'GET':
 		file = Answer.objects.all().filter(choice_vid = name)
-		print("### FILENAME REQUESTED:", str(name), "--- FILE:", str(file[0].choice_vid))
 		if file.exists() and file.count() == 1:
 			return FileResponse(file[0].choice_vid, status=200)
-		else:
-			return HttpResponse(status=400)
+
+	return HttpResponse(status=400)
+
+
+
+@user_passes_test(test_check_user_group)
+def get_cv_user(request, name):
+	if not request.user.is_authenticated:
+		return HttpResponse(status=403)
+
+	elif request.method == 'GET':
+		file = CandidateUser.objects.all().filter(cv = name)
+		if file.exists() and file.count() == 1:
+			response = FileResponse(file[0].cv, status=200)
+			response['Content-Disposition'] = 'attachment;'
+			return response
+
+	return HttpResponse(status=400)
