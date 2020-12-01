@@ -70,12 +70,12 @@
              
                 <div class="col">
                     <form id="msform" action="/dashboard/interviews/{{id}}/add_question" method="POST" target="_parent">
-                        <h1>Aggiungi una nuova domanda</h1>
+                        <h1 style="margin-bottom: 10px;">Aggiungi una nuova domanda</h1>
                         {% csrf_token %}
                         <div class="form-group">
              
                           <label for="type">Inserire il tipo di domanda:</label>
-                            <select id="type" name="type" required onchange="onTypeSelected()">
+                            <select class="styleinput" id="type" name="type" required onchange="onTypeSelected()">
                                 <option value="" selected disabled hidden>Scegli uno di questi tipi</option>
                                 <option value="video">Risposta video</option>
                                 <option value="check">Scelta multipla</option>
@@ -83,38 +83,38 @@
                             </select> <br>
                          
                            <label for="action" id="action_label" hidden>Inserire la domanda:</label>
-                            <input id="action" type="text" name="action" required hidden> <br>
+                            <input class="styleinput" id="action" type="text" name="action" required hidden> <br>
                             <div hidden id="lang_box">
                                 <label for="length" id = "lang_label" >Seleziona il codice del linguaggio:</label>
                                 <input type="number" name="lang" id="lang" required value="0" > <br>
                             </div>
                             <div hidden id="choices_box">
                                 <label for="length" id = "length_label" >Scegli il numero di "check":</label>
-                                <input type="number" name="length" id="length" required value="0" > <br>
+                                <input class="styleinput" type="number" name="length" id="length" required value="0" > <br>
 
                                 <label for="choices" id="choices_label" >Inserisci le scelte separandole con "<b>;</b>":</label>
-                                <input type="text" name="choices" id="choices" > <br>
+                                <input class="styleinput" type="text" name="choices" id="choices" > <br>
                             </div>
                             <label for="is_fork" id="is_fork_label" hidden>Questa domanda sarà diramata?</label>
-                            <input type="checkbox" name="is_fork" id="is_fork" hidden><br>
+                            <input class="styleinput" type="checkbox" name="is_fork" id="is_fork" hidden><br>
 
                             <div hidden id="box-parent"> 
                             {% for parent in questions %}
                                 <br>
                                 <label for="check_{{parent.id}}">{{parent.action|truncatechars:50}}</label>
-                                <input type="checkbox" id="check_{{parent.id}}" name="check_parent" value="{{parent.id}}">
+                                <input class="styleinput" type="checkbox" id="check_{{parent.id}}" name="check_parent" value="{{parent.id}}">
                             {% endfor %}           
                              </div>
                              <br>
             
                    <label for="choice_fork" id="choice_fork_label" hidden>Se il parent di questa domanda si dirama,a qual'è l ascelta che l'attiva?</label><br>
-                    <input id="choice_fork" name="choice_fork" list="choices_enabled" hidden>
+                    <input class="styleinput" id="choice_fork" name="choice_fork" list="choices_enabled" hidden>
                     <datalist id="choices_enabled" >
                         {% for choice in choices %}
                             <option value="{{choice}}"></option>
                         {% endfor %}
                     </datalist> <br>
-                    <input  class="action-button" type="submit" id="sendbtt" hidden>
+                    <input  class="styleinput" class="action-button" type="submit" id="sendbtt" hidden>
                       </form>
                 </div>
                 <div class="col">
