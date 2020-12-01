@@ -264,17 +264,41 @@ h5.data{
     width: 100%;
     border: none;
     border-radius: 0.15rem;
-    background:#fff;
+    background:#476692;
     margin-left: 2px;
     cursor: pointer;
     display: block;
     margin:30px auto;
     align-items: center;
-    color:#476692 ;
+    color:#fff ;
     font-weight: 600;
     border-radius: 20px;
     box-shadow: 2px 2px 2px #222222;
   }
+  .btn-add::after{
+    content: "";
+    background-image: url(../css/icon/add-blue.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+     top: 25px;
+    right: 42%;
+     width:20px;
+     height: 20px;
+ }
+ .btn-add:hover:after{
+    content: "";
+    background-image: url(../css/icon/add-withe.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+     top: 25px;
+    right: 42%;
+     width:20px;
+     height: 20px;
+ }
   .boxTitleQest{
       height: auto;
       width: 100%;
