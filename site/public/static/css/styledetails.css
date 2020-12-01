@@ -534,7 +534,7 @@ a:active{
      }
      .btn-back:hover:after{
         content: "";
-        background-image: url(../css/icon/back-white.svg);
+        background-image: url(../css/icon/back-withe.svg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
