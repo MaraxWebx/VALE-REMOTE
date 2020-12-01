@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
 /*FORMATTAZIONE FONT E DOCUMENTO  */
 
 body {
@@ -30,7 +31,7 @@ h1{
     margin:0;
   }
   h2{
-    color: #476692;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 22px;
@@ -121,6 +122,7 @@ h5{
 	
 }
 
+
 img.icon-menu {
     vertical-align: top;
     margin-right: 5px;
@@ -132,8 +134,22 @@ img.icon-menu {
     display: inline-flex;
 }
 
+.tLast{
+    border-radius: 20px;
+    margin-top: 30px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+}
+.tLast-info-1{ 
+    display:inline-flex;
+}
 h4.nome {
     line-height: 50px;
+}
+
+
+.tLast-info-2{
+    display:inline-flex;
+    text-align: left;
 }
 
 
@@ -282,3 +298,50 @@ h5.data{
     height: 20px;
     margin-left: 10px;
  }
+  .boxTitleQest{
+      height: auto;
+      width: 100%;
+      margin: 20px auto;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); 
+    padding: 20px;
+    
+  } 
+
+  .boxform{
+    border: 0px;
+    padding: 20px;
+    height: 0;
+    width: 100%;
+    opacity:0;
+    overflow: hidden;
+    display: none;
+    transition:  all 4s ease-in-out;
+  }
+
+  .boxformopen{
+      height: auto !important;
+      opacity: 1 !important;
+      display: block !important;
+      
+
+  }
+
+  .boxformopen1{
+    height: auto !important;
+    opacity: 1 !important;
+    display: block !important;
+    
+
+}
+  .boxform2{
+    border: 0px;
+    padding: 20px;
+    height: 0;
+    width: 100%;
+    opacity:0;
+    overflow: hidden;
+    display: none;
+    transition:  all 4s ease-in-out;
+  }

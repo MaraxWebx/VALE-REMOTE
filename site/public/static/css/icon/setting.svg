@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63">
-  <g id="Raggruppa_15" data-name="Raggruppa 15" transform="translate(1.5 1.5)">
-    <g id="Icon_feather-settings" data-name="Icon feather-settings" transform="translate(-1.5 -1.5)">
-      <path id="Tracciato_3" data-name="Tracciato 3" d="M22.5,18A4.5,4.5,0,1,1,18,13.5,4.5,4.5,0,0,1,22.5,18Z" transform="translate(13.5 13.5)" fill="none" stroke="#476692" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-      <path id="Tracciato_4" data-name="Tracciato 4" d="M51.682,39.682a4.5,4.5,0,0,0,.9,4.964l.164.164a5.458,5.458,0,1,1-7.718,7.718l-.164-.164a4.537,4.537,0,0,0-7.691,3.218v.464a5.455,5.455,0,1,1-10.909,0V55.8a4.5,4.5,0,0,0-2.945-4.118,4.5,4.5,0,0,0-4.964.9l-.164.164a5.458,5.458,0,1,1-7.718-7.718l.164-.164a4.537,4.537,0,0,0-3.218-7.691H6.955a5.455,5.455,0,1,1,0-10.909H7.2a4.5,4.5,0,0,0,4.118-2.945,4.5,4.5,0,0,0-.9-4.964l-.164-.164a5.458,5.458,0,1,1,7.718-7.718l.164.164a4.5,4.5,0,0,0,4.964.9h.218a4.5,4.5,0,0,0,2.727-4.118V6.955a5.455,5.455,0,0,1,10.909,0V7.2a4.537,4.537,0,0,0,7.691,3.218l.164-.164a5.458,5.458,0,1,1,7.718,7.718l-.164.164a4.5,4.5,0,0,0-.9,4.964v.218a4.5,4.5,0,0,0,4.118,2.727h.464a5.455,5.455,0,1,1,0,10.909H55.8a4.5,4.5,0,0,0-4.118,2.727Z" fill="none" stroke="#476692" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+  <g id="Raggruppa_16" data-name="Raggruppa 16" transform="translate(-2 -2)">
+    <g id="Raggruppa_15" data-name="Raggruppa 15" transform="translate(5 5)">
+      <g id="Icon_feather-settings" data-name="Icon feather-settings">
+        <path id="Tracciato_3" data-name="Tracciato 3" d="M22.5,18A4.5,4.5,0,1,1,18,13.5,4.5,4.5,0,0,1,22.5,18Z" transform="translate(7 7)" fill="none" stroke="#476692" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+        <path id="Tracciato_4" data-name="Tracciato 4" d="M43.318,33.318a3.75,3.75,0,0,0,.75,4.136l.136.136a4.548,4.548,0,1,1-6.432,6.432l-.136-.136a3.78,3.78,0,0,0-6.409,2.682v.386a4.545,4.545,0,1,1-9.091,0v-.2a3.75,3.75,0,0,0-2.455-3.432,3.75,3.75,0,0,0-4.136.75l-.136.136a4.548,4.548,0,1,1-6.432-6.432l.136-.136a3.78,3.78,0,0,0-2.682-6.409H6.045a4.545,4.545,0,1,1,0-9.091h.2a3.75,3.75,0,0,0,3.432-2.455,3.75,3.75,0,0,0-.75-4.136L8.8,15.409a4.548,4.548,0,1,1,6.432-6.432l.136.136a3.75,3.75,0,0,0,4.136.75h.182a3.75,3.75,0,0,0,2.273-3.432V6.045a4.545,4.545,0,0,1,9.091,0v.2a3.78,3.78,0,0,0,6.409,2.682l.136-.136a4.548,4.548,0,1,1,6.432,6.432l-.136.136a3.75,3.75,0,0,0-.75,4.136v.182a3.75,3.75,0,0,0,3.432,2.273h.386a4.545,4.545,0,1,1,0,9.091h-.2a3.75,3.75,0,0,0-3.432,2.273Z" transform="translate(-1.5 -1.5)" fill="none" stroke="#476692" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
     </g>
   </g>
 </svg>
