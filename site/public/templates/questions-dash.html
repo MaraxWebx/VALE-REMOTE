@@ -45,46 +45,46 @@
  <!---TITOLO CON INFO SUL RECRUTIER ---->
  <section class="container-fluid sez-1">
 	<div class="boxTitle">
-	<div class="recInfo1">
-		<img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
-		<h1>
-			{{ user.first_name }} {{ user.last_name}}
-		</h1>
-	</div>
-	<div class="recInfo2">
-	
-	
-	<div class="lastAcc"><h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p></div>
-	
-	<div class="email">
-		<h4>E-mail:</h4><p> {{ user.email }}</p>
-	</div>
-	
-	</div>
+		<div class="recInfo1">
+			<img class="iconRec"src="{% static 'css/icon/recruiter.svg' %}" heigt="50" width="50" alt="colloqui ">
+			<h1>
+				{{ user.first_name }} {{ user.last_name}}
+			</h1>
+		</div>
+
+		<div class="recInfo2">
+			
+			<div class="lastAcc">
+				<h4>Ultimo accesso:</h4><p> {{ user.last_login }} </p>
+			</div>
+				
+			<div class="email">
+				<h4>E-mail:</h4><p> {{ user.email }}</p>
+			</div>
+			
+		</div>
 	</div>
 
-	</section>
+</section>
 
-	
-			<!------>
  <div class="container">
 	 <div class="row">
+		<div class="col-2">
+			<a href="/dashboard/interviews/add_interview" target = "_parent">
 
+				<button class="btn-add">
+						add new
+				</button> 
 
-	 
-			<div class="col-2">
-				<a href="/dashboard/interviews/add_interview" target = "_parent">	<button class="btn-add">
-					add new
-				</button> </a>
-			</div>
+			</a>
+		</div>
 	 
 	 	
-			<div class="col-8 ">
-				
-				{% for type in types %}	
-				<div class="row box-q">
-					
-					<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">
+	<div class="col-8 ">
+		{% for type in types %}	
+		<div class="row box-q">
+
+			<a href="/dashboard/interviews/{{ type.id }}" target = "_parent" class="list-group-item list-group-item-action">
 				<div class="col-10 align-self-center ">
 						<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
 						<h1 style="display: inline;">{{ type.interview_name }}</h1>
