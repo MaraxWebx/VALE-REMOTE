@@ -123,7 +123,23 @@
 			{% elif question.type == 'check' %}
 				<h3  style="margin-right:5px;">N. Risposte:</h3><p style="margin-right:5px;">{{ question.length }}</p>
 			{% elif question.type == 'code' %}
-				<h3  style="margin-right:5px;">Linguaggio:</h3><p style="margin-right:5px;" >{{ type_list.question.length }}</p>
+				<h3  style="margin-right:5px;">Linguaggio:</h3><p style="margin-right:5px;" >
+																							{% if question.length == 0 %}
+																								JavaScript
+																							{% elif question.length == 1 %}
+																								Java
+																							{% elif question.length == 2 %}
+																								Python
+																							{% elif question.length == 3 %}
+																								Php
+																							{% elif question.length == 4 %}
+																								C / C++
+																							{% elif question.length == 5 %}
+																								HTML
+																							{% else %}
+																								Non definito
+																							{% endif %}																								
+																						</p>
 			{% else %}
 				<h3  style="margin-right:5px;">Lunghezza:</h3><p style="margin-right:5px;">{{ question.length }}</p>
 			{% endif %}
