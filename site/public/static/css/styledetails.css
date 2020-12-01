@@ -321,27 +321,27 @@ a:active{
         height: 40px;
         margin: 10px auto;
     }
-    .btn-d:after{
+    .btn-d::before{
        content: "";
         background-image: url(../css/icon/trash-withe.svg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-        
+        display: inline;
         width:20px;
         height: 20px;
         text-align: center;
       
     }
-    .btn-d:hover:after{
+    .btn-d:hover::before{
         content: "";
         background-image: url(../css/icon/trash-blue.svg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-    
+        display: inline; 
          width:20px;
          height: 20px;
          text-align: center;
