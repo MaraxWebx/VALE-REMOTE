@@ -287,7 +287,8 @@ h5.data{
     position: absolute;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
+    top: 5px;
+    left: 22px;
  }
  .btn-add:hover::before{
     content: "";
@@ -298,7 +299,8 @@ h5.data{
     position: absolute;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
+    top: 5px;
+    left: 22px;
  }
   .boxTitleQest{
       height: auto;
