@@ -321,7 +321,7 @@ a:active{
         height: 40px;
         margin: 10px auto;
     }
-    .btn-d::before{
+    .btn-cv::before{
         content: "";
          background-image: url(../css/icon/d-cv-withe.svg);
          background-size: cover;
@@ -336,7 +336,7 @@ a:active{
          text-align: center;
        
      }
-     .btn-d:hover::before{
+     .btn-cv:hover::before{
         content: "";
         background-image: url(../css/icon/d-cv-blue.svg);
         background-size: cover;
