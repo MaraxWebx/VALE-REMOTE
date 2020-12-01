@@ -100,14 +100,19 @@
 			</div>
 		 </div>
 	 </div>
+
+	 <div class="row">
+		<a href="/dashboard/interviews/{{ id }}/add_question" target="_parent">
+			<button class="btn-add">
+				add new
+		</button> 
+		</a>
+	 </div>
+	 
 	 {% for question in questions %}
 	<div class="row box-q">
 			
-				<a href="/dashboard/interviews/{{ id }}/add_question" target="_parent">
-					<button class="btn-add">
-						add new
-				</button> 
-				</a>
+			
 			
 		<div class="col-1">
 			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="40" width="40" alt="domande ">
