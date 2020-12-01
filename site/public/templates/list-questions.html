@@ -102,17 +102,17 @@
 	 {% for question in questions %}
 	<div class="row box-q">
 
-		<div class="col-2">
+		<div class="col-1">
 			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
 		</div>
-		<div class="col-4 align-self-center">
+		<div class="col-5 align-self-center">
 			
 			
 				<p style="display: inline;"> {{ question.action }} </p>
 		
 		
 		</div>
-		<div class="col-4 align-self-center" style="display: inline-flex;">
+		<div class="col-5 align-self-center" style="display: inline-flex;">
 			<h3>Tipo:</h3> <p>{{ question.type }}</p>
 			{% if question.type == 'video' %}
 				<h3>Durata:</h3><p>{{ question.length }}</p>
@@ -125,7 +125,7 @@
 			{% endif %}
            
 		</div>
-		<div class="col-2  align-self-center">
+		<div class="col-1  align-self-center">
 			
 				<img  id="edit-{{ question.id }}" class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="30" width="30" alt="setting ">
 			
