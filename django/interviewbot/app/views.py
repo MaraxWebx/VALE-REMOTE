@@ -292,7 +292,7 @@ def test_file(request):
 	user.save()
 	return Response(status=status.HTTP_201_CREATED)
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def add_interview(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -307,7 +307,7 @@ def add_interview(request):
 		new_interview_type.save()
 		return redirect('/dashboard/interviews')
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def add_question(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -404,7 +404,7 @@ def login_recruiter(request):
 	else:
 		return redirect('/dashboard/')
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_index(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -415,7 +415,7 @@ def dashboard_index(request):
 		'user' : user
 	})
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_interview(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -449,7 +449,7 @@ def dashboard_interview(request, id):
 		'keywords'	:	keywords
 	})
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_interview_addcomment(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -461,7 +461,7 @@ def dashboard_interview_addcomment(request, id):
 	comment.save()
 	return redirect('/dashboard/'+str(id))
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -471,7 +471,7 @@ def dashboard_interview_toggle_mark(request, id):
 	interview.save()
 	return redirect('/dashboard/'+str(id))
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_interview_delete(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -485,7 +485,7 @@ def dashboard_interview_delete(request, id):
 	return HttpResponse(request, 'Some errors')
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_question_edit(request, id, q_id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -506,7 +506,7 @@ def dashboard_question_edit(request, id, q_id):
 			return redirect('/dashboard/interviews/' + str(id))
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -518,7 +518,7 @@ def dashboard_interview_type_list(request):
 		})
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -537,7 +537,7 @@ def dashboard_print_interview(request, id):
 	})
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -549,7 +549,7 @@ def dashboard_delete_interviewtype(request, id):
 	return redirect('/dashboard/interviews')
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -562,7 +562,7 @@ def dashboard_edit_interviewtype(request, id):
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
@@ -575,7 +575,7 @@ def logout_recruiter(request):
 	return redirect('/login_rectruiter')
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def get_video_interview(request, name):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
@@ -589,7 +589,7 @@ def get_video_interview(request, name):
 
 
 
-@user_passes_test(test_check_user_group)
+@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def get_cv_user(request, name):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
