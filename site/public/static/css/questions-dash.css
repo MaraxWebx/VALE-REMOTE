@@ -274,10 +274,11 @@ h5.data{
     color:#fff ;
     font-weight: 600;
     border-radius: 20px;
-    text-decoration: none;
+    text-decoration: none !important;
     box-shadow: 2px 2px 2px #222222;
     text-decoration: none;
     position: relative;
+    text-decoration-line: none !important;
   }
   .btn-add::before{
     content: "";
