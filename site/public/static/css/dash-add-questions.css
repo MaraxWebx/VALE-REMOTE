@@ -384,3 +384,63 @@ line-height: 50px;
    width:20px;
    height: 20px;
 }
+.btn-add{
+  height: 30px;
+  width: 100%;
+  border: none;
+  border-radius: 0.15rem;
+  background:#fff;
+  margin-left: 2px;
+  cursor: pointer;
+  display: block;
+  margin:30px auto;
+  align-items: center;
+  color:#476692 ;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;
+  position: relative;
+}
+.btn-add:hover
+{
+  height: 30px;
+  width: 100%;
+  border: none;
+  border-radius: 0.15rem;
+  background:#476692;
+  margin-left: 2px;
+  cursor: pointer;
+  display: block;
+  margin:30px auto;
+  align-items: center;
+  color:#fff ;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;
+  text-decoration: none;
+  position: relative;
+}
+.btn-add::before{
+  content: "";
+  background-image: url(../css/icon/add-blue.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: 22px;
+}
+.btn-add:hover::before{
+  content: "";
+  background-image: url(../css/icon/add-withe.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: 22px;
+}

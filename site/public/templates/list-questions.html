@@ -72,14 +72,14 @@
 		 <div class="col boxTitleQest align-self-center">
 			<div class="row align-self-center">
 				<div class="col align-self-right">
-					<h1>
+					<h1 style= "display: inline-flex;">
 						{{ interview }}
 					</h1>
 					<img  onclick="toggleClass()" id="edit-interview "class="iconRec "src="{% static 'css/img/modifica.svg' %}" heigt="20" width="20" alt="setting ">
 				</div>
 				<div class="col align-self-center text-right">
 					
-					<a href="/dashboard/interviews/{{ id }}/add_question" target="_parent"><img class="iconRec"src="{% static 'css/icon/add-blue.svg' %}" heigt="20" width="20" alt="add"></a>
+					
 					<a href="/dashboard/interviews/{{ id }}/delete" target="_parent"><img class="iconRec"src="{% static 'css/img/delete.svg' %}" heigt="20" width="20" alt="delete "></a>
 					<img class="iconRec"src="{% static 'css/icon/copialink.svg' %}" heigt="20" width="20" alt="copy " onclick="copyToClipBoard()">
 
@@ -102,7 +102,13 @@
 	 </div>
 	 {% for question in questions %}
 	<div class="row box-q">
-
+			
+				<a href="/dashboard/interviews/{{ id }}/add_question" target="_parent">
+					<button class="btn-add">
+						add new
+				</button> 
+				</a>
+			
 		<div class="col-1">
 			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="40" width="40" alt="domande ">
 		</div>
