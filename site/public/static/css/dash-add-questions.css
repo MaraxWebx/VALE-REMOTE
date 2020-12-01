@@ -324,3 +324,9 @@ line-height: 50px;
   margin-right: 5px;
   font-size: 16px;
 }
+.lastAcc p {
+  font-weight: 200;
+}
+.email p{
+  font-weight: 200;
+}
