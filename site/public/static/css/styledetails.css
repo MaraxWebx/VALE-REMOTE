@@ -602,3 +602,9 @@ textarea{
     margin: 2px;
     border-radius: 10px;
 }
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 72px;
+    z-index: 1020;
+}
