@@ -323,9 +323,11 @@ def add_question(request, id):
 
 		if 'length' in request.POST:
 			length	= request.POST['length']
-		elif 'lang' in request.POST:
-			length = request.POST['lang']
-		
+		if 'lang' in request.POST:
+			lang = request.POST['lang']
+		if type == 'code':
+			length = lang
+			
 		if 'choices' in request.POST:
 			choices = request.POST['choices']
 			if choices.endswith(';'):
