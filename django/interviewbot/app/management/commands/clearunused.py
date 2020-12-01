@@ -40,6 +40,7 @@ class Command(BaseCommand):
             for vid in vids:
                 if vid.endswith(filename):
                     flag = True
+                    self.stdout.write(self.style.SUCCESS('This vid will NOT be deleted: %s. Path: %s%s%s' % filename,dir,video_folder,filename))
                     break
             if not flag:
                 # os.remove(dir + video_folder + '/' + filename)
