@@ -597,8 +597,14 @@ def get_cv_user(request, name):
 	elif request.method == 'GET':
 		file = CandidateUser.objects.all().filter(cv = name)
 		if file.exists() and file.count() == 1:
-			response = FileResponse(file[0].cv, status=200)
-			response['Content-Disposition'] = 'attachment;'
+
+			temp_name = name.split("/",1)
+			if len(temp_name) > 1:
+				real_name = temp_name[1]
+			else:
+				real_name = name
+			response = HttpResponse(file[0].cv, content_type="application/pdf", status=200)
+			response['Content-Disposition'] = 'attachment; filename=%s' % real_name
 			return response
 
 	return HttpResponse(status=400)
