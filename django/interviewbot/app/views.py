@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, FileResponse
 from django.conf import settings
-from django.contrib.auth.decorators import permission_required, login_required
+from django.contrib.auth.decorators import permission_required, login_required, user_passes_test
+from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
 
@@ -23,10 +24,9 @@ from app.text_sentiment import SentimentAnalyzer
 SA = SentimentAnalyzer()
 
 
-"""
-bow_path = "/var/www/site/bow.json"
-controller = Controller()
-"""
+def test_check_user_group(user):
+	return user.groups.filter(name='recruiter').exists() or user.is_superuser
+
 
 # Create your views here.
 def index(request):
@@ -292,7 +292,7 @@ def test_file(request):
 	user.save()
 	return Response(status=status.HTTP_201_CREATED)
 
-
+@user_passes_test(test_check_user_group)
 def add_interview(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -307,7 +307,7 @@ def add_interview(request):
 		new_interview_type.save()
 		return redirect('/dashboard/interviews')
 
-
+@user_passes_test(test_check_user_group)
 def add_question(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -404,7 +404,7 @@ def login_recruiter(request):
 	else:
 		return redirect('/dashboard/')
 
-
+@user_passes_test(test_check_user_group)
 def dashboard_index(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -415,7 +415,7 @@ def dashboard_index(request):
 		'user' : user
 	})
 
-
+@user_passes_test(test_check_user_group)
 def dashboard_interview(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -449,6 +449,7 @@ def dashboard_interview(request, id):
 		'keywords'	:	keywords
 	})
 
+@user_passes_test(test_check_user_group)
 def dashboard_interview_addcomment(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -460,6 +461,7 @@ def dashboard_interview_addcomment(request, id):
 	comment.save()
 	return redirect('/dashboard/'+str(id))
 
+@user_passes_test(test_check_user_group)
 def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -469,6 +471,7 @@ def dashboard_interview_toggle_mark(request, id):
 	interview.save()
 	return redirect('/dashboard/'+str(id))
 
+@user_passes_test(test_check_user_group)
 def dashboard_interview_delete(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -481,6 +484,8 @@ def dashboard_interview_delete(request, id):
 
 	return HttpResponse(request, 'Some errors')
 
+
+@user_passes_test(test_check_user_group)
 def dashboard_question_edit(request, id, q_id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -500,6 +505,8 @@ def dashboard_question_edit(request, id, q_id):
 			question.save()
 			return redirect('/dashboard/interviews/' + str(id))
 
+
+@user_passes_test(test_check_user_group)
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -510,6 +517,8 @@ def dashboard_interview_type_list(request):
 		'user'	: request.user
 		})
 
+
+@user_passes_test(test_check_user_group)
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -527,6 +536,8 @@ def dashboard_print_interview(request, id):
 		'link' 		: link
 	})
 
+
+@user_passes_test(test_check_user_group)
 def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -537,6 +548,8 @@ def dashboard_delete_interviewtype(request, id):
 	interview.delete()
 	return redirect('/dashboard/interviews')
 
+
+@user_passes_test(test_check_user_group)
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_rectruiter')
@@ -548,6 +561,8 @@ def dashboard_edit_interviewtype(request, id):
 	else:
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
+@user_passes_test(test_check_user_group)
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
@@ -560,6 +575,7 @@ def logout_recruiter(request):
 	return redirect('/login_rectruiter')
 
 
+@user_passes_test(test_check_user_group)
 def get_video_interview(request, name):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
