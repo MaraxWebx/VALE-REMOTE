@@ -28,7 +28,6 @@ def test_check_user_group(user):
 	return user.groups.filter(name='recruiter').exists() or user.is_superuser
 
 
-# Create your views here.
 def index(request):
 	if request.method == 'GET':
 		if request.session.get('is_reg', False):

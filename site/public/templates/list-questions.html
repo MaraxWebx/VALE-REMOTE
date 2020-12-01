@@ -115,7 +115,11 @@
 		<div class="col-5 align-self-center" style="display: inline-flex;">
 			<h3  style="margin-right:5px;" >Tipo:</h3> <p style="margin-right:5px;" >{{ question.type }}</p>
 			{% if question.type == 'video' %}
-				<h3  style="margin-right:5px;">Durata:</h3><p style="margin-right:5px;">{{ question.length }}</p>
+				{% if question.length == 0 %}
+					<h3  style="margin-right:5px;">Durata:</h3><p style="margin-right:5px;">30 secondi</p>
+				{% else %}
+					<h3  style="margin-right:5px;">Durata:</h3><p style="margin-right:5px;">{{ question.length }} secondi</p>
+				{% endif %}
 			{% elif question.type == 'check' %}
 				<h3  style="margin-right:5px;">N. Risposte:</h3><p style="margin-right:5px;">{{ question.length }}</p>
 			{% elif question.type == 'code' %}
