@@ -371,13 +371,13 @@ h5.data{
   .btn-back{
     margin: 0 0 5px 0;
     border-radius: 20px !important;
-    background:  #fff;
+    background: #fff;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     text-align: center;
     color: #476692;
     font-weight: 600;
     border: 0px;
-    width: 125px;
+    width: 50px;
     height: 50px;
     margin: 10px auto;
     position: relative;
@@ -385,13 +385,13 @@ h5.data{
   .btn-back:hover{
     margin: 0 0 5px 0;
     border-radius: 20px !important;
-    background: #476692;
+    background: #476692;;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-    color: #fff;
     text-align: center;
+    color: #fff;
     font-weight: 600;
     border: 0px;
-    width: 125px;
+    width: 50px;
     height: 50px;
     margin: 10px auto;
     position: relative;
