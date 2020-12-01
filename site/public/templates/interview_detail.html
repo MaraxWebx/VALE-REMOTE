@@ -124,7 +124,7 @@
             <div class="col-3 box-right">
                 <div class="row">
                            <div class="col-12">
-                            <a href="/dashboard/{{ id }}/delete" target = "_parent"> <button type="button"class="btn-d">
+                            <a href="/dashboard/{{ id }}/delete" target = "_parent"> <button type="button"class=" aligin-self-cente btn-d">
                               Elimina
                                 </button></a>
                            </div>
@@ -132,14 +132,14 @@
                             <form action="/dashboard/{{ id }}/mark" target="_parent">
                                 {% csrf_token %}
                                 {% if an %}
-                                    <button  type="submit" class="  btn-dash"> DA ESAMINARE</button>
+                                    <button  type="submit" class=" aligin-self-cente btn-dash"> DA ESAMINARE</button>
                                 {% else %}
-                                    <button  type="submit" class="btn-dash">ESAMINATO</button>
+                                    <button  type="submit" class=" aligin-self-cente btn-dash">ESAMINATO</button>
                                 {% endif %}
                             </form>
                            </div>
                            <div class="col-12">
-                               <button  type="submit" class="btn-dash">
+                               <button  type="submit" class="btn-dash aligin-self-center">
                                 scarica cv
                                </button>
                            </div>
