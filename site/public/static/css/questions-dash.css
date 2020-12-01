@@ -274,8 +274,9 @@ h5.data{
     font-weight: 600;
     border-radius: 20px;
     box-shadow: 2px 2px 2px #222222;
+    text-decoration: none;
   }
-  .btn-add::before{
+  .btn-add::after{
     content: "";
     background-image: url(../css/icon/add-blue.svg);
     background-size: cover;
@@ -284,9 +285,9 @@ h5.data{
     position: absolute;
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+    margin-left: 10px;
  }
- .btn-add:hover::before{
+ .btn-add:hover::after{
     content: "";
     background-image: url(../css/icon/add-withe.svg);
     background-size: cover;
@@ -295,7 +296,7 @@ h5.data{
     position: absolute;
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+    margin-left: 10px;
  }
   .boxTitleQest{
       height: auto;
