@@ -315,7 +315,7 @@ h5.data{
     opacity:0;
     overflow: hidden;
     display: none;
-    transition:  all 4s ease-in-out;
+  
   }
 
   .boxformopen{
