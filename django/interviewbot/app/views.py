@@ -446,7 +446,8 @@ def dashboard_interview(request, id):
 		'comments' 	: 	comments,
 		'id' 		: 	id,
 		'an' 		: 	interview.analyzed,
-		'keywords'	:	keywords
+		'keywords'	:	keywords,
+		'cv_name' 	:	user.cv
 	})
 
 @user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
