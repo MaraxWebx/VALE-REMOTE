@@ -103,7 +103,7 @@
 	<div class="row box-q">
 
 		<div class="col-1">
-			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="50" width="50" alt="domande ">
+			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="40" width="40" alt="domande ">
 		</div>
 		<div class="col-5 align-self-center">
 			
@@ -113,15 +113,15 @@
 		
 		</div>
 		<div class="col-5 align-self-center" style="display: inline-flex;">
-			<h3>Tipo:</h3> <p>{{ question.type }}</p>
+			<h3  style="margin-right:5px;" >Tipo:</h3> <p>{{ question.type }}</p>
 			{% if question.type == 'video' %}
-				<h3>Durata:</h3><p>{{ question.length }}</p>
+				<h3  style="margin-right:5px;">Durata:</h3><p>{{ question.length }}</p>
 			{% elif question.type == 'check' %}
-				<h3>N. Risposte:</h3><p>{{ question.length }}</p>
+				<h3  style="margin-right:5px;">N. Risposte:</h3><p>{{ question.length }}</p>
 			{% elif question.type == 'code' %}
-				<h3>Linguaggio:</h3><p>{{ question.length }}</p>
+				<h3  style="margin-right:5px;">Linguaggio:</h3><p>{{ question.length }}</p>
 			{% else %}
-				<h3>Lunghezza:</h3><p>{{ question.length }}</p>
+				<h3  style="margin-right:5px;">Lunghezza:</h3><p>{{ question.length }}</p>
 			{% endif %}
            
 		</div>
