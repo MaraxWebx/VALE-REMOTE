@@ -36,6 +36,7 @@ h1{
     font-weight: 600;
     font-size: 22px;
     margin:0;
+    line-height: 50px;
   }
   h3{
     color: #476692;
@@ -256,6 +257,7 @@ h5.data{
     font-weight: 600;
     border-radius: 20px;
     box-shadow: 2px 2px 2px #222222;
+    position: relative;
   }
   .btn-add:hover
   {
@@ -274,8 +276,9 @@ h5.data{
     border-radius: 20px;
     box-shadow: 2px 2px 2px #222222;
     text-decoration: none;
+    position: relative;
   }
-  .btn-add::after{
+  .btn-add::before{
     content: "";
     background-image: url(../css/icon/add-blue.svg);
     background-size: cover;
@@ -286,7 +289,7 @@ h5.data{
     height: 20px;
     margin-left: 10px;
  }
- .btn-add:hover::after{
+ .btn-add:hover::before{
     content: "";
     background-image: url(../css/icon/add-withe.svg);
     background-size: cover;
