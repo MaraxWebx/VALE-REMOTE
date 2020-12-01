@@ -342,20 +342,19 @@ h5.data{
     opacity:0;
     overflow: hidden;
     display: none;
-    transition:  all 4s ease-in-out;
+
   }
 
   .btn-form{
     height: 30px;
-    width: 100%;
+
     border: none;
     border-radius: 0.15rem;
     background:#476692;
     margin-left: 2px;
     cursor: pointer;
     display: inline-flex;
-    margin:30px auto;
-    align-items: center;
+
     color:#fff ;
     font-weight: 600;
     border-radius: 20px;
