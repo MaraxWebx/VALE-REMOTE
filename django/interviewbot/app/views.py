@@ -527,12 +527,22 @@ def dashboard_print_interview(request, id):
 	if interview.start_question:
 		get_all_question(interview.start_question, all_question)
 
+	type_list = {	
+		"0" 	: "javascript",
+		"1" 	:  "java",
+		"2" 	:  "python", 
+		"3" 	:   "php", 
+		"4" 	:   "c / c++", 
+		"5" 	:   "html"
+	}
+
 	link = 'https://itcinterview.it/?interview=' + str(id)
 	return render(request, 'list-questions.html', context={
 		'user'		: request.user,
 		'questions'	: all_question,
 		'interview'	: interview.interview_name,
 		'id'		: str(id),
+		'type_list'	: type_list,
 		'link' 		: link
 	})
 
