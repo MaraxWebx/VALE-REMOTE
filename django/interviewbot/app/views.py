@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, FileResponse
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth import authenticate, login, logout
@@ -559,3 +559,15 @@ def logout_recruiter(request):
 	logout(request)
 	return redirect('/login_rectruiter')
 
+
+def get_video_interview(request, name):
+	if not request.user.is_authenticated:
+		return HttpResponse(status=403)
+
+	elif request.method == 'GET':
+		file = Answer.objects.all().filter(choice_vid = name)
+
+		if file.exists and file.count == 1:
+			return FileResponse(file[0], status=200)
+		else:
+			return HttpResponse(status=400)

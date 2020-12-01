@@ -23,6 +23,7 @@ urlpatterns = [
     path('dashboard/interviews/<int:id>/delete', dashboard_delete_interviewtype, name='dashboard_delete_interview'),
     path('dashboard/interviews/<int:id>/edit/<int:q_id>', dashboard_question_edit, name='dashboard_edit_question'),
     path('dashboard/interviews/add_interview', add_interview, name='dashboard_add_interview'),
+    path('dashboard/interviews/media/<str:name>', get_video_interview, name='get_video_interview'),
     path('login_rectruiter/', login_recruiter, name='login'),
     path('logout/', logout_recruiter, name='logout')
 ]
