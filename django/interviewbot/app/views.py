@@ -563,7 +563,6 @@ def dashboard_edit_interviewtype(request, id):
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
 def get_all_question(node, all_question):
 	adj = QuestionFlow.objects.filter(parent=node)
 	all_question.append(node)
