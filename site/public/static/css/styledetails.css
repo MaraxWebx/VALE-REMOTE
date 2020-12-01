@@ -608,3 +608,6 @@ textarea{
     top: 72px;
     z-index: 1020;
 }
+button:focus{
+    outline: 0px;
+}
