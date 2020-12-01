@@ -239,6 +239,7 @@ h5.data{
     position: relative;
     border-bottom: 2px solid #476692 !important;
     margin: 20px auto;
+    padding: 20px;
 }
 .btn-add{
     height: 30px;
