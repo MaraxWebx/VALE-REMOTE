@@ -329,9 +329,10 @@ a:active{
         background-repeat: no-repeat;
         position: absolute;
          top: 37%;
-        right: 42%;
+        right: 46%;
         width:20px;
         height: 20px;
+        text-align: center;
       
     }
     .btn-d:hover:after{
@@ -342,9 +343,10 @@ a:active{
         background-repeat: no-repeat;
         position: absolute;
          top: 37%;
-        right: 42%;
+        right: 46%;
          width:20px;
          height: 20px;
+         text-align: center;
        
      }
 
