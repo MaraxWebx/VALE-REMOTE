@@ -322,7 +322,7 @@ h5.data{
   .boxformopen{
       height: auto !important;
       opacity: 1 !important;
-      display: block !important;
+      display: inline-flex !important;
       
 
   }
