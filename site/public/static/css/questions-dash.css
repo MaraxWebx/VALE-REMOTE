@@ -244,7 +244,7 @@ h5.data{
 }
 .btn-add{
     height: 30px;
-    width: 100%;
+    width: 125px;
     border: none;
     border-radius: 0.15rem;
     background:#fff;
@@ -262,7 +262,7 @@ h5.data{
   .btn-add:hover
   {
     height: 30px;
-    width: 100%;
+    width: 125px;
     border: none;
     border-radius: 0.15rem;
     background:#476692;
