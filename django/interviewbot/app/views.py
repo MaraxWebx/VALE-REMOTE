@@ -566,7 +566,7 @@ def get_video_interview(request, name):
 
 	elif request.method == 'GET':
 		file = Answer.objects.all().filter(choice_vid = name)
-
+		print("### FILENAME REQUESTED:", str(name), "--- FILE:", str(file))
 		if file.exists and file.count == 1:
 			return FileResponse(file[0], status=200)
 		else:
