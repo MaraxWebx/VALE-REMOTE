@@ -522,25 +522,25 @@ a:active{
      }
      .btn-back::after{
         content: "";
-        background-image: url(../css/icon/back-withe.svg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: absolute;
-         top: 25px;
-        left: 42%;
-         width:20px;
-         height: 20px;
-     }
-     .btn-back:hover:after{
-        content: "";
         background-image: url(../css/icon/back-blue.svg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
          top: 25px;
-        left: 45%;
+        left: 25px;
+         width:20px;
+         height: 20px;
+     }
+     .btn-back:hover:after{
+        content: "";
+        background-image: url(../css/icon/back-white.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+         top: 25px;
+        left: 25px;
          width:20px;
          height: 20px;
      }
