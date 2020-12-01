@@ -328,8 +328,7 @@ a:active{
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-         top: 37%;
-        right: 46%;
+        
         width:20px;
         height: 20px;
         text-align: center;
@@ -342,8 +341,7 @@ a:active{
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-         top: 37%;
-        right: 46%;
+    
          width:20px;
          height: 20px;
          text-align: center;
