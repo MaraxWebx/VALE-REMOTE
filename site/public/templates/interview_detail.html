@@ -155,8 +155,9 @@
                                 </form>
                            </div>
                 </div>
-                <div class="row"  style="text-align: center; color:#476692;"><h2 class="title-note">Note</h2></div>
+                <div class="row"  >
                 <div class="box-feed">
+                    <h2 style="text-align: center; color:#476692;" class="title-note">Note</h2>
                             {% for comment in comments %}
                             <div class="row feed-row">
                                 <div class="feedback">
@@ -167,15 +168,17 @@
                             {% endfor %}
                 </div>
                 <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
-                        {% csrf_token %}
-                     <div class="row">
-                         
-                         <textarea id="text" name="text" style="width:100%"></textarea>
-                     </div>
-                     <div class="row feed-row">
-                         <button  type="submit" class="btn btn-dash">INVIA FEEDBACK</button>
-                    </div>
-                </form>
+                    {% csrf_token %}
+                 <div class="row">
+                     
+                     <textarea id="text" name="text" style="width:100%"></textarea>
+                 </div>
+                 <div class="row feed-row">
+                     <button  type="submit" class="btn btn-dash">INVIA FEEDBACK</button>
+                </div>
+            </form>
+            </div>
+                
                     <div class="row vale-word" style="margin-top: 10px; padding: 15px; border-top: 1px solid #476692;">
                         <h4>Le informazioni estratte da VALE:</h4>
                         {% for key,value in keywords.items %}
