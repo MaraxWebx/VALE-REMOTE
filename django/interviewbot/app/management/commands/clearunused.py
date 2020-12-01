@@ -28,7 +28,7 @@ class Command(BaseCommand):
             flag = False
             for cv in cvs:
                 if cv.endswith(filename):
-                    self.stdout.write(self.style.SUCCESS('This cv will NOT be deleted: %s. Path: %s' % filename, dir+user_folder+filename))
+                    self.stdout.write(self.style.SUCCESS('This cv will NOT be deleted: %s. Path: %s%s%s' % filename,dir,user_folder,filename))
                     flag = True
                     break
             if not flag:
