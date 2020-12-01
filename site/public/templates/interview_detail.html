@@ -155,7 +155,7 @@
                                 </form>
                            </div>
                 </div>
-                <div class="row"  >
+                <div class="row box-feedmast" >
                 <div class="box-feed">
                     <h2 style="text-align: center; color:#476692;" class="title-note">Note</h2>
                             {% for comment in comments %}
@@ -167,7 +167,7 @@
                             </div>
                             {% endfor %}
                 </div>
-                <form action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
+                <form  class="form-check" action="/dashboard/{{ id }}/add_comment" method ="POST" target="_parent">
                     {% csrf_token %}
                  <div class="row">
                      

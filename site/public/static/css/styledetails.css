@@ -575,6 +575,12 @@ textarea{
     margin: 5px;
 }
 
+.form-check {
+    position: relative;
+    display: block;
+    padding: 1.25rem;
+    width: 100%;
+}
 .title-note{
     text-align: center !important; 
     color:#476692 !important;
