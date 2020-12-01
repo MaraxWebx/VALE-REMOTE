@@ -85,12 +85,12 @@
                     
                 </div>
                 
-                <div class=" row link-container">
-                   
+                <div class=" row ">
+                   <div class="link-container"
                         {% for answer in answers %} 
                         <a  style="width: 100%;" href="#{{ answer.id }}" target = "_parent"><div id="toplinks" class="nav-risp">Domanda {{ forloop.counter }}</div></a> 
                     {% endfor %}
-                   
+                </div>
                   
                 </div>
             </div>
