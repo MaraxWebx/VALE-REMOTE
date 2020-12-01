@@ -28,21 +28,21 @@ class Command(BaseCommand):
             flag = False
             for cv in cvs:
                 if cv.endswith(filename):
-                    self.stdout.write(self.style.SUCCESS('This cv will NOT be deleted: %s. Path: %s%s%s' % (filename,dir,user_folder,filename)))
+                    self.stdout.write(self.style.SUCCESS('This cv will NOT be deleted: %s. Path: %s%s/%s' % (filename,dir,user_folder,filename)))
                     flag = True
                     break
             if not flag:
-                # os.remove(dir + user_folder + '/' + filename)
-                self.stdout.write(self.style.SUCCESS('This cv will be deleted: %s' % filename))
+                os.remove(dir + user_folder + '/' + filename)
+                self.stdout.write(self.style.ERROR('This cv will be deleted: %s' % filename))
 
         for filename in os.listdir(dir + video_folder):
             flag = False
             for vid in vids:
                 if vid.endswith(filename):
                     flag = True
-                    self.stdout.write(self.style.SUCCESS('This vid will NOT be deleted: %s. Path: %s%s%s' % (filename,dir,video_folder,filename)))
+                    self.stdout.write(self.style.SUCCESS('This vid will NOT be deleted: %s. Path: %s%s/%s' % (filename,dir,video_folder,filename)))
                     break
             if not flag:
-                # os.remove(dir + video_folder + '/' + filename)
-                self.stdout.write(self.style.SUCCESS('This video will be deleted: %s' % filename))
+                os.remove(dir + video_folder + '/' + filename)
+                self.stdout.write(self.style.ERROR('This video will be deleted: %s' % filename))
         
