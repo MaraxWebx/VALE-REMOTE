@@ -368,3 +368,56 @@ h5.data{
     box-shadow: 2px 2px 2px #222222;
     text-decoration: none;
   }
+  .btn-back{
+    margin: 0 0 5px 0;
+    border-radius: 20px !important;
+    background:  #fff;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #476692;
+    font-weight: 600;
+    border: 0px;
+    width: 125px;
+    height: 50px;
+    margin: 10px auto;
+    position: relative;
+  }
+  .btn-back:hover{
+    margin: 0 0 5px 0;
+    border-radius: 20px !important;
+    background: #476692;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    border: 0px;
+    width: 125px;
+    height: 50px;
+    margin: 10px auto;
+    position: relative;
+  }
+  .btn-back::after{
+    content: "";
+    background-image: url(../css/icon/back-blue.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 15px;
+    left: 1px;
+     width:20px;
+     height: 20px;
+  
+  }
+  .btn-back:hover:after{
+    content: "";
+    background-image: url(../css/icon/back-withe.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 15px;
+    left: 1px;
+     width:20px;
+     height: 20px;
+  }
