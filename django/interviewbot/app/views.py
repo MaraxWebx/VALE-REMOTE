@@ -187,6 +187,7 @@ class NextQuestionView(APIView):
 	
 
 @api_view(['POST'])
+@authentication_classes([])
 @parser_classes([MultiPartParser])
 def test_file(request):
 	file = request.data['file']
