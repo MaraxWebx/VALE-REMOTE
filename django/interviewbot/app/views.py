@@ -67,7 +67,7 @@ def interview(request):
 @permission_classes([])
 def registration_view(request):
 	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
-		return redirect('/keep_in_touch/')
+		return Response(status = status.HTTP_503_SERVICE_UNAVAILABLE)
 	if request.method == 'POST':
 
 		serializer = UserSerializer(data=request.data)
@@ -192,7 +192,8 @@ class NextQuestionView(APIView):
 @parser_classes([MultiPartParser])
 def test_file(request):
 	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
-		return redirect('/keep_in_touch/')
+		return Response(status = status.HTTP_503_SERVICE_UNAVAILABLE)
+
 	file = request.data['file']
 
 	if not file.name.endswith('.pdf'):

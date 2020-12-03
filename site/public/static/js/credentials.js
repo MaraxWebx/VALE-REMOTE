@@ -64,13 +64,18 @@ function uploadData() {
       console.log('SUCCESS!!');
     })
       .catch( (error) => {
-        if(error.response.status == 415){
+        if(error.response.status == 503){
+          location.replace("https://itcinterview.it/keep_in_touch/")
+        }else if(error.response.status == 415){
           swal("Formato del file non valido","Formati supportati: PDF","error")
         }
         console.log(error.response.status);
       });
     
   }, (error) => {
+    if(error.response.status == 503){
+      location.replace("https://itcinterview.it/keep_in_touch/")
+    }
     swal("errore connessione server", "Riprova", "error");
     console.log(error);
   });
