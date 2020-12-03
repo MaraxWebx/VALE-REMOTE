@@ -68,7 +68,7 @@ def get_next_question_v2(SA, id, answer, session):
                 return 0
             else:
                 last_question = Question.objects.get(id = next_id) # recupero l'ultima domanda dallo stack
-                session['stack'] = stack.to_json
+                session['stack'] = stack.to_json()
                 next = calculate_next(stack, session, SA, last_question, answer, skip_analysis=True)  # skip_analysis mi permette di forzare l'algoritmo a cercare il next sullo
                 return next                                               # stesso flusso senza attivare il SA
         else:
