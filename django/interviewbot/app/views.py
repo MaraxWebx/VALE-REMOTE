@@ -186,7 +186,7 @@ class NextQuestionView(APIView):
 
 	
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 @parser_classes([MultiPartParser])
 def test_file(request):
 	file = request.data['file']
