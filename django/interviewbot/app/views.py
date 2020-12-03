@@ -41,7 +41,6 @@ def index(request):
 			return redirect('/interview/')
 		else:
 			request.session.clear_expired()
-			request.session.flush()
 			request.session.set_expiry(300)
 			request.session['is_reg'] = False
 			interviewtype_id = request.GET.get('interview', -1)
