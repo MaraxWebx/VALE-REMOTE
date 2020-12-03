@@ -72,7 +72,7 @@ function uploadData() {
         console.log(error.response.status);
       });
     
-  }, (error) => {
+  }).catch( (error) => {
     if(error.response.status == 503){
       location.replace("https://itcinterview.it/keep_in_touch/")
     }
