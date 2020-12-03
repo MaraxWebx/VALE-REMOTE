@@ -17,6 +17,7 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
+from app.utils import get_next_question, get_next_question_v2
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 from app.text_sentiment import SentimentAnalyzer
@@ -81,8 +82,8 @@ class NextQuestionView(APIView):
 	def get(self, request, *arg, **kwargs):
 		dict = request.query_params
 		request.session['refresh'] = True
-		# Check se è prima domanda
 
+		# Check se è prima domanda
 		if 'type' in dict:
 			if dict['type'] == 'base':
 				if int(request.session.get('interview', -1 )) > 0:
@@ -128,8 +129,16 @@ class NextQuestionView(APIView):
 
 		# Generazione prossima domanda
 
-		next_question = self.get_next_question(question_id, answer_text, request.session)
+		next_question = get_next_question_v2(SA, question_id, answer_text, request.session)
 
+		if next_question is not None:
+			if type(next_question) is int and next_question == 0:
+				return Response(status = status.HTTP_202_ACCEPTED)
+			nq_serialized = QuestionSerializer(next_question)
+			return Response(nq_serialized.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+		""" # IMPL per get_next_question() # 
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
 				if int(request.session.get('last_base_quest', - 1)) > 0:
@@ -152,7 +161,9 @@ class NextQuestionView(APIView):
 			return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		else:
 			return Response(status=status.HTTP_400_BAD_REQUEST)
-	
+		"""
+
+
 	def post(self, request, *arg, **kwargs):
 		file = request.data.dict()['file']
 		request.session['refresh'] = True
@@ -166,108 +177,7 @@ class NextQuestionView(APIView):
 			print(" ## ERR ## - User session doesn't have a last_ans_id setted. Cannot save the video.")
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
-	def get_next_question(self, id, answer, session):
-
-		question = Question.objects.get(id=id)
-		if question is not None:
-			if question.type == 'check' or question.type == 'code' or not question.to_analyze:
-				if int(session.get('last_base_quest',-1)) < 0  or not session.get('have_forked', False):
-					session['last_base_quest'] = id
-				flows = QuestionFlow.objects.all().filter(parent=question)
-				if flows.exists() and flows.count() > 0:
-					if flows.count() == 1:
-						return flows.get(parent=question).son
-					elif not question.is_fork:
-						return None
-					else:
-						if answer == "" or answer is None:
-							return None
-						for flow in flows:
-							if flow.choice == answer:
-								return flow.son
-						for flow in flows:
-							if flow.choice == "":
-								return flow.son
-				else:
-					if not question.is_technical:
-						session['last_base_quest'] = -1
-					return 0
-			else:
-				if not session.get('have_forked', False):
-					session['last_base_quest'] = id
-				session['have_forked'] = True
-				
-				analyzer = TextAnalyzer(answer)
-				analyze_results = analyzer.analyze()
-				
-
-				filter = Filter()
-				filter_results = filter.execute(analyze_results)
-				
-				if not filter_results:
-					last_id = session.get('last_base_quest', -1)
-					if int(last_id) > 0:
-						question = Question.objects.get(id=id)
-						flows = QuestionFlow.objects.all().filter(parent=question)
-						if flows.exists() and flows.count() > 0:
-							if flows.count() == 1:
-								return flows.get(parent=question).son
-							elif not question.is_fork:
-								return None
-							else:
-								if answer == "" or answer is None:
-									return None
-								for flow in flows:
-									if flow.choice == answer:
-										return flow.son
-					else:
-						return 0
-
-				sentiment = SA.execute(filter_results)
-
-				key_max = ""
-				value_max = -999999999
-				interview = Interview.objects.get(pk=int(session['interview_id']))
-				for key in sentiment:
-					print("########### VALUE:", key, "POL:", sentiment[key], "##############")
-					try:
-						old_match = MatchKeyword.objects.get(word=str(key), interview=interview)
-						old_match.rating = float(old_match.rating) + float(sentiment[key])
-						old_match.save()
-					except MatchKeyword.DoesNotExist:
-						new_match = MatchKeyword.objects.create(word=str(key), rating = float(sentiment[key]), interview=interview)
-						new_match.save()
-					except MatchKeyword.MultipleObjectsReturned:
-						print('Cant save this keyword polarity cause multiple entry with same name and interview in database. Check the database instances.')
-
-					if sentiment[key] > value_max:
-						value_max = sentiment[key]
-						key_max = key
-
-				if value_max < -0.25:
-					last_id = session.get('last_base_quest', -1)
-					if int(last_id) > 0:
-						question = Question.objects.get(id=id)
-						flows = QuestionFlow.objects.all().filter(parent=question)
-						if flows.exists() and flows.count() > 0:
-							if flows.count() == 1:
-								return flows.get(parent=question).son
-							elif not question.is_fork:
-								return None
-							else:
-								if answer == "" or answer is None:
-									return None
-								for flow in flows:
-									if flow.choice == answer:
-										return flow.son
-					else:
-						return 0
-				interviewtype = InterviewType.objects.get(pk = int(session.get('interview',1)))
-				kw_question = KeyWords.objects.filter(word=key_max, interviewtype = interviewtype)[0]
-				return kw_question.start_question
-
-		else:
-			return None
+	
 
 @api_view(['POST'])
 @parser_classes([MultiPartParser])
