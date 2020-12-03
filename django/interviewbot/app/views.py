@@ -85,8 +85,6 @@ def registration_view(request):
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 class NextQuestionView(APIView):
-	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
-		return redirect('/keep_in_touch/')
 	parser_classes = [MultiPartParser]
 	permission_classes = ([])
 	authentication_classes = ([])
