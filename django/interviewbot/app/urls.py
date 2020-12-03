@@ -26,7 +26,8 @@ urlpatterns = [
     path('dashboard/interviews/media/<path:name>', get_video_interview, name='get_video_interview'),
     path('dashboard/interviews/cv/<path:name>', get_cv_user, name='get_cv_user_interview'),
     path('login_rectruiter/', login_recruiter, name='login'),
-    path('logout/', logout_recruiter, name='logout')
+    path('logout/', logout_recruiter, name='logout'),
+    path('keep_in_touch/', manutenzione, name='manutenzione')
 ]
 
 if settings.DEBUG:

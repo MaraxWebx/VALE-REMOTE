@@ -24,12 +24,18 @@ from app.text_sentiment import SentimentAnalyzer
 
 SA = SentimentAnalyzer()
 
+SITO_IN_MANUTENZIONE = True
+
+def manutenzione(request):
+	return render(request, 'manutenzione.html')
 
 def test_check_user_group(user):
 	return user.groups.filter(name='recruiter').exists() or user.is_superuser
 
 
 def index(request):
+	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
+		return redirect('/keep_in_touch/')
 	if request.method == 'GET':
 		if request.session.get('is_reg', False):
 			return redirect('/interview/')
@@ -48,6 +54,8 @@ def index(request):
 			return render(request, 'credentials.html')
 
 def interview(request):
+	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
+		return redirect('/keep_in_touch/')
 	if  request.session.get('is_reg', False) and CandidateUser.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
 		return render(request,'index.html')
 	else:
@@ -59,6 +67,8 @@ def interview(request):
 @authentication_classes([])
 @permission_classes([])
 def registration_view(request):
+	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
+		return redirect('/keep_in_touch/')
 	if request.method == 'POST':
 
 		serializer = UserSerializer(data=request.data)
@@ -75,6 +85,8 @@ def registration_view(request):
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 class NextQuestionView(APIView):
+	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
+		return redirect('/keep_in_touch/')
 	parser_classes = [MultiPartParser]
 	permission_classes = ([])
 	authentication_classes = ([])
@@ -182,6 +194,8 @@ class NextQuestionView(APIView):
 @api_view(['POST'])
 @parser_classes([MultiPartParser])
 def test_file(request):
+	if SITO_IN_MANUTENZIONE and not request.user.is_authenticated:
+		return redirect('/keep_in_touch/')
 	file = request.data['file']
 
 	if not file.name.endswith('.pdf'):
