@@ -86,10 +86,10 @@
                 </div>
                 
                 <div class=" row  sticky-top">
-                   <div class="link-container"
+                   <div class="link-container">
                         {% for answer in answers %} 
-                        <a style="width: 100%;" href="#{{ answer.id }}" target = "_parent"><div id="toplinks" class="nav-risp">Domanda {{ forloop.counter }}</div></a> 
-                    {% endfor %}
+                            <a style="width: 100%;" href="#{{ answer.id }}" target = "_parent"><div id="toplinks" class="nav-risp">Domanda {{ forloop.counter }}</div></a> 
+                        {% endfor %}
                 </div>
                   
                 </div>
