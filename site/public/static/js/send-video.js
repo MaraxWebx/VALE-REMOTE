@@ -16,7 +16,10 @@ submitFile = function() {
     ).then(function () {
       console.log('SUCCESS!!');
     })
-    .catch(function () {
+    .catch((error) => {
+      if(error.response.status == 503){
+        location.replace("https://itcinterview.it/keep_in_touch/")
+      }
       console.log('FAILURE!!');
     });
 }
