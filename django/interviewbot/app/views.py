@@ -212,10 +212,10 @@ def test_file(request):
 	user.save()
 	return Response(status=status.HTTP_201_CREATED)
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def add_interview(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 
 	if request.method=='GET':
 		return render(request, 'add-interview.html')
@@ -227,10 +227,10 @@ def add_interview(request):
 		new_interview_type.save()
 		return redirect('/dashboard/interviews')
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def add_question(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	if not InterviewType.objects.all().filter(pk=id).exists():
 		return redirect('/dashboard/interviews')
 
@@ -326,10 +326,10 @@ def login_recruiter(request):
 	else:
 		return redirect('/dashboard/')
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_index(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	colloqui = Interview.objects.all().order_by('-date')
 	user = request.user
 	return render(request, 'dashboard.html', context = {
@@ -337,10 +337,10 @@ def dashboard_index(request):
 		'user' : user
 	})
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_interview(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	interview = Interview.objects.get(pk=id)
 	user = interview.user
 	date = interview.date
@@ -372,10 +372,10 @@ def dashboard_interview(request, id):
 		'cv_name' 	:	user.cv
 	})
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_interview_addcomment(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	
 	interview = Interview.objects.get(pk=id)
 	content = request.POST['text']
@@ -384,20 +384,20 @@ def dashboard_interview_addcomment(request, id):
 	comment.save()
 	return redirect('/dashboard/'+str(id))
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_interview_toggle_mark(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	
 	interview = Interview.objects.get(pk=id)
 	interview.analyzed = not interview.analyzed
 	interview.save()
 	return redirect('/dashboard/'+str(id))
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_interview_delete(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	try:
 		user = CandidateUser.objects.get(pk=int(id))
 		user.delete()
@@ -408,10 +408,10 @@ def dashboard_interview_delete(request, id):
 	return HttpResponse(request, 'Some errors')
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_question_edit(request, id, q_id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	if request.method == 'GET':
 		question = Question.objects.get(pk=int(q_id))
 		return render(request, 'dash-edit-questions.html', context = {
@@ -429,10 +429,10 @@ def dashboard_question_edit(request, id, q_id):
 			return redirect('/dashboard/interviews/' + str(id))
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	types = InterviewType.objects.all()
 
 	return render(request, 'questions-dash.html', context={
@@ -441,10 +441,10 @@ def dashboard_interview_type_list(request):
 		})
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_print_interview(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	interview = InterviewType.objects.get(pk=int(id))
 	all_question = []
 	if interview.start_question:
@@ -470,10 +470,10 @@ def dashboard_print_interview(request, id):
 	})
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	interview = InterviewType.objects.get(pk=int(id))
 	all_question = Question.objects.all().filter(id_interview_type=int(id))
 	for quest in all_question:
@@ -482,10 +482,10 @@ def dashboard_delete_interviewtype(request, id):
 	return redirect('/dashboard/interviews')
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_edit_interviewtype(request, id):
 	if not request.user.is_authenticated:
-		return redirect('/login_rectruiter')
+		return redirect('/login_recruiter')
 	if 'new_name' in request.POST:
 		inttype = InterviewType.objects.get(pk=int(id))
 		inttype.interview_name = request.POST['new_name']
@@ -504,10 +504,10 @@ def get_all_question(node, all_question):
 
 def logout_recruiter(request):
 	logout(request)
-	return redirect('/login_rectruiter')
+	return redirect('/login_recruiter')
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def get_video_interview(request, name):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
@@ -521,7 +521,7 @@ def get_video_interview(request, name):
 
 
 
-@user_passes_test(test_check_user_group, login_url="/login_rectruiter/")
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def get_cv_user(request, name):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
