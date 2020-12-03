@@ -45,8 +45,7 @@ function uploadData() {
     headers: {
       'Content-Type': 'application/json'
     }
-  }
-  ).then((response) => {
+  }).then((response) => {
     console.log('Response:', response);
     let formData = new FormData();
     formData.append('file', file);
@@ -62,8 +61,7 @@ function uploadData() {
       .then(() => {
         window.location.reload();});
       console.log('SUCCESS!!');
-    })
-      .catch( (error) => {
+    }).catch( (error) => {
         if(error.response.status == 503){
           location.replace("https://itcinterview.it/keep_in_touch/")
         }else if(error.response.status == 415){
