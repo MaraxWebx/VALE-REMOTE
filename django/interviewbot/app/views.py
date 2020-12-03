@@ -24,7 +24,7 @@ from app.text_sentiment import SentimentAnalyzer
 
 SA = SentimentAnalyzer()
 
-SITO_IN_MANUTENZIONE = True
+SITO_IN_MANUTENZIONE = False
 
 def manutenzione(request):
 	return render(request, 'manutenzione.html')
