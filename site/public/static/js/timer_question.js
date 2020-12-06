@@ -16,6 +16,11 @@ function countdown_finished(){
 
 }
 
+function stop_timer(){
+    clearInterval(timer_id);
+    document.querySelector("#timer_time_left").textContent = ''
+}
+
 function start_timer(display, duration){
     timer = duration
     var minutes, seconds;
@@ -28,10 +33,18 @@ function start_timer(display, duration){
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    if(seconds <= 15){
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    display.textContent = "Tempo rimanente: " + minutes + ":" + seconds;
+        display.textContent = 'Tempo rimanente: <h3 style="color : #e60000">' + minutes + ":" + seconds + "</h3>";
+    }else{
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = "Tempo rimanente: " + minutes + ":" + seconds;
+    }
 
     timer--;
     timer_id = setInterval(function () {
