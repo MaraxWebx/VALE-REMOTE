@@ -282,6 +282,7 @@ navigator.mediaDevices.ondevicechange = function (event) {
 
 function onBtnStopClicked() {
 	window.stop = false;
+	window.stop_timer();
 	window.resetProgressBar();
 	flagStopBtn = true;
 	mediaRecorder.stop();
