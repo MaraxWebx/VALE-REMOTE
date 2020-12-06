@@ -124,6 +124,7 @@ function getQuestion(quest) {
       window.startCamera();
       window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);
       if(parseInt(choice_length) > 0) window.resetProgressBarValue(parseInt(choice_length))
+      else window.resetProgressBarValue(30)
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
       document.getElementById("video").hidden = false;
