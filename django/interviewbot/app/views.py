@@ -468,6 +468,20 @@ def dashboard_print_interview(request, id):
 
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
+def dashboard_print_keywrods(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+
+	interviewtype = InterviewType.objects.get(pk=id)
+	keywords = KeyWords.objects.all().filter(interviewtype = interviewtype)
+
+	return render(request, 'list-keywords.html', context={
+		'interview'	: interviewtype.interview_name,
+		'keywords' : keywords
+	})
+
+
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_delete_interviewtype(request, id):
 	if not request.user.is_authenticated:
 		return redirect('/login_recruiter')
