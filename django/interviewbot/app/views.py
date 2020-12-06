@@ -477,9 +477,43 @@ def dashboard_print_keywrods(request, id):
 
 	return render(request, 'list-keywords.html', context={
 		'interview'	: interviewtype.interview_name,
+		'id' : id,
 		'keywords' : keywords
 	})
 
+
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
+def dashboard_print_keywrod_flow(request, id, id_kw):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+
+	interview = InterviewType.objects.get(pk=int(id))
+	keyword = KeyWords.objects.get(pk=int(id_kw))
+	start = keyword.start_question
+
+	title = interview.interview_name + ': ' + keyword.word
+	all_question = []
+	if start:
+		get_all_question(start, all_question)
+	type_list = {	
+		"0" 	: "javascript",
+		"1" 	:  "java",
+		"2" 	:  "python", 
+		"3" 	:   "php", 
+		"4" 	:   "c / c++", 
+		"5" 	:   "html"
+	}
+
+	link = 'https://itcinterview.it/?interview=' + str(id)
+	return render(request, 'list-keyword-flow.html', context={
+		'user'		: request.user,
+		'questions'	: all_question,
+		'interview'	: title,
+		'id'		: str(id),
+		'id_kw'		: str(id_kw),
+		'type_list'	: type_list,
+		'link' 		: link
+	})
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_delete_interviewtype(request, id):

@@ -262,14 +262,12 @@ h5.data{
   .btn-add:hover
   {
     height: 30px;
-    width: 125px;
     border: none;
     border-radius: 0.15rem;
     background:#476692;
     margin-left: 2px;
     cursor: pointer;
     display: block;
-    margin:10px auto;
     align-items: center;
     color:#fff ;
     font-weight: 600;
@@ -278,6 +276,8 @@ h5.data{
     box-shadow: 2px 2px 2px #222222;
     text-decoration: none;
     position: relative;
+    padding-left: 35px;
+    padding-right: 15px;
     text-decoration-line: none !important;
   }
   .btn-add::before{
