@@ -34,7 +34,7 @@ function start_timer(display, duration){
     seconds = parseInt(timer % 60, 10);
 
     
-    if(seconds <= 15){
+    if(minutes == 0 && seconds <= 15){
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
@@ -57,10 +57,17 @@ function start_timer(display, duration){
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = "Tempo rimanente: " + minutes + ":" + seconds;
+        if(minutes == 0 && seconds <= 15){
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes + ":" + seconds + "</h3>";
+        }else{
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.textContent = "Tempo rimanente: " + minutes + ":" + seconds;
+        }
 
         timer--;
     }, 1000);
