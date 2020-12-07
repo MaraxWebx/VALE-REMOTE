@@ -66,7 +66,7 @@ function start_timer(display, duration){
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
     
-            display.innerHTML = 'Tempo rimanente: <h3 style = "color: #476692;>"' + minutes + ":" + seconds + "</h3>";
+            display.innerHTML = 'Tempo rimanente: "' + minutes + ":" + seconds + "";
         }
 
         timer--;
