@@ -497,7 +497,8 @@ def dashboard_add_question_keywrods(request, id, id_kw):
 		return redirect('/login_recruiter')
 
 	if request.method == 'GET':
-		start_question = KeyWords.objects.get(pk=int(id_kw))
+		keyword = KeyWords.objects.get(pk=int(id_kw))
+		start_question = keyword.start_question
 
 		parent_choice = []
 		tech_flow_question = []
@@ -517,13 +518,68 @@ def dashboard_add_question_keywrods(request, id, id_kw):
 				choices_arr += choices.split(';')
 
 		return render(request, 'add-questions-keyword.html', {
+			'keyword' : keyword.word,
 			'questions': parent_choice,
 			'choices': choices_arr,
 			'user': request.user,
 			'id_kw': id_kw,
 			'id' : id
 		})
+	if request.method == 'POST':
+		if not ('type' in request.POST and 'action' in request.POST ):
+			return HttpResponse('Missing essentials parameters')
 		
+		type 		= request.POST['type']
+		action 		= request.POST['action']
+
+		if 'length' in request.POST:
+			length	= request.POST['length']
+		if 'lang' in request.POST:
+			lang = request.POST['lang']
+		if type == 'code':
+			length = lang
+			
+		if 'choices' in request.POST:
+			choices = request.POST['choices']
+			if choices.endswith(';'):
+				choices = choices[:-1]
+		else:
+			choices = ""
+
+		if 'is_fork' in request.POST:
+			is_fork = True
+		else:
+			is_fork = False
+
+		if 'choice_fork' in request.POST:
+			choice_fork = request.POST['choice_fork']
+		else:
+			choice_fork = None
+
+		analyze = False
+		if type == 'video':
+			if 'ai' in request.POST:
+				analyze = request.POST['ai']
+		
+		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork, id_interview_type=int(id), to_analyze=analyze, is_technical=True)
+		new_question.save()
+
+		if 'check_parent' in request.POST:
+			parents = request.POST.getlist('check_parent')
+			for parent_id in parents:
+				parent = Question.objects.get(pk=int(parent_id))
+				flow = QuestionFlow.objects.create(parent=parent, son=new_question, choice=choice_fork )
+				flow.save()
+
+		keyword = KeyWords.objects.get(pk=int(id_kw))
+		if not keyword.start_question or keyword.start_question is None:
+			keyword.start_question = new_question
+			keyword.save()
+		
+		return redirect('/dashboard/interviews/'+str(id)+'/keywords/' + str(id_kw))
+
+
+
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_print_keywrods(request, id):

@@ -67,13 +67,13 @@
 
         <div class="container">
             <div class="row">
-                <a  href="/dashboard/interviews/{{id}}/keywords/{{ id_kw }}" target = "_parent"> <button class="btn-back"> torna dietro</button></a>
+                <a  href="/dashboard/interviews/{{id}}/keywords/{{ id_kw }}" target = "_parent"> <button class="btn-back"> Torna dietro</button></a>
             </div>
             <div class="row box-form">
              
                 <div class="col">
                     <form id="msform" action="/dashboard/interviews/{{id}}/keywords/{{ id_kw }}/add_question" method="POST" target="_parent">
-                        <h1 style="margin-bottom: 10px;">Aggiungi una nuova domanda</h1>
+                        <h1 style="margin-bottom: 10px;">Aggiungi una nuova domanda per la parola chiave {{ keyword }}</h1>
                         {% csrf_token %}
                         <div class="form-group">
              
