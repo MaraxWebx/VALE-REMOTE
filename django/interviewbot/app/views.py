@@ -517,7 +517,7 @@ def dashboard_add_question_keywrods(request, id, id_kw):
 				choices = question.choices
 				choices_arr += choices.split(';')
 
-		return render(request, 'add-questions-keyword.html', {
+		return render(request, 'add-question-keyword.html', {
 			'keyword' : keyword.word,
 			'questions': parent_choice,
 			'choices': choices_arr,
