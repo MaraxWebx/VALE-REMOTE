@@ -121,7 +121,7 @@ hr{
 .btn-inizia:focus{
   outline: none;
 }
-.btn-exit{
+.exit{
 height: 30px;
   width: auto;
   border: none;
