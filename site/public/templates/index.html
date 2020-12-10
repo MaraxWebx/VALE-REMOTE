@@ -28,7 +28,11 @@
 			</a>
 
 		</div>
-
+		<a href="/logout/" target="_parent">
+		<button class="btn">
+			<img class="icon-menu"src="{% static 'css/icon/log-out.svg' %}"  alt="colloqui ">LOG OUT
+		</button>
+	</a>
 	</header>
 	<main>
 
@@ -39,26 +43,11 @@
 
 			<div class="row" >
 				<!---BOX INIZIO-->
-				<div class="row box-e-f" id="box-ef" >
-				<div class="col-6 valestart">
-				<img  src="{% static 'css/img/vale.png' %}" width="200px">
-				</div>
-				<div class="col-6 align-self-center">
 				
-					<h1>Ciao sono VALE ! <br> <p style="display: inline;">Sono la tua Assistente Virtuale e ti aiuterò a sostenere un video-colloquio.</p></h1>
-					<p>
-						Non temere, mettiti comodo e appena sei pronto iniziamo.
-						 Potrai rispondere alle domande con un breve video, risposte a scelta multipla o risposte testuali. Le mie domande ti aiuteranno a conoscerci meglio. <br>
-						 Iniziamo subito !!
-					</p>
-					<button class="btn-inizia"  id="start" type="button" onclick="question()" >INIZIA</button>
-				</div>
-				
-				</div>
 
 
 				<!---BOX FINE-->
-				<div class="col-sm box-e-f" id="bfine" >
+				<div class="col-sm box-e-f" id="bfine" hidden >
 					<h1>Colloquio terminato</h1>
 					<p>
 						Grazie mille,verrai ricontattato dal nostro staff per un feedback sul colloquio.<br>
@@ -75,14 +64,19 @@
 						<div id="title_box" >
 							<h1 id="title" style="display: inline;">Domande </h1>
 							<div id="time_left" style="display:inline; float:right; ">
-								<div id="timer_time_left" style="display:inline; float:right; "></div>
+								<div id="timer_time_left" style="display:inline-flex; float:right; "></div>
 							</div>
 						</div>
 						<hr>
-						<div id="question"></div>
+						<div id="question">
+							<h3 style="color:#476692 ;">
+								Clicca il pulsante inizia quando sei pronto!
+							</h3>
+						</div>
+						<button class="btn-inizia"  id="start" type="button" onclick="question()" >INIZIA</button>
 					</div>
-					<div class="qControl">
-					<!-----cambio classe bottone in bStart-->
+						 
+					
 					
 				</section>
 
@@ -109,7 +103,7 @@
 						</div>
 					</div>
 				</div>
-				<section id="boxRis" class="col-6 col-md-6 col-sm ">
+				<section id="boxRis" class="col-6 col-md-6 col-sm " hidden>
 					<div class="videoSection">
 						<div class="boxVideo">
 							
