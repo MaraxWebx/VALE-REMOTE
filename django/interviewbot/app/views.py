@@ -99,7 +99,7 @@ class NextQuestionView(APIView):
 						first_question = interviewtype[0].start_question
 						nq_serialized = QuestionSerializer(first_question)
 						return Response(nq_serialized.data, status=status.HTTP_200_OK)
-				first_question = Question.objects.get(pk=56)
+				first_question = Question.objects.get(pk=77)
 				nq_serialized = QuestionSerializer(first_question)
 				return Response(nq_serialized.data, status=status.HTTP_200_OK)
 			else:
