@@ -124,7 +124,7 @@
 		<div class="col-1">
 			<img style="display: inline;" class="iconRec"src="{% static 'css/img/icona_question.png' %}" heigt="40" width="40" alt="domande ">
 		</div>
-		<div class="col-5 align-self-center">
+		<div class="col-6 align-self-center">
 			
 			
 				<p style="display: inline;"> {{ question.action|safe}} </p>
@@ -165,12 +165,6 @@
 			{% endif %}
            
 		</div>
-		<div class="col-1  align-self-center">
-			
-		
-			
-		</div>
-
 		<div class="boxform2 boxform-{{ question.id }}">
 			<form  method="POST" target="_parent" action="/dashboard/interviews/{{ id }}/edit/{{ question.id }}">
             
