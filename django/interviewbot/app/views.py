@@ -506,7 +506,7 @@ def dashboard_add_question_keywrods(request, id, id_kw):
 			get_all_question(start_question, tech_flow_question)
 			for question in tech_flow_question:
 				have_flow = QuestionFlow.objects.all().filter(parent=question)
-				if have_flow.exists:
+				if have_flow.exists():
 					if question.type == 'check' and have_flow.count() < question.length:
 						parent_choice.append(question)
 				else:
