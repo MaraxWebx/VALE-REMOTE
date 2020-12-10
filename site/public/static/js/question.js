@@ -22,7 +22,6 @@ function question() {
   document.getElementById("colVale").hidden = false;
   document.getElementById("boxRis").hidden = false;
   document.getElementById("start").hidden = true;
-  document.getElementById("box-ef").hidden = true;
   document.getElementById("bfine").hidden = true;
   document.getElementById("questionSection").hidden = false;
 
