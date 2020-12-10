@@ -121,7 +121,21 @@ hr{
 .btn-inizia:focus{
   outline: none;
 }
-
+.btn-exit{
+height: 30px;
+  width: auto;
+  border: none;
+  border-radius: 0.15rem;
+  background:#fff;
+  margin-left: 2px;
+  cursor: pointer;
+  display: block;
+  margin:30px auto;
+  align-items: center;
+  color:#476692;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #222222;}
 /*********************************COLONNA  DESTRA-VIDEO-RISPOSTE***************************************************/
 /**text area**/
 #textArea {
