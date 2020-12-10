@@ -262,8 +262,13 @@ def add_question(request, id):
 			choice_fork = request.POST['choice_fork']
 		else:
 			choice_fork = None
+
+		analyze = False
+		if type == 'video':
+			if 'ai' in request.POST:
+				analyze = request.POST['ai']
 		
-		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork, id_interview_type=int(id))
+		new_question = Question.objects.create(type=type, action=action, length=length, choices=choices, is_fork=is_fork, id_interview_type=int(id), to_analyze=analyze)
 		new_question.save()
 
 		if 'check_parent' in request.POST:
@@ -466,6 +471,59 @@ def dashboard_print_interview(request, id):
 		'link' 		: link
 	})
 
+
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
+def dashboard_add_keywrods(request, id):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+	
+	if request.method == 'GET':
+		return render(request, 'add-keyword.html', context={
+			"id" : id
+		})
+	elif request.method == 'POST':
+		if 'word' in request.POST:
+			word = request.POST['word']
+			interview = InterviewType.objects.get(pk=int(id))
+			new_kw = KeyWords.objects.create(word=word, interviewtype=interview)
+			new_kw.save()
+			return redirect('/dashboard/interviews/'+str(id)+'/keywords')
+	return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
+def dashboard_add_question_keywrods(request, id, id_kw):
+	if not request.user.is_authenticated:
+		return redirect('/login_recruiter')
+
+	if request.method == 'GET':
+		start_question = Keywords.objects.get(pk=int(id_kw))
+
+		parent_choice = []
+		tech_flow_question = []
+		get_all_question(start_question, tech_flow_question)
+		for question in tech_flow_question:
+			have_flow = QuestionFlow.objects.all().filter(parent=question)
+			if have_flow.exists:
+				if question.type == 'check' and have_flow.count() < question.length:
+					parent_choice.append(question)
+			else:
+				parent_choice.append(question)
+
+		choices_arr = []
+		for question in parent_choice:
+			if question.is_fork:
+				choices = question.choices
+				choices_arr += choices.split(';')
+
+		return render(request, 'add-questions-keyword.html', {
+			'questions': parent_choice,
+			'choices': choices_arr,
+			'user': request.user,
+			'id_kw': id_kw,
+			'id' : id
+		})
+		
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def dashboard_print_keywrods(request, id):
