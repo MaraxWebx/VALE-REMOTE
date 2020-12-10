@@ -31,6 +31,7 @@ urlpatterns = [
     path('dashboard/interviews/cv/<path:name>', get_cv_user, name='get_cv_user_interview'),
     path('login_recruiter/', login_recruiter, name='login'),
     path('logout/', logout_recruiter, name='logout'),
+    path('exit/', logout_user, name='logout_user'),
     path('keep_in_touch/', manutenzione, name='manutenzione')
 ]
 

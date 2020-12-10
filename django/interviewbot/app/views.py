@@ -666,6 +666,9 @@ def logout_recruiter(request):
 	logout(request)
 	return redirect('/login_recruiter')
 
+def logout_user(request):
+	logout(request)
+	return redirect('/')
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
 def get_video_interview(request, name):
