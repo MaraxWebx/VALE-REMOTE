@@ -497,7 +497,7 @@ def dashboard_add_question_keywrods(request, id, id_kw):
 		return redirect('/login_recruiter')
 
 	if request.method == 'GET':
-		start_question = Keywords.objects.get(pk=int(id_kw))
+		start_question = KeyWords.objects.get(pk=int(id_kw))
 
 		parent_choice = []
 		tech_flow_question = []
