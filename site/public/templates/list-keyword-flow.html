@@ -127,7 +127,7 @@
 		<div class="col-5 align-self-center">
 			
 			
-				<p style="display: inline;"> {{ question.action }} </p>
+				<p style="display: inline;"> {{ question.action|safe}} </p>
 				<img  id="edit-{{ question.id }}" class=" iconRec"src="{% static 'css/img/modifica.svg' %}" heigt="20" width="20" alt="setting ">
 		
 		
