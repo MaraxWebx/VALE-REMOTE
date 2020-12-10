@@ -128,9 +128,10 @@ hr{
   border-radius: 0.15rem;
   background:#fff;
   margin-left: 2px;
+  margin-right: 10px;
   cursor: pointer;
   display: block;
-  margin:30px auto;
+  margin: 20px 10px;
   align-items: center;
   color:#476692;
   font-weight: 600;
