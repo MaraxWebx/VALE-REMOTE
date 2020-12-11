@@ -70,3 +70,13 @@ class KeyWords(models.Model):
 
 	def __str__(self):
 		return self.word + ' (' + str(self.id) + ')'
+
+class Token(models.Model):
+	token = models.CharField(max_length=15, null=False, blank=False)
+	interview = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
+	generated_by = models.CharField(max_length=50, default="Anonymous", blank=False, null=False)
+	generated_date = models.DateTimeField('date generated', auto_now_add=True)
+	usages = models.IntegerField(default=-1)
+
+	def __str__(self):
+		return '(' + self.id + ') Token for ' + self.interview.interview_name
