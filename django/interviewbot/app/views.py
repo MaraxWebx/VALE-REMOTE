@@ -679,7 +679,7 @@ def get_video_interview(request, name):
 		file = Answer.objects.all().filter(choice_vid = name)
 		if file.exists() and file.count() == 1:
 			return FileResponse(file[0].choice_vid, status=200)
-		else
+		else:
 			return HttpResponse(status=404)
 
 	return HttpResponse(status=400)
