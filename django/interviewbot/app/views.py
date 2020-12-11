@@ -74,7 +74,7 @@ def registration_view(request):
 			new_user = serializer.save() 
 			request.session['is_reg'] = True
 			request.session['user_id'] = new_user.id
-			type = InterviewType.objects.get(pk = int(request.session.get('interview', 1)))
+			type = InterviewType.objects.get(pk = int(request.session.get('interview', 2)))
 			interview = Interview.objects.create(user=new_user, type = type)
 			interview.save()
 			request.session['interview_id'] = interview.id
