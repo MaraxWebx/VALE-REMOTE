@@ -237,6 +237,7 @@ a.link-container:active {
     background-color: #fff !important;
     border-radius: 20px;
     overflow-y: auto;
+    width: 100%;
 }
 
 a {
