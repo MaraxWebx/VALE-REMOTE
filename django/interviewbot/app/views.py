@@ -679,6 +679,8 @@ def get_video_interview(request, name):
 		file = Answer.objects.all().filter(choice_vid = name)
 		if file.exists() and file.count() == 1:
 			return FileResponse(file[0].choice_vid, status=200)
+		else
+			return HttpResponse(status=404)
 
 	return HttpResponse(status=400)
 
@@ -701,5 +703,7 @@ def get_cv_user(request, name):
 			response = HttpResponse(file[0].cv, content_type="application/pdf", status=200)
 			response['Content-Disposition'] = 'attachment; filename=%s' % real_name
 			return response
+		else:
+			return HttpResponse(status=404)
 
 	return HttpResponse(status=400)
