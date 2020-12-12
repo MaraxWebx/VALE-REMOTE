@@ -53,7 +53,6 @@ function getPermissionForWebcamAndMic(){
 		// Error callback
 		function(err){
 			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
-			window.getPermissionForWebcamAndMic()
 		});
 }
 
