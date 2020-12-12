@@ -91,6 +91,8 @@ class NextQuestionView(APIView):
 		request.session['refresh'] = True
 
 		# Check se è prima domanda
+
+		""" # Old one # 
 		if 'type' in dict:
 			if dict['type'] == 'base':
 				if int(request.session.get('interview', -1 )) > 0:
@@ -105,9 +107,37 @@ class NextQuestionView(APIView):
 			else:
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 
+		"""
+
+		if 'type' in dict:
+			if dict['type'] == 'base':
+				if int(request.session.get('interview', -1)) > 0:
+					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
+					if interviewtype.exists() and interviewtype.count() == 1:
+						if 'last_ans_question' in dict:
+							id = int(request.session.get('last_ans_question', -1))
+							if id > 0:
+								question = Question.objects.get(pk=id)
+								q_serialized = QuestionSerializer(question)
+								return Response(q_serialized, status = status.HTTP_200_OK)
+						else:
+							first_question = interviewtype[0].start_question
+							nq_serialized = QuestionSerializer(first_question)
+							return Response(nq_serialized, status = status.HTTP_200_OK)
+				else: #get the default
+					default = DefaultInterview.objects.all()[0]
+					question = default.default_interview.start_question
+					d_serialized = QuestionSerializer(quesiton)
+					return Response(d_serialized, status=status.HTTP_200_OK)
+			else:
+				return Response(status=status.HTTP_400_BAD_REQUEST)
+				
+
 		# check se sono presenti tutte le informazioni nella richiesta
 		if not ('question_id' in dict and 'answer_text' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
+
+		request.session['last_ans_question'] = int(dict['question_id'])
 		
 		# estrazione dei dati dalla richiesta
 		user_id 		= request.session['user_id']

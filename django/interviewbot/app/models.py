@@ -80,3 +80,12 @@ class Token(models.Model):
 
 	def __str__(self):
 		return '(' + self.id + ') Token for ' + self.interview.interview_name
+
+
+class DefaultInterview(models.Model):
+	default_interview = models.ForeignKey(InterviewType, on_delete=models.CASCADE)
+	last_modify = models.DateTimeField('last modify', auto_now_add=True)
+	modify_by = models.CharField(max_length=50, default="Anonymous", blank=False, null=False)
+
+	def __str__(self):
+		return self.id + ') Default: ' + self.default_interview.interview_name
