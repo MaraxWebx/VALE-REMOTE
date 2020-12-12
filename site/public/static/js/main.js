@@ -40,7 +40,7 @@ function getPermissionForWebcamAndMic(){
 		}
 	};
 
-	navigator.mediaDevices.getUserMedia(constraints, 
+	navigator.getUserMedia(constraints, 
 		 // Success callback
 		function(stream){
 			stream.getTracks().forEach(x=>x.stop());
@@ -51,7 +51,7 @@ function getPermissionForWebcamAndMic(){
 		},
 		
 		// Error callback
-		function(){
+		function(err){
 			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
 			window.getPermissionForWebcamAndMic()
 		});
