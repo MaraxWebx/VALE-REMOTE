@@ -28,7 +28,6 @@ window.onload = () => {
 	
 	document.getElementById("bfine").hidden = true;
 	
-	
 
 }
 
