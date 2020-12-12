@@ -50,11 +50,9 @@ function getPermissionForWebcamAndMic(){
 		},
 		
 		// Error callback
-		function(err){
-			if(err == 'PERMISSION_DENIED'){
-				alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
-				window.getPermissionForWebcamAndMic()
-			}
+		function(){
+			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
+			window.getPermissionForWebcamAndMic()
 		});
 }
 
