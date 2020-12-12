@@ -40,9 +40,10 @@ function getPermissionForWebcamAndMic(){
 		}
 	};
 
-	navigator.getUserMedia(constraints, 
+	navigator.mediaDevices.getUserMedia(constraints, 
 		 // Success callback
-		function(){
+		function(stream){
+			stream.getTracks().forEach(x=>x.stop());
 			document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
 															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
 															'</h3>';
