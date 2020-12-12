@@ -127,7 +127,7 @@ class NextQuestionView(APIView):
 				else: #get the default
 					default = DefaultInterview.objects.all()[0]
 					question = default.default_interview.start_question
-					d_serialized = QuestionSerializer(quesiton)
+					d_serialized = QuestionSerializer(question)
 					return Response(d_serialized, status=status.HTTP_200_OK)
 			else:
 				return Response(status=status.HTTP_400_BAD_REQUEST)
