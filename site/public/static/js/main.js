@@ -41,18 +41,14 @@ function getPermissionForWebcamAndMic(){
 		}
 	};
 
-	navigator.getUserMedia(constraints, 
-		 // Success callback
-		function(stream){
-			//stream.getTracks().forEach(x=>x.stop());
+	navigator.mediaDevices.getUserMedia(constraints)
+		.then(function(stream){
+			stream.getTracks().forEach(x=>x.stop());
 			document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
 															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
 															'</h3>';
 			document.getElementById('start').hidden = false;
-		},
-		
-		// Error callback
-		function(err){
+		}).catch(function(err){
 			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
 		});
 }
