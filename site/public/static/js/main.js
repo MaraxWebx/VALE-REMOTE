@@ -203,7 +203,7 @@ function onBtnRecordClicked() {
 
 		mediaRecorder.onstop = function () {
 			log('mediaRecorder.onstop, mediaRecorder.state = ' + mediaRecorder.state);
-			console.log('caller: ' + arguments.callee.caller.toString())
+			
 
 			var blob = new Blob(chunks, { type: "video/webm" });
 			chunks = [];
