@@ -40,7 +40,11 @@ function getPermissionForWebcamAndMic(){
 			framerate: 30
 		}
 	};
-
+	document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
+															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
+															'</h3>';
+			document.getElementById('start').hidden = false;
+/*
 	navigator.mediaDevices.getUserMedia(constraints)
 		.then(function(stream){
 			stream.getTracks().forEach(x=>x.stop());
@@ -50,7 +54,7 @@ function getPermissionForWebcamAndMic(){
 			document.getElementById('start').hidden = false;
 		}).catch(function(err){
 			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
-		});
+		});*/
 }
 
 
