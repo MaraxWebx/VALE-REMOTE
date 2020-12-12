@@ -31,6 +31,7 @@ window.onload = () => {
 }
 
 function getPermissionForWebcamAndMic(){
+
 	constraints = {
 		audio: true,
 		video: {
@@ -43,7 +44,7 @@ function getPermissionForWebcamAndMic(){
 	navigator.getUserMedia(constraints, 
 		 // Success callback
 		function(stream){
-			stream.getTracks().forEach(x=>x.stop());
+			//stream.getTracks().forEach(x=>x.stop());
 			document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
 															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
 															'</h3>';
