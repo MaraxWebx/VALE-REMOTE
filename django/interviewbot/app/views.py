@@ -119,16 +119,16 @@ class NextQuestionView(APIView):
 							if id > 0:
 								question = Question.objects.get(pk=id)
 								q_serialized = QuestionSerializer(question)
-								return Response(q_serialized, status = status.HTTP_200_OK)
+								return Response(q_serialized.data, status = status.HTTP_200_OK)
 						else:
 							first_question = interviewtype[0].start_question
 							nq_serialized = QuestionSerializer(first_question)
-							return Response(nq_serialized, status = status.HTTP_200_OK)
+							return Response(nq_serialized.data, status = status.HTTP_200_OK)
 				else: #get the default
 					default = DefaultInterview.objects.all()[0]
 					question = default.default_interview.start_question
 					d_serialized = QuestionSerializer(question)
-					return Response(d_serialized, status=status.HTTP_200_OK)
+					return Response(d_serialized.data, status=status.HTTP_200_OK)
 			else:
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 				
