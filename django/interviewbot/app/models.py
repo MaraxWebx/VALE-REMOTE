@@ -88,4 +88,4 @@ class DefaultInterview(models.Model):
 	modify_by = models.CharField(max_length=50, default="Anonymous", blank=False, null=False)
 
 	def __str__(self):
-		return self.id + ') Default: ' + self.default_interview.interview_name
+		return str(self.id) + ') Default: ' + self.default_interview.interview_name
