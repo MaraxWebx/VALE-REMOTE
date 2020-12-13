@@ -277,7 +277,7 @@ function onBtnConfirmClicked() {
 			break;
 		  }
 		}
-		if (!flag) {
+		if (!flag2) {
 		  alert('Main: Seleziona una risposta');
 		  return;
 		}else{
