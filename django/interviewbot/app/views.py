@@ -126,6 +126,7 @@ class NextQuestionView(APIView):
 							return Response(nq_serialized.data, status = status.HTTP_200_OK)
 				else: #get the default
 					default = DefaultInterview.objects.all()[0]
+					request.session['interview'] = default.default_interview.id
 					question = default.default_interview.start_question
 					d_serialized = QuestionSerializer(question)
 					return Response(d_serialized.data, status=status.HTTP_200_OK)
@@ -137,7 +138,6 @@ class NextQuestionView(APIView):
 		if not ('question_id' in dict and 'answer_text' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
-		request.session['last_ans_question'] = int(dict['question_id'])
 		
 		# estrazione dei dati dalla richiesta
 		user_id 		= request.session['user_id']
@@ -171,6 +171,7 @@ class NextQuestionView(APIView):
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
 				return Response(status = status.HTTP_202_ACCEPTED)
+			request.session['last_ans_question'] = int(next_question.id)
 			nq_serialized = QuestionSerializer(next_question)
 			return Response(nq_serialized.data, status=status.HTTP_200_OK)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
