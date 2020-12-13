@@ -268,6 +268,20 @@ function onBtnStartClicked() {
 }
 
 function onBtnConfirmClicked() {
+	if (window.question_type === 'check') {
+		for (j = 0; j < window.choice_length; j++) {
+		  if (document.getElementById("" + j).checked) {
+			var x = document.getElementById("" + j).value;
+			textTmp = x;
+			flag = true;
+			break;
+		  }
+		}
+		if (!flag) {
+		  alert('Seleziona una risposta');
+		  return;
+		}
+	window.question();
 
 	disableCode();
 	editor.setOption("readOnly", 'nocursor');

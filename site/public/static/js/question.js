@@ -3,6 +3,7 @@ var prev_question_id = "";
 var textTmp;
 var vidTmp;
 var choice_length;
+var question_type
 var acc = 0;
 var flag = false;
 var i = 1;
