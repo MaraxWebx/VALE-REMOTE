@@ -1,9 +1,10 @@
 'use strict;'
 
 var text;
+var recognition;
 
 function btnStop() {
-  recognition.stop();
+  if(recognition != undefined) recognition.stop();
 
   // action.innerHTML = "<small>stop listening</small>";
   console.log("stop speech recognition");
@@ -16,7 +17,7 @@ function runSpeechRecognition() {
   var action = document.getElementById("action");
   // new speech recognition object
   var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-  var recognition = new SpeechRecognition();
+  recognition = new SpeechRecognition();
 
   recognition.continuous = true;
   recognition.interimResults = false;
