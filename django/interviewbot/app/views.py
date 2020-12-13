@@ -143,7 +143,7 @@ class NextQuestionView(APIView):
 				
 
 		# check se sono presenti tutte le informazioni nella richiesta
-		if not ('question_id' in dict and 'answer_text' in dict):
+		if not ('question_id' in dict):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 		
@@ -151,7 +151,10 @@ class NextQuestionView(APIView):
 		user_id 		= request.session['user_id']
 		question_id 	= dict['question_id']
 		interview_id 	= request.session['interview_id']
-		answer_text 	= dict['answer_text']
+		if 'answer_text' in dict:
+			answer_text = dict['answer_text']
+		else:
+			answer_text = ""
 
 		user_obj = CandidateUser.objects.get(pk=user_id)
 		ans_question = Question.objects.get(pk=question_id)
