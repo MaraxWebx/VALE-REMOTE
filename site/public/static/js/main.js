@@ -281,11 +281,11 @@ function onBtnConfirmClicked() {
 		  alert('Seleziona una risposta');
 		  return;
 		}
-	window.question();
+	}
 
 	disableCode();
 	editor.setOption("readOnly", 'nocursor');
-	
+	window.question();
 	/* if (window.flag) {
 		document.getElementById("ConfirmTextBtn").hidden = true;		
 	}
