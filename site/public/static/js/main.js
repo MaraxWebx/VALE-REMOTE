@@ -269,6 +269,7 @@ function onBtnStartClicked() {
 
 function onBtnConfirmClicked() {
 	if (window.question_type === 'check') {
+		var j;
 		for (j = 0; j < window.choice_length; j++) {
 		  if (document.getElementById("" + j).checked) {
 			var x = document.getElementById("" + j).value;
