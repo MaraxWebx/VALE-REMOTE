@@ -115,6 +115,23 @@ function terms() {
 }
 
 function getBrowser() {
+
+  var browserName = '';
+  var userAgent = navigator.userAgent;
+  (typeof InstallTrigger !== 'undefined') && (browserName = 'Firefox');
+  ( /* @cc_on!@*/ false || !!document.documentMode) && (browserName = 'IE');
+  (!!window.chrome && userAgent.match(/OPR/)) && (browserName = 'Opera');
+  (!!window.chrome && userAgent.match(/Edge/)) && (browserName = 'Edge');
+  (!!window.chrome && !userAgent.match(/(OPR|Edge)/)) && (browserName = 'Chrome');
+
+  /**
+   * Expected returns
+   * Firefox, Opera, Edge, Chrome
+   */
+  return browserName;
+
+  
+  /*
 	var nVer = navigator.appVersion;
 	var nAgt = navigator.userAgent;
 	var browserName = navigator.appName;
@@ -173,7 +190,8 @@ function getBrowser() {
 	}
 
 
-	return browserName;
+  return browserName;
+  */
 }
 
 /*
