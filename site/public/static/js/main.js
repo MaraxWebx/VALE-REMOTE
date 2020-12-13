@@ -84,10 +84,10 @@ function startCamera() {
 		}
 	};
 	if (!navigator.mediaDevices.getUserMedia) {
-		alert('navigator.mediaDevices.getUserMedia not supported on your browser, use the latest version of Firefox or Chrome');
+		alert('navigator.mediaDevices.getUserMedia not supported on your browser, use the latest version of Chrome');
 	} else {
 		if (window.MediaRecorder == undefined) {
-			alert('MediaRecorder not supported on your browser, use the latest version of Firefox or Chrome');
+			alert('MediaRecorder not supported on your browser, use the latest version of Chrome');
 		} else {
 			navigator.mediaDevices.getUserMedia(constraints)
 				.then(function (stream) {
