@@ -2,6 +2,13 @@
 
 var text;
 
+function btnStop() {
+  recognition.stop();
+
+  // action.innerHTML = "<small>stop listening</small>";
+  console.log("stop speech recognition");
+}
+
 function runSpeechRecognition() {
   // get output div reference
   var output = document.getElementById("output");
@@ -21,12 +28,7 @@ function runSpeechRecognition() {
 
   };
 
-  btnStop = function () {
-    recognition.stop();
-
-    // action.innerHTML = "<small>stop listening</small>";
-    console.log("stop speech recognition");
-  }
+  
 
   // This runs when the speech recognition service returns result
   recognition.onresult = function (event) {
