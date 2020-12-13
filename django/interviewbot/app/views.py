@@ -111,26 +111,34 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
+				print('REQUEST BASE')
 				if int(request.session.get('interview', -1)) > 0:
+					print('INTERVIEW SETTED ', str(request.session['interview']))
 					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
+						print('VALID INTERVIEW')
 						if 'last_ans_question' in dict:
+							print('LAST ANS QUESTION SETTED')
 							id = int(request.session.get('last_ans_question', -1))
 							if id > 0:
+								print('RESUME AT QUESTION', str(id))
 								question = Question.objects.get(pk=id)
 								q_serialized = QuestionSerializer(question)
 								return Response(q_serialized.data, status = status.HTTP_200_OK)
 						else:
+							print('NO LAST ANS QUESTION, START FROM BEGIN')
 							first_question = interviewtype[0].start_question
 							nq_serialized = QuestionSerializer(first_question)
 							return Response(nq_serialized.data, status = status.HTTP_200_OK)
 				else: #get the default
+					print('NO INTERVIEW SETTED, GET DEFAULT')
 					default = DefaultInterview.objects.all()[0]
 					request.session['interview'] = default.default_interview.id
 					question = default.default_interview.start_question
 					d_serialized = QuestionSerializer(question)
 					return Response(d_serialized.data, status=status.HTTP_200_OK)
 			else:
+				print('VALUE OF dict[type] NOT VALID')
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 				
 
