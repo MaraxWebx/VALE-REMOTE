@@ -117,9 +117,9 @@ class NextQuestionView(APIView):
 					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
 						print('VALID INTERVIEW')
-						if 'last_ans_question' in dict:
+						if request.session.get('last_ans_question', -1) > 0:
 							print('LAST ANS QUESTION SETTED')
-							id = int(request.session.get('last_ans_question', -1))
+							id = int(request.session['last_ans_question'])
 							if id > 0:
 								print('RESUME AT QUESTION', str(id))
 								question = Question.objects.get(pk=id)
