@@ -273,8 +273,6 @@ function onBtnConfirmClicked() {
 		var flag2 = false;
 		for (j = 0; j < window.choice_length; j++) {
 		  if (document.getElementById("" + j).checked) {
-			var x = document.getElementById("" + j).value;
-			textTmp = x;
 			flag2 = true;
 			break;
 		  }
@@ -282,18 +280,18 @@ function onBtnConfirmClicked() {
 		if (!flag) {
 		  alert('Main: Seleziona una risposta');
 		  return;
+		}else{
+			disableCode();
+			editor.setOption("readOnly", 'nocursor');
+			window.question();
+			return;
 		}
+	}else{
+		disableCode();
+		editor.setOption("readOnly", 'nocursor');
+		window.question();
 	}
-
-	disableCode();
-	editor.setOption("readOnly", 'nocursor');
-	if(flag2) window.question();
-	/* if (window.flag) {
-		document.getElementById("ConfirmTextBtn").hidden = true;		
-	}
-	document.getElementById("textArea").disabled = true; */
-
-
+	
 }
 
 function enableCode(){
