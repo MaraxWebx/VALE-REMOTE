@@ -312,6 +312,8 @@ function onBtnStopClicked() {
 	window.resetProgressBar();
 	flagStopBtn = true;
 	mediaRecorder.stop();
+	window.btnStop(); 
+	window.question();
 	//window.question();
 	//recBtn.disabled = false;
 	//progressBar.hidden = false;
