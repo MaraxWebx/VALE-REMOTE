@@ -21,7 +21,6 @@ function question() {
   window.countdown_finished();
   document.getElementById("colVale").hidden = false;
   document.getElementById("boxRis").hidden = false;
-  document.getElementById("start").hidden = true;
   document.getElementById("bfine").hidden = true;
   document.getElementById("questionSection").hidden = false;
 
