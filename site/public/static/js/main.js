@@ -27,8 +27,32 @@ var is_recording = false;
 window.onload = () => {
 	
 	document.getElementById("bfine").hidden = true;
+	getPermissionForWebcamAndMic();
 	
 
+}
+
+function getPermissionForWebcamAndMic(){
+
+	constraints = {
+		audio: true,
+		video: {
+			width: { min: 320, ideal: 457, max: 457 },
+			height: { min: 240, ideal: 420, max: 480 },
+			framerate: 30
+		}
+	};
+
+	navigator.mediaDevices.getUserMedia(constraints)
+		.then(function(stream){
+			stream.getTracks().forEach(x=>x.stop());
+			document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
+															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
+															'</h3>';
+			document.getElementById('start').hidden = false;
+		}).catch(function(err){
+			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
+		});
 }
 
 
