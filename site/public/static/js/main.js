@@ -115,7 +115,8 @@ function startCamera() {
 					} catch (e) {
 						log('Web Audio API not supported.');
 					}
-
+					
+					/*
 					soundMeter = window.soundMeter = new SoundMeter(window.audioContext);
 					soundMeter.connectToSource(localStream, function (e) {
 						if (e) {
@@ -124,9 +125,10 @@ function startCamera() {
 						} else {
 							/*setInterval(function() {
 							   log(Math.round(soundMeter.instant.toFixed(2) * 100));
-						   }, 100);*/
+						   }, 100);
 						}
 					});
+					*/
 
 				}).catch(function (err) {
 					/* handle the error */
