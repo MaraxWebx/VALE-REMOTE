@@ -80,7 +80,7 @@ function question() {
         }
       }
       if (!flag) {
-        alert('Seleziona una risposta');
+        alert('Question: Seleziona una risposta');
         return;
       }
       vidTmp = "no_video";

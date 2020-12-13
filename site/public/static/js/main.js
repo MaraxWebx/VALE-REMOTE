@@ -270,23 +270,24 @@ function onBtnStartClicked() {
 function onBtnConfirmClicked() {
 	if (window.question_type === 'check') {
 		var j;
+		var flag2 = false;
 		for (j = 0; j < window.choice_length; j++) {
 		  if (document.getElementById("" + j).checked) {
 			var x = document.getElementById("" + j).value;
 			textTmp = x;
-			flag = true;
+			flag2 = true;
 			break;
 		  }
 		}
 		if (!flag) {
-		  alert('Seleziona una risposta');
+		  alert('Main: Seleziona una risposta');
 		  return;
 		}
 	}
 
 	disableCode();
 	editor.setOption("readOnly", 'nocursor');
-	window.question();
+	if(flag2) window.question();
 	/* if (window.flag) {
 		document.getElementById("ConfirmTextBtn").hidden = true;		
 	}
