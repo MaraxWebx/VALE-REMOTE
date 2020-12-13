@@ -48,7 +48,8 @@ function getPermissionForWebcamAndMic(){
 			stream.getTracks().forEach(x=>x.stop());
 			document.getElementById('question').innerHTML = '<h3 style="color:#476692 ;"> ' +
 															'Ok sono pronta per cominciare!<br>Clicca il pulsante inizia quando sei pronto!' +
-															'</h3>';
+															'</h3>'+
+															'<button class="btn-inizia"  id="start" type="button" onclick="question()" >INIZIA</button>';
 			document.getElementById('start').hidden = false;
 		}).catch(function(err){
 			alert('Per proseguire è necessario abilitare la webcam ed il microfono.')
