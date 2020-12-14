@@ -116,7 +116,7 @@ function terms() {
 
 function getBrowser() {
   agent = navigator.userAgent;
-  aget = agent.toLowerCase();
+  agent = agent.toLowerCase();
   switch (true) {
     case agent.indexOf("edge")    > -1: return "Edge";
     case agent.indexOf("edg/")    > -1: return "Chromium based edge";
