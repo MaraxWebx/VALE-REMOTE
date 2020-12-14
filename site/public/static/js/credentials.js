@@ -116,15 +116,15 @@ function terms() {
 
 function getBrowser() {
   agent = navigator.userAgent;
-  agent.toLowerCase();
+  aget = agent.toLowerCase();
   switch (true) {
-    case agent.indexOf("edge") > -1: return "Edge";
-    case agent.indexOf("edg/") > -1: return "Chromium based edge"; // Match also / to avoid matching for the older Edge
-    case agent.indexOf("opr") > -1 : return "Opera";
-    case agent.indexOf("chrome") > -1: return "Chrome";
+    case agent.indexOf("edge")    > -1: return "Edge";
+    case agent.indexOf("edg/")    > -1: return "Chromium based edge";
+    case agent.indexOf("opr")     > -1: return "Opera";
+    case agent.indexOf("chrome")  > -1: return "Chrome";
     case agent.indexOf("trident") > -1: return "ie";
     case agent.indexOf("firefox") > -1: return "Firefox";
-    case agent.indexOf("safari") > -1: return "Safari";
+    case agent.indexOf("safari")  > -1: return "Safari";
     default: return "other";
 }
 
