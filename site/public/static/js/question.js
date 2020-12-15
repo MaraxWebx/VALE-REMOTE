@@ -97,7 +97,7 @@ function question() {
         hideSpinner()
         document.getElementById("boxRis").hidden = false;
         if (question_type === 'video') {
-          while(!window.submitFile());
+          window.submitFile();
         }
         prev_question_id = response.data.id;
         question_type = response.data.type;
