@@ -54,7 +54,7 @@ def index(request):
 				else:
 					request.session['interview'] = -1
 					logger('Custom interview is not valid', session=request.session)
-			#else:
+			else:
 				logger('Access index with no custom interview', session=request.session)
 
 			return render(request, 'credentials.html')
@@ -81,6 +81,8 @@ def registration_view(request):
 			new_user = serializer.save() 
 			request.session['is_reg'] = True
 			request.session['user_id'] = new_user.id
+			if request.session.get('interview', -1) < 0:
+				request.session['interview'] = 2
 			type = InterviewType.objects.get(pk = int(request.session.get('interview', 2)))
 			interview = Interview.objects.create(user=new_user, type = type)
 			interview.save()
