@@ -198,6 +198,8 @@ class NextQuestionView(APIView):
 
 		if next_question is not None:
 			if type(next_question) is int and next_question == 0:
+				request.session['is_reg'] = False
+				
 				return Response(status = status.HTTP_202_ACCEPTED)
 			request.session['last_ans_question'] = int(next_question.id)
 			nq_serialized = QuestionSerializer(next_question)
