@@ -260,12 +260,17 @@ def log(message, user=None, session=None):
     timestamp = '[' + str(time.strftime('%d/%m/%Y %H:%M:%S', time.localtime())) + ']'
 
     log_message = timestamp + user_name + session_info + ' => ' + message
+
+    print(log_message)
+
+    """
     try:
         with open('/var/www/site/logs/django.log', 'a') as logfile:
             logfile.write(log_message)
     except Exception as e:
         print('Cannot write on the file.')
         print(str(e))
+    """
 
 
     
