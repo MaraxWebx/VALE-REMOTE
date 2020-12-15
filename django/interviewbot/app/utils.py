@@ -242,7 +242,7 @@ def get_next_question(SA, id, answer, session):
 			return None
 
 
-def log(message, user=None, session=None):
+def logger(message, user=None, session=None):
 
     if user is not None:
         user_name = '[' + user.fristname + ' ' + user.lastname + ']'
