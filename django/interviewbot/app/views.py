@@ -85,7 +85,7 @@ def registration_view(request):
 			interview = Interview.objects.create(user=new_user, type = type)
 			interview.save()
 			request.session['interview_id'] = interview.id
-			logger('New user registered, interview_id = ' + str(interview.id) + '.', session=request.session)
+			logger('New user registered', session=request.session)
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		logger('Try to add new user with invalid data.', session=request.session)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
