@@ -136,12 +136,12 @@ class NextQuestionView(APIView):
 						if request.session.get('last_ans_question', -1) > 0:
 							id = int(request.session['last_ans_question'])
 							if id > 0:
-								logger('Resume interview at question with id ' + str(id), request.session)
+								logger('Resume interview at question with id ' + str(id), session = request.session)
 								question = Question.objects.get(pk=id)
 								q_serialized = QuestionSerializer(question)
 								return Response(q_serialized.data, status = status.HTTP_200_OK)
 						else:
-							logger('Starting new interview', request.session)
+							logger('Starting new interview', session = request.session)
 							first_question = interviewtype[0].start_question
 							nq_serialized = QuestionSerializer(first_question)
 							return Response(nq_serialized.data, status = status.HTTP_200_OK)
