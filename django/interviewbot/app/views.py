@@ -76,21 +76,27 @@ def interview(request):
 @permission_classes([])
 def registration_view(request):
 	if request.method == 'POST':
-		serializer = UserSerializer(data=request.data)
-		if serializer.is_valid():
-			new_user = serializer.save() 
-			request.session['is_reg'] = True
-			request.session['user_id'] = new_user.id
-			if request.session.get('interview', -1) < 0:
-				request.session['interview'] = 2
-			type = InterviewType.objects.get(pk = int(request.session.get('interview', 2)))
-			interview = Interview.objects.create(user=new_user, type = type)
-			interview.save()
-			request.session['interview_id'] = interview.id
-			logger('New user registered', session=request.session)
-			return Response(serializer.data, status=status.HTTP_201_CREATED)
-		logger('Try to add new user with invalid data.', session=request.session)
-		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+		try:
+			serializer = UserSerializer(data=request.data)
+			if serializer.is_valid():
+				new_user = serializer.save() 
+				request.session['is_reg'] = True
+				request.session['user_id'] = new_user.id
+				if request.session.get('interview', -1) < 0:
+					request.session['interview'] = 2
+				type = InterviewType.objects.get(pk = int(request.session.get('interview', 2)))
+				interview = Interview.objects.create(user=new_user, type = type)
+				interview.save()
+				request.session['interview_id'] = interview.id
+				logger('New user registered', session=request.session)
+				return Response(serializer.data, status=status.HTTP_201_CREATED)
+			logger('Try to add new user with invalid data.', session=request.session)
+			return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
+			logger('Exeption occurred in restex', session=request.session)
+			print(e)
+			return Response(serializer.data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	return Response(status=status.HTTP_200_OK)
 
 class NextQuestionView(APIView):
 	parser_classes = [MultiPartParser]
