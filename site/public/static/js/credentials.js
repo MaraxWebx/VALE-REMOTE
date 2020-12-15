@@ -43,7 +43,7 @@ function saveData() {
 }
 
 function uploadData() {
-  axios.post('/restex/', {
+  axios.post('/restex', {
     firstname: firstName,
     lastname: lastName,
     email: eMail,
@@ -56,7 +56,7 @@ function uploadData() {
     let formData = new FormData();
     formData.append('file', file);
 
-    axios.post('/file/',
+    axios.post('/file',
       formData, {
       headers: {
         'Content-Type': 'application/pdf'
