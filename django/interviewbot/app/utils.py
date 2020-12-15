@@ -1,7 +1,8 @@
-from app.models import Question, QuestionFlow, Interview, InterviewType, KeyWords, MatchKeyword
+from app.models import Question, QuestionFlow, Interview, InterviewType, KeyWords, MatchKeyword, CandidateUser
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 import json
+import time
 
 
 class Stack():
@@ -239,3 +240,29 @@ def get_next_question(SA, id, answer, session):
 
 		else:
 			return None
+
+
+def log(message, user=None, session=None):
+
+    if user is not None:
+        user_name = '[' + user.fristname + ' ' + user.lastname + ']'
+    elif session.get('user_id', -1) > 0:
+        c_user = CandidateUser.objects.get(pk=int(session['user_id']))
+        user_name = '[' + c_user.fristname + ' ' + c_user.lastname + ']'
+    else:
+        user_name = '[Anonymous]'
+
+    if session is not None:
+        session_info = '[INT: ' + str(session.get('interview', -1)) + ' LASTQ: ' + str(session.get('last_ans_question', -1)) + 'LASTA: ' + str(session.get('last_ans_id', -1)) + ']'
+    else:
+        session_info = '[No session info available]'
+
+    timestamp = '[' + str(time.strftime('%d/%m/%Y %H:%M:%S', time.localtime())) + ']'
+
+    log_message = timestamp + user_name + session_info + ' => ' + message
+
+    with open('/var/www/site/logs/django.log', 'a') as logfile:
+        logfile.write(log_message)
+
+
+    

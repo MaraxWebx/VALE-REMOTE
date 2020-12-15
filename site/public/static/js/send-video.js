@@ -7,6 +7,7 @@ prepareSubmit = function(file){
 }
 
 submitFile = function() {
+  flag_sub = false;
   axios.post('/next/',
       formData, {
         headers: {
@@ -14,12 +15,12 @@ submitFile = function() {
         }
       }
     ).then(function () {
-      console.log('SUCCESS!!');
+      flag_sub = true;
     })
     .catch((error) => {
       if(error.response.status == 503){
         location.replace("https://itcinterview.it/keep_in_touch/")
       }
-      console.log('FAILURE!!');
     });
+    return flag_sub;
 }
