@@ -17,7 +17,7 @@ from app.next_question import *
 from app.graph import *
 from app.models import *
 from app.form import *
-from app.utils import get_next_question, get_next_question_v2, logger
+from app.utils import get_next_question, get_next_question_v2#, # logger
 from app.text_analyzer import TextAnalyzer
 from app.text_filter import Filter
 from app.text_sentiment import SentimentAnalyzer
@@ -38,7 +38,7 @@ def index(request):
 		return redirect('/keep_in_touch/')
 	if request.method == 'GET':
 		if request.session.get('is_reg', False):
-			logger('Access index but already registred, redirected', session=request.session)
+			# logger('Access index but already registred, redirected', session=request.session)
 			return redirect('/interview/')
 		else:
 			request.session.clear_expired()
@@ -47,26 +47,26 @@ def index(request):
 			interviewtype_id = request.GET.get('interview', -1)
 
 			if int(interviewtype_id) > 0:
-				logger('Access index with a custom interview', session=request.session)
+				# logger('Access index with a custom interview', session=request.session)
 				interviewtype = InterviewType.objects.filter( pk = int(interviewtype_id))
 				if interviewtype.exists() and interviewtype.count() == 1:
 					request.session['interview'] = interviewtype_id
 				else:
 					request.session['interview'] = -1
-					logger('Custom interview is not valid', session=request.session)
+					# logger('Custom interview is not valid', session=request.session)
 			else:
-				logger('Access index with no custom interview', session=request.session)
-				
+				# logger('Access index with no custom interview', session=request.session)
+
 			return render(request, 'credentials.html')
 
 def interview(request):
 	if SITO_IN_MANUTENZIONE and not test_check_user_group(request.user):
 		return redirect('/keep_in_touch/')
 	if  request.session.get('is_reg', False) and CandidateUser.objects.filter(pk=request.session.get('user_id', -1)).count() > 0:
-		logger('Starting new interview', session=request.session)
+		# logger('Starting new interview', session=request.session)
 		return render(request,'index.html')
 	else:
-		logger('Access interview but not registered yet', session=request.session)
+		# logger('Access interview but not registered yet', session=request.session)
 		request.session['is_reg'] = False
 		request.session['user_id'] = -1
 		return redirect('/')
@@ -85,9 +85,9 @@ def registration_view(request):
 			interview = Interview.objects.create(user=new_user, type = type)
 			interview.save()
 			request.session['interview_id'] = interview.id
-			logger('New user registered, interview_id = ' + str(interview.id) + '.', session=request.session)
+			# logger('New user registered, interview_id = ' + str(interview.id) + '.', session=request.session)
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
-		logger('Try to add new user with invalid data.', session=request.session)
+		# logger('Try to add new user with invalid data.', session=request.session)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 class NextQuestionView(APIView):
@@ -120,32 +120,32 @@ class NextQuestionView(APIView):
 
 		if 'type' in dict:
 			if dict['type'] == 'base':
-				logger('Request base question', session=request.session)
+				# logger('Request base question', session=request.session)
 				if int(request.session.get('interview', -1)) > 0:
-					logger('Interview already setted', session=request.session)
+					# logger('Interview already setted', session=request.session)
 					interviewtype = InterviewType.objects.filter(pk = int(request.session['interview']))
 					if interviewtype.exists() and interviewtype.count() == 1:
 						if request.session.get('last_ans_question', -1) > 0:
 							id = int(request.session['last_ans_question'])
 							if id > 0:
-								logger('Resume interview at question with id ' + str(id), request.session)
+								# logger('Resume interview at question with id ' + str(id), request.session)
 								question = Question.objects.get(pk=id)
 								q_serialized = QuestionSerializer(question)
 								return Response(q_serialized.data, status = status.HTTP_200_OK)
 						else:
-							logger('Starting new interview', request.session)
+							# logger('Starting new interview', request.session)
 							first_question = interviewtype[0].start_question
 							nq_serialized = QuestionSerializer(first_question)
 							return Response(nq_serialized.data, status = status.HTTP_200_OK)
 				else: #get the default
 					default = DefaultInterview.objects.all()[0]
 					request.session['interview'] = default.default_interview.id
-					logger('Interview not setted, getting default: ' + request.session['interview'], session=request.session)
+					# logger('Interview not setted, getting default: ' + request.session['interview'], session=request.session)
 					question = default.default_interview.start_question
 					d_serialized = QuestionSerializer(question)
 					return Response(d_serialized.data, status=status.HTTP_200_OK)
 			else:
-				logger('Invalid request in Type', request.session)
+				# logger('Invalid request in Type', request.session)
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 				
 
@@ -178,11 +178,11 @@ class NextQuestionView(APIView):
 		)
 		answer.save()
 
-		logger('New answer with id: ' + str(answer.id) + ' to the question: ' + str(question_id) + ' type: ' + str(ans_question.type), session=request.session)
+		# logger('New answer with id: ' + str(answer.id) + ' to the question: ' + str(question_id) + ' type: ' + str(ans_question.type), session=request.session)
 
 		if dict['answer_vid'] == 'to_upload':
 			request.session['last_ans_id'] = answer.id
-			logger('Waiting for the vid to be setted...', session=request.session)
+			# logger('Waiting for the vid to be setted...', session=request.session)
 
 		# Generazione prossima domanda
 
@@ -225,16 +225,16 @@ class NextQuestionView(APIView):
 	def post(self, request, *arg, **kwargs):
 		file = request.data.dict()['file']
 		request.session['refresh'] = True
-		logger('New post request on next', session=request.session)
+		# logger('New post request on next', session=request.session)
 		if request.session.get('last_ans_id', -1) > 0:
-			logger('Valid last_ans_id setted, referencing the video', session=request.session)
+			# logger('Valid last_ans_id setted, referencing the video', session=request.session)
 			last_ans = Answer.objects.get(pk=request.session['last_ans_id'])
 			request.session['last_ans_id'] = -1
 			last_ans.choice_vid = file
 			last_ans.save()
 			return Response(status=status.HTTP_201_CREATED)
 		else:
-			logger('Cannot reference this file, no last_ans_id setted.', session=request.session)
+			# logger('Cannot reference this file, no last_ans_id setted.', session=request.session)
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 
 	
