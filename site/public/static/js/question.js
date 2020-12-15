@@ -58,9 +58,7 @@ function question() {
       console.log('Window.formData' + window.formData.get('file'))
       textTmp = window.text;
       vidTmp = "to_upload";
-    }
-
-    if (question_type === 'code') {
+    }else if (question_type === 'code') {
       textTmp = editor.getValue();
       textTmp = textTmp.replace(/\n/g, '<br>')
       textTmp = textTmp.replace(/\t/g, '  ')
@@ -68,12 +66,10 @@ function question() {
       console.log(textTmp)
       vidTmp = "no_video";
       editor.getDoc().setValue('');
-    }
-
-    if (question_type === 'check') {
+    }else if (question_type === 'check') {
       if(!document.getElementById("" + 0)) flag = true;
       else flag = false;
-      
+
       for (j = 0; j < choice_length; j++) {
         if (document.getElementById("" + j).checked) {
           var x = document.getElementById("" + j).value;
@@ -83,7 +79,6 @@ function question() {
         }
       }
       if (!flag) {
-        alert('Question: Seleziona una risposta');
         return;
       }
       vidTmp = "no_video";
