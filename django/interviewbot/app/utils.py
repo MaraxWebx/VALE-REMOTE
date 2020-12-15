@@ -245,10 +245,10 @@ def get_next_question(SA, id, answer, session):
 def logger(message, user=None, session=None):
 
     if user is not None:
-        user_name = '[' + user.fristname + ' ' + user.lastname + ']'
+        user_name = '[' + user.firstname + ' ' + user.lastname + ']'
     elif session.get('user_id', -1) > 0:
         c_user = CandidateUser.objects.get(pk=int(session['user_id']))
-        user_name = '[' + c_user.fristname + ' ' + c_user.lastname + ']'
+        user_name = '[' + c_user.firstname + ' ' + c_user.lastname + ']'
     else:
         user_name = '[Anonymous]'
 
