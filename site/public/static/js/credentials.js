@@ -43,7 +43,7 @@ function saveData() {
 }
 
 function uploadData() {
-  axios.post('https://itcinterview.it/restex', {
+  axios.post('https://itcinterview.it/restex/', {
     firstname: firstName,
     lastname: lastName,
     email: eMail,
@@ -56,7 +56,7 @@ function uploadData() {
     let formData = new FormData();
     formData.append('file', file);
 
-    axios.post('https://itcinterview.it/file',
+    axios.post('https://itcinterview.it/file/',
       formData, {
       headers: {
         'Content-Type': 'application/pdf'
