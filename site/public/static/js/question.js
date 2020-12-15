@@ -71,6 +71,9 @@ function question() {
     }
 
     if (question_type === 'check') {
+      if(!document.getElementById("" + 0)) flag = true;
+      else flag = false;
+      
       for (j = 0; j < choice_length; j++) {
         if (document.getElementById("" + j).checked) {
           var x = document.getElementById("" + j).value;
