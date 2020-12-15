@@ -54,7 +54,7 @@ def index(request):
 				else:
 					request.session['interview'] = -1
 					# logger('Custom interview is not valid', session=request.session)
-			else:
+			#else:
 				# logger('Access index with no custom interview', session=request.session)
 
 			return render(request, 'credentials.html')
