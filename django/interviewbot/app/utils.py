@@ -263,14 +263,14 @@ def logger(message, user=None, session=None):
 
     print(log_message)
 
-    """
+    
     try:
-        with open('/var/www/site/logs/django.log', 'a') as logfile:
+        with open('/var/www/media/logs/django.log', 'a') as logfile:
             logfile.write(log_message)
     except Exception as e:
-        print('Cannot write on the file.')
+        print('### LOG ERROR ### - Cannot write on the file.')
         print(str(e))
-    """
+    
 
 
     
