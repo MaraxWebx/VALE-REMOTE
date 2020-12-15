@@ -253,7 +253,7 @@ def logger(message, user=None, session=None):
         user_name = '[Anonymous]'
 
     if session is not None:
-        session_info = '[INT: ' + str(session.get('interview', -1)) + ' LASTQ: ' + str(session.get('last_ans_question', -1)) + 'LASTA: ' + str(session.get('last_ans_id', -1)) + ']'
+        session_info = '[INT: ' + str(session.get('interview', -1)) + ' LASTQ: ' + str(session.get('last_ans_question', -1)) + ' LASTA: ' + str(session.get('last_ans_id', -1)) + ']'
     else:
         session_info = '[No session info available]'
 
@@ -261,12 +261,9 @@ def logger(message, user=None, session=None):
 
     log_message = timestamp + user_name + session_info + ' => ' + message
 
-    print(log_message)
-
-    
     try:
         with open('/var/www/media/logs/django.log', 'a') as logfile:
-            logfile.write(log_message)
+            logfile.write(log_message + '\n')
     except Exception as e:
         print('### LOG ERROR ### - Cannot write on the file.')
         print(str(e))
