@@ -91,7 +91,7 @@
 			</div>
 			
 			<div class="boxform">					
-				<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent">
+				<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent" style="display: inline-flex;">
 					{% csrf_token %}
 					<label for="type">Inserire il tipo di domanda:</label>
 					<select class="styleinput" id="type" name="type" required >
@@ -101,7 +101,7 @@
 						<option value="code">Testo</option>
 					</select> <br>
 	
-					<input id="invia" type="submit" class="submit btn-form  btn-edit action-button">
+					<input id="invia" type="submit" class="submit btn-form  btn-edit action-button" style="display: inline-flex;">
 				</form>
 			</div>
 		</div>

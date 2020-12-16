@@ -242,6 +242,12 @@ h5.data{
     margin: 20px auto;
     padding: 20px;
 }
+.styleinput {
+  border-radius: 10px;
+  border: 1px solid #476692;
+  padding: 2px;
+  margin: 10px;
+}
 .box-d{
   width: 100%;
   margin: 0 auto;
