@@ -25,29 +25,29 @@ function stop_progress_timer(){
     document.querySelector("#progressBar").textContent = ''
 }
 
-function start_progress_timer(display_progress, duration){
-    timeleft = duration
-    var minutes, seconds;
+function start_progress_timer(display_progress, duration_progress){
+    timeleft = duration_progress
+    var minutes_progress, seconds_progress;
     if (timeleft < 0) {
         display_progress.textContent = "Tempo scaduto!";
         countdown_timer_finished()
-        timeleft = duration;
+        timeleft = duration_progress;
         return;
     }
-    minutes = parseInt(timeleft / 60, 10);
-    seconds = parseInt(timeleft % 60, 10);
+    minutes_progress = parseInt(timeleft / 60, 10);
+    seconds_progress = parseInt(timeleft % 60, 10);
 
     display_progress.innerHTML = ""
-    if(minutes == 0 && seconds <= 15){
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+    if(minutes_progress == 0 && seconds_progress <= 15){
+        minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
+        seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
 
-        display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes + ":" + seconds + "</h3>";
+        display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes_progress + ":" + seconds_progress + "</h3>";
     }else{
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
+        seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
 
-        display_progress.innerHTML = 'Tempo rimanente: <h3 style = "color: #476692;">' + minutes + ":" + seconds + "</h3>";
+        display_progress.innerHTML = 'Tempo rimanente: <h3 style = "color: #476692;">' + minutes_progress + ":" + seconds_progress + "</h3>";
     }
 
     timeleft--;
@@ -55,22 +55,22 @@ function start_progress_timer(display_progress, duration){
         if (timeleft < 0) {
             display_progress.textContent = "Tempo scaduto!";
             countdown_timer_finished()
-            timeleft = duration;
+            timeleft = duration_progress;
             return;
         }
-        minutes = parseInt(timeleft / 60, 10);
-        seconds = parseInt(timeleft % 60, 10);
+        minutes_progress = parseInt(timeleft / 60, 10);
+        seconds_progress = parseInt(timeleft % 60, 10);
         display_progress.innerHTML = ""
-        if(minutes == 0 && seconds <= 15){
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+        if(minutes_progress == 0 && seconds_progress <= 15){
+            minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
+            seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
     
-            display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes + ":" + seconds + "</h3>";
+            display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes_progress_progress + ":" + seconds_progress + "</h3>";
         }else{
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+            minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
+            seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
     
-            display_progress.innerHTML = 'Tempo rimanente: <h3 style = "color: #476692;">' + minutes + ":" + seconds + "</h3>";
+            display_progress.innerHTML = 'Tempo rimanente: <h3 style = "color: #476692;">' + minutes_progress + ":" + seconds_progress + "</h3>";
         }
 
         timeleft--;
