@@ -91,14 +91,14 @@
 			</div>
 			
 			<div class="boxform">					
-				<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent" style="display: inline-flex;">
+				<form  action="/dashboard/interviews/default/" method="POST" target="_parent" style="display: inline-flex;">
 					{% csrf_token %}
-					<label style=" display: inline-flex;margin: 10px auto;" for="type">Inserire il tipo di domanda:</label>
+					<label style=" display: inline-flex;margin: 10px auto;" for="type">Cambia l'intervista di default:</label>
 					<select class="styleinput" id="type" name="type" required >
-						<option value="" selected disabled hidden>Scegli uno di questi tipi</option>
-						<option value="video">Risposta video</option>
-						<option value="check">Scelta multipla</option>
-						<option value="code">Testo</option>
+						<option value="" selected disabled hidden>Scegli</option>
+						{% for type in types %}
+						<option value="{{ type.id }}">{{ type.interview_name }}</option>
+						{% endfor %}
 					</select> <br>
 	
 					<input id="invia" type="submit" class="submit btn-form  btn-edit action-button" style="display: inline-flex;">
