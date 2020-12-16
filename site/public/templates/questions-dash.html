@@ -93,11 +93,13 @@
 			<div class="boxform">					
 				<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent">
 					{% csrf_token %}
-					<label>
-						Cambia nome:
-					</label>
-	
-					<input type="text" placeholder="nuovo nome" name="new_name" id="new_name">
+					<label for="type">Inserire il tipo di domanda:</label>
+					<select class="styleinput" id="type" name="type" required >
+						<option value="" selected disabled hidden>Scegli uno di questi tipi</option>
+						<option value="video">Risposta video</option>
+						<option value="check">Scelta multipla</option>
+						<option value="code">Testo</option>
+					</select> <br>
 	
 					<input id="invia" type="submit" class="submit btn-form  btn-edit action-button">
 				</form>
