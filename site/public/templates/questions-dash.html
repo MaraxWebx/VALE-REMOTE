@@ -68,13 +68,26 @@
 </section>
 <section class="container-fluid sez-1">
 	<div class=" row boxTitle">
-		<div class="col">
-				<h2>
+		<div class="col align-self-center">
+				<h2 style= "display: inline-flex;">
 					Colloquio di Default: {{default.default_interview.interview_name}}
 				</h2>
+				<img  onclick="toggleClass()" id="edit-interview "class="iconRec "src="{% static 'css/img/modifica.svg' %}" heigt="20" width="20" alt="setting ">
 		</div>
 		<div class="col">
 
+		</div>
+		<div class="boxform">					
+			<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent">
+				{% csrf_token %}
+				<label>
+					Cambia nome:
+				</label>
+
+				<input type="text" placeholder="nuovo nome" name="new_name" id="new_name">
+
+				<input id="invia" type="submit" class="submit btn-form  btn-edit action-button">
+			</form>
 		</div>
 	</div>
 
@@ -123,5 +136,22 @@
 	
 
 </main>
+<script type="text/javascript">
+
+	function toggleClass(){
+		$('.boxform').toggleClass("boxformopen1");
+	}
+	
+	$(document).ready(function(){
+	
+		{% for question in questions %}
+		$('#edit-{{ question.id }}').on('click',function(){
+			$('.boxform-{{ question.id }}').toggleClass("boxformopen");
+		});
+		{% endfor %}
+	});
+	
+	
+	</script>
 </body>
 </html>
