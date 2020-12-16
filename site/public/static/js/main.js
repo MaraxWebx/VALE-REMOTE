@@ -280,7 +280,7 @@ function onBtnConfirmClicked() {
 		  }
 		}
 		if (!flag2) {
-		  alert('Main: Seleziona una risposta');
+		  alert('Seleziona una risposta');
 		  return;
 		}else{
 			disableCode();

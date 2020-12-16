@@ -499,10 +499,12 @@ def dashboard_interview_type_list(request):
 	if not request.user.is_authenticated:
 		return redirect('/login_recruiter')
 	types = InterviewType.objects.all()
+	default = DefaultInterview.objects.all()[0]
 
 	return render(request, 'questions-dash.html', context={
 		'types'	: types,
 		'user'	: request.user
+		'default' : default
 		})
 
 
@@ -716,6 +718,24 @@ def dashboard_edit_interviewtype(request, id):
 		return redirect('/dashboard/interviews/'+str(id))
 	else:
 		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@user_passes_test(test_check_user_group, login_url="/login_recruiter/")
+def set_default_interview(request, id):
+	if not request.user.is_authenticated:
+		return HttpResponse(status=403)
+
+	defaults = DefaultInterview.objects.all()
+	for default in defaults:
+		default.delete()
+
+	interview = InterviewType.objects.get(pk=id)
+	user = request.user.first_name + " " + request.user.last_name
+	new_default = DefaultInterview.objects.create(default_interview=interview, modify_by=user)
+	new_default.save()
+
+	return redirect('/dashboard/interviews')
+
 
 
 def get_all_question(node, all_question):
