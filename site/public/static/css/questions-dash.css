@@ -275,6 +275,7 @@ h5.data{
     position: relative;
     padding-left: 35px;
     padding-right: 15px;
+    margin-top: 20px;
   }
   .btn-add:hover
   {
