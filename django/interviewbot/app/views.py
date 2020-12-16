@@ -721,7 +721,7 @@ def dashboard_edit_interviewtype(request, id):
 
 
 @user_passes_test(test_check_user_group, login_url="/login_recruiter/")
-def set_default_interview(request, id):
+def set_default_interview(request):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
 	"""
