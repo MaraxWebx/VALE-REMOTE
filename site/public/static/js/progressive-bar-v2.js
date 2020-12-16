@@ -65,7 +65,7 @@ function start_progress_timer(display_progress, duration_progress){
             minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
             seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
     
-            display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes_progress_progress + ":" + seconds_progress + "</h3>";
+            display_progress.innerHTML = 'Tempo rimanente: <h3 style="color : #e60000;">' + minutes_progress + ":" + seconds_progress + "</h3>";
         }else{
             minutes_progress = minutes_progress < 10 ? "0" + minutes_progress : minutes_progress;
             seconds_progress = seconds_progress < 10 ? "0" + seconds_progress : seconds_progress;
