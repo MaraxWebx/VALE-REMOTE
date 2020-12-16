@@ -503,7 +503,7 @@ def dashboard_interview_type_list(request):
 
 	return render(request, 'questions-dash.html', context={
 		'types'	: types,
-		'user'	: request.user
+		'user'	: request.user,
 		'default' : default
 		})
 
