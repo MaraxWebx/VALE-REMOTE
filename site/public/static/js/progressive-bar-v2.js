@@ -6,7 +6,7 @@ var timeleft=0;
 function restart_progress_timer(){
     clearInterval(progress_id)
     display_progress = document.querySelector("#progressBar")
-    start_timer(display_progress, progress_time)
+    start_progress_timer(display_progress, progress_time)
 }
 
 function set_progress_timer(time){
