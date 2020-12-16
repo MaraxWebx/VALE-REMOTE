@@ -124,8 +124,7 @@
 							</div>
 
 							<div id="controls">
-								<button class="bRec" id="rec" hidden onclick="FlagProgressBar(); 
-										 start_progress(timeleft, timetotal, $('#progressBar'));onBtnRecordClicked(); runSpeechRecognition()">
+								<button class="bRec" id="rec" hidden onclick="onBtnRecordClicked(); runSpeechRecognition()">
 										<p>Record</p>
 								</button>
 								<button class="bStop" id="stop" onclick="onBtnStopClicked();"
@@ -169,5 +168,6 @@
 <script src="{% static 'js/adapter-latest.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/timer_question.js' %}"></script>
+<script src="{% static 'js/progressive-bar-v2.js' %}"></script>
 
 </html>

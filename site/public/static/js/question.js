@@ -120,8 +120,8 @@ function getQuestion(quest) {
       document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
       window.startCamera();
       window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);
-      if(parseInt(choice_length) > 0) window.resetProgressBarValue(parseInt(choice_length))
-      else window.resetProgressBar()
+      if(parseInt(choice_length) > 0) window.set_progress_timer(parseInt(choice_length));
+      else window.set_progress_timer(30);
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
       document.getElementById("video").hidden = false;

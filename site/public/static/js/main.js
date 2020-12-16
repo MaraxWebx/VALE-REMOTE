@@ -252,6 +252,8 @@ function onBtnRecordClicked() {
 			log(track.kind + ":" + JSON.stringify(track.getSettings()));
 			console.log(track.getSettings());
 		})
+
+		window.restart_progress_timer();
 	}
 }
 
@@ -323,7 +325,8 @@ navigator.mediaDevices.ondevicechange = function (event) {
 function onBtnStopClicked() {
 	window.stop = false;
 	window.stop_timer();
-	window.resetProgressBar();
+	//window.resetProgressBar();
+	window.stop_progress_timer();
 	flagStopBtn = true;
 	mediaRecorder.stop();
 	window.btnStop(); 
