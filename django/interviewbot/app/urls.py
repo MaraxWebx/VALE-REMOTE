@@ -17,6 +17,7 @@ urlpatterns = [
     path('dashboard/<int:id>/mark', dashboard_interview_toggle_mark, name='dashboard_interview_togglemark'),
     path('dashboard/<int:id>/delete', dashboard_interview_delete, name='dashboard_interview_delete'),
     path('dashboard/interviews', dashboard_interview_type_list, name='dashboard_interview_list'),
+    path('dashboard/interviews/default/<int:id>', set_default_interview, name='dashboard_interview_list'),
     path('dashboard/interviews/<int:id>/keywords', dashboard_print_keywrods, name='dashboard_keywords_list'),
     path('dashboard/interviews/<int:id>/keywords/add_keyword', dashboard_add_keywrods, name='dashboard_add_keywrods'),
     path('dashboard/interviews/<int:id>/keywords/<int:id_kw>', dashboard_print_keywrod_flow, name='dashboard_keyword_flow_list'),
