@@ -15,9 +15,8 @@ function set_progress_timer(time){
 
 function countdown_timer_finished(){
     clearInterval(progress_id)
-    window.onBtnStopClicked(); 
-    window.btnStop(); 
-    window.question(); 
+    window.onBtnStopClicked();
+
 }
 
 function stop_progress_timer(){
