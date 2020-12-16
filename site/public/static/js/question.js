@@ -117,7 +117,7 @@ function getQuestion(quest) {
 
     if (quest.type === 'video') {
       //start video/audio stream
-      document.getElementById("progressBar").hidden = true;     //hidden blu progress bar
+      document.getElementById("progressBar").hidden = false;     //hidden blu progress bar
       window.startCamera();
       window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);
       if(parseInt(choice_length) > 0) window.set_progress_timer(parseInt(choice_length));
