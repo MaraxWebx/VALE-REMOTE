@@ -93,7 +93,7 @@
 			<div class="boxform">					
 				<form  action="/dashboard/interviews/{{ id }}/edit" method="POST" target="_parent" style="display: inline-flex;">
 					{% csrf_token %}
-					<label for="type">Inserire il tipo di domanda:</label>
+					<label style=" display: inline-flex;margin: 10px auto;" for="type">Inserire il tipo di domanda:</label>
 					<select class="styleinput" id="type" name="type" required >
 						<option value="" selected disabled hidden>Scegli uno di questi tipi</option>
 						<option value="video">Risposta video</option>
