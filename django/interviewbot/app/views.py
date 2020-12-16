@@ -724,18 +724,19 @@ def dashboard_edit_interviewtype(request, id):
 def set_default_interview(request):
 	if not request.user.is_authenticated:
 		return HttpResponse(status=403)
-	"""
+	
 	defaults = DefaultInterview.objects.all()
 	for default in defaults:
 		default.delete()
 
-	interview = InterviewType.objects.get(pk=id)
+	if not 'type' in request.POST:
+		return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+	 
+	interview = InterviewType.objects.get(pk=int(request.POST.get('type')))
 	user = request.user.first_name + " " + request.user.last_name
 	new_default = DefaultInterview.objects.create(default_interview=interview, modify_by=user)
 	new_default.save()
-	"""
 
-	print("@@@@@@@@@@@", request.POST.get('type'))
 	return redirect('/dashboard/interviews')
 
 
