@@ -122,6 +122,12 @@ function getQuestion(quest) {
       window.setTimeout("document.querySelector('button#rec').hidden = false", 2000);
       if(parseInt(choice_length) > 0) window.set_progress_timer(parseInt(choice_length));
       else window.set_progress_timer(30);
+      time_progress = window.get_progress_timer();
+      minutes_p = parseInt(time_progress / 60, 10);
+      seconds_p = parseInt(time_progress % 60, 10);
+      minutes_s = minutes_p < 10 ? "0" + minutes_p : minutes_p;
+      seconds_s = seconds_p < 10 ? "0" + seconds_p : seconds_p;
+      document.getElementById("progressBar").innerHTML = "Tempo disponibile per la registrazione: " + minutes_s + ":" + seconds_s;
       document.getElementById("video").hidden = false;
       document.getElementById("code").hidden = true;
       document.getElementById("video").hidden = false;

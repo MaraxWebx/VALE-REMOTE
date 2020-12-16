@@ -13,6 +13,10 @@ function set_progress_timer(time){
     progress_time = time;
 }
 
+function get_progress_timer(){
+    return progress_time;
+}
+
 function countdown_timer_finished(){
     clearInterval(progress_id)
     window.onBtnStopClicked();
