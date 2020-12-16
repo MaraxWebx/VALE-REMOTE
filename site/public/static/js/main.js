@@ -153,7 +153,7 @@ function onBtnRecordClicked() {
 		alert('Could not get local stream from mic/camera');
 	} else {
 		//progressBar.hidden = false;
-		document.getElementById("time").hidden = false;
+		//document.getElementById("time").hidden = false;
 		//answerTime.hidden = false;
 		recBtn.hidden = true;
 		//pauseResBtn.disabled = false;
