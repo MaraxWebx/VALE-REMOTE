@@ -3,157 +3,155 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<base target="_blank">
-	<title>Video Interview | Itconsulting.it</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_blank">
+    <title>Video Interview | Itconsulting.it</title>
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
-	<!-- Progressive bar CSS / Main.css -->
-	<!--OLD link rel="stylesheet" href="{% static 'css/progressive-bar.css' %}" -->
-	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
-	<!-- CodeMirror CSS -->
-	<link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
-	<link rel="stylesheet" href="{% static '/node_modules/codemirror/theme/darcula.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Progressive bar CSS / Main.css -->
+    <!--OLD link rel="stylesheet" href="{% static 'css/progressive-bar.css' %}" -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="{% static '/node_modules/codemirror/lib/codemirror.css' %}">
+    <link rel="stylesheet" href="{% static '/node_modules/codemirror/theme/darcula.css' %}">
 
 </head>
 
-<body oncontextmenu = "return false" onselectstart = "return false" ondragstart = "return false"> 
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
-	<header class="topBar">
-		<div id="logo">
-			<a href="#">
-				<img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
-			</a>
+    <header class="topBar">
+        <div id="logo">
+            <a href="#">
+                <img src="{% static 'css/img/logo-top.png' %}" alt="LOGOITC">
+            </a>
 
-		</div>
-		<a href="/exit/" target="_parent">
-		<button id="exit" style="float: right;">
+        </div>
+        <a href="/exit/" target="_parent">
+            <button id="exit" style="float: right;">
 			<img class="icon-menu"src="{% static 'css/icon/log-out.svg' %}"  alt="colloqui "><p  style="display: inline;"> EXIT</p>
 		</button>
-	</a>
-	</header>
-	<main>
+        </a>
+    </header>
+    <main>
 
-		<!--INSZIO RIGA!-->
-		<div class="container Fullbox">
-
-
-
-			<div class="row" >
-				<!---BOX INIZIO-->
-				
+        <!--INSZIO RIGA!-->
+        <div class="container Fullbox">
 
 
-				<!---BOX FINE-->
-				<div class="col-sm box-e-f" id="bfine" hidden >
-					<h1>Colloquio terminato</h1>
-					<p>
-						Grazie mille,verrai ricontattato dal nostro staff per un feedback sul colloquio.<br>
-						Ti ringraziamo per il tuo tempo.<br>
-						A presto !
-					</p>
-				</div>
-				<!--COLONNA DESTRA-->
-				<section class="col-2" id="colVale">
-                  <img src="{% static 'css/img/Vale1.png' %} " width="120px">
-				</section>
-				<section class="col-4 col-md-4  col-sm" id = "questionSection">
-					<div class="boxQ">
-						<div id="title_box" >
-							<h1 id="title" style="display: inline;">Domande </h1>
-							<div id="time_left" style="display:inline; float:right; ">
-								<div id="timer_time_left" style="display:inline-flex; float:right; "></div>
-							</div>
-						</div>
-						<hr>
-						<div id="question">
-							<h3 style="color:#476692 ;">
-								Conseti a Vale di utilizzare la tua webcam e il tuo microfono!<br>
-								Qunada hai fatto procedi.
-							</h3>
-							<button class="btn-inizia"  id="start" type="button" onclick="getPermissionForWebcamAndMic()" >PROSEGUI</button>
-						</div>
-					</div>
-						 
-					
-					
-				</section>
 
-				<!--COLONNA SINISTRA-->
-				<div id="spinner"  class="col-6 col-md-6 col-sm" hidden>
-					<div aria-busy="true" aria-label="Loading" role="status" class="container">
-						<div class="swing">
-							<div class="swing-l"></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div class="swing-r"></div>
-						</div>
-						<div class="shadow">
-							<div class="shadow-l"></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div class="shadow-r"></div>
-						</div>
-					</div>
-					<br><h3>Sto elaborando la tua risposta... un momento.</h3>
-				</div>
-				<section id="boxRis" class="col-6 col-md-6 col-sm " hidden>
-					<div class="videoSection">
-						<div class="boxVideo">
-							
-							<h2 class="titleRis">Risposta</h2>
-							
-							<div id="timeBox" class="timeBox" hidden>
-								<!--<div id="answerTime" hidden class="container time"> 
+            <div class="row">
+                <!---BOX INIZIO-->
+
+
+
+                <!---BOX FINE-->
+                <div class="col-sm box-e-f" id="bfine" hidden>
+                    <h1>Colloquio terminato</h1>
+                    <p>
+                        Grazie mille,verrai ricontattato dal nostro staff per un feedback sul colloquio.<br> Ti ringraziamo per il tuo tempo.<br> A presto !
+                    </p>
+                </div>
+                <!--COLONNA DESTRA-->
+                <section class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12" id="colVale">
+                    <img src="{% static 'css/img/Vale1.png' %} " width="120px">
+                </section>
+                <section class="col-xl-4  col-lg-4 col-md-4  col-sm-12 col-xs-12" id="questionSection">
+                    <div class="boxQ">
+                        <div id="title_box">
+                            <h1 id="title" style="display: inline;">Domande </h1>
+                            <div id="time_left" style="display:inline; float:right; ">
+                                <div id="timer_time_left" style="display:inline-flex; float:right; "></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="question">
+                            <h3 style="color:#476692 ;">
+                                Conseti a Vale di utilizzare la tua webcam e il tuo microfono!<br> Qunada hai fatto procedi.
+                            </h3>
+                            <button class="btn-inizia" id="start" type="button" onclick="getPermissionForWebcamAndMic()">PROSEGUI</button>
+                        </div>
+                    </div>
+
+
+
+                </section>
+
+                <!--COLONNA SINISTRA-->
+                <div id="spinner" class="col-xl-6 col-lg-6  col-md-6 col-sm-12 col-sm-12 " hidden>
+                    <div aria-busy="true" aria-label="Loading" role="status" class="container">
+                        <div class="swing">
+                            <div class="swing-l"></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div class="swing-r"></div>
+                        </div>
+                        <div class="shadow">
+                            <div class="shadow-l"></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div class="shadow-r"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Sto elaborando la tua risposta... un momento.</h3>
+                </div>
+                <section id="boxRis" class="col-xl-6 col-lg-6  col-md-6 col-sm-12 col-sm-12 " hidden>
+                    <div class="videoSection">
+                        <div class="boxVideo">
+
+                            <h2 class="titleRis">Risposta</h2>
+
+                            <div id="timeBox" class="timeBox" hidden>
+                                <!--<div id="answerTime" hidden class="container time"> 
 												Registration closes in <span id="time">01:00</span> minutes!</div>-->
-								<div id="progressBar" style="margin: 0 auto !important;">
-									
-								</div>
-								
-							</div>
+                                <div id="progressBar" style="margin: 0 auto !important;">
 
-							<div id="controls">
-								<button class="bRec" id="rec" hidden onclick="onBtnRecordClicked(); runSpeechRecognition()">
+                                </div>
+
+                            </div>
+
+                            <div id="controls">
+                                <button class="bRec" id="rec" hidden onclick="onBtnRecordClicked(); runSpeechRecognition()">
 										<p>Record</p>
 								</button>
-								<button class="bStop" id="stop" onclick="onBtnStopClicked();"
-									hidden>
+                                <button class="bStop" id="stop" onclick="onBtnStopClicked();" hidden>
 									<p>Stop</p>
 								</button>
-								<button class="bRec" id="StartTextBtn" onclick="onBtnStartClicked()">Rispondi</button>
-								<button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked();" hidden>Conferma</button>
-							</div>
+                                <button class="bRec" id="StartTextBtn" onclick="onBtnStartClicked()">Rispondi</button>
+                                <button class="bRec" id="ConfirmTextBtn" onclick="onBtnConfirmClicked();" hidden>Conferma</button>
+                            </div>
 
-							<div id="video"><video autoplay muted="true"> </video></div>	
-							<div id="code"><textarea id="textArea"></textarea></div>
-							<div id="check" class="checkBox"> </div>
-							
-							<div id="output"></div>
-							<!-- <div>
+                            <div id="video"><video autoplay muted="true"> </video></div>
+                            <div id="code"><textarea id="textArea"></textarea></div>
+                            <div id="check" class="checkBox"> </div>
+
+                            <div id="output"></div>
+                            <!-- <div>
 												<button v-on:click="submitFile()">Submit</button>
 											</div> -->
-							<!-- <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+                            <!-- <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 							<p id="data"></p> -->
 
-						</div>
-					</div>
-				</section>
-				
-			</div>
-	</main>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+    </main>
 </body>
 
 
 <!--  SCRIPT JS  -->
-<script src="{% static '/node_modules/codemirror/lib/codemirror.js' %}"> </script>
+<script src="{% static '/node_modules/codemirror/lib/codemirror.js' %}">
+</script>
 <script src="{% static '/node_modules/codemirror/mode/javascript/javascript.js' %}"></script>
 <script src="{% static '/node_modules/codemirror/addon/edit/closebrackets.js' %}"></script>
 <script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
