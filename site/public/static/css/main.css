@@ -596,7 +596,7 @@ textarea:focus {
     width: 120px;
 }
 
-.ValeImgMobile {
+.visoVale {
     width: 20px;
     display: none;
 }
@@ -654,7 +654,7 @@ textarea:focus {
         display: none;
     }
     .visoVale {
-        width: 20px;
+        width: 60px;
         display: block;
         margin: 0 auto;
     }
@@ -688,7 +688,8 @@ textarea:focus {
         display: none;
     }
     .visoVale {
-        width: 20px;
+        width: 60px;
         display: block;
+        margin: 10px auto;
     }
 }
