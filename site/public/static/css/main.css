@@ -596,6 +596,11 @@ textarea:focus {
     width: 120px;
 }
 
+.ValeImgMobile {
+    width: 20px;
+    display: none;
+}
+
 
 /******************************RESPONISVEEEEEE******************************/
 
@@ -648,6 +653,11 @@ textarea:focus {
         width: 0px;
         display: none;
     }
+    .visoVale {
+        width: 20px;
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 
@@ -676,5 +686,9 @@ textarea:focus {
     .ValeImg {
         width: 0px;
         display: none;
+    }
+    .visoVale {
+        width: 20px;
+        display: block;
     }
 }
