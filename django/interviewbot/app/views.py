@@ -82,7 +82,7 @@ def registration_view(request):
 				new_user = serializer.save() 
 				request.session['is_reg'] = True
 				request.session['user_id'] = new_user.id
-				if request.session.get('interview', -1) < 0:
+				if int(request.session.get('interview', -1)) < 0:
 					logger('No interview setted during registration, setting the default.', session = request.session)
 					request.session['interview'] = DefaultInterview.objects.all()[0].default_interview.id
 				type = InterviewType.objects.get(pk = int(request.session.get('interview', 2)))
